@@ -654,7 +654,7 @@ void qedit_parse(struct descriptor_data *d, char *arg) {
             }
         case QEDIT_LEVELMAX:
             if (number < 0 || number > CONFIG_LEVEL_CAP) {
-                write_to_output(d, "Level must be between 0 and %d!\r\n", CONFIG_LEVEL_CAP;
+                write_to_output(d, "Level must be between 0 and %d!\r\n", CONFIG_LEVEL_CAP);
                 write_to_output(d, "Enter maximum level to accept the quest : ");
                 return;
             } else if (number < OLC_QUEST(d)->value[2]) {
