@@ -379,6 +379,7 @@ extern const char *nrm, *grn, *cyn, *yel;
 #define CEDIT_MAP_SIZE     55
 #define CEDIT_MINIMAP_SIZE   56
 #define CEDIT_DEBUG_MODE     57
+#define CEDIT_LEVEL_CAP			58
 
 /* Hedit Submodes of connectedness. */
 #define HEDIT_CONFIRM_SAVESTRING        0
