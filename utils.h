@@ -982,8 +982,7 @@ do                                                              \
 #define CONFIG_DISP_CLOSED_DOORS config_info.play.disp_closed_doors
 /** Get the diagonal directions setting. */
 #define CONFIG_DIAGONAL_DIRS    config_info.play.diagonal_dirs
-/** define level cap*/
-#define CONFIG_LEVEL_CAP	config_info.play.level_cap
+
 
 /* Map/Automap options */
 #define CONFIG_MAP             config_info.play.map_option
