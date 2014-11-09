@@ -1,20 +1,20 @@
 /**
-* @file utils.h
-* Utility macros and prototypes of utility functions.
-*
-* Part of the core tbaMUD source code distribution, which is a derivative
-* of, and continuation of, CircleMUD.
-*
-* All rights reserved.  See license for complete information.
-* Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University
-* CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.
-*
-* @todo Merge structs, random and other very generic functions and macros into
-* the utils module.
-* @todo Take more mud specific functions and function prototypes (follower
-* functions, move functions, char_from_furniture) out of utils and declare /
-* define elsewhere.
-*/
+ * @file utils.h
+ * Utility macros and prototypes of utility functions.
+ *
+ * Part of the core tbaMUD source code distribution, which is a derivative
+ * of, and continuation of, CircleMUD.
+ *
+ * All rights reserved.  See license for complete information.
+ * Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University
+ * CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.
+ *
+ * @todo Merge structs, random and other very generic functions and macros into
+ * the utils module.
+ * @todo Take more mud specific functions and function prototypes (follower
+ * functions, move functions, char_from_furniture) out of utils and declare /
+ * define elsewhere.
+ */
 #ifndef _UTILS_H_ /* Begin header file protection */
 #define _UTILS_H_
 
@@ -36,14 +36,14 @@
 
 /* Public functions made available from utils.c. Documentation for all functions
  * are made available with the function definition. */
-void basic_mud_log(const char *format, ...) __attribute__ ((format (printf, 1, 2)));
+void basic_mud_log(const char *format, ...) __attribute__((format(printf, 1, 2)));
 void basic_mud_vlog(const char *format, va_list args);
 int touch(const char *path);
-void mudlog(int type, int level, int file, const char *str, ...) __attribute__ ((format (printf, 4, 5)));
-int	rand_number(int from, int to);
-int	dice(int number, int size);
-size_t	sprintbit(bitvector_t vektor, const char *names[], char *result, size_t reslen);
-size_t	sprinttype(int type, const char *names[], char *result, size_t reslen);
+void mudlog(int type, int level, int file, const char *str, ...) __attribute__((format(printf, 4, 5)));
+int rand_number(int from, int to);
+int dice(int number, int size);
+size_t sprintbit(bitvector_t vektor, const char *names[], char *result, size_t reslen);
+size_t sprinttype(int type, const char *names[], char *result, size_t reslen);
 void sprintbitarray(int bitvector[], const char *names[], int maxar, char *result);
 int get_line(FILE *fl, char *buf);
 int get_filename(char *filename, size_t fbufsize, int mode, const char *orig_name);
@@ -59,11 +59,11 @@ struct time_info_data *mud_time_passed(time_t t2, time_t t1);
 void prune_crlf(char *txt);
 void column_list(struct char_data *ch, int num_cols, const char **list, int list_length, bool show_nums);
 int get_flag_by_name(const char *flag_list[], char *flag_name);
-int file_head( FILE *file, char *buf, size_t bufsize, int lines_to_read );
-int file_tail( FILE *file, char *buf, size_t bufsize, int lines_to_read );
-size_t file_sizeof( FILE *file );
-int file_numlines( FILE *file );
-IDXTYPE atoidx( const char *str_to_conv );
+int file_head(FILE *file, char *buf, size_t bufsize, int lines_to_read);
+int file_tail(FILE *file, char *buf, size_t bufsize, int lines_to_read);
+size_t file_sizeof(FILE *file);
+int file_numlines(FILE *file);
+IDXTYPE atoidx(const char *str_to_conv);
 char *strfrmt(char *str, int w, int h, int justify, int hpad, int vpad);
 char *strpaste(char *str1, char *str2, char *joiner);
 void new_affect(struct affected_type *af);
@@ -82,10 +82,10 @@ void weather_and_time(int mode);
 /* Only provide our versions if one isn't in the C library. These macro names
  * will be defined by sysdep.h if a strcasecmp or stricmp exists. */
 #ifndef str_cmp
-int	str_cmp(const char *arg1, const char *arg2);
+int str_cmp(const char *arg1, const char *arg2);
 #endif
 #ifndef strn_cmp
-int	strn_cmp(const char *arg1, const char *arg2, int n);
+int strn_cmp(const char *arg1, const char *arg2, int n);
 #endif
 
 /* random functions in random.c */
@@ -106,30 +106,30 @@ int MIN(int a, int b);
 char *CAP(char *txt);
 
 /* Followers */
-int	num_followers_charmed(struct char_data *ch);
-void	die_follower(struct char_data *ch);
-void	add_follower(struct char_data *ch, struct char_data *leader);
-void	stop_follower(struct char_data *ch);
-bool	circle_follow(struct char_data *ch, struct char_data *victim);
+int num_followers_charmed(struct char_data *ch);
+void die_follower(struct char_data *ch);
+void add_follower(struct char_data *ch, struct char_data *leader);
+void stop_follower(struct char_data *ch);
+bool circle_follow(struct char_data *ch, struct char_data *victim);
 
 /* in act.informative.c */
-void	look_at_room(struct char_data *ch, int mode);
-void  add_history(struct char_data *ch, char *msg, int type);
+void look_at_room(struct char_data *ch, int mode);
+void add_history(struct char_data *ch, char *msg, int type);
 
 /* in act.movmement.c */
-int	do_simple_move(struct char_data *ch, int dir, int following);
-int	perform_move(struct char_data *ch, int dir, int following);
+int do_simple_move(struct char_data *ch, int dir, int following);
+int perform_move(struct char_data *ch, int dir, int following);
 
 /* in limits.c */
-int	mana_gain(struct char_data *ch);
-int	hit_gain(struct char_data *ch);
-int	move_gain(struct char_data *ch);
-void	set_title(struct char_data *ch, char *title);
-void	gain_exp(struct char_data *ch, int gain);
-void	gain_exp_regardless(struct char_data *ch, int gain);
-void	gain_condition(struct char_data *ch, int condition, int value);
-void	point_update(void);
-void	update_pos(struct char_data *victim);
+int mana_gain(struct char_data *ch);
+int hit_gain(struct char_data *ch);
+int move_gain(struct char_data *ch);
+void set_title(struct char_data *ch, char *title);
+void gain_exp(struct char_data *ch, int gain);
+void gain_exp_regardless(struct char_data *ch, int gain);
+void gain_condition(struct char_data *ch, int condition, int value);
+void point_update(void);
+void update_pos(struct char_data *victim);
 void run_autowiz(void);
 int increase_gold(struct char_data *ch, int amt);
 int decrease_gold(struct char_data *ch, int amt);
@@ -137,7 +137,7 @@ int increase_bank(struct char_data *ch, int amt);
 int decrease_bank(struct char_data *ch, int amt);
 
 /* in class.c */
-void    advance_level(struct char_data *ch);
+void advance_level(struct char_data *ch);
 
 void char_from_furniture(struct char_data *ch);
 /** What ch is currently sitting on. */
@@ -843,7 +843,7 @@ do                                                              \
 
 /** True total number of directions available to move in. */
 #define DIR_COUNT ((CONFIG_DIAGONAL_DIRS) ? 10 : 6)
- 
+
 /* Returns TRUE if the direction is a diagonal one */
 #define IS_DIAGONAL(dir) (((dir) == NORTHWEST) || ((dir) == NORTHEAST) || \
 		((dir) == SOUTHEAST) || ((dir) == SOUTHWEST) )
@@ -980,6 +980,8 @@ do                                                              \
 #define CONFIG_DISP_CLOSED_DOORS config_info.play.disp_closed_doors
 /** Get the diagonal directions setting. */
 #define CONFIG_DIAGONAL_DIRS    config_info.play.diagonal_dirs
+/** define level cap*/
+#define CONFIG_LEVEL_CAP	config_info.play.level_cap
 
 /* Map/Automap options */
 #define CONFIG_MAP             config_info.play.map_option

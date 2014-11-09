@@ -277,7 +277,7 @@ void gain_exp_regardless(struct char_data *ch, int gain)
     GET_EXP(ch) = 0;
 
   if (!IS_NPC(ch)) {
-    while (GET_LEVEL(ch) < LVL_IMPL &&
+    while (GET_LEVEL(ch) < CONFIG_LEVEL_CAP &&
 	GET_EXP(ch) >= level_exp(GET_CLASS(ch), GET_LEVEL(ch) + 1)) {
       GET_LEVEL(ch) += 1;
       num_levels++;

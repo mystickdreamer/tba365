@@ -78,6 +78,7 @@ extern int default_minimap_size;
 
 extern int medit_advanced_stats;
 extern int ibt_autosave;
+extern int level_cap;
 /*
  * Variables not controlled by cedit
  */

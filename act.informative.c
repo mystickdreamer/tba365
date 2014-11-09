@@ -1116,7 +1116,7 @@ ACMD(do_who)
   int i, num_can_see = 0;
   char name_search[MAX_INPUT_LENGTH], buf[MAX_INPUT_LENGTH];
   char mode;
-  int low = 0, high = LVL_IMPL, localwho = 0, questwho = 0;
+  int low = 0, high = CONFIG_LEVEL_CAP, localwho = 0, questwho = 0;
   int showclass = 0, short_list = 0, outlaws = 0;
   int who_room = 0, showgroup = 0, showleader = 0;
 
@@ -1360,7 +1360,7 @@ ACMD(do_users)
   char name_search[MAX_INPUT_LENGTH], host_search[MAX_INPUT_LENGTH];
   struct char_data *tch;
   struct descriptor_data *d;
-  int low = 0, high = LVL_IMPL, num_can_see = 0;
+  int low = 0, high = CONFIG_LEVEL_CAP, num_can_see = 0;
   int showclass = 0, outlaws = 0, playing = 0, deadweight = 0;
   char buf[MAX_INPUT_LENGTH], arg[MAX_INPUT_LENGTH];
 
@@ -1683,7 +1683,7 @@ ACMD(do_levels)
 {
   char buf[MAX_STRING_LENGTH], arg[MAX_STRING_LENGTH];
   size_t len = 0, nlen;
-  int i, ret, min_lev=1, max_lev=LVL_IMMORT, val;
+  int i, ret, min_lev=1, max_lev=CONFIG_LEVEL_CAP, val;
 
   if (IS_NPC(ch)) {
     send_to_char(ch, "You ain't nothin' but a hound-dog.\r\n");
@@ -1697,25 +1697,25 @@ ACMD(do_levels)
       if (ret == 0) {
         /* No valid args found */
         min_lev = 1;
-        max_lev = LVL_IMMORT;
+        max_lev = CONFIG_LEVEL_CAP;
       }
       else if (ret == 1) {
         /* One arg = range is (num) either side of current level */
         val = min_lev;
-        max_lev = MIN(GET_LEVEL(ch) + val, LVL_IMMORT);
+        max_lev = MIN(GET_LEVEL(ch) + val, CONFIG_LEVEL_CAP);
         min_lev = MAX(GET_LEVEL(ch) - val, 1);
       }
       else if (ret == 2) {
         /* Two args = min-max range limit - just do sanity checks */
         min_lev = MAX(min_lev, 1);
-        max_lev = MIN(max_lev + 1, LVL_IMMORT);
+        max_lev = MIN(max_lev + 1, CONFIG_LEVEL_CAP);
       }
     }
     else
     {
       send_to_char(ch, "Usage: %slevels [<min>-<max> | <range>]%s\r\n\r\n", QYEL, QNRM);
       send_to_char(ch, "Displays exp required for levels.\r\n");
-      send_to_char(ch, "%slevels       %s- shows all levels (1-%d)\r\n", QCYN, QNRM, (LVL_IMMORT-1));
+      send_to_char(ch, "%slevels       %s- shows all levels (1-%d)\r\n", QCYN, QNRM, (CONFIG_LEVEL_CAP-1));
       send_to_char(ch, "%slevels 5     %s- shows 5 levels either side of your current level\r\n", QCYN, QNRM);
       send_to_char(ch, "%slevels 10-40 %s- shows level 10 to level 40\r\n",QCYN, QNRM);
       return;
@@ -1746,7 +1746,7 @@ ACMD(do_levels)
     len += nlen;
   }
 
-  if (len < sizeof(buf) && max_lev == LVL_IMMORT)
+  if (len < sizeof(buf) && max_lev == CONFIG_LEVEL_CAP)
     snprintf(buf + len, sizeof(buf) - len, "[%2d] %8d          : Immortality\r\n",
 		LVL_IMMORT, level_exp(GET_CLASS(ch), LVL_IMMORT));
   page_string(ch->desc, buf, TRUE);

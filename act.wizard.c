@@ -1482,8 +1482,8 @@ ACMD(do_advance)
     send_to_char(ch, "That's not a level!\r\n");
     return;
   }
-  if (newlevel > LVL_IMPL) {
-    send_to_char(ch, "%d is the highest possible level.\r\n", LVL_IMPL);
+  if (newlevel > CONFIG_LEVEL_CAP) {
+    send_to_char(ch, "%d is the highest possible level.\r\n", CONFIG_LEVEL_CAP);
     return;
   }
   if (newlevel > GET_LEVEL(ch)) {
@@ -1743,7 +1743,7 @@ ACMD(do_wizlock)
   one_argument(argument, arg);
   if (*arg) {
     value = atoi(arg);
-    if (value < 0 || value > GET_LEVEL(ch)) {
+    if (value < 0 || value > CONFIG_LEVEL_CAP) {
       send_to_char(ch, "Invalid wizlock value.\r\n");
       return;
     }
@@ -3032,7 +3032,7 @@ static int perform_set(struct char_data *ch, struct char_data *vict, int mode, c
       SET_OR_REMOVE(PLR_FLAGS(vict), PLR_KILLER);
       break;
     case 25: /* level */
-      if ((!IS_NPC(vict) && value > GET_LEVEL(ch)) || value > LVL_IMPL) {
+      if ((!IS_NPC(vict) && value > GET_LEVEL(ch)) || value > CONFIG_LEVEL_CAP) {
         send_to_char(ch, "You can't do that.\r\n");
         return (0);
       }
