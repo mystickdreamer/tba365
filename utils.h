@@ -968,6 +968,8 @@ do                                                              \
 #define CONFIG_LOAD_INVENTORY   config_info.play.load_into_inventory
 /** Get the track through doors setting. */
 #define CONFIG_TRACK_T_DOORS    config_info.play.track_through_doors
+/*configuring level cap*/
+#define CONFIG_LEVEL_CAP	config_info.play.level_cap
 /** Get the permission to level up from mortal to immortal. */
 #define CONFIG_NO_MORT_TO_IMMORT config_info.play.no_mort_to_immort
 /** Get the 'OK' message. */
