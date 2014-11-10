@@ -4093,6 +4093,11 @@ ACMD(do_copyover) {
     char buf [100], buf2[100];
     int i;
 
+    
+    if (GET_ADMLEVEL(ch) < ADMLVL_GRGOD0){
+        return;
+    }
+    
     fp = fopen(COPYOVER_FILE, "w");
     if (!fp) {
         send_to_char(ch, "Copyover file not writeable, aborted.\n\r");
