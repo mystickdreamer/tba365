@@ -28,6 +28,10 @@
 #include "modify.h"
 #include "asciimap.h"
 
+
+/*Extern Variables*/
+const char *admin_level_names[ADMLVL_IMPL + 2];
+
 /* prototypes of local functions */
 /* do_diagnose utility functions */
 static void diag_char_to_char(struct char_data *i, struct char_data *ch);
@@ -926,6 +930,18 @@ ACMD(do_score)
     send_to_char(ch, "Your current zone: %s%d%s\r\n", CCCYN(ch, C_NRM), GET_OLC_ZONE(ch),
  CCNRM(ch, C_NRM));
   }
+  
+    /* Admin flag display */
+    if (GET_ADMLEVEL(ch)) {
+        send_to_char(ch, "@rAdmin Level@n: @y%d - %s@n\r\n", GET_ADMLEVEL(ch), admin_level_names[GET_ADMLEVEL(ch)]);
+        send_to_char(ch, "@rYou possess the following administrative abilities@n:\r\n");
+        for (i = 0; i < NUM_ADMFLAGS; i++) {
+            if (ADM_FLAGGED(ch, i))
+                send_to_char(ch, "@y%-40.40s%s@n", admin_flags[i], (!(++j % 2)) ? "\r\n" : "");
+        }
+        send_to_char(ch, "\r\n");
+    }
+  
 }
 
 ACMD(do_inventory)
