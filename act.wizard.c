@@ -3690,7 +3690,7 @@ ACMD(do_zcheck) {
                         GET_OBJ_COST(obj), MAX_OBJ_COST);
             }
 
-            if (GET_OBJ_LEVEL(obj) > CONFIGZ_LEVEL_CAP - 1 && (found = 1))
+            if (GET_OBJ_LEVEL(obj) > CONFIG_LEVEL_CAP - 1 && (found = 1))
                 len += snprintf(buf + len, sizeof (buf) - len,
                     "- has min level set to %d (max %d).\r\n",
                     GET_OBJ_LEVEL(obj), CONFIG_LEVEL_CAP - 1);
