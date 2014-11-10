@@ -528,6 +528,7 @@
 #define TW_ARRAY_MAX    4  /**< # Bytes in Bit vector - Obj Wear Locations */
 #define EF_ARRAY_MAX    4  /**< # Bytes in Bit vector - Obj Extra Flags */
 #define ZN_ARRAY_MAX    4  /**< # Bytes in Bit vector - Zone Flags */
+#define AD_ARRAY_MAX    4   /* Admin Flags */
 
 /* other #defined constants */
 /* **DO**NOT** blindly change the number of levels in your MUD merely by
