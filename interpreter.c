@@ -361,7 +361,7 @@ cpp_extern const struct command_info cmd_info[] = {
   { "zlock"    , "zlock"   , POS_DEAD    , do_zlock    , ADMLVL_GOD, 0 },
   { "zunlock"  , "zunlock" , POS_DEAD    , do_zunlock  , ADMLVL_GOD, 0 },
   { "zcheck"   , "zcheck"  , POS_DEAD    , do_zcheck   , ADMLVL_BUILDER, 0 },
-  { "zpurge"   , "zpurge"  , POS_DEAD    , do_zpurge   , ADMLVL_BUILDER, 0 },
+  { "zpurge"   , "zpurge"  , POS_DEAD    , do_zpurge   , LVL_BUILDER, 0 },
 
   { "\n", "zzzzzzz", 0, 0, 0, 0 } };    /* this must be last */
 
@@ -506,7 +506,7 @@ void command_interpreter(struct char_data *ch, char *argument)
   }
 
   /* Allow IMPLs to switch into mobs to test the commands. */
-   if (IS_NPC(ch) && ch->desc && GET_ADMLEVEL(ch->desc->original) >= ADMLVL_IMPL) {
+   if (IS_NPC(ch) && ch->desc && GET_LEVEL(ch->desc->original) >= LVL_IMPL) {
      if (script_command_interpreter(ch, argument))
        return;
    }
@@ -548,11 +548,11 @@ void command_interpreter(struct char_data *ch, char *argument)
       }
     }
   }
-  else if (!IS_NPC(ch) && PLR_FLAGGED(ch, PLR_FROZEN) && GET_ADMLEVEL(ch) < ADMLVL_IMPL)
+  else if (!IS_NPC(ch) && PLR_FLAGGED(ch, PLR_FROZEN) && GET_LEVEL(ch) < LVL_IMPL)
     send_to_char(ch, "You try, but the mind-numbing cold prevents you...\r\n");
   else if (complete_cmd_info[cmd].command_pointer == NULL)
     send_to_char(ch, "Sorry, that command hasn't been implemented yet.\r\n");
-  else if (IS_NPC(ch) && complete_cmd_info[cmd].minimum_admlevel >= ADMLVL_IMMORT)
+  else if (IS_NPC(ch) && complete_cmd_info[cmd].minimum_level >= LVL_IMMORT)
     send_to_char(ch, "You can't use immortal commands while switched.\r\n");
   else if (GET_POS(ch) < complete_cmd_info[cmd].minimum_position)
     switch (GET_POS(ch)) {
@@ -1155,12 +1155,12 @@ static int perform_dupe_check(struct descriptor_data *d)
     act("$n suddenly keels over in pain, surrounded by a white aura...\r\n"
 	"$n's body has been taken over by a new spirit!",
 	TRUE, d->character, 0, 0, TO_ROOM);
-    mudlog(NRM, MAX(ADMLVL_IMMORT, GET_INVIS_LEV(d->character)), TRUE,
+    mudlog(NRM, MAX(LVL_IMMORT, GET_INVIS_LEV(d->character)), TRUE,
 	"%s has re-logged in ... disconnecting old socket.", GET_NAME(d->character));
     break;
   case UNSWITCH:
     write_to_output(d, "Reconnecting to unswitched char.");
-    mudlog(NRM, MAX(ADMLVL_IMMORT, GET_INVIS_LEV(d->character)), TRUE, "%s [%s] has reconnected.", GET_NAME(d->character), d->host);
+    mudlog(NRM, MAX(LVL_IMMORT, GET_INVIS_LEV(d->character)), TRUE, "%s [%s] has reconnected.", GET_NAME(d->character), d->host);
     break;
   }
 
@@ -1196,7 +1196,7 @@ static bool perform_new_char_dupe_check(struct descriptor_data *d)
         write_to_output(k, "\r\nMultiple login detected -- disconnecting.\r\n");
         STATE(k) = CON_CLOSE;
 
-        mudlog(NRM, ADMLVL_GOD, TRUE, "Multiple logins detected in char creation for %s.", GET_NAME(d->character));
+        mudlog(NRM, LVL_GOD, TRUE, "Multiple logins detected in char creation for %s.", GET_NAME(d->character));
 
         found = TRUE;
       } else {
@@ -1214,7 +1214,7 @@ static bool perform_new_char_dupe_check(struct descriptor_data *d)
         write_to_output(d, "\r\nPlease reconnect.\r\n");
         STATE(d) = CON_CLOSE;
 
-        mudlog(NRM, ADMLVL_GOD, TRUE, "SYSERR: Multiple logins with 1st in-game and the 2nd in char creation.");
+        mudlog(NRM, LVL_GOD, TRUE, "SYSERR: Multiple logins with 1st in-game and the 2nd in char creation.");
 
         found = TRUE;
       }
@@ -1241,7 +1241,7 @@ int enter_player_game (struct descriptor_data *d)
 
   /* If char was saved with NOWHERE, or real_room above failed... */
   if (load_room == NOWHERE) {
-    if (GET_ADMLEVEL(d->character) >= ADMLVL_IMMORT)
+    if (GET_LEVEL(d->character) >= LVL_IMMORT)
       load_room = r_immort_start_room;
     else
       load_room = r_mortal_start_room;
@@ -1440,14 +1440,14 @@ void nanny(struct descriptor_data *d, char *arg)
   case CON_NAME_CNFRM:		/* wait for conf. of new name    */
     if (UPPER(*arg) == 'Y') {
       if (isbanned(d->host) >= BAN_NEW) {
-	mudlog(NRM, ADMLVL_GOD, TRUE, "Request for new char %s denied from [%s] (siteban)", GET_PC_NAME(d->character), d->host);
+	mudlog(NRM, LVL_GOD, TRUE, "Request for new char %s denied from [%s] (siteban)", GET_PC_NAME(d->character), d->host);
 	write_to_output(d, "Sorry, new characters are not allowed from your site!\r\n");
 	STATE(d) = CON_CLOSE;
 	return;
       }
       if (circle_restrict) {
 	write_to_output(d, "Sorry, new players can't be created at the moment.\r\n");
-	mudlog(NRM, ADMLVL_GOD, TRUE, "Request for new char %s denied from [%s] (wizlock)", GET_PC_NAME(d->character), d->host);
+	mudlog(NRM, LVL_GOD, TRUE, "Request for new char %s denied from [%s] (wizlock)", GET_PC_NAME(d->character), d->host);
 	STATE(d) = CON_CLOSE;
 	return;
       }
@@ -1482,7 +1482,7 @@ void nanny(struct descriptor_data *d, char *arg)
       STATE(d) = CON_CLOSE;
     else {
       if (strncmp(CRYPT(arg, GET_PASSWD(d->character)), GET_PASSWD(d->character), MAX_PWD_LENGTH)) {
-	mudlog(BRF, ADMLVL_GOD, TRUE, "Bad PW: %s [%s]", GET_NAME(d->character), d->host);
+	mudlog(BRF, LVL_GOD, TRUE, "Bad PW: %s [%s]", GET_NAME(d->character), d->host);
 	GET_BAD_PWS(d->character)++;
 	save_char(d->character);
 	if (++(d->bad_pws) >= CONFIG_MAX_BAD_PWS) {	/* 3 strikes and you're out. */
@@ -1504,33 +1504,33 @@ void nanny(struct descriptor_data *d, char *arg)
 	  !PLR_FLAGGED(d->character, PLR_SITEOK)) {
 	write_to_output(d, "Sorry, this char has not been cleared for login from your site!\r\n");
 	STATE(d) = CON_CLOSE;
-	mudlog(NRM, ADMLVL_GOD, TRUE, "Connection attempt for %s denied from %s", GET_NAME(d->character), d->host);
+	mudlog(NRM, LVL_GOD, TRUE, "Connection attempt for %s denied from %s", GET_NAME(d->character), d->host);
 	return;
       }
       if (GET_LEVEL(d->character) < circle_restrict) {
 	write_to_output(d, "The game is temporarily restricted.. try again later.\r\n");
 	STATE(d) = CON_CLOSE;
-	mudlog(NRM, ADMLVL_GOD, TRUE, "Request for login denied for %s [%s] (wizlock)", GET_NAME(d->character), d->host);
+	mudlog(NRM, LVL_GOD, TRUE, "Request for login denied for %s [%s] (wizlock)", GET_NAME(d->character), d->host);
 	return;
       }
       /* check and make sure no other copies of this player are logged in */
       if (perform_dupe_check(d))
 	return;
 
-      if (GET_ADMLEVEL(d->character) >= ADMLVL_IMMORT)
+      if (GET_LEVEL(d->character) >= LVL_IMMORT)
 	write_to_output(d, "%s", imotd);
       else
 	write_to_output(d, "%s", motd);
 
       if (GET_INVIS_LEV(d->character))
-        mudlog(BRF, MAX(ADMLVL_IMMORT, GET_INVIS_LEV(d->character)), TRUE, "%s has connected. (invis %d)", GET_NAME(d->character), GET_INVIS_LEV(d->character));
+        mudlog(BRF, MAX(LVL_IMMORT, GET_INVIS_LEV(d->character)), TRUE, "%s has connected. (invis %d)", GET_NAME(d->character), GET_INVIS_LEV(d->character));
       else
-        mudlog(BRF, ADMLVL_IMMORT, TRUE, "%s has connected.", GET_NAME(d->character));
+        mudlog(BRF, LVL_IMMORT, TRUE, "%s has connected.", GET_NAME(d->character));
 
       /* Add to the list of 'recent' players (since last reboot) */
       if (AddRecentPlayer(GET_NAME(d->character), d->host, FALSE, FALSE) == FALSE)
       {
-        mudlog(BRF, MAX(ADMLVL_IMMORT, GET_INVIS_LEV(d->character)), TRUE, "Failure to AddRecentPlayer (returned FALSE).");
+        mudlog(BRF, MAX(LVL_IMMORT, GET_INVIS_LEV(d->character)), TRUE, "Failure to AddRecentPlayer (returned FALSE).");
       }
 
       if (load_result) {
@@ -1629,12 +1629,12 @@ void nanny(struct descriptor_data *d, char *arg)
     GET_PREF(d->character)= rand_number(1, 128000);
     GET_HOST(d->character)= strdup(d->host);
 
-    mudlog(NRM, ADMLVL_GOD, TRUE, "%s [%s] new player.", GET_NAME(d->character), d->host);
+    mudlog(NRM, LVL_GOD, TRUE, "%s [%s] new player.", GET_NAME(d->character), d->host);
 
     /* Add to the list of 'recent' players (since last reboot) */
     if (AddRecentPlayer(GET_NAME(d->character), d->host, TRUE, FALSE) == FALSE)
     {
-      mudlog(BRF, MAX(ADMLVL_IMMORT, GET_INVIS_LEV(d->character)), TRUE, "Failure to AddRecentPlayer (returned FALSE).");
+      mudlog(BRF, MAX(LVL_IMMORT, GET_INVIS_LEV(d->character)), TRUE, "Failure to AddRecentPlayer (returned FALSE).");
     }
     break;
 
@@ -1760,7 +1760,7 @@ void nanny(struct descriptor_data *d, char *arg)
 	STATE(d) = CON_CLOSE;
 	return;
       }
-      if (GET_ADMLEVEL(d->character) < ADMLVL_GRGOD)
+      if (GET_LEVEL(d->character) < LVL_GRGOD)
 	SET_BIT_AR(PLR_FLAGS(d->character), PLR_DELETED);
       save_char(d->character);
       Crash_delete_file(GET_NAME(d->character));
@@ -1774,7 +1774,7 @@ void nanny(struct descriptor_data *d, char *arg)
 
       delete_variables(GET_NAME(d->character));
       write_to_output(d, "Character '%s' deleted! Goodbye.\r\n", GET_NAME(d->character));
-      mudlog(NRM, ADMLVL_GOD, TRUE, "%s (lev %d) has self-deleted.", GET_NAME(d->character), GET_LEVEL(d->character));
+      mudlog(NRM, LVL_GOD, TRUE, "%s (lev %d) has self-deleted.", GET_NAME(d->character), GET_LEVEL(d->character));
       STATE(d) = CON_CLOSE;
       return;
     } else {
