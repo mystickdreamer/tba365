@@ -475,6 +475,8 @@ do                                                              \
 			 (ch)->player.short_descr : GET_PC_NAME(ch))
 /** Title of PC */
 #define GET_TITLE(ch)   ((ch)->player.title)
+/** Admin level of PC */
+#define GET_ADMLEVEL(ch)	((ch)->player.admlevel)
 /** Level of PC or NPC. */
 #define GET_LEVEL(ch)   ((ch)->player.level)
 /** Password of PC. */
