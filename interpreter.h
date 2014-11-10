@@ -59,6 +59,7 @@ struct command_info {
    byte minimum_position;
    void	(*command_pointer)
 	   (struct char_data *ch, char *argument, int cmd, int subcmd);
+   sh_int minimum_admlevel;
    sh_int minimum_level;
    int	subcmd;
 };
