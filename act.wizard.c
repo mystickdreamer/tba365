@@ -4094,7 +4094,7 @@ ACMD(do_copyover) {
     int i;
 
     
-    if (GET_ADMLEVEL(ch) < ADMLVL_GRGOD0){
+    if (GET_ADMLEVEL(ch) < ADMLVL_GRGOD){
         return;
     }
     
