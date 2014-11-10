@@ -4231,7 +4231,7 @@ ACMD(do_file) {
     /* Defines which files are available to read. */
     struct file_struct {
         char *cmd; /* The 'name' of the file to view */
-        char level; /* Minimum level needed to view. */
+        char admlevel; /* Minimum level needed to view. */
         char *file; /* The file location, relative to the working dir. */
         int read_backwards; /* Should the file be read backwards by default? */
     } fields[] = {
