@@ -578,6 +578,10 @@
 #define ADM_NODAMAGE    16  /* Cannot be damaged IMM */
 #define ADM_ALLSHOPS    17  /* Can use all shops GOD */
 #define ADM_CEDIT   18  /* Can use cedit IMPL */
+
+#define NUM_ADMFLAGS            19
+
+
 /* Level of the 'freeze' command */
 #define ADMLVL_FREEZE ADMLVL_GRGOD
 
