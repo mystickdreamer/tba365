@@ -798,6 +798,7 @@ ACMD(do_gold)
 ACMD(do_score)
 {
   struct time_info_data playing_time;
+  int i, j=0;
 
   if (IS_NPC(ch))
     return;
