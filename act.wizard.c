@@ -3221,10 +3221,10 @@ static int perform_set(struct char_data *ch, struct char_data *vict, int mode, c
 //                send_to_char(ch, "Permission denied.\r\n");
 //                return (0);
 //            }
-            if (value < ADMLVL_NONE || value > GET_ADMLEVEL(ch)) {
-                send_to_char(ch, "You can't set it to that.\r\n");
-                return (0);
-            }
+//            if (value < ADMLVL_NONE || value > GET_ADMLEVEL(ch)) {
+//                send_to_char(ch, "You can't set it to that.\r\n");
+//                return (0);
+//            }
             if (GET_ADMLEVEL(vict) == value)
                 return (1);
             admin_set(vict, value);
