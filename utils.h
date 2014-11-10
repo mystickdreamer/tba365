@@ -369,7 +369,7 @@ do                                                              \
 /** Affect flags on the NPC or PC. */
 #define AFF_FLAGS(ch)	((ch)->char_specials.saved.affected_by)
 /*Adm flags*/
-#define ADM_FLAGS(ch)	((ch)->admflags)
+#define ADM_FLAGS(ch)	((ch)->player.admflags)
 /** Room flags.
  * @param loc The real room number. */
 #define ROOM_FLAGS(loc)	(world[(loc)].room_flags)
