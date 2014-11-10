@@ -96,6 +96,17 @@ const char *NOEFFECT = "Nothing seems to happen.\r\n";
  * through doors to find the target. */
 int track_through_doors = YES;
 
+
+/*
+ * This defines the cap for player character levels. It is impossible for
+ * a player to level up to the cap; so if the cap is 101, the maximum
+ * possible player level is 100.
+ *
+ * You should set this to whatever is appropriate for your doing your
+ * highest level areas without much difficulty. No risk, no reward.
+ */
+int level_cap = 101;
+
 /* If you do not want mortals to level up to immortal once they have enough
  * experience, then set this to YES. Subtracting this from LVL_IMMORT gives
  * the top level that people can advance to in gain_exp() in limits.c */
