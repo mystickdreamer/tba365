@@ -297,7 +297,79 @@ void mudlog(int type, int level, int file, const char *str, ...)
   }
 }
 
+int default_admin_flags_mortal[] ={-1};
 
+int default_admin_flags_immortal[] ={ADM_SEEINV, ADM_SEESECRET, ADM_FULLWHERE, ADM_NOPOISON, ADM_WALKANYWHERE,
+    ADM_NODAMAGE, ADM_NOSTEAL, -1};
+
+int default_admin_flags_builder[] ={-1};
+
+int default_admin_flags_god[] ={ADM_ALLSHOPS, ADM_TELLALL, ADM_KNOWWEATHER, ADM_MONEY, ADM_EATANYTHING,
+    ADM_NOKEYS, -1};
+
+int default_admin_flags_grgod[] ={ADM_TRANSALL, ADM_FORCEMASS, ADM_ALLHOUSES, -1};
+
+int default_admin_flags_impl[] ={ADM_SWITCHMORTAL, ADM_INSTANTKILL, ADM_CEDIT, -1};
+
+int *default_admin_flags[ADMLVL_OWNER + 1] = {
+    default_admin_flags_mortal,
+    default_admin_flags_immortal,
+    default_admin_flags_builder,
+    default_admin_flags_god,
+    default_admin_flags_grgod,
+    default_admin_flags_impl
+};
+
+void admin_set(struct char_data *ch, int value) {
+    void run_autowiz(void);
+    int i;
+    int orig = GET_ADMLEVEL(ch);
+
+    if (GET_ADMLEVEL(ch) == value)
+        return;
+    if (GET_ADMLEVEL(ch) < value) { /* Promotion */
+        mudlog(BRF, MAX(ADMLVL_IMMORT, GET_INVIS_LEV(ch)), true,
+                "%s promoted from %s to %s", GET_NAME(ch), admin_level_names[GET_ADMLEVEL(ch)],
+                admin_level_names[value]);
+        while (GET_ADMLEVEL(ch) < value) {
+            GET_ADMLEVEL(ch)++;
+            for (i = 0; default_admin_flags[GET_ADMLEVEL(ch)][i] != -1; i++)
+                SET_BIT_AR(ADM_FLAGS(ch), default_admin_flags[GET_ADMLEVEL(ch)][i]);
+        }
+        run_autowiz();
+        if (orig < ADMLVL_IMMORT && value >= ADMLVL_IMMORT) {
+            SET_BIT_AR(PRF_FLAGS(ch), PRF_LOG2);
+            SET_BIT_AR(PRF_FLAGS(ch), PRF_HOLYLIGHT);
+            //     SET_BIT_AR(PRF_FLAGS(ch), PRF_ROOMFLAGS);
+            SET_BIT_AR(PRF_FLAGS(ch), PRF_AUTOEXIT);
+        }
+        if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT) {
+            for (i = 0; i < 3; i++)
+                GET_COND(ch, i) = (char) - 1;
+            SET_BIT_AR(PRF_FLAGS(ch), PRF_HOLYLIGHT);
+        }
+        return;
+    }
+    if (GET_ADMLEVEL(ch) > value) { /* Demotion */
+        mudlog(BRF, MAX(ADMLVL_IMMORT, GET_INVIS_LEV(ch)), true,
+                "%s demoted from %s to %s", GET_NAME(ch), admin_level_names[GET_ADMLEVEL(ch)],
+                admin_level_names[value]);
+        while (GET_ADMLEVEL(ch) > value) {
+            for (i = 0; default_admin_flags[GET_ADMLEVEL(ch)][i] != -1; i++)
+                REMOVE_BIT_AR(ADM_FLAGS(ch), default_admin_flags[GET_ADMLEVEL(ch)][i]);
+            GET_ADMLEVEL(ch)--;
+        }
+        run_autowiz();
+        if (orig >= ADMLVL_IMMORT && value < ADMLVL_IMMORT) {
+            REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_LOG1);
+            REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_LOG2);
+            REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_NOHASSLE);
+            REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_HOLYLIGHT);
+            //      REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_ROOMFLAGS);
+        }
+        return;
+    }
+}
 
 /** Take a bitvector and return a human readable
  * description of which bits are set in it.
