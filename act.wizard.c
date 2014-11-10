@@ -2801,7 +2801,7 @@ struct set_struct {
     { "wis", LVL_BUILDER, BOTH, NUMBER}, /* 55 */
     { "questpoints", LVL_GOD, PC, NUMBER},
     { "questhistory", LVL_GOD, PC, NUMBER},
-    { "adminlevel", LVL_NONE, PC, NUMBER},
+    { "adminlevel", LVL_GOD, PC, NUMBER},
     { "\n", 0, BOTH, MISC}
 };
 
