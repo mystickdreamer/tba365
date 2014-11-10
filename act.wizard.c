@@ -2801,7 +2801,7 @@ struct set_struct {
     { "wis", LVL_BUILDER, BOTH, NUMBER}, /* 55 */
     { "questpoints", LVL_GOD, PC, NUMBER},
     { "questhistory", LVL_GOD, PC, NUMBER},
-    { "adminlevel", LVL_GOD, PC, NUMBER},
+    { "adminlevel", ADMLVL_NONE, PC, NUMBER},
     { "\n", 0, BOTH, MISC}
 };
 
@@ -3216,16 +3216,16 @@ static int perform_set(struct char_data *ch, struct char_data *vict, int mode, c
                 break;
             }
 
-//        case 58: /* admin set */
-/*            if (GET_LEVEL(vict) >= GET_LEVEL(ch)) {
+        case 58: /* admin set */
+            if (GET_ADMLEVEL(vict) >= GET_ADMLEVEL(ch)) {
                 send_to_char(ch, "Permission denied.\r\n");
                 return (0);
             }
-            if (value < LVL_NONE || value > GET_LEVEL(ch)) {
+            if (value < ADMLVL_NONE || value > GET_ADMLEVEL(ch)) {
                 send_to_char(ch, "You can't set it to that.\r\n");
                 return (0);
-            }*/
-            if (GET_LEVEL(vict) == value)
+            }
+            if (GET_ADMLEVEL(vict) == value)
                 return (1);
             admin_set(vict, value);
             break;
@@ -3415,7 +3415,7 @@ ACMD(do_links) {
 #define MAX_HITROLL_ALLOWED      MAX(GET_LEVEL(mob)/3, 1)
 #define MAX_MOB_GOLD_ALLOWED     GET_LEVEL(mob)*3000
 #define MAX_EXP_ALLOWED          GET_LEVEL(mob)*GET_LEVEL(mob) * 120
-#define MAX_LEVEL_ALLOWED        CONFIG_LEVEL_CAP
+#define MAX_LEVEL_ALLOWED        LVL_IMPL
 #define GET_OBJ_AVG_DAM(obj)     (((GET_OBJ_VAL(obj, 2) + 1) / 2.0) * GET_OBJ_VAL(obj, 1))
 /* arbitrary limit for per round dam */
 #define MAX_MOB_DAM_ALLOWED      500
@@ -3690,10 +3690,10 @@ ACMD(do_zcheck) {
                         GET_OBJ_COST(obj), MAX_OBJ_COST);
             }
 
-            if (GET_OBJ_LEVEL(obj) > CONFIG_LEVEL_CAP - 1 && (found = 1))
+            if (GET_OBJ_LEVEL(obj) > LVL_IMMORT - 1 && (found = 1))
                 len += snprintf(buf + len, sizeof (buf) - len,
                     "- has min level set to %d (max %d).\r\n",
-                    GET_OBJ_LEVEL(obj), CONFIG_LEVEL_CAP - 1);
+                    GET_OBJ_LEVEL(obj), LVL_IMMORT - 1);
 
             if (obj->action_description && *obj->action_description &&
                     GET_OBJ_TYPE(obj) != ITEM_STAFF &&
