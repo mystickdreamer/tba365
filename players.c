@@ -254,6 +254,7 @@ int load_char(const char *name, struct char_data *ch) {
             GET_SKILL(ch, i) = 0;
         GET_SEX(ch) = PFDEF_SEX;
         GET_CLASS(ch) = PFDEF_CLASS;
+        GET_ADMLEVEL(ch) = PFDEF_LEVEL;
         GET_LEVEL(ch) = PFDEF_LEVEL;
         GET_HEIGHT(ch) = PFDEF_HEIGHT;
         GET_WEIGHT(ch) = PFDEF_WEIGHT;
@@ -282,7 +283,6 @@ int load_char(const char *name, struct char_data *ch) {
         ch->real_abils.wis = PFDEF_WIS;
         ch->real_abils.con = PFDEF_CON;
         ch->real_abils.cha = PFDEF_CHA;
-        GET_ADMLEVEL(ch) = PFDEF_LEVEL;
         GET_HIT(ch) = PFDEF_HIT;
         GET_MAX_HIT(ch) = PFDEF_MAXHIT;
         GET_MANA(ch) = PFDEF_MANA;

@@ -213,6 +213,7 @@ struct player_index_element {
    char	*name;
    long id;
    int level;
+   int admlevel;
    int flags;
    time_t last;
 };
