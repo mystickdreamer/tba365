@@ -343,6 +343,7 @@ void admin_set(struct char_data *ch, int value) {
             SET_BIT_AR(PRF_FLAGS(ch), PRF_HOLYLIGHT);
             //     SET_BIT_AR(PRF_FLAGS(ch), PRF_ROOMFLAGS);
             SET_BIT_AR(PRF_FLAGS(ch), PRF_AUTOEXIT);
+            SET_BIT_AR(PRF_FLAGS(ch), PRF_NOHASSLE);
         }
         if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT) {
             for (i = 0; i < 3; i++)
