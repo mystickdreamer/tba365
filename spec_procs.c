@@ -299,12 +299,12 @@ static void npc_steal(struct char_data *ch, struct char_data *victim)
 
   if (IS_NPC(victim))
     return;
-  if (GET_LEVEL(victim) >= LVL_IMMORT)
+  if (GET_ADMLEVEL(victim) >= ADMLVL_IMMORT)
     return;
   if (!CAN_SEE(ch, victim))
     return;
 
-  if (AWAKE(victim) && (rand_number(0, GET_LEVEL(ch)) == 0)) {
+  if (AWAKE(victim) && (rand_number(0, GET_ADMLEVEL(ch)) == 0)) {
     act("You discover that $n has $s hands in your wallet.", FALSE, ch, 0, victim, TO_VICT);
     act("$n tries to steal gold from $N.", TRUE, ch, 0, victim, TO_NOTVICT);
   } else {
@@ -340,7 +340,7 @@ SPECIAL(thief)
     return (FALSE);
 
   for (cons = world[IN_ROOM(ch)].people; cons; cons = cons->next_in_room)
-    if (!IS_NPC(cons) && GET_LEVEL(cons) < LVL_IMMORT && !rand_number(0, 4)) {
+    if (!IS_NPC(cons) && GET_ADMLEVEL(cons) < ADMLVL_IMMORT && !rand_number(0, 4)) {
       npc_steal(ch, cons);
       return (TRUE);
     }
@@ -429,7 +429,7 @@ SPECIAL(guild_guard)
   if (!IS_MOVE(cmd) || AFF_FLAGGED(guard, AFF_BLIND)) 
     return (FALSE); 
      
-  if (GET_LEVEL(ch) >= LVL_IMMORT) 
+  if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT) 
     return (FALSE); 
    
   /* find out what direction they are trying to go */ 
