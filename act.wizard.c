@@ -1502,7 +1502,7 @@ ACMD(do_advance) {
         REMOVE_BIT_AR(PRF_FLAGS(victim), PRF_SHOWVNUMS);
         if (!PLR_FLAGGED(victim, PLR_NOWIZLIST))
             run_autowiz();
-    } else if (oldlevel < LVL_IMMORT && newlevel >= LVL_IMMORT) {
+    } else if (oldlevel < ADMLVL_IMMORT && newlevel >= ADMLVL_IMMORT) {
         SET_BIT_AR(PRF_FLAGS(victim), PRF_LOG2);
         SET_BIT_AR(PRF_FLAGS(victim), PRF_HOLYLIGHT);
         SET_BIT_AR(PRF_FLAGS(victim), PRF_SHOWVNUMS);
@@ -1529,7 +1529,7 @@ ACMD(do_restore) {
     if (!*buf)
         send_to_char(ch, "Whom do you wish to restore?\r\n");
     else if (is_abbrev(buf, "all")) {
-        mudlog(NRM, MAX(LVL_GOD, GET_INVIS_LEV(ch)), TRUE, "(GC) %s restored all", GET_NAME(ch));
+        mudlog(NRM, MAX(ADMLVL_GOD, GET_INVIS_LEV(ch)), TRUE, "(GC) %s restored all", GET_NAME(ch));
 
         for (j = descriptor_list; j; j = j->next) {
             if (!IS_PLAYING(j) || !(vict = j->character) || GET_ADMLEVEL(vict) >= ADMLVL_IMMORT)
@@ -1642,7 +1642,7 @@ ACMD(do_gecho) {
             if (IS_PLAYING(pt) && pt->character && pt->character != ch)
                 send_to_char(pt->character, "%s\r\n", argument);
 
-        mudlog(CMP, MAX(LVL_BUILDER, GET_INVIS_LEV(ch)), TRUE, "(GC) %s gechoed: %s", GET_NAME(ch), argument);
+        mudlog(CMP, MAX(ADMLVL_BUILDER, GET_INVIS_LEV(ch)), TRUE, "(GC) %s gechoed: %s", GET_NAME(ch), argument);
 
         if (PRF_FLAGGED(ch, PRF_NOREPEAT))
             send_to_char(ch, "%s", CONFIG_OK);
@@ -2094,7 +2094,7 @@ ACMD(do_force) {
         }
     } else { /* force all */
         send_to_char(ch, "%s", CONFIG_OK);
-        mudlog(NRM, MAX(LVL_GOD, GET_INVIS_LEV(ch)), TRUE, "(GC) %s forced all to %s", GET_NAME(ch), to_force);
+        mudlog(NRM, MAX(ADMLVL_GOD, GET_INVIS_LEV(ch)), TRUE, "(GC) %s forced all to %s", GET_NAME(ch), to_force);
 
         for (i = descriptor_list; i; i = next_desc) {
             next_desc = i->next;
@@ -2113,7 +2113,7 @@ ACMD(do_wiznet) {
     struct descriptor_data *d;
     char emote = FALSE;
     char any = FALSE;
-    int level = LVL_IMMORT;
+    int level = ADMLVL_IMMORT;
 
     skip_spaces(&argument);
 
@@ -2211,7 +2211,7 @@ ACMD(do_zreset) {
             for (i = 0; i <= top_of_zone_table; i++)
                 reset_zone(i);
             send_to_char(ch, "Reset world.\r\n");
-            mudlog(NRM, MAX(LVL_GRGOD, GET_INVIS_LEV(ch)), TRUE, "(GC) %s reset entire world.", GET_NAME(ch));
+            mudlog(NRM, MAX(ADMLVL_GRGOD, GET_INVIS_LEV(ch)), TRUE, "(GC) %s reset entire world.", GET_NAME(ch));
             return;
         }
     } else if (*arg == '.' || !*arg)
@@ -2222,10 +2222,10 @@ ACMD(do_zreset) {
             if (zone_table[i].number == j)
                 break;
     }
-    if (i <= top_of_zone_table && (can_edit_zone(ch, i) || GET_ADMLEVEL(ch) > ADMLVL_IMMORT)) {
+    if (i <= top_of_zone_table && (can_edit_zone(ch, i) || GET_ADMLEVEL(ch) > ADMADMLVL_IMMORT)) {
         reset_zone(i);
         send_to_char(ch, "Reset zone #%d: %s.\r\n", zone_table[i].number, zone_table[i].name);
-        mudlog(NRM, MAX(LVL_GRGOD, GET_INVIS_LEV(ch)), TRUE, "(GC) %s reset zone %d (%s)", GET_NAME(ch), zone_table[i].number, zone_table[i].name);
+        mudlog(NRM, MAX(ADMLVL_GRGOD, GET_INVIS_LEV(ch)), TRUE, "(GC) %s reset zone %d (%s)", GET_NAME(ch), zone_table[i].number, zone_table[i].name);
     } else
         send_to_char(ch, "You do not have permission to reset this zone. Try %d.\r\n", GET_OLC_ZONE(ch));
 }
@@ -2266,17 +2266,17 @@ ACMD(do_wizutil) {
                 REMOVE_BIT_AR(PLR_FLAGS(vict), PLR_KILLER);
                 send_to_char(ch, "Pardoned.\r\n");
                 send_to_char(vict, "You have been pardoned by the Gods!\r\n");
-                mudlog(BRF, MAX(LVL_GOD, GET_INVIS_LEV(ch)), TRUE, "(GC) %s pardoned by %s", GET_NAME(vict), GET_NAME(ch));
+                mudlog(BRF, MAX(ADMLVL_GOD, GET_INVIS_LEV(ch)), TRUE, "(GC) %s pardoned by %s", GET_NAME(vict), GET_NAME(ch));
                 break;
             case SCMD_NOTITLE:
                 result = PLR_TOG_CHK(vict, PLR_NOTITLE);
-                mudlog(NRM, MAX(LVL_GOD, GET_INVIS_LEV(ch)), TRUE, "(GC) Notitle %s for %s by %s.",
+                mudlog(NRM, MAX(ADMLVL_GOD, GET_INVIS_LEV(ch)), TRUE, "(GC) Notitle %s for %s by %s.",
                         ONOFF(result), GET_NAME(vict), GET_NAME(ch));
                 send_to_char(ch, "(GC) Notitle %s for %s by %s.\r\n", ONOFF(result), GET_NAME(vict), GET_NAME(ch));
                 break;
             case SCMD_MUTE:
                 result = PLR_TOG_CHK(vict, PLR_NOSHOUT);
-                mudlog(BRF, MAX(LVL_GOD, GET_INVIS_LEV(ch)), TRUE, "(GC) Mute %s for %s by %s.",
+                mudlog(BRF, MAX(ADMLVL_GOD, GET_INVIS_LEV(ch)), TRUE, "(GC) Mute %s for %s by %s.",
                         ONOFF(result), GET_NAME(vict), GET_NAME(ch));
                 send_to_char(ch, "(GC) Mute %s for %s by %s.\r\n", ONOFF(result), GET_NAME(vict), GET_NAME(ch));
                 break;
@@ -2294,7 +2294,7 @@ ACMD(do_wizutil) {
                 send_to_char(vict, "A bitter wind suddenly rises and drains every erg of heat from your body!\r\nYou feel frozen!\r\n");
                 send_to_char(ch, "Frozen.\r\n");
                 act("A sudden cold wind conjured from nowhere freezes $n!", FALSE, vict, 0, 0, TO_ROOM);
-                mudlog(BRF, MAX(LVL_GOD, GET_INVIS_LEV(ch)), TRUE, "(GC) %s frozen by %s.", GET_NAME(vict), GET_NAME(ch));
+                mudlog(BRF, MAX(ADMLVL_GOD, GET_INVIS_LEV(ch)), TRUE, "(GC) %s frozen by %s.", GET_NAME(vict), GET_NAME(ch));
                 break;
             case SCMD_THAW:
                 if (!PLR_FLAGGED(vict, PLR_FROZEN)) {
@@ -2306,7 +2306,7 @@ ACMD(do_wizutil) {
                             GET_FREEZE_LEV(vict), GET_NAME(vict), HMHR(vict));
                     return;
                 }
-                mudlog(BRF, MAX(LVL_GOD, GET_INVIS_LEV(ch)), TRUE, "(GC) %s un-frozen by %s.", GET_NAME(vict), GET_NAME(ch));
+                mudlog(BRF, MAX(ADMLVL_GOD, GET_INVIS_LEV(ch)), TRUE, "(GC) %s un-frozen by %s.", GET_NAME(vict), GET_NAME(ch));
                 REMOVE_BIT_AR(PLR_FLAGS(vict), PLR_FROZEN);
                 send_to_char(vict, "A fireball suddenly explodes in front of you, melting the ice!\r\nYou feel thawed.\r\n");
                 send_to_char(ch, "Thawed.\r\n");
@@ -2419,19 +2419,19 @@ ACMD(do_show) {
         const char level;
     } fields[] = {
         { "nothing", 0}, /* 0 */
-        { "zones", LVL_IMMORT}, /* 1 */
-        { "player", LVL_IMMORT},
-        { "rent", LVL_IMMORT},
-        { "stats", LVL_IMMORT},
-        { "errors", LVL_IMMORT}, /* 5 */
-        { "death", LVL_IMMORT},
-        { "godrooms", LVL_IMMORT},
-        { "shops", LVL_IMMORT},
-        { "houses", LVL_IMMORT},
-        { "snoop", LVL_IMMORT}, /* 10 */
-        { "thaco", LVL_IMMORT},
-        { "exp", LVL_IMMORT},
-        { "colour", LVL_IMMORT},
+        { "zones", ADMLVL_IMMORT}, /* 1 */
+        { "player", ADMLVL_IMMORT},
+        { "rent", ADMLVL_IMMORT},
+        { "stats", ADMLVL_IMMORT},
+        { "errors", ADMLVL_IMMORT}, /* 5 */
+        { "death", ADMLVL_IMMORT},
+        { "godrooms", ADMLVL_IMMORT},
+        { "shops", ADMLVL_IMMORT},
+        { "houses", ADMLVL_IMMORT},
+        { "snoop", ADMLVL_IMMORT}, /* 10 */
+        { "thaco", ADMLVL_IMMORT},
+        { "exp", ADMLVL_IMMORT},
+        { "colour", ADMLVL_IMMORT},
         { "\n", 0}
     };
 
@@ -2666,7 +2666,7 @@ ACMD(do_show) {
         case 11:
             len = strlcpy(buf, "LvL - Mu Cl Th Wa\r\n----------------\r\n", sizeof (buf));
 
-            for (j = 1; j < LVL_IMMORT; j++) {
+            for (j = 1; j < ADMLVL_IMMORT; j++) {
                 nlen = snprintf(buf + len, sizeof (buf) - len, "%-3d - %-2d %-2d %-2d %-2d\r\n", j,
                         thaco(CLASS_MAGIC_USER, j),
                         thaco(CLASS_CLERIC, j),
@@ -2684,7 +2684,7 @@ ACMD(do_show) {
         case 12:
             len = strlcpy(buf, "LvL - Mu     Cl     Th     Wa\r\n--------------------------\r\n", sizeof (buf));
 
-            for (i = 1; i < LVL_IMMORT; i++) {
+            for (i = 1; i < ADMLVL_IMMORT; i++) {
                 nlen = snprintf(buf + len, sizeof (buf) - len, "%-3d - %-6d %-6d %-6d %-6d\r\n", i,
                         level_exp(CLASS_MAGIC_USER, i) - level_exp(CLASS_MAGIC_USER, i - 1),
                         level_exp(CLASS_CLERIC, i) - level_exp(CLASS_CLERIC, i - 1),
