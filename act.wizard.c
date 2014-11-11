@@ -4287,7 +4287,7 @@ ACMD(do_file) {
         return;
     }
 
-    if (GET_LEVEL(ch) < fields[l].level) {
+    if (GET_ADMLEVEL(ch) < fields[l].level) {
         send_to_char(ch, "You have not achieved a high enough level to view '%s'.\r\n",
                 fields[l].cmd);
         return;
@@ -4621,7 +4621,7 @@ ACMD(do_zlock) {
         return;
     }
     if (is_abbrev(arg, "all")) {
-        if (GET_LEVEL(ch) < ADMLVL_GRGOD) {
+        if (GET_ADMLEVEL(ch) < ADMLVL_GRGOD) {
             send_to_char(ch, "You do not have sufficient access to lock all zones.\r\n");
             return;
         }
@@ -4689,7 +4689,7 @@ ACMD(do_zlock) {
     }
 
     /* Check the builder list */
-    if (GET_LEVEL(ch) < ADMLVL_GRGOD && !is_name(GET_NAME(ch), zone_table[zn].builders) && GET_OLC_ZONE(ch) != znvnum) {
+    if (GET_ADMLEVEL(ch) < ADMLVL_GRGOD && !is_name(GET_NAME(ch), zone_table[zn].builders) && GET_OLC_ZONE(ch) != znvnum) {
         send_to_char(ch, "You do not have sufficient access to lock that zone!\r\n");
         return;
     }
@@ -4725,7 +4725,7 @@ ACMD(do_zunlock) {
         return;
     }
     if (is_abbrev(arg, "all")) {
-        if (GET_LEVEL(ch) < ADMLVL_GRGOD) {
+        if (GET_ADMLEVEL(ch) < ADMLVL_GRGOD) {
             send_to_char(ch, "You do not have sufficient access to lock zones.\r\n");
             return;
         }
@@ -4779,7 +4779,7 @@ ACMD(do_zunlock) {
     }
 
     /* Check the builder list */
-    if (GET_LEVEL(ch) < ADMLVL_GRGOD && !is_name(GET_NAME(ch), zone_table[zn].builders) && GET_OLC_ZONE(ch) != znvnum) {
+    if (GET_ADMLEVEL(ch) < ADMLVL_GRGOD && !is_name(GET_NAME(ch), zone_table[zn].builders) && GET_OLC_ZONE(ch) != znvnum) {
         send_to_char(ch, "You do not have sufficient access to unlock that zone!\r\n");
         return;
     }
@@ -4887,7 +4887,7 @@ ACMD(do_recent) {
         limit = atoi(arg);
     }
 
-    if (GET_LEVEL(ch) >= ADMLVL_GRGOD) { /* If High-Level Imm, then show Host IP */
+    if (GET_ADMLEVEL(ch) >= ADMLVL_GRGOD) { /* If High-Level Imm, then show Host IP */
         send_to_char(ch, " ID | DATE/TIME           | HOST IP                               | Player Name\r\n");
     } else {
         send_to_char(ch, " ID | DATE/TIME           | Player Name\r\n");
@@ -4905,7 +4905,7 @@ ACMD(do_recent) {
         }
 
         if ((limit == 0) || (count < limit)) {
-            if (GET_LEVEL(ch) >= ADMLVL_GRGOD) /* If High-Level Imm, then show Host IP */ {
+            if (GET_ADMLEVEL(ch) >= ADMLVL_GRGOD) /* If High-Level Imm, then show Host IP */ {
                 if (this->new_player == TRUE) {
                     send_to_char(ch, "%3d | %-19.19s | %s%-37s%s | %s %s(New Player)%s\r\n", this->vnum, tmstr, loc ? QRED : "", this->host, QNRM, this->name, QYEL, QNRM);
                 } else if (this->copyover_player == TRUE) {
