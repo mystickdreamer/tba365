@@ -926,7 +926,7 @@ void oedit_parse(struct descriptor_data *d, char *arg)
     break;
 
   case OEDIT_LEVEL:
-    GET_OBJ_LEVEL(OLC_OBJ(d)) = LIMIT(atoi(arg), 0);
+    GET_OBJ_LEVEL(OLC_OBJ(d)) = LIMIT(atoi(arg), 0, CONFIG_LEVEL_CAP);
     break;
 
   case OEDIT_PERM:
