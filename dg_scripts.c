@@ -1307,7 +1307,7 @@ void script_vlog(const char *format, va_list args)
   for (i = descriptor_list; i; i = i->next) { 
     if (STATE(i) != CON_PLAYING || IS_NPC(i->character)) /* switch */ 
       continue; 
-    if (GET_LEVEL(i->character) < LVL_BUILDER) 
+    if (GET_ADMLEVEL(i->character) < ADMLVL_BUILDER) 
       continue; 
     if (PLR_FLAGGED(i->character, PLR_WRITING)) 
       continue; 
@@ -2866,7 +2866,7 @@ void save_char_vars(struct char_data *ch)
 
   file = fopen(fn,"wt");
   if (!file) {
-    mudlog( NRM, LVL_GOD, TRUE,
+    mudlog( NRM, ADMLVL_GOD, TRUE,
             "SYSERR: Could not open player variable file %s for writing.:%s",
             fn, strerror(errno));
     return;
