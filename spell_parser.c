@@ -628,7 +628,7 @@ ACMD(do_cast) {
         return;
     }
     mana = mag_manacost(ch, spellnum);
-    if ((mana > 0) && (GET_MANA(ch) < mana) && (GET_LEVEL(ch) < LVL_IMMORT)) {
+    if ((mana > 0) && (GET_MANA(ch) < mana) && (GET_ADMLEVEL(ch) < ADMLVL_IMMORT)) {
         send_to_char(ch, "You haven't the energy to cast that spell!\r\n");
         return;
     }
@@ -665,9 +665,9 @@ void spell_level(int spell, int chclass, int level) {
         bad = 1;
     }
 
-    if (level < 1 || level > LVL_IMPL) {
-        log("SYSERR: assigning '%s' to illegal level %d/%d.", skill_name(spell),
-                level, LVL_IMPL);
+    if (level < 1) {
+        log("SYSERR: assigning '%s' to illegal level %d.", skill_name(spell),
+                level);
         bad = 1;
     }
 
