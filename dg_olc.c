@@ -62,7 +62,7 @@ ACMD(do_oasis_trigedit)
   d = ch->desc;
   /* Give descriptor an OLC structure. */
   if (d->olc) {
-    mudlog(BRF, LVL_IMMORT, TRUE,
+    mudlog(BRF, ADMLVL_IMMORT, TRUE,
       "SYSERR: do_oasis_trigedit: Player already had olc structure.");
     free(d->olc);
   }
@@ -99,7 +99,7 @@ ACMD(do_oasis_trigedit)
   act("$n starts using OLC.", TRUE, d->character, 0, 0, TO_ROOM);
   SET_BIT_AR(PLR_FLAGS(ch), PLR_WRITING);
 
-  mudlog(CMP, LVL_IMMORT, TRUE,"OLC: %s starts editing zone %d [trigger](allowed zone %d)",
+  mudlog(CMP, ADMLVL_IMMORT, TRUE,"OLC: %s starts editing zone %d [trigger](allowed zone %d)",
          GET_NAME(ch), zone_table[OLC_ZNUM(d)].number, GET_OLC_ZONE(ch));
 }
 
@@ -321,7 +321,7 @@ void trigedit_parse(struct descriptor_data *d, char *arg)
       switch(tolower(*arg)) {
         case 'y':
           trigedit_save(d);
-          mudlog(CMP, MAX(LVL_BUILDER, GET_INVIS_LEV(d->character)), TRUE,
+          mudlog(CMP, MAX(ADMLVL_BUILDER, GET_INVIS_LEV(d->character)), TRUE,
                  "OLC: %s edits trigger %d", GET_NAME(d->character),
                  OLC_NUM(d));
           /* fall through */
@@ -579,7 +579,7 @@ void trigedit_save(struct descriptor_data *d)
 #endif
 
   if (!(trig_file = fopen(fname, "w"))) {
-    mudlog(BRF, MAX(LVL_GOD, GET_INVIS_LEV(d->character)), TRUE,
+    mudlog(BRF, MAX(ADMLVL_GOD, GET_INVIS_LEV(d->character)), TRUE,
            "SYSERR: OLC: Can't open trig file \"%s\"", fname);
     return;
   }
@@ -589,7 +589,7 @@ void trigedit_save(struct descriptor_data *d)
       trig = trig_index[rnum]->proto;
 
       if (fprintf(trig_file, "#%d\n", i) < 0) {
-        mudlog(BRF, MAX(LVL_GOD, GET_INVIS_LEV(d->character)), TRUE,
+        mudlog(BRF, MAX(ADMLVL_GOD, GET_INVIS_LEV(d->character)), TRUE,
                "SYSERR: OLC: Can't write trig file!");
         fclose(trig_file);
         return;
@@ -647,10 +647,10 @@ static void trigedit_create_index(int znum, char *type)
   snprintf(new_name, sizeof(new_name), "%s/newindex", prefix);
 
   if (!(oldfile = fopen(old_name, "r"))) {
-    mudlog(BRF, LVL_IMPL, TRUE, "SYSERR: DG_OLC: Failed to open %s", old_name);
+    mudlog(BRF, ADMLVL_IMPL, TRUE, "SYSERR: DG_OLC: Failed to open %s", old_name);
     return;
   } else if (!(newfile = fopen(new_name, "w"))) {
-    mudlog(BRF, LVL_IMPL, TRUE, "SYSERR: DG_OLC: Failed to open %s", new_name);
+    mudlog(BRF, ADMLVL_IMPL, TRUE, "SYSERR: DG_OLC: Failed to open %s", new_name);
     return;
   }
 
