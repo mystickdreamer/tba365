@@ -769,7 +769,7 @@ do                                                              \
 /** Defines if there is enough light for sub to see in. */
 #define LIGHT_OK(sub)	(!AFF_FLAGGED(sub, AFF_BLIND) && \
    (IS_LIGHT(IN_ROOM(sub)) || AFF_FLAGGED((sub), AFF_INFRAVISION) || \
-   GET_LEVEL(sub) >= LVL_IMMORT))
+   GET_ADMLEVEL(sub) >= ADMLVL_IMMORT))
 
 /** Defines if sub character can see the invisible obj character. */
 #define INVIS_OK(sub, obj) \
@@ -822,7 +822,7 @@ do                                                              \
     CAN_SEE_OBJ((ch),(obj)))
 
 /** If vict can see ch, return ch name, else return "someone". */
-#define PERS(ch, vict)   (CAN_SEE(vict, ch) ? GET_NAME(ch) : (GET_LEVEL(ch) > LVL_IMMORT ? "an immortal" : "someone"))
+#define PERS(ch, vict)   (CAN_SEE(vict, ch) ? GET_NAME(ch) : (GET_ADMLEVEL(ch) > ADMLVL_IMMORT ? "an immortal" : "someone"))
 
 /** If vict can see obj, return obj short description, else return
  * "something". */
