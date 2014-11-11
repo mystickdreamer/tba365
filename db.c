@@ -1085,9 +1085,6 @@ void discrete_load(FILE *fl, int mode, char *filename) {
                 log("SYSERR: Format error after %s #%d", modes[mode], last);
                 exit(1);
             }
-            if (nr >= 99999)
-                return;
-            else
                 switch (mode) {
                     case DB_BOOT_WLD:
                         parse_room(fl, nr);
