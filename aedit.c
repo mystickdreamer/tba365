@@ -68,7 +68,7 @@ ACMD(do_oasis_aedit)
   d = ch->desc;
 
   if (!str_cmp("save", arg)) {
-    mudlog(CMP, MAX(LVL_BUILDER, GET_INVIS_LEV(ch)), TRUE, "OLC: %s saves socials.", GET_NAME(ch));
+    mudlog(CMP, MAX(ADMLVL_BUILDER, GET_INVIS_LEV(ch)), TRUE, "OLC: %s saves socials.", GET_NAME(ch));
     send_to_char(ch, "Writing social file.\r\n");
     aedit_save_to_disk(d);
     send_to_char(ch, "Done.\r\n");
@@ -77,7 +77,7 @@ ACMD(do_oasis_aedit)
 
   /* Give descriptor an OLC structure. */
   if (d->olc) {
-    mudlog(BRF, LVL_IMMORT, TRUE, "SYSERR: do_oasis: Player already had olc structure.");
+    mudlog(BRF, ADMLVL_IMMORT, TRUE, "SYSERR: do_oasis: Player already had olc structure.");
     free(d->olc);
   }
   CREATE(d->olc, struct oasis_olc_data, 1);
@@ -104,7 +104,7 @@ ACMD(do_oasis_aedit)
   STATE(d) = CON_AEDIT;
   act("$n starts using OLC.", TRUE, d->character, 0, 0, TO_ROOM);
   SET_BIT_AR(PLR_FLAGS(ch), PLR_WRITING);
-  mudlog(CMP, LVL_IMMORT, TRUE, "OLC: %s starts editing actions.", GET_NAME(ch));
+  mudlog(CMP, ADMLVL_IMMORT, TRUE, "OLC: %s starts editing actions.", GET_NAME(ch));
 }
 
 static void aedit_setup_new(struct descriptor_data *d) {
@@ -330,7 +330,7 @@ void aedit_parse(struct descriptor_data * d, char *arg) {
       switch (*arg) {
        case 'y': case 'Y':
          aedit_save_internally(d);
-         mudlog (CMP, LVL_IMPL, TRUE, "OLC: %s edits action %s",
+         mudlog (CMP, ADMLVL_IMPL, TRUE, "OLC: %s edits action %s",
                  GET_NAME(d->character), OLC_ACTION(d)->command);
 
          /* do not free the strings.. just the structure */
@@ -595,7 +595,7 @@ void aedit_parse(struct descriptor_data * d, char *arg) {
         return;
       }
       i = atoi(arg);
-      if ((i < 0) && (i > LVL_IMPL))  {
+      if ((i < 0) && (i > ADMLVL_IMPL))  {
         aedit_disp_menu(d);
         return;
       }
