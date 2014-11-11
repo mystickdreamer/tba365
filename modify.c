@@ -376,7 +376,7 @@ ACMD(do_skillset)
     send_to_char(ch, "You can't set NPC skills.\r\n");
     return;
   }
-  if ((spell_info[skill].min_admlevel[(pc)] >= ADMLVL_IMMORT) && (pl < ADMLVL_IMMORT)) {
+  if ((spell_info[skill].min_level[(pc)] >= ADMLVL_IMMORT) && (pl < ADMLVL_IMMORT)) {
     send_to_char(ch, "%s cannot be learned by mortals.\r\n", spell_info[skill].name);
     return;
   } else if (spell_info[skill].min_level[(pc)] > pl) {
