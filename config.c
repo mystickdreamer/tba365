@@ -172,7 +172,7 @@ struct pclean_criteria_data pclean_criteria[] = {
   {	1		,4	},
   {	4		,7	},
   {	10		,30	},
-  {	level_cap - 1	,60	}, /* highest mortal */
+  {	50      	,60	}, /* highest mortal */
   {	ADMLVL_IMPL	,90	}, /* all immortals */
   {	-1		,0	}  /* no more level checks */
 };
