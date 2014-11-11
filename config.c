@@ -73,8 +73,8 @@ int max_pc_corpse_time = 10;
 int idle_void = 8;
 int idle_rent_time = 48;
 
-/* This level and up is immune to idling, LVL_IMPL+1 will disable it. */
-int idle_max_level = LVL_GOD;
+/* This level and up is immune to idling, ADMLVL_IMPL+1 will disable it. */
+int idle_max_level = ADMLVL_GOD;
 
 /* Should items in death traps automatically be junked? */
 int dts_are_dumps = YES;
@@ -108,7 +108,7 @@ int track_through_doors = YES;
 int level_cap = 101;
 
 /* If you do not want mortals to level up to immortal once they have enough
- * experience, then set this to YES. Subtracting this from LVL_IMMORT gives
+ * experience, then set this to YES. Subtracting this from ADMLVL_IMMORT gives
  * the top level that people can advance to in gain_exp() in limits.c */
 int no_mort_to_immort = YES;
 
@@ -172,8 +172,8 @@ struct pclean_criteria_data pclean_criteria[] = {
   {	1		,4	},
   {	4		,7	},
   {	10		,30	},
-  {	LVL_IMMORT - 1	,60	}, /* highest mortal */
-  {	LVL_IMPL	,90	}, /* all immortals */
+  {	CONFIG_LEVEL_CAP - 1	,60	}, /* highest mortal */
+  {	ADMLVL_IMPL	,90	}, /* all immortals */
   {	-1		,0	}  /* no more level checks */
 };
 
@@ -302,7 +302,7 @@ int use_autowiz = YES;
 
 /* If yes, what is the lowest level which should be on the wizlist?  (All immort
  * levels below the level you specify will go on the immlist instead.) */
-int min_wizlist_lev = LVL_GOD;
+int min_wizlist_lev = ADMLVL_GOD;
 
 /* To mimic stock behavior set to NO. To allow mortals to see doors in exits
  * set to YES. */
