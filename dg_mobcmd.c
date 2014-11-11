@@ -44,7 +44,7 @@ static void mob_log(char_data *mob, const char *format, ...)
 
 /* Macro to determine if a mob is permitted to use these commands. */
 #define MOB_OR_IMPL(ch) \
- ((IS_NPC(ch) && (!(ch)->desc || GET_LEVEL((ch)->desc->original) >= LVL_IMPL)) || (SCRIPT(ch) && TRIGGERS(SCRIPT(ch))))
+ ((IS_NPC(ch) && (!(ch)->desc || GET_ADMLEVEL((ch)->desc->original) >= ADMLVL_IMPL)) || (SCRIPT(ch) && TRIGGERS(SCRIPT(ch))))
 #define MOB_OR_PLAYER(ch) (GET_LEVEL(ch) > 0)
 
 /* mob commands */
@@ -329,7 +329,7 @@ ACMD(do_mload)
     if (AFF_FLAGGED(ch, AFF_CHARM))
         return;
 
-    if( ch->desc && GET_LEVEL(ch->desc->original) < LVL_IMPL)
+    if( ch->desc && GET_ADMLEVEL(ch->desc->original) < ADMLVL_IMPL)
         return;
 
     target = two_arguments(argument, arg1, arg2);
@@ -430,7 +430,7 @@ ACMD(do_mpurge)
   if (AFF_FLAGGED(ch, AFF_CHARM))
     return;
 
-  if (ch->desc && (GET_LEVEL(ch->desc->original) < LVL_IMPL))
+  if (ch->desc && (GET_ADMLEVEL(ch->desc->original) < ADMLVL_IMPL))
     return;
 
   one_argument(argument, arg);
@@ -667,7 +667,7 @@ ACMD(do_mforce)
     if (AFF_FLAGGED(ch, AFF_CHARM))
         return;
 
-    if (ch->desc && (GET_LEVEL(ch->desc->original) < LVL_IMPL))
+    if (ch->desc && (GET_ADMLEVEL(ch->desc->original) < ADMLVL_IMPL))
         return;
 
     argument = one_argument(argument, arg);
@@ -728,7 +728,7 @@ ACMD(do_mhunt)
     if (AFF_FLAGGED(ch, AFF_CHARM))
         return;
 
-    if (ch->desc && (GET_LEVEL(ch->desc->original) < LVL_IMPL))
+    if (ch->desc && (GET_ADMLEVEL(ch->desc->original) < ADMLVL_IMPL))
         return;
 
     one_argument(argument, arg);
@@ -770,7 +770,7 @@ ACMD(do_mremember)
     if (AFF_FLAGGED(ch, AFF_CHARM))
         return;
 
-    if (ch->desc && (GET_LEVEL(ch->desc->original) < LVL_IMPL))
+    if (ch->desc && (GET_ADMLEVEL(ch->desc->original) < ADMLVL_IMPL))
         return;
 
     argument = one_argument(argument, arg);
@@ -821,7 +821,7 @@ ACMD(do_mforget)
     if (AFF_FLAGGED(ch, AFF_CHARM))
         return;
 
-    if (ch->desc && (GET_LEVEL(ch->desc->original) < LVL_IMPL))
+    if (ch->desc && (GET_ADMLEVEL(ch->desc->original) < ADMLVL_IMPL))
         return;
 
     one_argument(argument, arg);
