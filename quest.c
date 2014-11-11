@@ -658,7 +658,7 @@ void quest_stat(struct char_data *ch, char argument[MAX_STRING_LENGTH])
   char buf[MAX_STRING_LENGTH];
   char targetname[MAX_STRING_LENGTH];
 
-  if (GET_LEVEL(ch) < LVL_IMMORT)
+  if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT)
     send_to_char(ch, "Huh!?!\r\n");
   else if (!*argument)
     send_to_char(ch, "%s\r\n", quest_imm_usage);
@@ -762,10 +762,10 @@ ACMD(do_quest)
 
   two_arguments(argument, arg1, arg2);
   if (!*arg1)
-    send_to_char(ch, "%s\r\n", GET_LEVEL(ch) < LVL_IMMORT ?
+    send_to_char(ch, "%s\r\n", GET_ADMLEVEL(ch) < ADMLVL_IMMORT ?
                      quest_mort_usage : quest_imm_usage);
   else if (((tp = search_block(arg1, quest_cmd, FALSE)) == -1))
-    send_to_char(ch, "%s\r\n", GET_LEVEL(ch) < LVL_IMMORT ?
+    send_to_char(ch, "%s\r\n", GET_ADMLEVEL(ch) < ADMLVL_IMMORT ?
                      quest_mort_usage : quest_imm_usage);
   else {
     switch (tp) {
@@ -784,13 +784,13 @@ ACMD(do_quest)
  quest_progress(ch);
  break;
       case SCMD_QUEST_STATUS:
-        if (GET_LEVEL(ch) < LVL_IMMORT)
+        if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT)
           send_to_char(ch, "%s\r\n", quest_mort_usage);
         else
           quest_stat(ch, arg2);
         break;
       default: /* Whe should never get here, but... */
-        send_to_char(ch, "%s\r\n", GET_LEVEL(ch) < LVL_IMMORT ?
+        send_to_char(ch, "%s\r\n", GET_ADMLEVEL(ch) < ADMLVL_IMMORT ?
                      quest_mort_usage : quest_imm_usage);
  break;
     } /* switch on subcmd number */
