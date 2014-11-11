@@ -109,7 +109,7 @@ ACMD(do_oasis_sedit)
 
   /* Give the descriptor an OLC structure. */
   if (d->olc) {
-    mudlog(BRF, LVL_IMMORT, TRUE,
+    mudlog(BRF, ADMLVL_IMMORT, TRUE,
       "SYSERR: do_oasis_sedit: Player already had olc structure.");
     free(d->olc);
   }
@@ -137,7 +137,7 @@ ACMD(do_oasis_sedit)
   if (save) {
     send_to_char(ch, "Saving all shops in zone %d.\r\n",
       zone_table[OLC_ZNUM(d)].number);
-    mudlog(CMP, MAX(LVL_BUILDER, GET_INVIS_LEV(ch)), TRUE,
+    mudlog(CMP, MAX(ADMLVL_BUILDER, GET_INVIS_LEV(ch)), TRUE,
       "OLC: %s saves shop info for zone %d.",
       GET_NAME(ch), zone_table[OLC_ZNUM(d)].number);
 
@@ -163,7 +163,7 @@ ACMD(do_oasis_sedit)
   act("$n starts using OLC.", TRUE, d->character, 0, 0, TO_ROOM);
   SET_BIT_AR(PLR_FLAGS(ch), PLR_WRITING);
 
-  mudlog(CMP, LVL_IMMORT, TRUE, "OLC: %s starts editing zone %d allowed zone %d",
+  mudlog(CMP, ADMLVL_IMMORT, TRUE, "OLC: %s starts editing zone %d allowed zone %d",
     GET_NAME(ch), zone_table[OLC_ZNUM(d)].number, GET_OLC_ZONE(ch));
 }
 
@@ -443,7 +443,7 @@ void sedit_parse(struct descriptor_data *d, char *arg)
     case 'y':
     case 'Y':
       sedit_save_internally(d);
-      mudlog(CMP, MAX(LVL_BUILDER, GET_INVIS_LEV(d->character)), TRUE,
+      mudlog(CMP, MAX(ADMLVL_BUILDER, GET_INVIS_LEV(d->character)), TRUE,
              "OLC: %s edits shop %d", GET_NAME(d->character),
              OLC_NUM(d));
       if (CONFIG_OLC_SAVE) {
@@ -770,7 +770,7 @@ void sedit_parse(struct descriptor_data *d, char *arg)
   default:
     /* We should never get here. */
     cleanup_olc(d, CLEANUP_ALL);
-    mudlog(BRF, LVL_BUILDER, TRUE, "SYSERR: OLC: sedit_parse(): Reached default case!");
+    mudlog(BRF, ADMLVL_BUILDER, TRUE, "SYSERR: OLC: sedit_parse(): Reached default case!");
     write_to_output(d, "Oops...\r\n");
     break;
   }
