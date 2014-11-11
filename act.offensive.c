@@ -100,7 +100,7 @@ ACMD(do_kill)
   char arg[MAX_INPUT_LENGTH];
   struct char_data *vict;
 
-  if (GET_LEVEL(ch) < LVL_IMMORT || IS_NPC(ch) || !PRF_FLAGGED(ch, PRF_NOHASSLE)) {
+  if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT || IS_NPC(ch) || !PRF_FLAGGED(ch, PRF_NOHASSLE)) {
     do_hit(ch, argument, cmd, subcmd);
     return;
   }
