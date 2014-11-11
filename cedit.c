@@ -40,7 +40,7 @@ ACMD(do_oasis_cedit) {
     /* Parse any arguments. */
     one_argument(argument, buf1);
 
-    if (GET_LEVEL(ch) < LVL_IMPL) {
+    if (GET_ADMLEVEL(ch) < ADMLVL_IMPL) {
         send_to_char(ch, "You can't modify the game configuration.\r\n");
         return;
     }
@@ -55,7 +55,7 @@ ACMD(do_oasis_cedit) {
         act("$n starts using OLC.", TRUE, d->character, 0, 0, TO_ROOM);
         SET_BIT_AR(PLR_FLAGS(ch), PLR_WRITING);
 
-        mudlog(BRF, LVL_IMMORT, TRUE,
+        mudlog(BRF, ADMLVL_IMMORT, TRUE,
                 "OLC: %s starts editing the game configuration.", GET_NAME(ch));
         return;
     } else if (str_cmp("save", buf1) != 0) {
@@ -64,7 +64,7 @@ ACMD(do_oasis_cedit) {
     }
 
     send_to_char(ch, "Saving the game configuration.\r\n");
-    mudlog(CMP, MAX(LVL_BUILDER, GET_INVIS_LEV(ch)), TRUE,
+    mudlog(CMP, MAX(ADMLVL_BUILDER, GET_INVIS_LEV(ch)), TRUE,
             "OLC: %s saves the game configuration.", GET_NAME(ch));
 
     cedit_save_to_disk();
@@ -794,7 +794,7 @@ void cedit_parse(struct descriptor_data *d, char *arg) {
                 case 'y':
                 case 'Y':
                     cedit_save_internally(d);
-                    mudlog(CMP, MAX(LVL_BUILDER, GET_INVIS_LEV(d->character)), TRUE,
+                    mudlog(CMP, MAX(ADMLVL_BUILDER, GET_INVIS_LEV(d->character)), TRUE,
                             "OLC: %s modifies the game configuration.", GET_NAME(d->character));
                     cleanup_olc(d, CLEANUP_CONFIG);
                     if (CONFIG_AUTO_SAVE) {
@@ -1647,10 +1647,10 @@ void cedit_parse(struct descriptor_data *d, char *arg) {
             break;
 
         case CEDIT_MIN_WIZLIST_LEV:
-            if (atoi(arg) > LVL_IMPL) {
+            if (atoi(arg) > ADMLVL_IMPL) {
                 write_to_output(d,
                         "The minimum wizlist level can't be greater than %d.\r\n"
-                        "Enter the minimum level for players to appear on the wizlist : ", LVL_IMPL);
+                        "Enter the minimum level for players to appear on the wizlist : ", ADMLVL_IMPL);
             } else {
                 OLC_CONFIG(d)->autowiz.min_wizlist_lev = atoi(arg);
                 cedit_disp_autowiz_options(d);
@@ -1693,7 +1693,7 @@ void cedit_parse(struct descriptor_data *d, char *arg) {
 
         default: /* We should never get here, but just in case... */
             cleanup_olc(d, CLEANUP_CONFIG);
-            mudlog(BRF, LVL_BUILDER, TRUE, "SYSERR: OLC: cedit_parse(): Reached default case!");
+            mudlog(BRF, ADMLVL_BUILDER, TRUE, "SYSERR: OLC: cedit_parse(): Reached default case!");
             write_to_output(d, "Oops...\r\n");
             break;
     }
