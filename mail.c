@@ -288,7 +288,7 @@ static void postmaster_send_mail(struct char_data *ch, struct char_data *mailman
 	FALSE, mailman, 0, ch, TO_VICT);
     return;
   }
-  if (GET_GOLD(ch) < STAMP_PRICE && GET_LEVEL(ch) < LVL_IMMORT) {
+  if (GET_GOLD(ch) < STAMP_PRICE && GET_ADMLEVEL(ch) < ADMLVL_IMMORT) {
     snprintf(buf, sizeof(buf), "$n tells you, 'A stamp costs %d coin%s.'\r\n"
 	    "$n tells you, '...which I see you can't afford.'", STAMP_PRICE,
             STAMP_PRICE == 1 ? "" : "s");
@@ -307,7 +307,7 @@ static void postmaster_send_mail(struct char_data *ch, struct char_data *mailman
 
   act(buf, FALSE, mailman, 0, ch, TO_VICT);
 
-  if (GET_LEVEL(ch) < LVL_IMMORT)
+  if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT)
     decrease_gold(ch, STAMP_PRICE);
 
   SET_BIT_AR(PLR_FLAGS(ch), PLR_MAILING);	/* string_write() sets writing. */
