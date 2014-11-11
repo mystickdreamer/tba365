@@ -482,7 +482,7 @@ static void hcontrol_pay_house(struct char_data *ch, char *arg)
   else if ((i = find_house(atoi(arg))) == NOWHERE)
     send_to_char(ch, "Unknown house.\r\n");
   else {
-    mudlog(NRM, MAX(LVL_IMMORT, GET_INVIS_LEV(ch)), TRUE, "Payment for house %s collected by %s.", arg, GET_NAME(ch));
+    mudlog(NRM, MAX(ADMLVL_IMMORT, GET_INVIS_LEV(ch)), TRUE, "Payment for house %s collected by %s.", arg, GET_NAME(ch));
 
     house_control[i].last_payment = time(0);
     House_save_control();
@@ -572,7 +572,7 @@ int House_can_enter(struct char_data *ch, room_vnum house)
 {
   int i, j;
 
-  if (GET_LEVEL(ch) >= LVL_GRGOD || (i = find_house(house)) == NOWHERE)
+  if (GET_ADMLEVEL(ch) >= ADMLVL_GRGOD || (i = find_house(house)) == NOWHERE)
     return (1);
 
   switch (house_control[i].mode) {
@@ -630,7 +630,7 @@ static void hcontrol_convert_houses(struct char_data *ch)
 {
   int i;
 
-	if (GET_LEVEL(ch) < LVL_IMPL)
+	if (GET_ADMLEVEL(ch) < ADMLVL_IMPL)
 		{
 			send_to_char(ch, "Sorry, but you are not powerful enough to do that.\r\n");
 			return;
