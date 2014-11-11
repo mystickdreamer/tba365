@@ -65,7 +65,7 @@ ACMD(do_oasis_hedit)
   d = ch->desc;
 
   if (!str_cmp("save", argument)) {
-    mudlog(CMP, MAX(LVL_BUILDER, GET_INVIS_LEV(ch)), TRUE, "OLC: %s saves help files.",
+    mudlog(CMP, MAX(ADMLVL_BUILDER, GET_INVIS_LEV(ch)), TRUE, "OLC: %s saves help files.",
            GET_NAME(ch));
     hedit_save_to_disk(d);
     send_to_char(ch, "Saving help files.\r\n");
@@ -74,7 +74,7 @@ ACMD(do_oasis_hedit)
 
   /* Give descriptor an OLC structure. */
   if (d->olc) {
-    mudlog(BRF, LVL_IMMORT, TRUE, "SYSERR: do_oasis: Player already had olc structure.");
+    mudlog(BRF, ADMLVL_IMMORT, TRUE, "SYSERR: do_oasis: Player already had olc structure.");
     free(d->olc);
   }
 
@@ -82,7 +82,7 @@ ACMD(do_oasis_hedit)
   OLC_NUM(d) = 0;
   OLC_STORAGE(d) = strdup(arg);
   
-  OLC_ZNUM(d) = search_help(OLC_STORAGE(d), LVL_IMPL);
+  OLC_ZNUM(d) = search_help(OLC_STORAGE(d), ADMLVL_IMPL);
 
   if (help_table[OLC_ZNUM(d)].duplicate) {
     for (i = 0; i < top_of_helpt; i++)
@@ -103,7 +103,7 @@ ACMD(do_oasis_hedit)
   STATE(d) = CON_HEDIT;
   act("$n starts using OLC.", TRUE, d->character, 0, 0, TO_ROOM);
   SET_BIT_AR(PLR_FLAGS(ch), PLR_WRITING);
-  mudlog(CMP, LVL_IMMORT, TRUE, "OLC: %s starts editing help files.", GET_NAME(d->character));
+  mudlog(CMP, ADMLVL_IMMORT, TRUE, "OLC: %s starts editing help files.", GET_NAME(d->character));
 }
 
 static void hedit_setup_new(struct descriptor_data *d)
@@ -217,7 +217,7 @@ void hedit_parse(struct descriptor_data *d, char *arg)
     case 'Y':
       snprintf(buf, sizeof(buf), "OLC: %s edits help for %s.", GET_NAME(d->character),
                OLC_HELP(d)->keywords);
-      mudlog(TRUE, MAX(LVL_BUILDER, GET_INVIS_LEV(d->character)), CMP, "%s", buf);
+      mudlog(TRUE, MAX(ADMLVL_BUILDER, GET_INVIS_LEV(d->character)), CMP, "%s", buf);
       write_to_output(d, "Help saved to disk.\r\n");
       hedit_save_internally(d);
 
@@ -332,12 +332,12 @@ void hedit_parse(struct descriptor_data *d, char *arg)
 
   case HEDIT_ENTRY:
     /* We will NEVER get here, we hope. */
-    mudlog(TRUE, LVL_BUILDER, BRF, "SYSERR: Reached HEDIT_ENTRY case in parse_hedit");
+    mudlog(TRUE, ADMLVL_BUILDER, BRF, "SYSERR: Reached HEDIT_ENTRY case in parse_hedit");
     break;
 
   case HEDIT_MIN_LEVEL:
     number = atoi(arg);
-    if ((number < 0) || (number > LVL_IMPL))
+    if ((number < 0) || (number > ADMLVL_IMPL))
       write_to_output(d, "That is not a valid choice!\r\nEnter min level:-\r\n] ");
     else {
       OLC_HELP(d)->min_level = number;
@@ -347,7 +347,7 @@ void hedit_parse(struct descriptor_data *d, char *arg)
 
   default:
     /* We should never get here. */
-    mudlog(TRUE, LVL_BUILDER, BRF, "SYSERR: Reached default case in parse_hedit");
+    mudlog(TRUE, ADMLVL_BUILDER, BRF, "SYSERR: Reached default case in parse_hedit");
     break;
   }
 
@@ -374,7 +374,7 @@ ACMD(do_helpcheck)
 
   for (i = 1; *(complete_cmd_info[i].command) != '\n'; i++) {
     if (complete_cmd_info[i].command_pointer != do_action && complete_cmd_info[i].minimum_level >= 0) {
-      if (search_help(complete_cmd_info[i].command, LVL_IMPL) == NOWHERE) {
+      if (search_help(complete_cmd_info[i].command, ADMLVL_IMPL) == NOWHERE) {
         nlen = snprintf(buf + len, sizeof(buf) - len, "%-20.20s%s", complete_cmd_info[i].command,
                         (++count % 3 ? "" : "\r\n"));
         if (len + nlen >= sizeof(buf))
