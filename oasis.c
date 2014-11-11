@@ -217,13 +217,13 @@ void cleanup_olc(struct descriptor_data *d, byte cleanup_type)
     act("$n stops using OLC.", TRUE, d->character, NULL, NULL, TO_ROOM);
 
     if (cleanup_type == CLEANUP_CONFIG)
-      mudlog(BRF, LVL_IMMORT, TRUE, "OLC: %s stops editing the game configuration", GET_NAME(d->character));
+      mudlog(BRF, ADMLVL_IMMORT, TRUE, "OLC: %s stops editing the game configuration", GET_NAME(d->character));
     else if (STATE(d) == CON_TEDIT)
-      mudlog(BRF, LVL_IMMORT, TRUE, "OLC: %s stops editing text files.", GET_NAME(d->character));
+      mudlog(BRF, ADMLVL_IMMORT, TRUE, "OLC: %s stops editing text files.", GET_NAME(d->character));
     else if (STATE(d) == CON_HEDIT)
-      mudlog(CMP, LVL_IMMORT, TRUE, "OLC: %s stops editing help files.", GET_NAME(d->character));
+      mudlog(CMP, ADMLVL_IMMORT, TRUE, "OLC: %s stops editing help files.", GET_NAME(d->character));
     else
-      mudlog(CMP, LVL_IMMORT, TRUE, "OLC: %s stops editing zone %d allowed zone %d", GET_NAME(d->character), zone_table[OLC_ZNUM(d)].number, GET_OLC_ZONE(d->character));
+      mudlog(CMP, ADMLVL_IMMORT, TRUE, "OLC: %s stops editing zone %d allowed zone %d", GET_NAME(d->character), zone_table[OLC_ZNUM(d)].number, GET_OLC_ZONE(d->character));
 
     STATE(d) = CON_PLAYING;
   }
@@ -288,7 +288,7 @@ int can_edit_zone(struct char_data *ch, zone_rnum rnum)
     return TRUE;
 
   /* always access if ch is high enough level */
-  if (GET_LEVEL(ch) >= LVL_GRGOD)
+  if (GET_ADMLEVEL(ch) >= ADMLVL_GRGOD)
     return (TRUE);
 
   /* always access if a player helped build the zone in the first place */
@@ -302,7 +302,7 @@ int can_edit_zone(struct char_data *ch, zone_rnum rnum)
   }
 
   /* no access if you're not at least LVL_BUILDER */
-  if (GET_LEVEL(ch) < LVL_BUILDER)
+  if (GET_ADMLEVEL(ch) < ADMLVL_BUILDER)
     return FALSE;
 
   /* always access if you're assigned to this zone */
@@ -323,6 +323,6 @@ void send_cannot_edit(struct char_data *ch, zone_vnum zone)
     send_to_char(ch, "You do not have permission to edit zone %d.\r\n", zone);
     sprintf(buf, "OLC: %s tried to edit zone %d.", GET_NAME(ch), zone);
   }
-  mudlog(BRF, LVL_IMPL, TRUE, "%s", buf);
+  mudlog(BRF, ADMLVL_IMPL, TRUE, "%s", buf);
 }
 
