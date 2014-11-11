@@ -1093,7 +1093,7 @@ void oedit_parse(struct descriptor_data *d, char *arg)
       int counter;
 
       /* add in check here if already applied.. deny builders another */
-      if (GET_LEVEL(d->character) < LVL_IMPL) {
+      if (GET_ADMLEVEL(d->character) < ADMLVL_IMPL) {
         for (counter = 0; counter < MAX_OBJ_AFFECT; counter++) {
           if (OLC_OBJ(d)->affected[counter].location == number) {
             write_to_output(d, "Object already has that apply.");
@@ -1199,7 +1199,7 @@ void oedit_parse(struct descriptor_data *d, char *arg)
       write_to_output(d, "Please answer 'Y' or 'N': ");
     return;
   default:
-    mudlog(BRF, LVL_BUILDER, TRUE, "SYSERR: OLC: Reached default case in oedit_parse()!");
+    mudlog(BRF, ADMLVL_BUILDER, TRUE, "SYSERR: OLC: Reached default case in oedit_parse()!");
     write_to_output(d, "Oops...\r\n");
     break;
   }
