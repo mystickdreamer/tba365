@@ -1822,9 +1822,9 @@ int level_exp(int chclass, int level)
 /* Default titles of male characters. */
 const char *title_male(int chclass, int level)
 {
-  if (level <= 0 || level > LVL_IMPL)
+  if (level <= 0 || level > CONFIG_LEVEL_CAP)
     return "the Man";
-  if (level == LVL_IMPL)
+  if (level == ADMLVL_IMPL)
     return "the Implementor";
 
   switch (chclass) {
@@ -1966,9 +1966,9 @@ const char *title_male(int chclass, int level)
 /* Default titles of female characters. */
 const char *title_female(int chclass, int level)
 {
-  if (level <= 0 || level > LVL_IMPL)
+  if (level <= 0 || level > CONFIG_LEVEL_CAP)
     return "the Woman";
-  if (level == LVL_IMPL)
+  if (level == ADMLVL_IMPL)
     return "the Implementress";
 
   switch (chclass) {
