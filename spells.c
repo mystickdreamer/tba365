@@ -32,7 +32,7 @@ ASPELL(spell_create_water)
 
   if (ch == NULL || obj == NULL)
     return;
-  /* level = MAX(MIN(level, LVL_IMPL), 1);	 - not used */
+  /* level = MAX(MIN(level, ADMLVL_IMPL), 1);	 - not used */
 
   if (GET_OBJ_TYPE(obj) == ITEM_DRINKCON) {
     if ((GET_OBJ_VAL(obj, 2) != LIQ_WATER) && (GET_OBJ_VAL(obj, 1) != 0)) {
@@ -109,7 +109,7 @@ ASPELL(spell_summon)
   if (ch == NULL || victim == NULL)
     return;
 
-  if (GET_LEVEL(victim) > MIN(LVL_IMMORT - 1, level + 3)) {
+  if (GET_LEVEL(victim) > MIN(CONFIG_LEVEL_CAP - 1, level + 3)) {
     send_to_char(ch, "%s", SUMMON_FAIL);
     return;
   }
@@ -137,7 +137,7 @@ ASPELL(spell_summon)
 	      (ch->player.sex == SEX_MALE) ? "He" : "She");
 
       send_to_char(ch, "You failed because %s has summon protection on.\r\n", GET_NAME(victim));
-      mudlog(BRF, LVL_IMMORT, TRUE, "%s failed summoning %s to %s.", GET_NAME(ch), GET_NAME(victim), world[IN_ROOM(ch)].name);
+      mudlog(BRF, ADMLVL_IMMORT, TRUE, "%s failed summoning %s to %s.", GET_NAME(ch), GET_NAME(victim), world[IN_ROOM(ch)].name);
       return;
     }
   }
