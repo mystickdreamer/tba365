@@ -1981,7 +1981,7 @@ ACMD(do_last) {
     if (*argument) { /* parse it */
         half_chop(argument, arg, argument);
         while (*arg) {
-            if ((*arg == '*') && (GET_ADMLEVEL(ch) == LVL_ADMIMPL)) {
+            if ((*arg == '*') && (GET_ADMLEVEL(ch) == ADMLVL_IMPL)) {
                 list_llog_entries(ch);
                 return;
             }
@@ -2989,7 +2989,7 @@ static int perform_set(struct char_data *ch, struct char_data *vict, int mode, c
             SET_OR_REMOVE(PLR_FLAGS(vict), PLR_KILLER);
             break;
         case 25: /* level */
-            if ((!IS_NPC(vict) && value > CONFIG_LEVEL_CAP) {
+            if (!IS_NPC(vict) && value > CONFIG_LEVEL_CAP) {
                 send_to_char(ch, "You can't do that.\r\n");
                 return (0);
             }
