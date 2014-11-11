@@ -77,7 +77,7 @@ void appear(struct char_data *ch)
   REMOVE_BIT_AR(AFF_FLAGS(ch), AFF_INVISIBLE);
   REMOVE_BIT_AR(AFF_FLAGS(ch), AFF_HIDE);
 
-  if (GET_LEVEL(ch) < LVL_IMMORT)
+  if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT)
     act("$n slowly fades into existence.", FALSE, ch, 0, 0, TO_ROOM);
   else
     act("You feel a strange presence as $n appears, seemingly from nowhere.",
@@ -119,7 +119,7 @@ void check_killer(struct char_data *ch, struct char_data *vict)
 
   SET_BIT_AR(PLR_FLAGS(ch), PLR_KILLER);
   send_to_char(ch, "If you want to be a PLAYER KILLER, so be it...\r\n");
-  mudlog(BRF, LVL_IMMORT, TRUE, "PC Killer bit set on %s for initiating attack on %s at %s.",
+  mudlog(BRF, ADMLVL_IMMORT, TRUE, "PC Killer bit set on %s for initiating attack on %s at %s.",
     GET_NAME(ch), GET_NAME(vict), world[IN_ROOM(vict)].name);
 }
 
@@ -487,7 +487,7 @@ static void dam_message(int dam, struct char_data *ch, struct char_data *victim,
   act(buf, FALSE, ch, NULL, victim, TO_NOTVICT);
 
   /* damage message to damager */
-  if (GET_LEVEL(ch) >= LVL_IMMORT)
+  if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT)
 	send_to_char(ch, "(%d) ", dam);
   buf = replace_string(dam_weapons[msgnum].to_char,
 	  attack_hit_text[w_type].singular, attack_hit_text[w_type].plural);
@@ -495,7 +495,7 @@ static void dam_message(int dam, struct char_data *ch, struct char_data *victim,
   send_to_char(ch, CCNRM(ch, C_CMP));
 
   /* damage message to damagee */
-  if (GET_LEVEL(victim) >= LVL_IMMORT)
+  if (GET_ADMLEVEL(victim) >= ADMLVL_IMMORT)
     send_to_char(victim, "\tR(%d)", dam);
   buf = replace_string(dam_weapons[msgnum].to_victim,
 	  attack_hit_text[w_type].singular, attack_hit_text[w_type].plural);
@@ -521,7 +521,7 @@ int skill_message(int dam, struct char_data *ch, struct char_data *vict,
       for (j = 1, msg = fight_messages[i].msg; (j < nr) && msg; j++)
         msg = msg->next;
 
-      if (!IS_NPC(vict) && (GET_LEVEL(vict) >= LVL_IMPL)) {
+      if (!IS_NPC(vict) && (GET_ADMLEVEL(vict) >= ADMLVL_IMPL)) {
         act(msg->god_msg.attacker_msg, FALSE, ch, weap, vict, TO_CHAR);
         act(msg->god_msg.victim_msg, FALSE, ch, weap, vict, TO_VICT);
         act(msg->god_msg.room_msg, FALSE, ch, weap, vict, TO_NOTVICT);
@@ -610,7 +610,7 @@ int damage(struct char_data *ch, struct char_data *victim, int dam, int attackty
   }
 
   /* You can't damage an immortal! */
-  if (!IS_NPC(victim) && ((GET_LEVEL(victim) >= LVL_IMMORT) && PRF_FLAGGED(victim, PRF_NOHASSLE)))
+  if (!IS_NPC(victim) && ((GET_ADMLEVEL(victim) >= ADMLVL_IMMORT) && PRF_FLAGGED(victim, PRF_NOHASSLE)))
     dam = 0;
 
   if (victim != ch) {
@@ -737,7 +737,7 @@ int damage(struct char_data *ch, struct char_data *victim, int dam, int attackty
     }
 
     if (!IS_NPC(victim)) {
-      mudlog(BRF, LVL_IMMORT, TRUE, "%s killed by %s at %s", GET_NAME(victim), GET_NAME(ch), world[IN_ROOM(victim)].name);
+      mudlog(BRF, ADMLVL_IMMORT, TRUE, "%s killed by %s at %s", GET_NAME(victim), GET_NAME(ch), world[IN_ROOM(victim)].name);
       if (MOB_FLAGGED(ch, MOB_MEMORY))
 	forget(ch, victim);
     }
