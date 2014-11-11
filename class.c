@@ -1652,7 +1652,7 @@ int level_exp(int chclass, int level)
 
   /* Gods have exp close to EXP_MAX.  This statement should never have to
    * changed, regardless of how many mortal or immortal levels exist. */
-   if (level > CONFIG_LEVEL_CA_) {
+   if (level > CONFIG_LEVEL_CAP) {
      return EXP_MAX - ((CONFIG_LEVEL_CAP - level) * 1000);
    }
 
