@@ -112,7 +112,7 @@ ACMD(do_oasis_copy)
 
   /* Give the descriptor an OLC structure. */
   if (d->olc) {
-    mudlog(BRF, LVL_IMMORT, TRUE, "SYSERR: do_oasis_copy: Player already had olc structure.");
+    mudlog(BRF, ADMLVL_IMMORT, TRUE, "SYSERR: do_oasis_copy: Player already had olc structure.");
     free(d->olc);
   }
 
@@ -233,7 +233,7 @@ ACMD(do_dig)
     /* Give the descriptor an olc struct. This way we can let 
      * redit_save_internally handle the room adding. */
     if (d->olc) {
-      mudlog(BRF, LVL_IMMORT, TRUE, "SYSERR: do_dig: Player already had olc structure.");
+      mudlog(BRF, ADMLVL_IMMORT, TRUE, "SYSERR: do_dig: Player already had olc structure.");
       free(d->olc);
     }
     CREATE(d->olc, struct oasis_olc_data, 1);
@@ -315,7 +315,7 @@ int buildwalk(struct char_data *ch, int dir)
   room_rnum rnum;
 
   if (!IS_NPC(ch) && PRF_FLAGGED(ch, PRF_BUILDWALK) &&
-      GET_LEVEL(ch) >= LVL_BUILDER) {
+      GET_ADMLEVEL(ch) >= ADMLVL_BUILDER) {
 
     get_char_colors(ch);
 
@@ -328,7 +328,7 @@ int buildwalk(struct char_data *ch, int dir)
       /* Give the descriptor an olc struct. This way we can let 
        * redit_save_internally handle the room adding. */
       if (d->olc) {
-        mudlog(BRF, LVL_IMMORT, TRUE, "SYSERR: buildwalk(): Player already had olc structure.");
+        mudlog(BRF, ADMLVL_IMMORT, TRUE, "SYSERR: buildwalk(): Player already had olc structure.");
         free(d->olc);
       }
       CREATE(d->olc, struct oasis_olc_data, 1);
