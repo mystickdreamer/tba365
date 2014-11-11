@@ -1508,7 +1508,7 @@ void advance_level(struct char_data *ch)
   else
     GET_PRACTICES(ch) += MIN(2, MAX(1, wis_app[GET_WIS(ch)].bonus));
 
-  if (GET_LEVEL(ch) >= LVL_IMMORT) {
+  if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT) {
     for (i = 0; i < 3; i++)
       GET_COND(ch, i) = (char) -1;
     SET_BIT_AR(PRF_FLAGS(ch), PRF_HOLYLIGHT);
@@ -1532,7 +1532,7 @@ int backstab_mult(int level)
     return 4;	  /* level 14 - 20 */
   else if (level <= 28)
     return 5;	  /* level 21 - 28 */
-  else if (level < LVL_IMMORT)
+  else if (level < CONFIG_LEVEL_CAP)
     return 6;	  /* all remaining mortal levels */
   else
     return 20;	  /* immortals */
@@ -1645,7 +1645,7 @@ void init_spell_levels(void)
 /* Function to return the exp required for each class/level */
 int level_exp(int chclass, int level)
 {
-  if (level > LVL_IMPL || level < 0) {
+  if (level > CONFIG_LEVEL_CAP || level < 0) {
     log("SYSERR: Requesting exp for invalid level %d!", level);
     return 0;
   }
