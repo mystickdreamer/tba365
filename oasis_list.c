@@ -492,7 +492,7 @@ ACMD(do_oasis_list)
       break;
     default:
       send_to_char(ch, "You can't list that!\r\n");
-      mudlog(BRF, LVL_IMMORT, TRUE,
+      mudlog(BRF, ADMLVL_IMMORT, TRUE,
         "SYSERR: do_oasis_list: Unknown list option: %d", subcmd);
   }
 }
