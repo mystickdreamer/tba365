@@ -201,15 +201,15 @@ void run_autowiz(void)
 
 #if defined(CIRCLE_UNIX)
     res = snprintf(buf, sizeof(buf), "nice ../bin/autowiz %d %s %d %s %d &",
-	CONFIG_MIN_WIZLIST_LEV, WIZLIST_FILE, LVL_IMMORT, IMMLIST_FILE, (int) getpid());
+	CONFIG_MIN_WIZLIST_LEV, WIZLIST_FILE, ADMLVL_IMMORT, IMMLIST_FILE, (int) getpid());
 #elif defined(CIRCLE_WINDOWS)
     res = snprintf(buf, sizeof(buf), "autowiz %d %s %d %s",
-	CONFIG_MIN_WIZLIST_LEV, WIZLIST_FILE, LVL_IMMORT, IMMLIST_FILE);
+	CONFIG_MIN_WIZLIST_LEV, WIZLIST_FILE, ADMLVL_IMMORT, IMMLIST_FILE);
 #endif /* CIRCLE_WINDOWS */
 
     /* Abusing signed -> unsigned conversion to avoid '-1' check. */
     if (res < sizeof(buf)) {
-      mudlog(CMP, LVL_IMMORT, FALSE, "Initiating autowiz.");
+      mudlog(CMP, ADMLVL_IMMORT, FALSE, "Initiating autowiz.");
       reboot_wizlists();
     } else
       log("Cannot run autowiz: command-line doesn't fit in buffer.");
@@ -222,7 +222,7 @@ void gain_exp(struct char_data *ch, int gain)
   int is_altered = FALSE;
   int num_levels = 0;
 
-  if (!IS_NPC(ch) && ((GET_LEVEL(ch) < 1 || GET_LEVEL(ch) >= LVL_IMMORT)))
+  if (!IS_NPC(ch) && ((GET_LEVEL(ch) < 1 || GET_ADMLEVEL(ch) >= ADMLVL_IMMORT)))
     return;
 
   if (IS_NPC(ch)) {
@@ -235,7 +235,7 @@ void gain_exp(struct char_data *ch, int gain)
 
     gain = MIN(CONFIG_MAX_EXP_GAIN, gain);	/* put a cap on the max gain per kill */
     GET_EXP(ch) += gain;
-    while (GET_LEVEL(ch) < LVL_IMMORT - CONFIG_NO_MORT_TO_IMMORT &&
+    while (GET_ADMLEVEL(ch) < ADMLVL_IMMORT - CONFIG_NO_MORT_TO_IMMORT &&
 	GET_EXP(ch) >= level_exp(GET_CLASS(ch), GET_LEVEL(ch) + 1)) {
       GET_LEVEL(ch) += 1;
       num_levels++;
@@ -244,14 +244,14 @@ void gain_exp(struct char_data *ch, int gain)
     }
 
     if (is_altered) {
-      mudlog(BRF, MAX(LVL_IMMORT, GET_INVIS_LEV(ch)), TRUE, "%s advanced %d level%s to level %d.",
+      mudlog(BRF, MAX(ADMLVL_IMMORT, GET_INVIS_LEV(ch)), TRUE, "%s advanced %d level%s to level %d.",
 		GET_NAME(ch), num_levels, num_levels == 1 ? "" : "s", GET_LEVEL(ch));
       if (num_levels == 1)
         send_to_char(ch, "You rise a level!\r\n");
       else
 	send_to_char(ch, "You rise %d levels!\r\n", num_levels);
       set_title(ch, NULL);
-      if (GET_LEVEL(ch) >= LVL_IMMORT && !PLR_FLAGGED(ch, PLR_NOWIZLIST))
+      if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT && !PLR_FLAGGED(ch, PLR_NOWIZLIST))
         run_autowiz();
     }
   } else if (gain < 0) {
@@ -260,7 +260,7 @@ void gain_exp(struct char_data *ch, int gain)
     if (GET_EXP(ch) < 0)
       GET_EXP(ch) = 0;
   }
-  if (GET_LEVEL(ch) >= LVL_IMMORT && !PLR_FLAGGED(ch, PLR_NOWIZLIST))
+  if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT && !PLR_FLAGGED(ch, PLR_NOWIZLIST))
     run_autowiz();
   }
 
@@ -286,7 +286,7 @@ void gain_exp_regardless(struct char_data *ch, int gain)
     }
 
     if (is_altered) {
-      mudlog(BRF, MAX(LVL_IMMORT, GET_INVIS_LEV(ch)), TRUE, "%s advanced %d level%s to level %d.",
+      mudlog(BRF, MAX(ADMLVL_IMMORT, GET_INVIS_LEV(ch)), TRUE, "%s advanced %d level%s to level %d.",
 		GET_NAME(ch), num_levels, num_levels == 1 ? "" : "s", GET_LEVEL(ch));
       if (num_levels == 1)
         send_to_char(ch, "You rise a level!\r\n");
@@ -295,7 +295,7 @@ void gain_exp_regardless(struct char_data *ch, int gain)
       set_title(ch, NULL);
     }
   }
-  if (GET_LEVEL(ch) >= LVL_IMMORT && !PLR_FLAGGED(ch, PLR_NOWIZLIST))
+  if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT && !PLR_FLAGGED(ch, PLR_NOWIZLIST))
     run_autowiz();
 }
 
@@ -365,7 +365,7 @@ static void check_idling(struct char_data *ch)
 	Crash_rentsave(ch, 0);
       else
 	Crash_idlesave(ch);
-      mudlog(CMP, LVL_GOD, TRUE, "%s force-rented and extracted (idle).", GET_NAME(ch));
+      mudlog(CMP, ADMLVL_GOD, TRUE, "%s force-rented and extracted (idle).", GET_NAME(ch));
       add_llog_entry(ch, LAST_IDLEOUT);
       extract_char(ch);
     }
