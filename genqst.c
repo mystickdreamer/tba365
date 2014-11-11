@@ -118,7 +118,7 @@ int add_quest(struct aq_data *nqst)
   if (rznum != NOWHERE)
     add_to_save_list(zone_table[rznum].number, SL_QST);
   else
-    mudlog(BRF, LVL_BUILDER, TRUE,
+    mudlog(BRF, ADMLVL_BUILDER, TRUE,
            "SYSERR: GenOLC: Cannot determine quest zone.");
 
   return rnum;
@@ -157,7 +157,7 @@ int delete_quest(qst_rnum rnum)
   if (rznum != NOWHERE)
      add_to_save_list(zone_table[rznum].number, SL_QST);
   else
-    mudlog(BRF, LVL_BUILDER, TRUE,
+    mudlog(BRF, ADMLVL_BUILDER, TRUE,
            "SYSERR: GenOLC: Cannot determine quest zone.");
   /* does the questmaster mob have any quests left? */
   if (qm != NOBODY) {
