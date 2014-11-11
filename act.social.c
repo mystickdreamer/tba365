@@ -147,6 +147,7 @@ void create_command_list(void)
       complete_cmd_info[k].sort_as		= soc_mess_list[j].sort_as;
       complete_cmd_info[k].minimum_position	= soc_mess_list[j].min_char_position;
       complete_cmd_info[k].command_pointer	= do_action;
+      complete_cmd_info[k].minimum_admlevel     = ADMLVL_NONE;
       complete_cmd_info[k].minimum_level    	= soc_mess_list[j++].min_level_char;
       complete_cmd_info[k++].subcmd		= 0;
     }
