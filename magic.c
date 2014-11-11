@@ -352,7 +352,7 @@ void mag_affects(int level, struct char_data *ch, struct char_data *victim,
     break;
 
   case SPELL_BLINDNESS:
-    if (MOB_FLAGGED(victim, MOB_NOBLIND) || GET_LEVEL(victim) >= LVL_IMMORT || mag_savingthrow(victim, savetype, 0)) {
+    if (MOB_FLAGGED(victim, MOB_NOBLIND) || GET_ADMLEVEL(victim) >= ADMLVL_IMMORT || mag_savingthrow(victim, savetype, 0)) {
       send_to_char(ch, "You fail.\r\n");
       return;
     }
@@ -645,7 +645,7 @@ void mag_areas(int level, struct char_data *ch, int spellnum, int savetype)
      *            6: Flying people if earthquake is the spell                         */
     if (tch == ch)
       continue;
-    if (!IS_NPC(tch) && GET_LEVEL(tch) >= LVL_IMMORT)
+    if (!IS_NPC(tch) && GET_ADMLEVEL(tch) >= ADMLVL_IMMORT)
       continue;
     if (!CONFIG_PK_ALLOWED && !IS_NPC(ch) && !IS_NPC(tch))
       continue;
@@ -943,7 +943,7 @@ void mag_creations(int level, struct char_data *ch, int spellnum)
 
   if (ch == NULL)
     return;
-  /* level = MAX(MIN(level, LVL_IMPL), 1); - Hm, not used. */
+  /* level = MAX(MIN(level, ADMLVL_IMPL), 1); - Hm, not used. */
 
   switch (spellnum) {
   case SPELL_CREATE_FOOD:
