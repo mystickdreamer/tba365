@@ -299,7 +299,8 @@ static void npc_steal(struct char_data *ch, struct char_data *victim)
 
   if (IS_NPC(victim))
     return;
-  if (GET_ADMLEVEL(victim) >= ADMLVL_IMMORT)
+//  if (GET_ADMLEVEL(victim) >= ADMLVL_IMMORT)
+  if ADM_FLAGGED(victim, ADM_NOSTEAL)
     return;
   if (!CAN_SEE(ch, victim))
     return;
@@ -340,7 +341,7 @@ SPECIAL(thief)
     return (FALSE);
 
   for (cons = world[IN_ROOM(ch)].people; cons; cons = cons->next_in_room)
-    if (!IS_NPC(cons) && GET_ADMLEVEL(cons) < ADMLVL_IMMORT && !rand_number(0, 4)) {
+    if (!IS_NPC(cons) && !ADM_FLAGGED(cons, ADM_NOSTEAL) && !rand_number(0, 4)) {
       npc_steal(ch, cons);
       return (TRUE);
     }
@@ -429,7 +430,7 @@ SPECIAL(guild_guard)
   if (!IS_MOVE(cmd) || AFF_FLAGGED(guard, AFF_BLIND)) 
     return (FALSE); 
      
-  if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT) 
+if (ADM_FLAGGED(ch, ADM_WALKANYWHERE))
     return (FALSE); 
    
   /* find out what direction they are trying to go */ 
