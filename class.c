@@ -2005,9 +2005,9 @@ const char *title_female(int chclass, int level)
       case 28: return "Shaman";
       case 29: return "the Keeper of Talismans";
       case 30: return "Archwitch";
-      case LVL_IMMORT: return "the Immortal Enchantress";
-      case LVL_GOD: return "the Empress of Magic";
-      case LVL_GRGOD: return "the Goddess of Magic";
+      //case LVL_IMMORT: return "the Immortal Enchantress";
+      //case LVL_GOD: return "the Empress of Magic";
+      //case LVL_GRGOD: return "the Goddess of Magic";
       default: return "the Witch";
     }
     break;
@@ -2035,9 +2035,9 @@ const char *title_female(int chclass, int level)
       case 19: return "the Arch Lady of the Church";
       case 20: return "the Matriarch";
       /* no one ever thought up these titles 21-30 */
-      case LVL_IMMORT: return "the Immortal Priestess";
-      case LVL_GOD: return "the Inquisitress";
-      case LVL_GRGOD: return "the Goddess of Good and Evil";
+      //case LVL_IMMORT: return "the Immortal Priestess";
+      //case LVL_GOD: return "the Inquisitress";
+      //case LVL_GRGOD: return "the Goddess of Good and Evil";
       default: return "the Cleric";
     }
     break;
@@ -2065,9 +2065,9 @@ const char *title_female(int chclass, int level)
       case 19: return "the Brigand";
       case 20: return "the Cut-Throat";
       /* no one ever thought up these titles 21-30 */
-      case LVL_IMMORT: return "the Immortal Assassin";
-      case LVL_GOD: return "the Demi Goddess of Thieves";
-      case LVL_GRGOD: return "the Goddess of Thieves and Tradesmen";
+      //case LVL_IMMORT: return "the Immortal Assassin";
+      //case LVL_GOD: return "the Demi Goddess of Thieves";
+      //case LVL_GRGOD: return "the Goddess of Thieves and Tradesmen";
       default: return "the Thief";
     }
     break;
@@ -2095,9 +2095,9 @@ const char *title_female(int chclass, int level)
       case 19: return "the Cavalier";
       case 20: return "the Lady Knight";
       /* no one ever thought up these titles 21-30 */
-      case LVL_IMMORT: return "the Immortal Lady of War";
-      case LVL_GOD: return "the Queen of Destruction";
-      case LVL_GRGOD: return "the Goddess of War";
+      //case LVL_IMMORT: return "the Immortal Lady of War";
+      //case LVL_GOD: return "the Queen of Destruction";
+      //case LVL_GRGOD: return "the Goddess of War";
       default: return "the Warrior";
     }
     break;
