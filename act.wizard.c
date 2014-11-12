@@ -3494,6 +3494,7 @@ struct zcheck_affs {
     {APPLY_WIS, -5, 3, "wisdom"},
     {APPLY_CON, -5, 3, "constitution"},
     {APPLY_CHA, -5, 3, "charisma"},
+    {APPLY_PER, -5, 3, "perception"},
     {APPLY_CLASS, 0, 0, "class"},
     {APPLY_LEVEL, 0, 0, "level"},
     {APPLY_AGE, -10, 10, "age"},
