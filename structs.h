@@ -933,6 +933,7 @@ struct char_ability_data {
     sbyte dex; /**< Dexterity */
     sbyte con; /**< Constitution */
     sbyte cha; /**< Charisma */
+    sbyte per; /** Perception */
 };
 
 /** Character 'points', or health statistics. */
