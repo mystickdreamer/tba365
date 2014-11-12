@@ -515,6 +515,8 @@ do                                                              \
 #define GET_CON(ch)     ((ch)->aff_abils.con)
 /** Current charisma of ch. */
 #define GET_CHA(ch)     ((ch)->aff_abils.cha)
+/* define perception*/
+#define GET_PER(ch) ((ch)->aff_abils.per)
 
 /** Experience points of ch. */
 #define GET_EXP(ch)	  ((ch)->points.exp)
