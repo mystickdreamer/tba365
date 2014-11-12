@@ -283,6 +283,7 @@ int load_char(const char *name, struct char_data *ch) {
         ch->real_abils.wis = PFDEF_WIS;
         ch->real_abils.con = PFDEF_CON;
         ch->real_abils.cha = PFDEF_CHA;
+        ch->real_abils.per = PFDEF_PER;
         GET_HIT(ch) = PFDEF_HIT;
         GET_MAX_HIT(ch) = PFDEF_MAXHIT;
         GET_MANA(ch) = PFDEF_MANA;
@@ -419,6 +420,7 @@ int load_char(const char *name, struct char_data *ch) {
                 case 'P':
                     if (!strcmp(tag, "Page")) GET_PAGE_LENGTH(ch) = atoi(line);
                     else if (!strcmp(tag, "Pass")) strcpy(GET_PASSWD(ch), line);
+                    else if (!strcmp(tag, "Per ")) ch->real_abils.per = atoi(line);
                     else if (!strcmp(tag, "Plyd")) ch->player.time.played = atoi(line);
                     else if (!strcmp(tag, "PfIn")) POOFIN(ch) = strdup(line);
                     else if (!strcmp(tag, "PfOt")) POOFOUT(ch) = strdup(line);
