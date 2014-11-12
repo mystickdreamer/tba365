@@ -68,6 +68,54 @@ int parse_race(char arg) {
     }
 }
 
+
+/* Taken from the SRD under OGL, see ../doc/srd.txt for information */
+int racial_ability_mods[][6] = {
+/*                      Str,Con,Int,Wis,Dex,Cha Per*/
+/* RACE_HUMAN       */ {  0,  0,  0,  0,  0,  0, 0 },
+/* RACE_ELF         */ {  0, -2,  0,  0,  2,  0, 0 },
+/* RACE_GNOME       */ //{ -2,  2,  0,  0,  0,  0, 0 },
+/* RACE_DWARF       */ {  0,  2,  0,  0,  0, -2, 0 },
+/* RACE_HALF_ELF    */ //{  0,  0,  0,  0,  0,  0, 0 },
+/* RACE_HALFLING    */ //{ -2,  0,  0,  0,  2,  0, 0 },
+/* RACE_DROW_ELF    */ //{  0, -2,  2,  0,  2,  2, 0 },
+/* RACE_HALF_ORC    */ //{  2,  0, -2,  0,  0, -2, 0 },
+/* RACE_ANIMAL      */ //{  0,  0,  0,  0,  0,  0, 0 },
+/* RACE_CONSTRUCT   */ //{  0,  0,  0,  0,  0,  0, 0 },
+/* RACE_DEMON       */ //{  0,  0,  0,  0,  0,  0, 0 },
+/* RACE_DRAGON      */ //{  0,  0,  0,  0,  0,  0, 0 },
+/* RACE_FISH        */ //{  0,  0,  0,  0,  0,  0, 0 },
+/* RACE_GIANT       */ //{ 14,  8, -4,  0, -2, -4, 0 },
+/* RACE_GOBLIN      */ //{ -2,  0,  0,  0,  2, -2, 0 },
+/* RACE_INSECT      */ //{  0,  0,  0,  0,  0,  0, 0 },
+/* RACE_ORC         */ //{  4,  0, -2, -2,  0, -2, 0 },
+/* RACE_SNAKE       */ //{  0,  0,  0,  0,  0,  0, 0 },
+/* RACE_TROLL       */ //{ 12, 12, -4, -2,  4, -4, 0 },
+/* RACE_MINOTAUR    */ //{  8,  4, -4,  0,  0, -2, 0 },
+/* RACE_KOBOLD      */ //{ -4, -2,  0,  0,  2,  0, 0 },
+/* RACE_LIZARDFOLK  */ //{  0,  0,  0,  0,  0,  0, 0 },
+/* RACE_WARHOST     */ //{  0,  0,  0,  0,  0,  0, 0 },
+/* RACE_FAERIE      */ //{  0,  0,  0,  0,  0,  0, 0 },
+{ 0, 0, 0, 0, 0}
+};
+
+void racial_ability_modifiers(struct char_data *ch)
+{
+  int chrace = 0;
+  if (GET_RACE(ch) >= NUM_RACES || GET_RACE(ch) < 0) {
+    log("SYSERR: Unknown race %d in racial_ability_modifiers", GET_RACE(ch));
+  } else {
+    chrace = GET_RACE(ch);
+  }
+
+  ch->real_abils.str += racial_ability_mods[chrace][0];
+  ch->real_abils.con += racial_ability_mods[chrace][1];
+  ch->real_abils.intel += racial_ability_mods[chrace][2];
+  ch->real_abils.wis += racial_ability_mods[chrace][3];
+  ch->real_abils.dex += racial_ability_mods[chrace][4];
+  ch->real_abils.per += racial_ability_mods[chrace] [5];
+}
+
 bitvector_t find_race_bitvector(const char *arg) {
     size_t rpos, ret = 0;
 
