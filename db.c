@@ -1451,6 +1451,7 @@ static void parse_simple_mob(FILE *mob_f, int i, int nr) {
     mob_proto[i].real_abils.dex = 11;
     mob_proto[i].real_abils.con = 11;
     mob_proto[i].real_abils.cha = 11;
+    mob_proto[i].real_abils.per = 11;
 
     if (!get_line(mob_f, line)) {
         log("SYSERR: Format error in mob #%d, file ended after S flag!", nr);
@@ -1581,6 +1582,10 @@ static void interpret_espec(const char *keyword, const char *value, int i, int n
     CASE("Cha") {
         RANGE(3, 25);
         mob_proto[i].real_abils.cha = num_arg;
+    }
+    CASE("Per") {
+        RANGE(3, 25);
+        mob_proto[i].real_abils.per = num_arg;
     }
 
     CASE("SavingPara") {
@@ -3409,6 +3414,7 @@ void init_char(struct char_data *ch) {
     ch->real_abils.str_add = 100;
     ch->real_abils.con = 25;
     ch->real_abils.cha = 25;
+    ch->real_abils.per = 25;
 
     for (i = 0; i < 3; i++)
         GET_COND(ch, i) = (GET_ADMLEVEL(ch) == ADMLVL_IMPL ? -1 : 24);
