@@ -56,7 +56,7 @@ zone_rnum create_new_zone(zone_vnum vzone_num, room_vnum bottom, room_vnum top, 
   char buf[MAX_STRING_LENGTH];
 
 #if CIRCLE_UNSIGNED_INDEX
-  max_zone = 655;
+  max_zone = 21474836;
   if (vzone_num == NOWHERE) {
 #else
   max_zone = 327;
@@ -66,7 +66,7 @@ zone_rnum create_new_zone(zone_vnum vzone_num, room_vnum bottom, room_vnum top, 
     return NOWHERE;
    } else if (vzone_num > max_zone) {
 #if CIRCLE_UNSIGNED_INDEX
-    *error = "New zone cannot be higher than 655.\r\n";
+    *error = "New zone cannot be higher than 21474836.\r\n";
 #else
     *error = "New zone cannot be higher than 327.\r\n";
 #endif
