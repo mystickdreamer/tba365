@@ -311,7 +311,7 @@ ACMD(do_msgedit)
 
   /* Give the descriptor an OLC structure. */
   if (d->olc) {
-    mudlog(BRF, LVL_IMMORT, TRUE, "SYSERR: do_msg_edit: Player already had olc structure.");
+    mudlog(BRF, ADMLVL_IMMORT, TRUE, "SYSERR: do_msg_edit: Player already had olc structure.");
     free(d->olc);
   }
 
@@ -328,7 +328,7 @@ ACMD(do_msgedit)
   act("$n starts using OLC.", TRUE, d->character, 0, 0, TO_ROOM);
   SET_BIT_AR(PLR_FLAGS(ch), PLR_WRITING);
 
-  mudlog(CMP, LVL_IMMORT, TRUE, "OLC: %s starts editing message %d",
+  mudlog(CMP, ADMLVL_IMMORT, TRUE, "OLC: %s starts editing message %d",
     GET_NAME(ch), OLC_NUM(d));
 }
 
