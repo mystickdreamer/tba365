@@ -473,7 +473,7 @@
 #define APPLY_SAVING_PETRI     22	/**< Apply to save throw: petrif	*/
 #define APPLY_SAVING_BREATH    23	/**< Apply to save throw: breath	*/
 #define APPLY_SAVING_SPELL     24	/**< Apply to save throw: spells	*/
-#define APPY_PER                25      /** Perception */
+#define APPLY_PER                25      /** Perception */
 /** Total number of applies */
 #define NUM_APPLIES   26
 
