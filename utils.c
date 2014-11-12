@@ -23,6 +23,7 @@
 #include "interpreter.h"
 #include "class.h"
 #include "constants.h"
+#include "race.h"
 
 
 /** Aportable random number function.
@@ -1594,6 +1595,15 @@ int get_class_by_name(char *classname)
     int i;
     for (i=0; i<NUM_CLASSES; i++)
       if (is_abbrev(classname, pc_class_types[i])) return(i);
+
+    return (-1);
+}
+
+int get_race_by_name(char *racename)
+{
+    int i;
+    for (i=0; i<NUM_RACES; i++)
+      if (is_abbrev(racename, pc_race_types[i])) return(i);
 
     return (-1);
 }
