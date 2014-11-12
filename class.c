@@ -1693,7 +1693,7 @@ int level_exp(int chclass, int level)
       case 29: return 6850000;
       case 30: return 7400000;
       /* add new levels here */
-      case LVL_IMMORT: return 8000000;
+      //case LVL_IMMORT: return 8000000;
     }
     break;
 
