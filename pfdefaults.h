@@ -1,12 +1,12 @@
 /**
-* @file pfdefaults.h
-* ASCII player file defaults.
-* 
-* Part of the core tbaMUD source code distribution, which is a derivative
-* of, and continuation of, CircleMUD.
-*
-* This set of code was not originally part of the circlemud distribution.
-*/
+ * @file pfdefaults.h
+ * ASCII player file defaults.
+ * 
+ * Part of the core tbaMUD source code distribution, which is a derivative
+ * of, and continuation of, CircleMUD.
+ *
+ * This set of code was not originally part of the circlemud distribution.
+ */
 #ifndef _PFDEFAULTS_H_
 #define _PFDEFAULTS_H_
 
@@ -43,6 +43,7 @@
 #define PFDEF_WIS		0
 #define PFDEF_CON		0
 #define PFDEF_CHA		0
+#define PFDEF_PER               0
 #define PFDEF_HIT		0
 #define PFDEF_MAXHIT		0
 #define PFDEF_MANA		0
