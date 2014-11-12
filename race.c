@@ -70,7 +70,7 @@ int parse_race(char arg) {
 
 
 /* Taken from the SRD under OGL, see ../doc/srd.txt for information */
-int racial_ability_mods[][6] = {
+int racial_ability_mods[][7] = {
 /*                      Str,Con,Int,Wis,Dex,Cha Per*/
 /* RACE_HUMAN       */ {  0,  0,  0,  0,  0,  0, 0 },
 /* RACE_ELF         */ {  0, -2,  0,  0,  2,  0, 0 },
