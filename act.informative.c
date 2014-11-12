@@ -936,10 +936,10 @@ ACMD(do_score)
     /* Admin flag display */
     if (GET_ADMLEVEL(ch)) {
         send_to_char(ch, "%sAdmin Level%s: %s%d - %s%s\r\n",KRED, QNRM, QYEL, GET_ADMLEVEL(ch), admin_level_names[GET_ADMLEVEL(ch)], QNRM);
-        send_to_char(ch, "@rYou possess the following administrative abilities@n:\r\n");
+        send_to_char(ch, "%sYou possess the following administrative abilities%s:\r\n", KRED, QNRM);
         for (i = 0; i < NUM_ADMFLAGS; i++) {
             if (ADM_FLAGGED(ch, i))
-                send_to_char(ch, "@y%-40.40s%s@n", admin_flags[i], (!(++j % 2)) ? "\r\n" : "");
+                send_to_char(ch, "%s%-40.40s%s%s", QYEL, admin_flags[i], (!(++j % 2)) ? "\r\n" : "", QNRM);
         }
         send_to_char(ch, "\r\n");
     }
