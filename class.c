@@ -1349,7 +1349,7 @@ int thaco(int class_num, int level)
 void roll_real_abils(struct char_data *ch)
 {
   int i, j, k, temp;
-  ubyte table[6];
+  ubyte table[7];
   ubyte rolls[4];
 
   for (i = 0; i < 6; i++)
