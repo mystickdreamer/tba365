@@ -780,13 +780,14 @@ static void do_stat_character(struct char_data *ch, struct char_data *k) {
         send_to_char(ch, "\r\n");
     }
     send_to_char(ch, "Str: [%s%d/%d%s]  Int: [%s%d%s]  Wis: [%s%d%s]  "
-            "Dex: [%s%d%s]  Con: [%s%d%s]  Cha: [%s%d%s]\r\n",
+            "Dex: [%s%d%s]  Con: [%s%d%s]  Cha: [%s%d%s]  Per: [%s%d%s]\r\n",
             CCCYN(ch, C_NRM), GET_STR(k), GET_ADD(k), CCNRM(ch, C_NRM),
             CCCYN(ch, C_NRM), GET_INT(k), CCNRM(ch, C_NRM),
             CCCYN(ch, C_NRM), GET_WIS(k), CCNRM(ch, C_NRM),
             CCCYN(ch, C_NRM), GET_DEX(k), CCNRM(ch, C_NRM),
             CCCYN(ch, C_NRM), GET_CON(k), CCNRM(ch, C_NRM),
-            CCCYN(ch, C_NRM), GET_CHA(k), CCNRM(ch, C_NRM));
+            CCCYN(ch, C_NRM), GET_CHA(k), CCNRM(ch, C_NRM),
+            CCCYN(ch, C_NRM), GET_PER(k), CCNRM(ch, C_NRM));
 
     send_to_char(ch, "Hit p.:[%s%d/%d+%d%s]  Mana p.:[%s%d/%d+%d%s]  Move p.:[%s%d/%d+%d%s]\r\n",
             CCGRN(ch, C_NRM), GET_HIT(k), GET_MAX_HIT(k), hit_gain(k), CCNRM(ch, C_NRM),
