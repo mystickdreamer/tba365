@@ -48,13 +48,13 @@
 /* Format: vnum, read lvl, write lvl, remove lvl, filename, 0 at end. Be sure 
  * to also change NUM_OF_BOARDS in board.h*/
 struct board_info_type board_info[NUM_OF_BOARDS] = {
-  {3099, 0, 0, LVL_GOD, LIB_ETC "board.mortal", 0},
-  {3098, LVL_IMMORT, LVL_IMMORT, LVL_GRGOD, LIB_ETC "board.immortal", 0},
-  {3097, LVL_IMMORT, LVL_GRGOD, LVL_IMPL, LIB_ETC "board.freeze", 0},
-  {3096, 0, 0, LVL_IMMORT, LIB_ETC "board.social", 0},
-  {1226, 0, 0, LVL_IMPL, LIB_ETC "board.builder", 0},
-  {1227, 0, 0, LVL_IMPL, LIB_ETC "board.staff", 0},
-  {1228, 0, 0, LVL_IMPL, LIB_ETC "board.advertising", 0},
+  {3099, 0, 0, ADMLVL_GOD, LIB_ETC "board.mortal", 0},
+  {3098, ADMLVL_IMMORT, ADMLVL_IMMORT, ADMLVL_GRGOD, LIB_ETC "board.immortal", 0},
+  {3097, ADMLVL_IMMORT, ADMLVL_GRGOD, ADMLVL_IMPL, LIB_ETC "board.freeze", 0},
+  {3096, 0, 0, ADMLVL_IMMORT, LIB_ETC "board.social", 0},
+  {1226, 0, 0, ADMLVL_IMPL, LIB_ETC "board.builder", 0},
+  {1227, 0, 0, ADMLVL_IMPL, LIB_ETC "board.staff", 0},
+  {1228, 0, 0, ADMLVL_IMPL, LIB_ETC "board.advertising", 0},
 };
 
 /* local (file scope) global variables */
@@ -93,7 +93,7 @@ static int find_board(struct char_data *ch)
       if (BOARD_RNUM(i) == GET_OBJ_RNUM(obj))
 	return (i);
 
-  if (GET_LEVEL(ch) >= LVL_IMMORT)
+  if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT)
     for (obj = ch->carrying; obj; obj = obj->next_content)
       for (i = 0; i < NUM_OF_BOARDS; i++)
         if (BOARD_RNUM(i) == GET_OBJ_RNUM(obj))
