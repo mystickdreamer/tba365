@@ -1,12 +1,12 @@
 /**************************************************************************
-*  File: race.c                                           Part of tbaMUD *
-*  Usage: Source file for class-specific code.                            *
-*                                                                         *
-*  All rights reserved.  See license for complete information.            *
-*                                                                         *
-*  Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University *
-*  CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.               *
-**************************************************************************/
+ *  File: race.c                                           Part of tbaMUD *
+ *  Usage: Source file for class-specific code.                            *
+ *                                                                         *
+ *  All rights reserved.  See license for complete information.            *
+ *                                                                         *
+ *  Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University *
+ *  CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.               *
+ **************************************************************************/
 
 /** Help buffer the global variable definitions */
 #define __RACE_C__
@@ -29,60 +29,60 @@
 
 /*Names First*/
 const char *race_abbrevs[] = {
-        "Hu",
-        "El",
-        "Dw",
-        "\n"
+    "Hu",
+    "El",
+    "Dw",
+    "\n"
 };
 
 const char *pc_race_types[] = {
-        "Human",
-        "Elf",
-        "Dwarf",
-        "\n"
+    "Human",
+    "Elf",
+    "Dwarf",
+    "\n"
 };
 /* Race Menu in Interpreter.c*/
-const char *race_menu = 
-"\r\n"
-"+------------------+\r\n"
-"|       Race       |\r\n"
-"+------------------+\r\n"
-"| A) Human         |\r\n"
-"| B) Elf           |\r\n"
-"| C) Dwarf         |\r\n"
-"+------------------|\r\n";
+const char *race_menu =
+        "\r\n"
+        "+------------------+\r\n"
+        "|       Race       |\r\n"
+        "+------------------+\r\n"
+        "| H) Human         |\r\n"
+        "| E) Elf           |\r\n"
+        "| D) Dwarf         |\r\n"
+        "+------------------|\r\n";
 
 /* The code to interpret a race letter -- used in interpreter.c when a new
  * character is selecting a race and by 'set race' in act.wizard.c. */
-int parse_race(char arg)
-{
-  arg = LOWER(arg);
+int parse_race(char arg) {
+    arg = LOWER(arg);
 
-  switch (arg) {
-  case 'a': return RACE_HUMAN;
-  case 'b': return RACE_ELF;
-  case 'c': return RACE_DWARF;
-  default:  return RACE_UNDEFINED;
-  }
+    switch (arg) {
+        case 'H':
+        case 'h': return RACE_HUMAN;
+        case 'E':
+        case 'e': return RACE_ELF;
+        case 'D':
+        case 'd': return RACE_DWARF;
+        default: return RACE_UNDEFINED;
+    }
 }
 
+bitvector_t find_race_bitvector(const char *arg) {
+    size_t rpos, ret = 0;
 
-bitvector_t find_race_bitvector(const char *arg)
-{
-  size_t rpos, ret = 0;
+    for (rpos = 0; rpos < strlen(arg); rpos++)
+        ret |= (1 << parse_race(arg[rpos]));
 
-  for (rpos = 0; rpos < strlen(arg); rpos++)
-    ret |= (1 << parse_race(arg[rpos]));
-
-  return (ret);
+    return (ret);
 }
 
 /* Invalid wear flags */
 int invalid_race(struct char_data *ch, struct obj_data *obj) {
-  if ((OBJ_FLAGGED(obj, ITEM_ANTI_HUMAN) && IS_HUMAN(ch)) ||
-      (OBJ_FLAGGED(obj, ITEM_ANTI_ELF)   && IS_ELF(ch)) ||
-      (OBJ_FLAGGED(obj, ITEM_ANTI_DWARF) && IS_DWARF(ch)))
+    if ((OBJ_FLAGGED(obj, ITEM_ANTI_HUMAN) && IS_HUMAN(ch)) ||
+            (OBJ_FLAGGED(obj, ITEM_ANTI_ELF) && IS_ELF(ch)) ||
+            (OBJ_FLAGGED(obj, ITEM_ANTI_DWARF) && IS_DWARF(ch)))
         return 1;
-  else
+    else
         return 0;
 }
