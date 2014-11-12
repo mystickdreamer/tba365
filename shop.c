@@ -27,6 +27,7 @@
 #include "modify.h"
 #include "spells.h"  /* for skill_name() */
 #include "screen.h"
+#include "race.h"
 
 /* Global variables definitions used externally */
 /* Constant list for printing out who we sell to */
@@ -38,6 +39,9 @@ const char *trade_letters[] = {
         "Cleric",
         "Thief",
         "Warrior",
+        "Human",
+        "Elf",
+        "Dwarf",
         "\n"
 };
 
@@ -128,6 +132,15 @@ static int is_ok_char(struct char_data *keeper, struct char_data *ch, int shop_n
   if (IS_NPC(ch))
     return (TRUE);
 
+  if ((IS_HUMAN(ch) && NOTRADE_HUMAN(shop_nr)) ||
+       (IS_ELF(ch) && NOTRADE_ELF(shop_nr)) ||
+       (IS_DWARF(ch) && NOTRADE_DWARF(shop_nr))) {
+    snprintf(buf, sizeof(buf), "%s %s", GET_NAME(ch), MSG_NO_SELL_RACE);
+    do_tell(keeper, buf, cmd_tell, 0);
+    return (FALSE);
+  }
+  return (TRUE);
+  
   if ((IS_MAGIC_USER(ch) && NOTRADE_MAGIC_USER(shop_nr)) ||
       (IS_CLERIC(ch) && NOTRADE_CLERIC(shop_nr)) ||
       (IS_THIEF(ch) && NOTRADE_THIEF(shop_nr)) ||
