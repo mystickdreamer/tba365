@@ -1603,17 +1603,16 @@ void nanny(struct descriptor_data *d, char *arg)
     }
 
     write_to_output(d, "%s\r\nRace: ", race_menu);
-    STATE(d) = CON_SRACE;
+    STATE(d) = CON_QRACE;
     break;
     
-     case CON_SRACE:
+     case CON_QRACE:
     load_result = parse_race(*arg);
     if (load_result == RACE_UNDEFINED) {
       write_to_output(d, "\r\nThat's not a race.\r\nRace: ");
       return;
     } else
       GET_RACE(d->character) = load_result;
-    
     write_to_output(d, "%s\r\nClass: ", class_menu);
     STATE(d) = CON_QCLASS;
     break;
