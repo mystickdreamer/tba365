@@ -81,8 +81,11 @@ struct shop_data {
 #define TRADE_NOCLERIC     (1 << 4)
 #define TRADE_NOTHIEF      (1 << 5)
 #define TRADE_NOWARRIOR    (1 << 6)
+#define TRADE_NOHUMAN      (1 << 7)
+#define TRADE_NOELF        (1 << 8)
+#define TRADE_NODWARF      (1 << 9)
 /** Total number of trade types */
-#define NUM_TRADERS     7
+#define NUM_TRADERS     10
 
 struct stack_data {
    int data[100];
@@ -126,6 +129,9 @@ struct stack_data {
 #define NOTRADE_CLERIC(i)	(IS_SET(SHOP_TRADE_WITH((i)), TRADE_NOCLERIC))
 #define NOTRADE_THIEF(i)	(IS_SET(SHOP_TRADE_WITH((i)), TRADE_NOTHIEF))
 #define NOTRADE_WARRIOR(i)	(IS_SET(SHOP_TRADE_WITH((i)), TRADE_NOWARRIOR))
+#define NOTRADE_HUMAN(i)        (IS_SET(SHOP_TRADE_WITH((i)), TRADE_NOHUMAN))
+#define NOTRADE_ELF(i)          (IS_SET(SHOP_TRADE_WITH((i)), TRADE_NOELF))
+#define NOTRADE_DWARF(i)        (IS_SET(SHOP_TRADE_WITH((i)), TRADE_NODWARF))
 
 /* Shop flags */
 #define WILL_START_FIGHT    (1 << 0)
@@ -149,6 +155,7 @@ struct stack_data {
 #define MSG_NO_SELL_CLASS	"We don't serve your kind here!"
 #define MSG_NO_USED_WANDSTAFF	"I don't buy used up wands or staves!"
 #define MSG_CANT_KILL_KEEPER	"Get out of here before I call the guards!"
+#define MSG_NO_SELL_RACE        "I don't sell to your race!"
 
 /* Global variables */
 #ifndef __SHOP_C__
