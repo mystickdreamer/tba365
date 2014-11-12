@@ -262,7 +262,7 @@ void affect_total(struct char_data *ch) {
     GET_WIS(ch) = MAX(0, MIN(GET_WIS(ch), i));
     GET_CON(ch) = MAX(0, MIN(GET_CON(ch), i));
     GET_CHA(ch) = MAX(0, MIN(GET_CHA(ch), i));
-    GET+PER(ch) = MAX(0, MIN(GET_PER(ch), i));
+    GET_PER(ch) = MAX(0, MIN(GET_PER(ch), i));
     GET_STR(ch) = MAX(0, GET_STR(ch));
 
     if (IS_NPC(ch)) {
