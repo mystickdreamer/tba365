@@ -1731,7 +1731,7 @@ int level_exp(int chclass, int level)
       case 29: return 6000000;
       case 30: return 6400000;
       /* add new levels here */
-      case LVL_IMMORT: return 7000000;
+      //case LVL_IMMORT: return 7000000;
     }
     break;
 
@@ -1769,7 +1769,7 @@ int level_exp(int chclass, int level)
       case 29: return 6300000;
       case 30: return 6650000;
       /* add new levels here */
-      case LVL_IMMORT: return 7000000;
+      //case LVL_IMMORT: return 7000000;
     }
     break;
 
@@ -1807,7 +1807,7 @@ int level_exp(int chclass, int level)
       case 29: return 6850000;
       case 30: return 7400000;
       /* add new levels here */
-      case LVL_IMMORT: return 8000000;
+      //case LVL_IMMORT: return 8000000;
     }
     break;
   }
@@ -1861,9 +1861,9 @@ const char *title_male(int chclass, int level)
       case 28: return "the Shaman";
       case 29: return "the Keeper of Talismans";
       case 30: return "the Archmage";
-      case LVL_IMMORT: return "the Immortal Warlock";
-      case LVL_GOD: return "the Avatar of Magic";
-      case LVL_GRGOD: return "the God of Magic";
+      //case LVL_IMMORT: return "the Immortal Warlock";
+      //case LVL_GOD: return "the Avatar of Magic";
+      //case LVL_GRGOD: return "the God of Magic";
       default: return "the Mage";
     }
     break;
@@ -1891,9 +1891,9 @@ const char *title_male(int chclass, int level)
       case 19: return "the Arch Bishop";
       case 20: return "the Patriarch";
       /* no one ever thought up these titles 21-30 */
-      case LVL_IMMORT: return "the Immortal Cardinal";
-      case LVL_GOD: return "the Inquisitor";
-      case LVL_GRGOD: return "the God of Good and Evil";
+      //case LVL_IMMORT: return "the Immortal Cardinal";
+      //case LVL_GOD: return "the Inquisitor";
+      //case LVL_GRGOD: return "the God of Good and Evil";
       default: return "the Cleric";
     }
     break;
@@ -1921,9 +1921,9 @@ const char *title_male(int chclass, int level)
       case 19: return "the Brigand";
       case 20: return "the Cut-Throat";
       /* no one ever thought up these titles 21-30 */
-      case LVL_IMMORT: return "the Immortal Assassin";
-      case LVL_GOD: return "the Demi God of Thieves";
-      case LVL_GRGOD: return "the God of Thieves and Tradesmen";
+      //case LVL_IMMORT: return "the Immortal Assassin";
+      //case LVL_GOD: return "the Demi God of Thieves";
+      //case LVL_GRGOD: return "the God of Thieves and Tradesmen";
       default: return "the Thief";
     }
     break;
@@ -1951,9 +1951,9 @@ const char *title_male(int chclass, int level)
       case 19: return "the Cavalier";
       case 20: return "the Knight";
       /* no one ever thought up these titles 21-30 */
-      case LVL_IMMORT: return "the Immortal Warlord";
-      case LVL_GOD: return "the Extirpator";
-      case LVL_GRGOD: return "the God of War";
+      //case LVL_IMMORT: return "the Immortal Warlord";
+      //case LVL_GOD: return "the Extirpator";
+      //case LVL_GRGOD: return "the God of War";
       default: return "the Warrior";
     }
     break;
