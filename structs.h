@@ -39,7 +39,7 @@
 
 #if CIRCLE_UNSIGNED_INDEX
 #define IDXTYPE	unsigned int          /**< Index types are unsigned short ints */
-#define IDXTYPE_MAX USHRT_MAX     /**< Used for compatibility checks. */
+#define IDXTYPE_MAX UINT_MAX     /**< Used for compatibility checks. */
 #define IDXTYPE_MIN 0             /**< Used for compatibility checks. */
 #define NOWHERE	((IDXTYPE)~0)    /**< Sets to ush_int_MAX, or 65,535 */
 #define NOTHING	((IDXTYPE)~0)    /**< Sets to ush_int_MAX, or 65,535 */
@@ -47,7 +47,7 @@
 #define NOFLAG   ((IDXTYPE)~0)    /**< Sets to ush_int_MAX, or 65,535 */
 #else
 #define IDXTYPE	signed int           /**< Index types are unsigned short ints */
-#define IDXTYPE_MAX SHRT_MAX      /**< Used for compatibility checks. */
+#define IDXTYPE_MAX INT_MAX      /**< Used for compatibility checks. */
 #define IDXTYPE_MIN SHRT_MIN      /**< Used for compatibility checks. */
 #define NOWHERE	((IDXTYPE)-1)    /**< nil reference for rooms */
 #define NOTHING	((IDXTYPE)-1)    /**< nil reference for objects */
