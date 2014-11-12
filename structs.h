@@ -162,6 +162,13 @@
 /** Total number of available PC Classes */
 #define NUM_CLASSES	  4
 
+#define RACE_UNDEFINED  (-1) /*Race Undefined*/
+#define RACE_HUMAN      0 /* Race Human */
+#define RACE_ELF        1 /* Race Elf   */
+#define RACE_DWARF      2 /* Race Dwarf */
+/* Total Number of available PC Races*/
+#define NUM_RACES       3
+
 /* NPC classes (currently unused - feel free to implement!) */
 #define CLASS_OTHER       0    /**< NPC Class Other (or undefined) */
 #define CLASS_UNDEAD      1    /**< NPC Class Undead */
@@ -336,6 +343,7 @@
 #define CON_IBTEDIT      30 /**< OLC mode - idea/bug/typo edit */
 #define CON_MSGEDIT      31 /**< OLC mode - message editor */
 #define CON_GET_PROTOCOL 32 /**< Used at log-in while attempting to get protocols > */
+#define CON_QRACE        32 /* Choose character race*/
 
 /* OLC States range - used by IS_IN_OLC and IS_PLAYING */
 #define FIRST_OLC_STATE CON_OEDIT     /**< The first CON_ state that is an OLC */
@@ -392,8 +400,11 @@
 #define ITEM_PEN       21		/**< Item is a pen		*/
 #define ITEM_BOAT      22		/**< Item is a boat		*/
 #define ITEM_FOUNTAIN  23		/**< Item is a fountain		*/
+#define ITEM_ANTI_HUMAN       24   /* Not usable by Humans*/
+#define ITEM_ANTI_ELF         25   /* Not usable by Elfs */
+#define ITEM_ANTI_DWARF       26   /* Not usable by Dwarf*/
 /** Total number of item types.*/
-#define NUM_ITEM_TYPES    24
+#define NUM_ITEM_TYPES    27
 
 /* Take/Wear flags: used by obj_data.obj_flags.wear_flags */
 #define ITEM_WEAR_TAKE      0   /**< Item can be taken */
@@ -908,6 +919,7 @@ struct char_player_data {
     struct time_data time; /**< PC AGE in days */
     ubyte weight; /**< PC / NPC weight */
     ubyte height; /**< PC / NPC height */
+    byte race;                    /* PC/NPC Race*/
 };
 
 /** Character abilities. Different instances of this structure are used for
