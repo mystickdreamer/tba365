@@ -2803,7 +2803,7 @@ struct set_struct {
     { "questpoints", ADMLVL_GOD, PC, NUMBER},
     { "questhistory", ADMLVL_GOD, PC, NUMBER},
     { "adminlevel", ADMLVL_IMPL, PC, NUMBER},
-    { "race", LVL_BUILDER, PC, NUMBER},
+    { "race", ADMLVL_BUILDER, PC, NUMBER},
     { "\n", 0, BOTH, MISC}
 };
 
