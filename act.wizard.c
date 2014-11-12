@@ -1566,6 +1566,8 @@ ACMD(do_restore) {
                 vict->real_abils.str = 18;
                 vict->real_abils.con = 25;
                 vict->real_abils.cha = 25;
+                vict->real_abils.per = 25;
+                
             }
         }
         update_pos(vict);
@@ -2254,9 +2256,9 @@ ACMD(do_wizutil) {
                 send_to_char(ch, "Rerolled...\r\n");
                 roll_real_abils(vict);
                 log("(GC) %s has rerolled %s.", GET_NAME(ch), GET_NAME(vict));
-                send_to_char(ch, "New stats: Str %d/%d, Int %d, Wis %d, Dex %d, Con %d, Cha %d\r\n",
+                send_to_char(ch, "New stats: Str %d/%d, Int %d, Wis %d, Dex %d, Con %d, Cha %d, Per %d\r\n",
                         GET_STR(vict), GET_ADD(vict), GET_INT(vict), GET_WIS(vict),
-                        GET_DEX(vict), GET_CON(vict), GET_CHA(vict));
+                        GET_DEX(vict), GET_CON(vict), GET_CHA(vict), GET_PER(vict));
                 break;
             case SCMD_PARDON:
                 if (!PLR_FLAGGED(vict, PLR_THIEF) && !PLR_FLAGGED(vict, PLR_KILLER)) {
@@ -2804,6 +2806,7 @@ struct set_struct {
     { "questhistory", ADMLVL_GOD, PC, NUMBER},
     { "adminlevel", ADMLVL_IMPL, PC, NUMBER},
     { "race", ADMLVL_BUILDER, PC, NUMBER},
+    { "per", ADMLVL_BUILDER, BOTH, NUMBER},
     { "\n", 0, BOTH, MISC}
 };
 
@@ -3240,6 +3243,16 @@ static int perform_set(struct char_data *ch, struct char_data *vict, int mode, c
                 break;
 
             }
+            
+            case 59: /* perception */
+            if (IS_NPC(vict) || GET_ADMLEVEL(vict) >= ADMLVL_GRGOD)
+                RANGE(3, 25);
+            else
+                RANGE(3, 18);
+            vict->real_abils.per = value;
+            affect_total(vict);
+            break;
+            
         default:
             send_to_char(ch, "Can't set that!\r\n");
             return (0);
