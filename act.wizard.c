@@ -3244,7 +3244,7 @@ static int perform_set(struct char_data *ch, struct char_data *vict, int mode, c
 
             }
             
-            case 59: /* perception */
+            case 60: /* perception */
             if (IS_NPC(vict) || GET_ADMLEVEL(vict) >= ADMLVL_GRGOD)
                 RANGE(3, 25);
             else
