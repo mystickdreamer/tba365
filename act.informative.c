@@ -1104,7 +1104,7 @@ ACMD(do_who) {
     char name_search[MAX_INPUT_LENGTH], buf[MAX_INPUT_LENGTH];
     char mode;
     int low = 0, high = CONFIG_LEVEL_CAP, localwho = 0, questwho = 0;
-    int showclass = 0, short_list = 0, outlaws = 0, showrace = 0,;
+    int showclass = 0, short_list = 0, outlaws = 0, showrace = 0;
     int who_room = 0, showgroup = 0, showleader = 0;
 
     struct {
