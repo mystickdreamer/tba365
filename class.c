@@ -1390,7 +1390,7 @@ void roll_real_abils(struct char_data *ch)
     ch->real_abils.dex = table[3];
     ch->real_abils.con = table[4];
     ch->real_abils.cha = table[5];
-    ch->real_abils.per = table[6]
+    ch->real_abils.per = table[6];
     break;
   case CLASS_THIEF:
     ch->real_abils.dex = table[0];
@@ -1399,7 +1399,7 @@ void roll_real_abils(struct char_data *ch)
     ch->real_abils.intel = table[3];
     ch->real_abils.wis = table[4];
     ch->real_abils.cha = table[5];
-    ch->real_abils.per = table[6]
+    ch->real_abils.per = table[6];
     break;
   case CLASS_WARRIOR:
     ch->real_abils.str = table[0];
@@ -1408,7 +1408,7 @@ void roll_real_abils(struct char_data *ch)
     ch->real_abils.wis = table[3];
     ch->real_abils.intel = table[4];
     ch->real_abils.cha = table[5];
-    ch->real_abils.per = table[6]
+    ch->real_abils.per = table[6];
     if (ch->real_abils.str == 18)
       ch->real_abils.str_add = rand_number(0, 100);
     break;
