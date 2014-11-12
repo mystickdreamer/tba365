@@ -485,7 +485,7 @@ void parse_edit_action(int command, char *string, struct descriptor_data *d)
     break;
   default:
     write_to_output(d, "Invalid option.\r\n");
-    mudlog(BRF, LVL_IMPL, TRUE, "SYSERR: invalid command passed to parse_edit_action");
+    mudlog(BRF, ADMLVL_IMPL, TRUE, "SYSERR: invalid command passed to parse_edit_action");
     return;
   }
 }
