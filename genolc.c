@@ -316,7 +316,7 @@ ACMD(do_export_zone)
    * was run from, thus we act like we are in the bin folder, because we are*/ 
   char *path = "../lib/world/export/"; 
 
-  if (IS_NPC(ch) || GET_LEVEL(ch) < LVL_IMPL) 
+  if (IS_NPC(ch) || GET_ADMLEVEL(ch) < ADMLVL_IMPL) 
     return; 
 
   skip_spaces(&argument); 
@@ -383,10 +383,10 @@ static int export_info_file(zone_rnum zrnum)
   FILE *info_file;
 
   if (!(info_file = fopen("world/export/qq.info", "w"))) {
-    mudlog(BRF, LVL_GOD, TRUE, "SYSERR: export_info_file : Cannot open file!");
+    mudlog(BRF, ADMLVL_GOD, TRUE, "SYSERR: export_info_file : Cannot open file!");
     return FALSE;
   } else if (fprintf(info_file, "tbaMUD Area file.\n") < 0) {
-    mudlog(BRF, LVL_GOD, TRUE, "SYSERR: export_info_file: Cannot write to file!");
+    mudlog(BRF, ADMLVL_GOD, TRUE, "SYSERR: export_info_file: Cannot write to file!");
     fclose(info_file);
     return FALSE;
   }
@@ -456,10 +456,10 @@ static int export_save_shops(zone_rnum zrnum)
   struct shop_data *shop;
 
   if (!(shop_file = fopen("world/export/qq.shp", "w"))) {
-    mudlog(BRF, LVL_GOD, TRUE, "SYSERR: export_save_shops : Cannot open shop file!");
+    mudlog(BRF, ADMLVL_GOD, TRUE, "SYSERR: export_save_shops : Cannot open shop file!");
     return FALSE;
   } else if (fprintf(shop_file, "CircleMUD v3.0 Shop File~\n") < 0) {
-    mudlog(BRF, LVL_GOD, TRUE, "SYSERR: export_save_shops: Cannot write to shop file!");
+    mudlog(BRF, ADMLVL_GOD, TRUE, "SYSERR: export_save_shops: Cannot write to shop file!");
     fclose(shop_file);
     return FALSE;
   }
@@ -546,7 +546,7 @@ static int export_save_mobiles(zone_rnum rznum)
   mob_rnum rmob;
 
   if (!(mob_file = fopen("world/export/qq.mob", "w"))) {
-    mudlog(BRF, LVL_GOD, TRUE, "SYSERR: export_save_mobiles : Cannot open file!");
+    mudlog(BRF, ADMLVL_GOD, TRUE, "SYSERR: export_save_mobiles : Cannot open file!");
     return FALSE;
   }
 
@@ -617,7 +617,7 @@ static int export_save_zone(zone_rnum zrnum)
   FILE *zone_file;
 
   if (!(zone_file = fopen("world/export/qq.zon", "w"))) {
-    mudlog(BRF, LVL_GOD, TRUE, "SYSERR: export_save_zone : Cannot open file!");
+    mudlog(BRF, ADMLVL_GOD, TRUE, "SYSERR: export_save_zone : Cannot open file!");
     return FALSE;
   }
 
@@ -728,7 +728,7 @@ static int export_save_zone(zone_rnum zrnum)
       /* Invalid commands are replaced with '*' - Ignore them. */
       continue;
     default:
-      mudlog(BRF, LVL_BUILDER, TRUE, "SYSERR: export_save_zone(): Unknown cmd '%c' - NOT saving", ZCMD(zrnum, subcmd).command);
+      mudlog(BRF, ADMLVL_BUILDER, TRUE, "SYSERR: export_save_zone(): Unknown cmd '%c' - NOT saving", ZCMD(zrnum, subcmd).command);
       continue;
     }
   }
@@ -752,7 +752,7 @@ static int export_save_objects(zone_rnum zrnum)
   struct extra_descr_data *ex_desc;
 
   if (!(obj_file = fopen("world/export/qq.obj", "w"))) {
-    mudlog(BRF, LVL_GOD, TRUE, "SYSERR: export_save_objects : Cannot open file!");
+    mudlog(BRF, ADMLVL_GOD, TRUE, "SYSERR: export_save_objects : Cannot open file!");
     return FALSE;
   }
   /* Start running through all objects in this zone. */
@@ -822,7 +822,7 @@ static int export_save_objects(zone_rnum zrnum)
 	for (ex_desc = obj->ex_description; ex_desc; ex_desc = ex_desc->next) {
 	  /* Sanity check to prevent nasty protection faults. */
 	  if (!ex_desc->keyword || !ex_desc->description || !*ex_desc->keyword || !*ex_desc->description) {
-	    mudlog(BRF, LVL_IMMORT, TRUE, "SYSERR: OLC: export_save_objects: Corrupt ex_desc!");
+	    mudlog(BRF, ADMLVL_IMMORT, TRUE, "SYSERR: OLC: export_save_objects: Corrupt ex_desc!");
 	    continue;
 	  }
 	  strncpy(buf, ex_desc->description, sizeof(buf) - 1);
@@ -858,7 +858,7 @@ static int export_save_rooms(zone_rnum zrnum)
   char buf1[MAX_STRING_LENGTH];
 
   if (!(room_file = fopen("world/export/qq.wld", "w"))) {
-    mudlog(BRF, LVL_GOD, TRUE, "SYSERR: export_save_rooms : Cannot open file!");
+    mudlog(BRF, ADMLVL_GOD, TRUE, "SYSERR: export_save_rooms : Cannot open file!");
     return FALSE;
   }
 
@@ -996,7 +996,7 @@ static int export_save_triggers(zone_rnum zrnum)
   char bitBuf[MAX_INPUT_LENGTH];
 
   if (!(trig_file = fopen("world/export/qq.trg", "w"))) {
-    mudlog(BRF, LVL_GOD, TRUE, "SYSERR: export_save_triggers : Cannot open file!");
+    mudlog(BRF, ADMLVL_GOD, TRUE, "SYSERR: export_save_triggers : Cannot open file!");
     return FALSE;
   }
 
