@@ -62,4 +62,7 @@
 #define PFDEF_LASTMOTD          0 
 #define PFDEF_LASTNEWS          0 
 
+
+#define PFDEF_RACE              0
+
 #endif /* _PFDEFAULTS_H_ */
