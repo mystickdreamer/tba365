@@ -934,7 +934,7 @@ ACMD(do_score)
   
     /* Admin flag display */
     if (GET_ADMLEVEL(ch)) {
-        send_to_char(ch, "%sAdmin Level%s: @y%d - %s@n\r\n",KRED, QNRM, GET_ADMLEVEL(ch), admin_level_names[GET_ADMLEVEL(ch)]);
+        send_to_char(ch, "%sAdmin Level%s: %s%d - %s%s\r\n",KRED, QNRM, QYEL, GET_ADMLEVEL(ch), admin_level_names[GET_ADMLEVEL(ch)], QNRM);
         send_to_char(ch, "@rYou possess the following administrative abilities@n:\r\n");
         for (i = 0; i < NUM_ADMFLAGS; i++) {
             if (ADM_FLAGGED(ch, i))
