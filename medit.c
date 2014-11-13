@@ -498,7 +498,7 @@ static void medit_disp_stats_menu(struct descriptor_data *d) {
                 cyn, nrm, cyn, yel, GET_DEX(mob), cyn, nrm, cyn, nrm, cyn, yel, GET_SAVE(mob, SAVING_PETRI), cyn, nrm,
                 cyn, nrm, cyn, yel, GET_CON(mob), cyn, nrm, cyn, nrm, cyn, yel, GET_SAVE(mob, SAVING_BREATH), cyn, nrm,
                 cyn, nrm, cyn, yel, GET_CHA(mob), cyn, nrm, cyn, nrm, cyn, yel, GET_SAVE(mob, SAVING_SPELL), cyn, nrm,
-                cyn, nrm, cyn, yel, GET_PER(mob));
+                cyn, nrm, cyn, yel, GET_PER(mob), cyn, nrm);
     }
 
     /* Quit to previous menu option */
