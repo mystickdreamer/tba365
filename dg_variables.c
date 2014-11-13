@@ -897,6 +897,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                             if (GET_PER(c) > max) GET_PER(c) = max;
                             if (GET_PER(c) < 3) GET_PER(c) = 3;
                         }
+                        snprintf(str, slen, "%d", GET_PER(c));
                     }
                     break;
                 case 'q':
