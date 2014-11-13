@@ -1005,7 +1005,7 @@ void medit_parse(struct descriptor_data *d, char *arg) {
 
         case MEDIT_PER:
             GET_PER(OLC_MOB(d)) = LIMIT(i, 11, 25);
-            OLC_VAL(d) = TRUEl
+            OLC_VAL(d) = TRUE;
                     medit_disp_stats_menu(d);
             return;
 
