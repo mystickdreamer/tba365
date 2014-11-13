@@ -875,6 +875,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                             if (GET_PER(c) > max) GET_PER(c) = max;
                             if (GET_PER(c) < 3) GET_PER(c) = 3;
                         }
+                    }
                     /* Thanks to Christian Ejlertsen for this idea
                        And to Ken Ray for speeding the implementation up :)*/
                         else if (!str_cmp(field, "pos")) {
