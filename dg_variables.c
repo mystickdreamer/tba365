@@ -867,9 +867,17 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                     }
                     break;
                 case 'p':
+                    if (!str_cmp(field, "per")) {
+                        if (subfield && *subfield) {
+                            int addition = atoi(subfield);
+                            int max = (IS_NPC(c) || GET_ADMLEVEL(c) >= ADMLVL_GRGOD) ? 25 : 18;
+                            GET_PER(c) += addition;
+                            if (GET_PER(c) > max) GET_PER(c) = max;
+                            if (GET_PER(c) < 3) GET_PER(c) = 3;
+                        }
                     /* Thanks to Christian Ejlertsen for this idea
                        And to Ken Ray for speeding the implementation up :)*/
-                    if (!str_cmp(field, "pos")) {
+                        else if (!str_cmp(field, "pos")) {
                         if (subfield && *subfield) {
                             for (i = POS_SLEEPING; i <= POS_STANDING; i++) {
                                 /* allows : Sleeping, Resting, Sitting, Fighting, Standing */
