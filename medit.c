@@ -1139,7 +1139,7 @@ void medit_autoroll_stats(struct descriptor_data *d) {
         GET_DEX(OLC_MOB(d)) = LIMIT((mob_lev * 2) / 3, 11, 18);
         GET_CON(OLC_MOB(d)) = LIMIT((mob_lev * 2) / 3, 11, 18);
         GET_CHA(OLC_MOB(d)) = LIMIT((mob_lev * 2) / 3, 11, 18);
-        GET_PER(OLC_MOB(D)) = LIMIT((mob_lev * 2) / 3, 11, 18);
+        GET_PER(OLC_MOB(d)) = LIMIT((mob_lev * 2) / 3, 11, 18);
 
         GET_SAVE(OLC_MOB(d), SAVING_PARA) = mob_lev / 4; /* All Saving throws */
         GET_SAVE(OLC_MOB(d), SAVING_ROD) = mob_lev / 4; /* set to a quarter  */
