@@ -47,8 +47,7 @@ void add_var(struct trig_var_data **var_list, const char *name, const char *valu
     if (vd && (!vd->context || vd->context == id)) {
         free(vd->value);
         CREATE(vd->value, char, strlen(value) + 1);
-    }
-    else {
+    } else {
         CREATE(vd, struct trig_var_data, 1);
 
         CREATE(vd->name, char, strlen(name) + 1);
@@ -340,8 +339,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
         }
 
         return;
-    }
-    else if (vd && text_processed(field, subfield, vd, str, slen)) return;
+    } else if (vd && text_processed(field, subfield, vd, str, slen)) return;
 
     else {
         if (vd) {
@@ -380,8 +378,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
 
                     break;
             }
-        }
-        else {
+        } else {
             if (!str_cmp(var, "self")) {
                 switch (type) {
                     case MOB_TRIGGER:
@@ -400,8 +397,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                         o = NULL;
                         break;
                 }
-            }
-            else if (!str_cmp(var, "global")) {
+            } else if (!str_cmp(var, "global")) {
                 struct script_data *thescript = SCRIPT(&world[0]);
                 *str = '\0';
                 if (!thescript) {
@@ -439,7 +435,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                     snprintf(str, slen, "%d", time_info.year);
                 else *str = '\0';
                 return;
-            }                /* %findobj.<room vnum X>(<object vnum/id/name>)%
+            }/* %findobj.<room vnum X>(<object vnum/id/name>)%
  *  - count number of objects in room X with this name/id/vnum
  * %findmob.<room vnum X>(<mob vnum Y>)%
  *  - count number of mobs in room X with vnum Y
@@ -468,7 +464,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                         snprintf(str, slen, "%d", i);
                     }
                 }
-            }                /* Addition inspired by Jamie Nelson. */
+            }/* Addition inspired by Jamie Nelson. */
             else if (!str_cmp(var, "findobj")) {
                 if (!field || !*field || !subfield || !*subfield) {
                     script_log("findobj.vnum(ovnum) - illegal syntax");
@@ -498,8 +494,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                                     rndm = c;
                                 count++;
                             }
-                    }
-                    else if (type == OBJ_TRIGGER) {
+                    } else if (type == OBJ_TRIGGER) {
                         for (c = world[obj_room((obj_data *) go)].people; c;
                                 c = c->next_in_room)
                             if (valid_dg_target(c, DG_ALLOW_GODS)) {
@@ -507,8 +502,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                                     rndm = c;
                                 count++;
                             }
-                    }
-                    else if (type == WLD_TRIGGER) {
+                    } else if (type == WLD_TRIGGER) {
                         for (c = ((struct room_data *) go)->people; c;
                                 c = c->next_in_room)
                             if (valid_dg_target(c, DG_ALLOW_GODS)) {
@@ -523,8 +517,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                         snprintf(str, slen, "%c%ld", UID_CHAR, GET_ID(rndm));
                     else
                         *str = '\0';
-                }
-                else if (!str_cmp(field, "dir")) {
+                } else if (!str_cmp(field, "dir")) {
                     room_rnum in_room = NOWHERE;
 
                     switch (type) {
@@ -867,18 +860,10 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                     }
                     break;
                 case 'p':
-                    if (!str_cmp(field, "per")) {
-                        if (subfield && *subfield) {
-                            int addition = atoi(subfield);
-                            int max = (IS_NPC(c) || GET_ADMLEVEL(c) >= ADMLVL_GRGOD) ? 25 : 18;
-                            GET_PER(c) += addition;
-                            if (GET_PER(c) > max) GET_PER(c) = max;
-                            if (GET_PER(c) < 3) GET_PER(c) = 3;
-                        }
-                    }
+
                     /* Thanks to Christian Ejlertsen for this idea
                        And to Ken Ray for speeding the implementation up :)*/
-                        else if (!str_cmp(field, "pos")) {
+                    if (!str_cmp(field, "pos")) {
                         if (subfield && *subfield) {
                             for (i = POS_SLEEPING; i <= POS_STANDING; i++) {
                                 /* allows : Sleeping, Resting, Sitting, Fighting, Standing */
@@ -904,6 +889,14 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                                 strcpy(str, "0");
                         } else
                             strcpy(str, "0");
+                    }else if (!str_cmp(field, "per")) {
+                        if (subfield && *subfield) {
+                            int addition = atoi(subfield);
+                            int max = (IS_NPC(c) || GET_ADMLEVEL(c) >= ADMLVL_GRGOD) ? 25 : 18;
+                            GET_PER(c) += addition;
+                            if (GET_PER(c) > max) GET_PER(c) = max;
+                            if (GET_PER(c) < 3) GET_PER(c) = 3;
+                        }
                     }
                     break;
                 case 'q':
@@ -942,8 +935,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                             }
                         } else
                             sprinttype(GET_RACE(c), pc_race_types, str, slen);
-                    }
-                    else if (!str_cmp(field, "room")) { /* in NOWHERE, return the void */
+                    } else if (!str_cmp(field, "room")) { /* in NOWHERE, return the void */
 
                         /* see note in dg_scripts.h */
 #ifdef ACTOR_ROOM_IS_UID
@@ -1122,26 +1114,23 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                             GET_OBJ_COST(o) = MAX(1, addition + GET_OBJ_COST(o));
                         }
                         snprintf(str, slen, "%d", GET_OBJ_COST(o));
-                    }
-                    else if (!str_cmp(field, "cost_per_day")) {
+                    } else if (!str_cmp(field, "cost_per_day")) {
                         if (subfield && *subfield) {
                             int addition = atoi(subfield);
                             GET_OBJ_RENT(o) = MAX(1, addition + GET_OBJ_RENT(o));
                         }
                         snprintf(str, slen, "%d", GET_OBJ_RENT(o));
-                    }
-                    else if (!str_cmp(field, "carried_by")) {
+                    } else if (!str_cmp(field, "carried_by")) {
                         if (o->carried_by)
                             snprintf(str, slen, "%c%ld", UID_CHAR, GET_ID(o->carried_by));
                         else
                             *str = '\0';
-                    }
-                    else if (!str_cmp(field, "contents")) {
+                    } else if (!str_cmp(field, "contents")) {
                         if (o->contains)
                             snprintf(str, slen, "%c%ld", UID_CHAR, GET_ID(o->contains));
                         else
                             *str = '\0';
-                    }                        /* thanks to Jamie Nelson (Mordecai of 4 Dimensions MUD) */
+                    }/* thanks to Jamie Nelson (Mordecai of 4 Dimensions MUD) */
                     else if (!str_cmp(field, "count")) {
                         if (GET_OBJ_TYPE(o) == ITEM_CONTAINER)
                             snprintf(str, slen, "%d", item_in_list(subfield,
@@ -1259,15 +1248,13 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                                 snprintf(str, slen, "0");
                         } else
                             snprintf(str, slen, "0");
-                    }
-                    else if (!str_cmp(field, "weight")) {
+                    } else if (!str_cmp(field, "weight")) {
                         if (subfield && *subfield) {
                             int addition = atoi(subfield);
                             GET_OBJ_WEIGHT(o) = MAX(1, addition + GET_OBJ_WEIGHT(o));
                         }
                         snprintf(str, slen, "%d", GET_OBJ_WEIGHT(o));
-                    }
-                    else if (!str_cmp(field, "worn_by")) {
+                    } else if (!str_cmp(field, "worn_by")) {
                         if (o->worn_by)
                             snprintf(str, slen, "%c%ld", UID_CHAR, GET_ID(o->worn_by));
                         else
@@ -1314,8 +1301,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                     else
                         *str = '\0';
                 }
-            }
-            else if (!str_cmp(field, "name"))
+            } else if (!str_cmp(field, "name"))
                 snprintf(str, slen, "%s", r->name);
 
             else if (!str_cmp(field, "sector"))
@@ -1345,8 +1331,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                         *str = '\0';
                     }
                 }
-            }
-            else if (!str_cmp(field, "people")) {
+            } else if (!str_cmp(field, "people")) {
                 if (r->people)
                     snprintf(str, slen, "%c%ld", UID_CHAR, GET_ID(r->people));
                 else
@@ -1573,8 +1558,7 @@ void var_subst(void *go, struct script_data *sc, trig_data *trig,
             *buf = '\0';
             left--;
             continue;
-        }
-            /* so it wasn't double %'s */
+        }            /* so it wasn't double %'s */
         else if (*p && (left > 0)) {
 
             /* search until end of var or beginning of field */
