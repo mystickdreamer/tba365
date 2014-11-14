@@ -486,6 +486,7 @@ const char *apply_types[] = {
   "SAVING_PETRI",
   "SAVING_BREATH",
   "SAVING_SPELL",
+  "PER",
   "\n"
 };
 
