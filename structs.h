@@ -597,8 +597,6 @@
 /* Level of the 'freeze' command */
 #define ADMLVL_FREEZE ADMLVL_GRGOD
 
-/** Minimum level to build and to run the saveall command */
-//#define LVL_BUILDER	LVL_IMMORT
 
 /** Arbitrary number that won't be in a string */
 #define MAGIC_NUMBER	(0x06)
