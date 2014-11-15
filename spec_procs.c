@@ -30,7 +30,7 @@
 
 /* locally defined functions of local (file) scope */
 static int compare_spells(const void *x, const void *y);
-static const char *how_good(struct char_data *ch);//int percent);
+static const char *how_good(int percent);
 static void npc_steal(struct char_data *ch, struct char_data *victim);
 
 /* Special procedures for mobiles. */
@@ -57,13 +57,8 @@ void sort_spells(void)
   qsort(&spell_sort_info[1], MAX_SKILLS, sizeof(int), compare_spells);
 }
 
-static const char *how_good(struct char_data *ch)//int percent)
+static const char *how_good(int percent)
 {
-    int skill_num, percent;
-    percent = GET_SKILL(ch, skill_num);
-    
-    return percent;
-    /*
   if (percent < 0)
     return " error)";
   if (percent == 0)
@@ -83,7 +78,7 @@ static const char *how_good(struct char_data *ch)//int percent)
   if (percent <= 85)
     return " (very good)";
 
-  return " (superb)";*/
+  return " (superb)";
 }
 
 const char *prac_types[] = {
