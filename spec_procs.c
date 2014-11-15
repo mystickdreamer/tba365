@@ -57,10 +57,8 @@ void sort_spells(void)
   qsort(&spell_sort_info[1], MAX_SKILLS, sizeof(int), compare_spells);
 }
 
-static const char *how_good(struct char_data *ch, int percent)
+static const char *how_good(int percent)
 {
-    send_to_char(ch, "%d", percent);
-    /*
   if (percent < 0)
     return " error)";
   if (percent == 0)
@@ -80,7 +78,7 @@ static const char *how_good(struct char_data *ch, int percent)
   if (percent <= 85)
     return " (very good)";
 
-  return " (superb)";*/
+  return " (superb)";
 }
 
 const char *prac_types[] = {
