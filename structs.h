@@ -919,6 +919,7 @@ struct char_player_data {
     ubyte weight; /**< PC / NPC weight */
     ubyte height; /**< PC / NPC height */
     byte race;                    /* PC/NPC Race*/
+
 };
 
 /** Character abilities. Different instances of this structure are used for
@@ -986,7 +987,7 @@ struct char_special_data {
 
 /** Data only needed by PCs, and needs to be saved to disk. */
 struct player_special_data_saved {
-    byte skills[MAX_SKILLS + 1]; /**< Character skills. */
+    int skills[MAX_SKILLS + 1]; /**< Character skills. */
     int wimp_level; /**< Below this # of hit points, flee! */
     byte freeze_level; /**< Level of god who froze char, if any */
     sh_int invis_level; /**< level of invisibility */
