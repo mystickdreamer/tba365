@@ -30,7 +30,7 @@
 
 /* locally defined functions of local (file) scope */
 static int compare_spells(const void *x, const void *y);
-static const char *how_good(int percent);
+static const char *how_good(struct char_data *ch);//int percent);
 static void npc_steal(struct char_data *ch, struct char_data *victim);
 
 /* Special procedures for mobiles. */
