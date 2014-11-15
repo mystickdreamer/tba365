@@ -110,7 +110,7 @@ void list_skills(struct char_data *ch)
   for (sortpos = 1; sortpos <= MAX_SKILLS; sortpos++) {
     i = spell_sort_info[sortpos];
     if (GET_LEVEL(ch) >= spell_info[i].min_level[(int) GET_CLASS(ch)]) {
-    ret = snprintf(buf2 + len, sizeof(buf2) - len, "%-20s %s\r\n", spell_info[i].name, how_good(GET_SKILL(ch, i)));
+    ret = snprintf(buf2 + len, sizeof(buf2) - len, "%-20s %s\r\n", spell_info[i].name, GET_SKILL(ch, i));//how_good(GET_SKILL(ch, i)));
     if (len + nlen >= sizeof(buf2) || ret < 0)
         break;
       len += nlen;
