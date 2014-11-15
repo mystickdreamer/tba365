@@ -59,6 +59,8 @@ void sort_spells(void)
 
 static const char *how_good(int percent)
 {
+    int per;
+    
     percent = per;
     return (per);
     /*
