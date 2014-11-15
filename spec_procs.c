@@ -102,6 +102,7 @@ void list_skills(struct char_data *ch)
   int i, sortpos, ret;
   size_t len = 0, nlen;
   char buf2[MAX_STRING_LENGTH];
+  int percent;
 
   len = snprintf(buf2, sizeof(buf2), "You have %d practice session%s remaining.\r\n"
 	"You know of the following %ss:\r\n", GET_PRACTICES(ch),
