@@ -299,7 +299,6 @@ static void npc_steal(struct char_data *ch, struct char_data *victim)
 
   if (IS_NPC(victim))
     return;
-//  if (GET_ADMLEVEL(victim) >= ADMLVL_IMMORT)
   if ADM_FLAGGED(victim, ADM_NOSTEAL)
     return;
   if (!CAN_SEE(ch, victim))
