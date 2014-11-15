@@ -2228,7 +2228,7 @@ ACMD(do_commands) {
         if (complete_cmd_info[i].minimum_level < 0 || GET_LEVEL(vict) < complete_cmd_info[i].minimum_level)
             continue;
 
-        if ((complete_cmd_info[i].minimum_admlevel >= ADMLVL_IMMORT) != wizhelp)
+        if ((complete_cmd_info[i].minimum_level >= ADMLVL_IMMORT) != wizhelp)
             continue;
 
         if (!wizhelp && socials != (complete_cmd_info[i].command_pointer == do_action))
