@@ -1592,6 +1592,7 @@ void init_spell_levels(void)
   spell_level(SPELL_FLY, CLASS_MAGIC_USER, 22);
   spell_level(SPELL_ENCHANT_WEAPON, CLASS_MAGIC_USER, 26);
   spell_level(SPELL_CLONE, CLASS_MAGIC_USER, 30);
+  spell_level(SKILL_PERCEPTION, CLASS_MAGIC_USER, 1);
 
   /* CLERICS */
   spell_level(SPELL_CURE_LIGHT, CLASS_CLERIC, 1);
@@ -1625,6 +1626,7 @@ void init_spell_levels(void)
   spell_level(SPELL_HARM, CLASS_CLERIC, 19);
   spell_level(SPELL_GROUP_HEAL, CLASS_CLERIC, 22);
   spell_level(SPELL_REMOVE_CURSE, CLASS_CLERIC, 26);
+  spell_level(SKILL_PERCEPTION, CLASS_CLERIC, 1);
 
   /* THIEVES */
   spell_level(SKILL_SNEAK, CLASS_THIEF, 1);
@@ -1633,6 +1635,7 @@ void init_spell_levels(void)
   spell_level(SKILL_STEAL, CLASS_THIEF, 4);
   spell_level(SKILL_HIDE, CLASS_THIEF, 5);
   spell_level(SKILL_TRACK, CLASS_THIEF, 6);
+  spell_level(SKILL_PERCEPTION, CLASS_THIEF, 1);
 
   /* WARRIORS */
   spell_level(SKILL_KICK, CLASS_WARRIOR, 1);
@@ -1640,6 +1643,7 @@ void init_spell_levels(void)
   spell_level(SKILL_TRACK, CLASS_WARRIOR, 9);
   spell_level(SKILL_BASH, CLASS_WARRIOR, 12);
   spell_level(SKILL_WHIRLWIND, CLASS_WARRIOR, 16);
+  spell_level(SKILL_PERCEPTION, CLASS_WARRIOR, 1);
 }
 
 /* This is the exp given to implementors -- it must always be greater than the
