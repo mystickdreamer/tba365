@@ -584,7 +584,7 @@ static void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int
         scmd == SCMD_CLOSE ? "d" : "ed");
 }
 
-static int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int scmd)
+/*static int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int scmd)
 {
   int percent, skill_lvl;
 
@@ -604,7 +604,50 @@ static int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int scm
     return (1);
 
   return (0);
+}*/
+
+
+int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int dclock, int scmd)
+{
+  int skill_lvl;
+  struct obj_data *tools = NULL;
+
+  if (scmd != SCMD_PICK)
+    return (1);
+
+
+  skill_lvl = get_skill_value(ch, SKILL_OPEN_LOCK);
+
+      skill_lvl += dice(1, 20);
+  if ((tools = get_obj_in_list_vis(ch, "thieves,tools", NULL, ch->carrying))) {
+      if (GET_OBJ_VNUM(tools) == 105)
+          skill_lvl += 2;
+      else if (GET_OBJ_VNUM(tools) == 106)
+          skill_lvl += 1;
+      else if (GET_OBJ_VNUM(tools) == 107)
+          skill_lvl =+ 0;
+      else 
+          send_to_char(ch, "You must have a set of lockpicks to pick a lock.\r\n");
+  }
+
+
+  if (keynum == NOTHING)
+    send_to_char(ch, "Odd - you can't seem to find a keyhole.\r\n");
+  else if (pickproof)
+    send_to_char(ch, "It resists your attempts to pick it.\r\n");
+  /* The -2 is here because that is a penality for not having a set of
+   * thieves' tools. If the player has them, that modifier will be accounted
+   * for in roll_skill, and negate (or surpass) this. 
+   */
+  else if (dclock > (skill_lvl - 2))
+    send_to_char(ch, "You failed to pick the lock.\r\n");
+  else {
+    send_to_char(ch, "Click!\r\n");
+    return (1);
+  }
+  return (0);
 }
+
 
 #define DOOR_IS_OPENABLE(ch, obj, door)	((obj) ? ((GET_OBJ_TYPE(obj) == \
     ITEM_CONTAINER) && OBJVAL_FLAGGED(obj, CONT_CLOSEABLE)) :\
