@@ -102,7 +102,8 @@ ACMD(do_not_here)
 ACMD(do_sneak)
 {
   struct affected_type af;
-  byte percent;
+  int percent;
+  int percpercent;
   struct char_data *vict;
 
   if (IS_NPC(ch) || !GET_SKILL(ch, SKILL_SNEAK)) {
@@ -119,6 +120,7 @@ ACMD(do_sneak)
     return;
 */
   percent = rand_number(1, GET_SKILL(ch, SKILL_SNEAK));
+  percpercent = rand_number(1, GET_SKILL(vict, SKILL_PERCEPTION));
   
   new_affect(&af);
   af.spell = SKILL_SNEAK;
