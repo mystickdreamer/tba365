@@ -118,7 +118,7 @@ ACMD(do_sneak)
 /*  if (percent > GET_SKILL(ch, SKILL_SNEAK) + dex_app_skill[GET_DEX(ch)].sneak)
     return;
 */
-  percent = rand_number(1, GET_SKILL(ch, SKILL_SNEAK))
+  percent = rand_number(1, GET_SKILL(ch, SKILL_SNEAK));
   
   new_affect(&af);
   af.spell = SKILL_SNEAK;
