@@ -103,6 +103,7 @@ ACMD(do_sneak)
 {
   struct affected_type af;
   byte percent;
+  struct char_data *vict;
 
   if (IS_NPC(ch) || !GET_SKILL(ch, SKILL_SNEAK)) {
     send_to_char(ch, "You have no idea how to do that.\r\n");
@@ -112,11 +113,13 @@ ACMD(do_sneak)
   if (AFF_FLAGGED(ch, AFF_SNEAK))
     affect_from_char(ch, SKILL_SNEAK);
 
-  percent = rand_number(1, 101);	/* 101% is a complete failure */
+ // percent = rand_number(1, 101);	/* 101% is a complete failure */
 
-  if (percent > GET_SKILL(ch, SKILL_SNEAK) + dex_app_skill[GET_DEX(ch)].sneak)
+/*  if (percent > GET_SKILL(ch, SKILL_SNEAK) + dex_app_skill[GET_DEX(ch)].sneak)
     return;
-
+*/
+  percent = rand_number(1, GET_SKILL(ch, SKILL_SNEAK))
+  
   new_affect(&af);
   af.spell = SKILL_SNEAK;
   af.duration = GET_LEVEL(ch);
