@@ -102,8 +102,7 @@ ACMD(do_not_here)
 ACMD(do_sneak)
 {
   struct affected_type af;
-  int percent;
-  int percpercent;
+  byte percent;
   struct char_data *vict;
 
   if (IS_NPC(ch) || !GET_SKILL(ch, SKILL_SNEAK)) {
@@ -114,16 +113,12 @@ ACMD(do_sneak)
   if (AFF_FLAGGED(ch, AFF_SNEAK))
     affect_from_char(ch, SKILL_SNEAK);
 
- // percent = rand_number(1, 101);	/* 101% is a complete failure */
+  percent = rand_number(1, 101);	/* 101% is a complete failure */
 
-/*  if (percent > GET_SKILL(ch, SKILL_SNEAK) + dex_app_skill[GET_DEX(ch)].sneak)
+  if (percent > GET_SKILL(ch, SKILL_SNEAK) + dex_app_skill[GET_DEX(ch)].sneak)
     return;
-*/
-  percent = rand_number(1, GET_SKILL(ch, SKILL_SNEAK) + dex_app_skill[GET_DEX(ch)].sneak);
-  percpercent = rand_number(1, GET_SKILL(vict, SKILL_PERCEPTION));
-  
- // if (percpercent > percent)
-//      send_to_char(vict, "You notice %s slip into the shadows.", GET_NAME(ch));
+
+  percent = rand_number(1, GET_SKILL(ch, SKILL_SNEAK))
   
   new_affect(&af);
   af.spell = SKILL_SNEAK;
