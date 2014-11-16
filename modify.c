@@ -368,8 +368,8 @@ ACMD(do_skillset)
     send_to_char(ch, "Minimum value for learned is 0.\r\n");
     return;
   }
-  if (value > 100) {
-    send_to_char(ch, "Max value for learned is 100.\r\n");
+  if (value > MAX_SKILL) {
+    send_to_char(ch, "Max value for learned is 1000.\r\n");
     return;
   }
   if (IS_NPC(vict)) {
