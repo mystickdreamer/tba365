@@ -1246,7 +1246,7 @@ struct wis_app_type {
 /** Describes the bonuses applied for a specific value of a character's
  * intelligence attribute. */
 struct int_app_type {
-    byte learn; /**< how many % a player learns a spell/skill */
+    int learn; /**< how many % a player learns a spell/skill */
 };
 
 /** Describes the bonuses applied for a specific value of a
