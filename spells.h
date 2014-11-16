@@ -114,6 +114,11 @@
 
 /* New skills may be added here up to MAX_SKILLS (200) */
 
+#define SKLEARN_CANT    0 /* This class can't learn this skill */
+#define SKLEARN_CLASS   1 /* Class skill for this class */
+#define SKLEARN_BOOL    2 /* Skill is known or not */
+
+
 /* NON-PLAYER AND OBJECT SPELLS AND SKILLS: The practice levels for the spells
  * and skills below are _not_ recorded in the players file; therefore, the
  * intended use is for spells and skills associated with objects (such as
