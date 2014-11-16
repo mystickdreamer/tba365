@@ -976,5 +976,6 @@ void mag_assign_spells(void) {
     skillo(SKILL_STEAL, "steal");
     skillo(SKILL_TRACK, "track");
     skillo(SKILL_WHIRLWIND, "whirlwind");
+    skillo(SKILL_PERCEPTION, "perception");
 }
 
