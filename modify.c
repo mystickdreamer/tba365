@@ -368,7 +368,7 @@ ACMD(do_skillset)
     send_to_char(ch, "Minimum value for learned is 0.\r\n");
     return;
   }
-  if (value > MAX_SKILL) {
+  if (value > MAX_SKILL_LVL) {
     send_to_char(ch, "Max value for learned is 1000.\r\n");
     return;
   }

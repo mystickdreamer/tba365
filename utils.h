@@ -383,7 +383,7 @@ do                                                              \
  * @param rnum The real zone number. */
 #define ZONE_MAXLVL(rnum)      (zone_table[(rnum)].max_level)
 
-#define MAX_SKILL   1000
+#define MAX_SKILL_LVL  1000
 
 /** References the routine element for a spell. Currently unused. */
 #define SPELL_ROUTINES(spl)	(spell_info[spl].routines)
