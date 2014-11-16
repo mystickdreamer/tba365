@@ -32,7 +32,7 @@ static int has_boat(struct char_data *ch);
 static int find_door(struct char_data *ch, const char *type, char *dir, const char *cmdname);
 static int has_key(struct char_data *ch, obj_vnum key);
 static void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int scmd);
-static int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int scmd);
+int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int dclock, int scmd);
 
 
 /* simple function to determine if char can walk on water */
