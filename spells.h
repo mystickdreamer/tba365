@@ -1,14 +1,14 @@
 /**
-* @file spells.h
-* Constants and function prototypes for the spell system.
-*
-* Part of the core tbaMUD source code distribution, which is a derivative
-* of, and continuation of, CircleMUD.
-*
-* All rights reserved.  See license for complete information.
-* Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University
-* CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.
-*/
+ * @file spells.h
+ * Constants and function prototypes for the spell system.
+ *
+ * Part of the core tbaMUD source code distribution, which is a derivative
+ * of, and continuation of, CircleMUD.
+ *
+ * All rights reserved.  See license for complete information.
+ * Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University
+ * CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.
+ */
 #ifndef _SPELLS_H_
 #define _SPELLS_H_
 
@@ -110,6 +110,8 @@
 #define SKILL_SNEAK                 138 /* Reserved Skill[] DO NOT CHANGE */
 #define SKILL_STEAL                 139 /* Reserved Skill[] DO NOT CHANGE */
 #define SKILL_TRACK		              140 /* Reserved Skill[] DO NOT CHANGE */
+#define SKILL_PERCEPTION            141 
+
 /* New skills may be added here up to MAX_SKILLS (200) */
 
 /* NON-PLAYER AND OBJECT SPELLS AND SKILLS: The practice levels for the spells
@@ -180,17 +182,17 @@
 #define TAR_OBJ_EQUIP	  (1 << 10)
 
 struct spell_info_type {
-   byte min_position;	/* Position for caster	 */
-   int mana_min;	/* Min amount of mana used by a spell (highest lev) */
-   int mana_max;	/* Max amount of mana used by a spell (lowest lev) */
-   int mana_change;	/* Change in mana used by spell from lev to lev */
+    byte min_position; /* Position for caster	 */
+    int mana_min; /* Min amount of mana used by a spell (highest lev) */
+    int mana_max; /* Max amount of mana used by a spell (lowest lev) */
+    int mana_change; /* Change in mana used by spell from lev to lev */
 
-   int min_level[NUM_CLASSES];
-   int routines;
-   byte violent;
-   int targets;         /* See below for use with TAR_XXX  */
-   const char *name;	/* Input size not limited. Originates from string constants. */
-   const char *wear_off_msg;	/* Input size not limited. Originates from string constants. */
+    int min_level[NUM_CLASSES];
+    int routines;
+    byte violent;
+    int targets; /* See below for use with TAR_XXX  */
+    const char *name; /* Input size not limited. Originates from string constants. */
+    const char *wear_off_msg; /* Input size not limited. Originates from string constants. */
 };
 
 /* Possible Targets:
@@ -232,10 +234,10 @@ ASPELL(spell_detect_poison);
 int find_skill_num(char *name);
 
 int mag_damage(int level, struct char_data *ch, struct char_data *victim,
-  int spellnum, int savetype);
+        int spellnum, int savetype);
 
 void mag_affects(int level, struct char_data *ch, struct char_data *victim,
-  int spellnum, int savetype);
+        int spellnum, int savetype);
 
 void mag_groups(int level, struct char_data *ch, int spellnum, int savetype);
 
@@ -246,27 +248,27 @@ void mag_areas(int level, struct char_data *ch, int spellnum, int savetype);
 void mag_rooms(int level, struct char_data *ch, int spellnum);
 
 void mag_summons(int level, struct char_data *ch, struct obj_data *obj,
- int spellnum, int savetype);
+        int spellnum, int savetype);
 
 void mag_points(int level, struct char_data *ch, struct char_data *victim,
- int spellnum, int savetype);
+        int spellnum, int savetype);
 
 void mag_unaffects(int level, struct char_data *ch, struct char_data *victim,
-  int spellnum, int type);
+        int spellnum, int type);
 
 void mag_alter_objs(int level, struct char_data *ch, struct obj_data *obj,
-  int spellnum, int type);
+        int spellnum, int type);
 
 void mag_creations(int level, struct char_data *ch, int spellnum);
 
-int	call_magic(struct char_data *caster, struct char_data *cvict,
-  struct obj_data *ovict, int spellnum, int level, int casttype);
+int call_magic(struct char_data *caster, struct char_data *cvict,
+        struct obj_data *ovict, int spellnum, int level, int casttype);
 
-void	mag_objectmagic(struct char_data *ch, struct obj_data *obj,
-			char *argument);
+void mag_objectmagic(struct char_data *ch, struct obj_data *obj,
+        char *argument);
 
-int	cast_spell(struct char_data *ch, struct char_data *tch,
-  struct obj_data *tobj, int spellnum);
+int cast_spell(struct char_data *ch, struct char_data *tch,
+        struct obj_data *tobj, int spellnum);
 
 /* other prototypes */
 void spell_level(int spell, int chclass, int level);
