@@ -26,6 +26,9 @@
 #include "race.h"
 
 
+//external functions
+int get_skill_value(struct char_data *ch, int skillnum);
+
 /** Aportable random number function.
  * @param from The lower bounds of the random number.
  * @param to The upper bounds of the random number.
@@ -372,6 +375,125 @@ void admin_set(struct char_data *ch, int value) {
         }
         return;
     }
+}
+
+
+int skill_roll(struct char_data *ch, int skillnum) {
+	
+	int roll;
+	
+	roll = dice(1, 20);
+
+	roll += get_skill_value(ch, skillnum);
+	
+	return roll;
+}
+
+int get_skill_value(struct char_data *ch, int skillnum) {
+	
+  int value;
+//  int armor_check_penalty = 0;
+  int i, j;
+	
+  value = GET_SKILL(ch, skillnum);
+//  value += GET_SKILL_BONUS(ch, skillnum);
+//  value += get_skill_mod(ch, skillnum);
+
+//  if (affected_by_spell(ch, SPELL_SICKENED))
+//    value -= 2;
+
+  for (i = 0; i < NUM_WEARS; i++) {
+    for (j = 0; j < 6; j++) {
+      if (GET_EQ(ch, i) && GET_EQ(ch, i)->affected[j].location == APPLY_SKILL &&
+          GET_EQ(ch, i)->affected[j].specific == skillnum)
+        value += GET_EQ(ch, i)->affected[j].modifier;
+        break;
+    }
+/*    if (GET_EQ(ch, i) && (GET_OBJ_TYPE(GET_EQ(ch, i)) == ITEM_ARMOR ||
+        GET_OBJ_TYPE(GET_EQ(ch, i)) == ITEM_ARMOR_SUIT))
+      if (!is_proficient_with_armor(ch, GET_OBJ_VAL(GET_EQ(ch, i), 9)) &&
+          GET_OBJ_VAL(GET_EQ(ch, i), 3) > armor_check_penalty)
+      armor_check_penalty = GET_OBJ_VAL(GET_EQ(ch, i), 3);   */
+    if (GET_EQ(ch, i)) {
+      for (j = 0; j < 6; j++) {
+        if (GET_EQ(ch, i)->affected[j].location == APPLY_SKILL &&
+            GET_EQ(ch, i)->affected[j].specific == skillnum)
+          value += GET_EQ(ch, i)->affected[j].modifier;
+      }
+    }
+  }
+
+//  if (affected_by_spell(ch, SPELL_INSPIRE_COMPETENCE))
+//    value += 2;
+
+//  if (ch->player_specials->skill_focus[skillnum - SKILL_LOW_SKILL] > 0)
+//    value += 3;
+//  if (ch->player_specials->skill_focus[skillnum - SKILL_LOW_SKILL] > 1)
+//    value += 10;
+
+  switch (skillnum) {
+    case SKILL_BLACKSMITHING:
+    case SKILL_GOLDSMITHING:
+    case SKILL_TANNING:
+    case SKILL_TAILORING:
+    case SKILL_WOODWORKING:
+//      value += HAS_FEAT(ch, FEAT_PROFICIENT_CRAFTER);
+      break;
+    case SKILL_MINING:
+    case SKILL_HUNTING:
+    case SKILL_FORESTING:
+    case SKILL_FARMING:
+//      value += HAS_FEAT(ch, FEAT_PROFICIENT_HARVESTER);
+      break;
+    case SKILL_HIDE:
+//      value += (SIZE_MEDIUM - get_size(ch)) * 4;
+      break;
+    case SKILL_LORE:
+//      if (HAS_FEAT(ch, FEAT_NATURE_SENSE))
+//        value += 2;
+//      value += GET_CLASS_RANKS(ch, CLASS_BARD);
+      break;
+    case SKILL_PERCEPTION:
+//      if (IS_HALF_ELF(ch))
+//        value += 1;
+      break;
+    case SKILL_SENSE_MOTIVE:
+//      if (HAS_FEAT(ch, FEAT_HONORBOUND))
+//        value += 2;
+      break;
+    case SKILL_DIPLOMACY:
+//      if (IS_HALF_ELF(ch))
+//        value += 2;
+      break;
+    case SKILL_GATHER_INFORMATION:
+//      if (IS_HALF_ELF(ch))
+//        value += 2;
+//      value += GET_CLASS_RANKS(ch, CLASS_BARD);
+      break;
+  }
+
+/*  if (IS_OVER_LOAD(ch))
+    armor_check_penalty += 10;
+  else if (IS_HEAVY_LOAD(ch))
+    armor_check_penalty += 6;
+  if (IS_MEDIUM_LOAD(ch))
+    armor_check_penalty += 3;
+*/
+//  if (IS_SET(spell_info[skillnum].flags, SKFLAG_DEXMOD) ||
+//      IS_SET(spell_info[skillnum].flags, SKFLAG_STRMOD))
+//    value -= armor_check_penalty;
+	
+//  if (HAS_FEAT(ch, FEAT_ABLE_LEARNER))
+//    value += 1;
+
+//  if (affected_by_spell(ch, SPELL_PRAYER))
+//    value += 1;
+
+//  if (affected_by_spell(ch, SPELL_BESTOW_CURSE_PENALTIES))
+//    value -= 4;
+
+
+  return value;
 }
 
 /** Take a bitvector and return a human readable
