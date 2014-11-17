@@ -919,6 +919,7 @@ struct char_player_data {
     ubyte weight; /**< PC / NPC weight */
     ubyte height; /**< PC / NPC height */
     byte race;                    /* PC/NPC Race*/
+    
 
 };
 
@@ -1092,6 +1093,8 @@ struct char_data {
     long pref; /**< unique session id */
 
     struct list_data * events;
+    
+    byte skills[SKILL_TABLE_SIZE + 1];
 };
 
 /** descriptor-related structures */
