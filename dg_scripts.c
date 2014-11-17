@@ -32,6 +32,12 @@
 
 #define PULSES_PER_MUD_HOUR     (SECS_PER_MUD_HOUR*PASSES_PER_SEC)
 
+
+
+//external variables
+char *skill_percent_roll(struct char_data *ch, char *skill);
+
+
 /* Local functions not used elsewhere */
 static obj_data *find_obj(long n);
 static room_data *find_room(long n);
