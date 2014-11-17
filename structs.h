@@ -704,6 +704,7 @@ typedef IDXTYPE zone_vnum; /**< vnum specifically for zone */
 typedef IDXTYPE shop_vnum; /**< vnum specifically for shop */
 typedef IDXTYPE trig_vnum; /**< vnum specifically for triggers */
 typedef IDXTYPE qst_vnum; /**< vnum specifically for quests */
+typedef IDXTYPE guild_vnum;
 
 /* Various real (array-reference) number types. */
 typedef IDXTYPE room_rnum; /**< references an instance of a room */
