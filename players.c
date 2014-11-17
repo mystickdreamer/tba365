@@ -250,8 +250,9 @@ int load_char(const char *name, struct char_data *ch) {
 
         /* Character initializations. Necessary to keep some things straight. */
         ch->affected = NULL;
-        for (i = 1; i <= MAX_SKILLS; i++)
-            GET_SKILL(ch, i) = 0;
+    for (i = 1; i <= SKILL_TABLE_SIZE; i++) {
+      SET_SKILL(ch, i, 0);
+    }
         GET_SEX(ch) = PFDEF_SEX;
         GET_CLASS(ch) = PFDEF_CLASS;
         GET_ADMLEVEL(ch) = PFDEF_LEVEL;
