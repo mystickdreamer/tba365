@@ -47,6 +47,7 @@ static struct {
   { SL_ZON, save_zone, "zone" },
   { SL_CFG, save_config, "config" },
   { SL_QST, save_quests, "quest" },
+  { SL_GLD, save_guilds, "guild" },
   { SL_ACT, NULL, "social" },
   { SL_HLP, NULL, "help" },
   { -1, NULL, NULL },
