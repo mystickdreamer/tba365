@@ -928,6 +928,7 @@ struct char_player_data {
     byte chclass; /**< PC / NPC class */
     byte level; /**< PC / NPC level */
     ubyte admlevel; /* PC Admin Level */
+    byte artisan_type;
     int admflags[AD_ARRAY_MAX]; /* Bitvector for admin privs    */
     struct time_data time; /**< PC AGE in days */
     ubyte weight; /**< PC / NPC weight */
