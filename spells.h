@@ -174,6 +174,8 @@
 #define SKTYPE_WEAPON   (1 << 3)
 #define SKTYPE_ART    (1 << 4)
 
+#define SKFLAG_CRAFT    (1 << 9)
+
 /* New skills may be added here up to MAX_SKILLS (200) */
 
 #define SKLEARN_CANT    0 /* This class can't learn this skill */
