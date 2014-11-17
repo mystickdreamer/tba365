@@ -402,13 +402,13 @@ int get_skill_value(struct char_data *ch, int skillnum) {
 //  if (affected_by_spell(ch, SPELL_SICKENED))
 //    value -= 2;
 
-  for (i = 0; i < NUM_WEARS; i++) {
+ /* for (i = 0; i < NUM_WEARS; i++) {
     for (j = 0; j < 6; j++) {
-      if (GET_EQ(ch, i) && GET_EQ(ch, i)->affected[j].location == &&//APPLY_SKILL &&
+      if (GET_EQ(ch, i) && GET_EQ(ch, i)->affected[j].location == APPLY_SKILL &&
           GET_EQ(ch, i)->affected[j].specific == skillnum)
         value += GET_EQ(ch, i)->affected[j].modifier;
         break;
-    }
+    }*/
 /*    if (GET_EQ(ch, i) && (GET_OBJ_TYPE(GET_EQ(ch, i)) == ITEM_ARMOR ||
         GET_OBJ_TYPE(GET_EQ(ch, i)) == ITEM_ARMOR_SUIT))
       if (!is_proficient_with_armor(ch, GET_OBJ_VAL(GET_EQ(ch, i), 9)) &&
@@ -421,7 +421,7 @@ int get_skill_value(struct char_data *ch, int skillnum) {
           value += GET_EQ(ch, i)->affected[j].modifier;
       }
     }*/
-  }
+  //}
 
 //  if (affected_by_spell(ch, SPELL_INSPIRE_COMPETENCE))
 //    value += 2;
