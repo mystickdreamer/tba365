@@ -925,6 +925,9 @@ void index_boot(int mode) {
         case DB_BOOT_TRG:
             prefix = TRG_PREFIX;
             break;
+        case DB_BOOT_GLD:
+            prefix = GLD_PREFIX;
+            break;
         case DB_BOOT_QST:
             prefix = QST_PREFIX;
             break;
