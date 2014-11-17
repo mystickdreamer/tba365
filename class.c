@@ -1690,8 +1690,8 @@ void init_skill_classes(void) {
     /* CLERICS */
 
     /* THIEVES */
-    skill_class(SKILL_USE_MAGIC_DEVICE, CLASS_ROGUE, SKLEARN_CLASS);
-    skill_class(SKILL_TUMBLE, CLASS_ROGUE, SKLEARN_CLASS);
+    skill_class(SKILL_USE_MAGIC_DEVICE, CLASS_THIEF, SKLEARN_CLASS);
+    skill_class(SKILL_TUMBLE, CLASS_THIEF, SKLEARN_CLASS);
 
     /* FIGHTERS */
     
@@ -1714,7 +1714,7 @@ void init_skill_classes(void) {
 
     // Bards
     //  skill_class(SKILL_APPRAISE, CLASS_BARD, SKLEARN_CLASS);
-    skill_class(SKILL_PERFORM, CLASS_BARD, SKLEARN_CLASS);
+//    skill_class(SKILL_PERFORM, CLASS_BARD, SKLEARN_CLASS);
 
     // Dragon Disciples
 

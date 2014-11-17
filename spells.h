@@ -133,7 +133,6 @@
 #define SKILL_LORE              157
 #define SKILL_OPEN_LOCK         158
 #define SKILL_HANDLE_ANIMAL     159
-//#define SKILL_SENSE_MOTIVE      802
 //#define SKILL_BLUFF             802
 //#define SKILL_INTIMIDATE        810
 //#define SKILL_DIPLOMACY         810
@@ -160,7 +159,10 @@
 //#define SKILL_SURVIVAL     	813
 #define SKILL_CRAFTING_THEORY   165
 #define SKILL_TINKERING         166
-#define SKILL_HARVESTING        177
+#define SKILL_HARVESTING        167
+#define SKILL_SENSE_MOTIVE      168
+#define SKILL_DODGE             169
+#define SKILL_PARRY             170
 
 
 /* New skills may be added here up to MAX_SKILLS (200) */
