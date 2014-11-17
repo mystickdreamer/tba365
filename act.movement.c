@@ -711,7 +711,7 @@ ACMD(do_gen_door)
     else if (!has_key(ch, keynum) && (GET_ADMLEVEL(ch) < ADMLVL_GOD) && ((subcmd == SCMD_LOCK) || (subcmd == SCMD_UNLOCK)))
       send_to_char(ch, "You don't seem to have the proper key.\r\n");
     else if (ok_pick(ch, keynum, DOOR_IS_PICKPROOF(ch, obj, door), DOOR_DCLOCK(ch, obj, door), subcmd))
-      do_doorcmd(ch, obj, door, subcmd)
+      do_doorcmd(ch, obj, door, subcmd);
   }
   return;
 }
