@@ -13,7 +13,7 @@
 #include "structs.h"
 #include "handler.h"
 #include "spells.h"
-#include "feats.h"
+//#include "feats.h"
 #include "utils.h"
 
 #include "comm.h"
