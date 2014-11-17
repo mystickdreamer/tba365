@@ -330,16 +330,13 @@ ACMD(do_skillset)
   }
   skip_spaces(&argument);
 
-  /* If there is no chars in argument */
-  if (!*argument) {
-    i = snprintf(help, sizeof(help) - i, "\r\nSkills:\r\n");
-    i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SKILL);
-    i += snprintf(help + i, sizeof(help) - i, "\r\nSpells:\r\n");
-    i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SPELL);
-/*    if (CONFIG_ENABLE_LANGUAGES) {
-      i += snprintf(help + i, sizeof(help) - i, "\r\nLanguages:\r\n");
-      i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SKILL | SKTYPE_LANG);
-    }*/
+   for (qend = 0, i = 0; i <= SKILL_TABLE_SIZE; i++) {
+      if (spell_info[i].name == unused_spellname)	/* This is valid. */
+	continue;
+      send_to_char(ch, "%18s", spell_info[i].name);
+      if (qend++ % 4 == 3)
+	send_to_char(ch, "\r\n");
+    }
     if (i >= sizeof(help))
       strcpy(help + sizeof(help) - strlen("** OVERFLOW **") - 1, "** OVERFLOW **"); /* strcpy: OK */
     page_string(ch->desc, help, TRUE);
