@@ -987,7 +987,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                     } else if (!str_cmp(field, "sex"))
                         snprintf(str, slen, "%s", genders[(int) GET_SEX(c)]);
                     else if (!str_cmp(field, "skill"))
-                        snprintf(str, slen, "%s", skill_percent(c, subfield));
+                        snprintf(str, slen, "%s", skill_percent(c, subfield, 0));
                     else if (!str_cmp(field, "skillset")) {
                         if (!IS_NPC(c) && subfield && *subfield) {
                             char skillname[MAX_INPUT_LENGTH], *amount;
