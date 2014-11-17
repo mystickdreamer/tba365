@@ -108,6 +108,7 @@ struct oasis_olc_data {
   int item_type;
   struct trig_proto_list *script; /* for assigning triggers in [r|o|m]edit*/
   struct help_index_element*help;   /* Hedit uses this */
+  struct guild_data *guild; /* used for 'gedit'         */
 };
 
 /* Exported globals. */
