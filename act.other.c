@@ -103,7 +103,7 @@ ACMD(do_sneak)
 {
   struct affected_type af;
   byte percent;
-  struct char_data *vict;
+  
 
   if (IS_NPC(ch) || !GET_SKILL(ch, SKILL_SNEAK)) {
     send_to_char(ch, "You have no idea how to do that.\r\n");
