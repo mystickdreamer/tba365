@@ -297,7 +297,7 @@ ASPELL(spell_detect_poison);
 
 /* basic magic calling functions */
 
-int find_skill_num(char *name);
+int find_skill_num(char *name int, sktype);
 
 int mag_damage(int level, struct char_data *ch, struct char_data *victim,
         int spellnum, int savetype);

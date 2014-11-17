@@ -171,15 +171,15 @@ const char *skill_name(int num) {
         return ("UNDEFINED");
 }
 
-int find_skill_num(char *name) {
+int find_skill_num(char *name, int sktype) {
     int skindex, ok;
     char *temp, *temp2;
     char first[256], first2[256], tempbuf[256];
 
-    for (skindex = 1; skindex <= TOP_SPELL_DEFINE; skindex++) {
-        if (is_abbrev(name, spell_info[skindex].name))
-            return (skindex);
-
+  for (skindex = 1; skindex < SKILL_TABLE_SIZE; skindex++) {
+    if (is_abbrev(name, spell_info[skindex].name) && (spell_info[skindex].skilltype & sktype)) {
+      return (skindex);
+    }
         ok = TRUE;
         strlcpy(tempbuf, spell_info[skindex].name, sizeof (tempbuf)); /* strlcpy: OK */
         temp = any_one_arg(tempbuf, first);
@@ -191,8 +191,10 @@ int find_skill_num(char *name) {
             temp2 = any_one_arg(temp2, first2);
         }
 
-        if (ok && !*first2)
-            return (skindex);
+
+    if (ok && !*first2 && (spell_info[skindex].skilltype & sktype)) {
+      return (skindex);
+    }
     }
 
     return (-1);
