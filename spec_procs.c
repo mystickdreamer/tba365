@@ -121,7 +121,7 @@ void list_skills(struct char_data *ch)
 
   page_string(ch->desc, buf2, TRUE);
 }
-
+/*
 SPECIAL(guild)
 {
   int skill_num, percent;
@@ -164,7 +164,7 @@ SPECIAL(guild)
 
   return (TRUE);
 }
-
+*/
 SPECIAL(dump)
 {
   struct obj_data *k;
