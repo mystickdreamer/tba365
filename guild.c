@@ -129,7 +129,7 @@ void show_skills(struct char_data *ch)
   int i;
   int count = 0;
 
-    send_to_char(ch, "\r\n@WSkill Points: @Y%d@n\r\n\r\n", GET_PRACTICES(ch, GET_CLASS(ch)));
+//    send_to_char(ch, "\r\n@WSkill Points: @Y%d@n\r\n\r\n", GET_PRACTICES(ch, GET_CLASS(ch)));
     send_to_char(ch, "\r\n@WClass Skills:@n\r\n\r\n");
 
     for (i = 0; i < SKILL_TABLE_SIZE + 1; i++) {
