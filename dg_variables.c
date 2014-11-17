@@ -64,15 +64,21 @@ void add_var(struct trig_var_data **var_list, const char *name, const char *valu
 }
 
 /* perhaps not the best place for this, but I didn't want a new file */
-char *skill_percent(struct char_data *ch, char *skill) {
-    static char retval[16];
-    int skillnum;
+char *skill_percent(struct char_data *ch, char *skill) 
+{
+  static char retval[16];
+  int skillnum;
 
-    skillnum = find_skill_num(skill);
-    if (skillnum <= 0) return ("unknown skill");
+  skillnum = find_skill_num(skill, SKTYPE_SKILL);
+  if (skillnum<=0) return("unknown skill");
 
-    snprintf(retval, sizeof (retval), "%d", GET_SKILL(ch, skillnum));
-    return retval;
+  if (return_type == 0)
+    snprintf(retval, sizeof(retval), "%d", get_skill_value(ch, skillnum));
+  else if (return_type == 1)
+    snprintf(retval, sizeof(retval), "%d", skill_roll(ch, skillnum));
+  else // return_type == 2
+    snprintf(retval, sizeof(retval), "%d", GET_SKILL(ch, skillnum));
+  return retval;
 }
 
 /* Search through all the persons items, including containers. 0 if it doesnt
