@@ -712,6 +712,7 @@ typedef IDXTYPE zone_rnum; /**< references an instance of a zone */
 typedef IDXTYPE shop_rnum; /**< references an instance of a shop */
 typedef IDXTYPE trig_rnum; /**< references an instance of a trigger */
 typedef IDXTYPE qst_rnum; /**< references an instance of a quest */
+typedef IDXTYPE guild_rnum;
 
 /** Bitvector type for 32 bit unsigned long bitvectors. 'unsigned long long'
  * will give you at least 64 bits if you have GCC. You'll have to search
