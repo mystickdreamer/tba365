@@ -249,6 +249,7 @@ struct spell_info_type {
     int targets; /* See below for use with TAR_XXX  */
     const char *name; /* Input size not limited. Originates from string constants. */
     const char *wear_off_msg; /* Input size not limited. Originates from string constants. */
+    byte can_learn_skill[NUM_CLASSES];
 };
 
 /* Possible Targets:
