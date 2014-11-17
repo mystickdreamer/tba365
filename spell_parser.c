@@ -703,6 +703,16 @@ void skill_class(int skill, int chclass, int learntype)
     spell_info[skill].can_learn_skill[chclass] = learntype;
 }
 
+int skill_type(int snum)
+{
+  return spell_info[snum].skilltype;
+}
+
+void set_skill_type(int snum, int sktype)
+{
+  spell_info[snum].skilltype = sktype;
+}
+
 /* Assign the spells on boot up */
 static void spello(int spl, const char *name, int max_mana, int min_mana,
         int mana_change, int minpos, int targets, int violent, int routines, const char *wearoff) {
