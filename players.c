@@ -493,13 +493,13 @@ int load_char(const char *name, struct char_data *ch) {
     affect_total(ch);
 
     /* initialization for imms */
-    if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT) {
-        for (i = 1; i <= MAX_SKILLS; i++)
-            GET_SKILL(ch, i) = 100;
-        GET_COND(ch, HUNGER) = -1;
-        GET_COND(ch, THIRST) = -1;
-        GET_COND(ch, DRUNK) = -1;
-    }
+  if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT) {
+    for (i = 1; i <= SKILL_TABLE_SIZE; i++)
+      SET_SKILL(ch, i, 100);
+    GET_COND(ch, FULL) = -1;
+    GET_COND(ch, THIRST) = -1;
+    GET_COND(ch, DRUNK) = -1;
+  }
     fclose(fl);
     return (id);
 }
