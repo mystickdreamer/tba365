@@ -304,15 +304,15 @@ ACMD(do_skillset)
 {
   struct char_data *vict;
   char name[MAX_INPUT_LENGTH];
-  char buf[MAX_INPUT_LENGTH], helpbuf[MAX_STRING_LENGTH];
-  int skill, value, i, qend, pc, pl;
+  char buf[MAX_INPUT_LENGTH], help[MAX_STRING_LENGTH];
+  int skill, value, i=0, qend;
 
   argument = one_argument(argument, name);
 
   if (!*name) {			/* no arguments. print an informative text */
     send_to_char(ch, "Syntax: skillset <name> '<skill>' <value>\r\n"
 		"Skill being one of the following:\r\n");
-    for (qend = 0, i = 0; i <= TOP_SPELL_DEFINE; i++) {
+    for (qend = 0, i = 0; i < SKILL_TABLE_SIZE; i++) {
       if (spell_info[i].name == unused_spellname)	/* This is valid. */
 	continue;
       send_to_char(ch, "%18s", spell_info[i].name);
@@ -329,14 +329,23 @@ ACMD(do_skillset)
     return;
   }
   skip_spaces(&argument);
-  pc = GET_CLASS(vict);
-  pl = GET_LEVEL(vict);
 
   /* If there is no chars in argument */
   if (!*argument) {
-    send_to_char(ch, "Skill name expected.\r\n");
+    i = snprintf(help, sizeof(help) - i, "\r\nSkills:\r\n");
+    i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SKILL);
+    i += snprintf(help + i, sizeof(help) - i, "\r\nSpells:\r\n");
+    i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SPELL);
+    if (CONFIG_ENABLE_LANGUAGES) {
+      i += snprintf(help + i, sizeof(help) - i, "\r\nLanguages:\r\n");
+      i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SKILL | SKTYPE_LANG);
+    }
+    if (i >= sizeof(help))
+      strcpy(help + sizeof(help) - strlen("** OVERFLOW **") - 1, "** OVERFLOW **"); /* strcpy: OK */
+    page_string(ch->desc, help, TRUE);
     return;
   }
+
   if (*argument != '\'') {
     send_to_char(ch, "Skill must be enclosed in: ''\r\n");
     return;
@@ -350,9 +359,9 @@ ACMD(do_skillset)
     send_to_char(ch, "Skill must be enclosed in: ''\r\n");
     return;
   }
-  strcpy(helpbuf, (argument + 1));	/* strcpy: OK (MAX_INPUT_LENGTH <= MAX_STRING_LENGTH) */
-  helpbuf[qend - 1] = '\0';
-  if ((skill = find_skill_num(helpbuf)) <= 0) {
+  strcpy(help, (argument + 1));	/* strcpy: OK (MAX_INPUT_LENGTH <= MAX_STRING_LENGTH) */
+  help[qend - 1] = '\0';
+  if ((skill = find_skill_num(help, SKTYPE_SKILL)) <= 0) {
     send_to_char(ch, "Unrecognized skill.\r\n");
     return;
   }
@@ -368,26 +377,13 @@ ACMD(do_skillset)
     send_to_char(ch, "Minimum value for learned is 0.\r\n");
     return;
   }
-  if (value > MAX_SKILL_LVL) {
-    send_to_char(ch, "Max value for learned is 1000.\r\n");
-    return;
-  }
-  if (IS_NPC(vict)) {
-    send_to_char(ch, "You can't set NPC skills.\r\n");
-    return;
-  }
-  if ((spell_info[skill].min_level[(pc)] >= ADMLVL_IMMORT) && (pl < ADMLVL_IMMORT)) {
-    send_to_char(ch, "%s cannot be learned by mortals.\r\n", spell_info[skill].name);
-    return;
-  } else if (spell_info[skill].min_level[(pc)] > pl) {
-    send_to_char(ch, "%s is a level %d %s.\r\n", GET_NAME(vict), pl, pc_class_types[pc]);
-    send_to_char(ch, "The minimum level for %s is %d for %ss.\r\n", spell_info[skill].name, spell_info[skill].min_level[(pc)], pc_class_types[pc]);
-  }
 
-  /* find_skill_num() guarantees a valid spell_info[] index, or -1, and we
-   * checked for the -1 above so we are safe here. */
+  /*
+   * find_skill_num() guarantees a valid spell_info[] index, or -1, and we
+   * checked for the -1 above so we are safe here.
+   */
   SET_SKILL(vict, skill, value);
-  mudlog(BRF, ADMLVL_IMMORT, TRUE, "%s changed %s's %s to %d.", GET_NAME(ch), GET_NAME(vict), spell_info[skill].name, value);
+  mudlog(BRF, ADMLVL_IMMORT, TRUE, "skillset: %s changed %s's '%s' to %d.", GET_NAME(ch), GET_NAME(vict), spell_info[skill].name, value);
   send_to_char(ch, "You change %s's %s to %d.\r\n", GET_NAME(vict), spell_info[skill].name, value);
 }
 
