@@ -55,6 +55,10 @@ int *cmd_sort_info = NULL;
 
 struct command_info *complete_cmd_info;
 
+//external functions
+void reset_artisan_experience(struct char_data *vict);
+
+
 /* This is the Master Command List. You can put new commands in, take commands
  * out, change the order they appear in, etc.  You can adjust the "priority"
  * of commands simply by changing the order they appear in the command list.
@@ -88,6 +92,7 @@ cpp_extern const struct command_info cmd_info[] = {
     { "aedit", "aed", POS_DEAD, do_oasis_aedit, ADMLVL_GOD, 0},
     { "alias", "ali", POS_DEAD, do_alias, 0, 0},
     { "afk", "afk", POS_DEAD, do_gen_tog, 0, SCMD_AFK},
+    { "artisan", "art", POS_DEAD, do_artisan, 0, ADMLVL_NONE, 0},
     { "areas", "are", POS_DEAD, do_areas, 0, 0},
     { "assist", "as", POS_FIGHTING, do_assist, 1, 0},
     { "ask", "ask", POS_RESTING, do_spec_comm, 0, SCMD_ASK},
@@ -268,6 +273,7 @@ cpp_extern const struct command_info cmd_info[] = {
     { "rent", "rent", POS_STANDING, do_not_here, 1, 0},
     { "report", "repo", POS_RESTING, do_report, 0, 0},
     { "reroll", "rero", POS_DEAD, do_wizutil, ADMLVL_GRGOD, SCMD_REROLL},
+    { "resetartisanexp", "resetart", POS_DEAD, do_resetartisan, 1, ADMLVL_GOD, 0},
     { "rescue", "resc", POS_FIGHTING, do_rescue, 1, 0},
     { "restore", "resto", POS_DEAD, do_restore, ADMLVL_GOD, 0},
     { "return", "retu", POS_DEAD, do_return, 0, 0},
@@ -423,7 +429,7 @@ int script_command_interpreter(struct char_data *ch, char *arg) {
     return 1; // We took care of execution. Let caller know.
 }
 
-const char *fill[] ={
+const char *fill[] = {
     "in",
     "from",
     "with",
@@ -434,7 +440,7 @@ const char *fill[] ={
     "\n"
 };
 
-const char *reserved[] ={
+const char *reserved[] = {
     "a",
     "an",
     "self",
@@ -1220,6 +1226,10 @@ int enter_player_game(struct descriptor_data *d) {
     if (PLR_FLAGGED(d->character, PLR_FROZEN))
         load_room = r_frozen_start_room;
 
+    if (!GET_ARTISAN_TYPE(ch)) {
+    reset_artisan_experience(ch);
+  }
+    
     /* copyover */
     GET_ID(d->character) = GET_IDNUM(d->character);
     /* find_char helper */
