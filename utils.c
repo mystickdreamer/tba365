@@ -404,7 +404,7 @@ int get_skill_value(struct char_data *ch, int skillnum) {
 
   for (i = 0; i < NUM_WEARS; i++) {
     for (j = 0; j < 6; j++) {
-      if (GET_EQ(ch, i) && GET_EQ(ch, i)->affected[j].location == APPLY_SKILL &&
+      if (GET_EQ(ch, i) && GET_EQ(ch, i)->affected[j].location == &&//APPLY_SKILL &&
           GET_EQ(ch, i)->affected[j].specific == skillnum)
         value += GET_EQ(ch, i)->affected[j].modifier;
         break;
@@ -414,13 +414,13 @@ int get_skill_value(struct char_data *ch, int skillnum) {
       if (!is_proficient_with_armor(ch, GET_OBJ_VAL(GET_EQ(ch, i), 9)) &&
           GET_OBJ_VAL(GET_EQ(ch, i), 3) > armor_check_penalty)
       armor_check_penalty = GET_OBJ_VAL(GET_EQ(ch, i), 3);   */
-    if (GET_EQ(ch, i)) {
+ /*   if (GET_EQ(ch, i)) {
       for (j = 0; j < 6; j++) {
         if (GET_EQ(ch, i)->affected[j].location == APPLY_SKILL &&
             GET_EQ(ch, i)->affected[j].specific == skillnum)
           value += GET_EQ(ch, i)->affected[j].modifier;
       }
-    }
+    }*/
   }
 
 //  if (affected_by_spell(ch, SPELL_INSPIRE_COMPETENCE))
