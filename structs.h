@@ -159,8 +159,9 @@
 #define CLASS_CLERIC      1    /**< PC Class Cleric */
 #define CLASS_THIEF       2    /**< PC Class Thief */
 #define CLASS_WARRIOR     3    /**< PC Class Warrior */
+#define CLASS_ARTISAN       4
 /** Total number of available PC Classes */
-#define NUM_CLASSES	  4
+#define NUM_CLASSES	  5
 
 #define RACE_UNDEFINED  (-1) /*Race Undefined*/
 #define RACE_HUMAN      0 /* Race Human */
