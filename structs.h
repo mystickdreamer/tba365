@@ -345,6 +345,7 @@
 #define CON_MSGEDIT      31 /**< OLC mode - message editor */
 #define CON_GET_PROTOCOL 32 /**< Used at log-in while attempting to get protocols > */
 #define CON_QRACE        33 /* Choose character race*/
+#define CON_GEDIT  34 /* oLC mode - guild editor    */
 
 /* OLC States range - used by IS_IN_OLC and IS_PLAYING */
 #define FIRST_OLC_STATE CON_OEDIT     /**< The first CON_ state that is an OLC */
