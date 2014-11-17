@@ -675,6 +675,32 @@ void spell_level(int spell, int chclass, int level) {
         spell_info[spell].min_level[chclass] = level;
 }
 
+
+void skill_class(int skill, int chclass, int learntype)
+{
+  int bad = 0;
+
+  if (skill < 0 || skill > SKILL_TABLE_SIZE) {
+    log("SYSERR: attempting assign to illegal skillnum %d/%d", skill, SKILL_TABLE_SIZE);
+    return;
+  }
+
+  if (chclass < 0 || chclass >= NUM_CLASSES) {
+    log("SYSERR: assigning '%s' to illegal class %d/%d.", skill_name(skill),
+                chclass, NUM_CLASSES - 1);
+    bad = 1;
+  }
+
+  if (learntype < 0 || learntype > SKLEARN_CLASS) {
+    log("SYSERR: assigning skill '%s' illegal learn type %d for class %d.", skill_name(skill),
+                learntype, chclass);
+    bad = 1;
+  }
+
+  if (!bad)
+    spell_info[skill].can_learn_skill[chclass] = learntype;
+}
+
 /* Assign the spells on boot up */
 static void spello(int spl, const char *name, int max_mana, int min_mana,
         int mana_change, int minpos, int targets, int violent, int routines, const char *wearoff) {
