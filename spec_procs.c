@@ -134,7 +134,7 @@ int print_skills_by_type(struct char_data *ch, char *buf, int maxsz, int sktype)
       len += nlen;
     }
   
-
+  }
   return len;
 }
 
