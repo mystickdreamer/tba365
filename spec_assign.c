@@ -188,7 +188,7 @@ struct spec_func_data spec_func_list[] = {
   {"Bank",           bank }, 
   {"Pet Shop",       pet_shops }, 
   {"Dump",           dump }, 
-  {"Guildmaster",    guild }, 
+//  {"Guildmaster",    guild }, 
   {"Guild Guard",    guild_guard }, 
   {"Questmaster",    questmaster }, 
   {"Shopkeeper",     shop_keeper }, 
