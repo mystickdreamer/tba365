@@ -27,6 +27,14 @@
  
 #define MAX_OBJ_LIST 100
  
+// External Functions
+extern struct guild_data *guild_index;
+extern int top_guild;
+extern int count_guilds(guild_vnum low, guild_vnum high);
+
+// Internal FUnctions
+void list_guilds(struct char_data *ch  , zone_rnum rnum, guild_vnum vmin, guild_vnum vmax);
+
 struct obj_list_item {
 obj_vnum vobj;
 int val;
