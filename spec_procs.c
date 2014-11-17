@@ -96,8 +96,62 @@ const char *prac_types[] = {
 #define MAXGAIN(ch) (prac_params[MAX_PER_PRAC][(int)GET_CLASS(ch)])
 #define SPLSKL(ch) (prac_types[prac_params[PRAC_TYPE][(int)GET_CLASS(ch)]])
 
+int print_skills_by_type(struct char_data *ch, char *buf, int maxsz, int sktype)
+{
+  size_t len = 0;
+  int i, t, known, nlen;
+  char buf2[READ_SIZE];
+
+  for (i = 1; i <= SKILL_TABLE_SIZE; i++) { 
+    t = spell_info[i].skilltype;
+
+    if (t != sktype)
+      continue;
+
+    if ((t & SKTYPE_SKILL) || (t & SKTYPE_SPELL)) {
+      for (nlen = 0, known = 0; nlen < NUM_CLASSES; nlen++)
+	if (spell_info[i].can_learn_skill[nlen] > known)
+	  known = spell_info[i].can_learn_skill[nlen];
+    } else {
+      known = 0;
+    }
+
+    if (known) {
+      if (t & SKTYPE_LANG) {
+	nlen = snprintf(buf + len, maxsz - len, "%-30s  (%s)\r\n",
+                        spell_info[i].name, GET_SKILL_BASE(ch, i) ? "known" : "unknown");
+      } else if (t & SKTYPE_SKILL) {
+        
+        snprintf(buf2, sizeof(buf2), " (base %d + bonus %d)", GET_SKILL_BASE(ch, i),
+                   (GET_SKILL_BONUS(ch, i) + get_skill_mod(ch, i)));
+        if (spell_info[i].can_learn_skill[GET_CLASS(ch)] == SKLEARN_CROSSCLASS) {
+	      nlen = snprintf(buf + len, maxsz - len, "@W%-20s  %d%s@n\r\n",
+                        spell_info[i].name, GET_SKILL(ch, i) + GET_SKILL_BONUS(ch, i) + get_skill_mod(ch, i), buf2);
+        }
+        else
+   	      nlen = snprintf(buf + len, maxsz - len, "@G%-20s  %d%s@n\r\n",
+                        spell_info[i].name, GET_SKILL(ch, i) + GET_SKILL_BONUS(ch, i) + get_skill_mod(ch, i), buf2);
+        
+      }
+      else
+	nlen = snprintf(buf + len, maxsz - len, "%-20s  unknown type\r\n",
+                        spell_info[i].name);
+      if (len + nlen >= maxsz || nlen < 0)
+        break;
+      len += nlen;
+    }
+  }
+
+  return len;
+}
+
+
 void list_skills(struct char_data *ch)
 {
+    
+    show_skills(ch);
+    return;
+    
   const char *overflow = "\r\n**OVERFLOW**\r\n";
   int i, sortpos, ret;
   size_t len = 0, nlen;
