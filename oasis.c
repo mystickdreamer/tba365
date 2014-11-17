@@ -42,6 +42,7 @@ static struct olc_scmd_info_t {
   { "config",   CON_CEDIT },
   { "trigger",  CON_TRIGEDIT },
   { "action",   CON_AEDIT },
+ * { "guild",    CON_GEDIT },
   { "help",     CON_HEDIT },
   { "quest",     CON_QEDIT },
   { "\n",	-1	  }
