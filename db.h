@@ -23,6 +23,7 @@
 #define DB_BOOT_HLP	5
 #define DB_BOOT_TRG	6
 #define DB_BOOT_QST 7
+#define DB_BOOT_GLD	8
 
 #if defined(CIRCLE_MACINTOSH)
 #define LIB_WORLD	":world:"
