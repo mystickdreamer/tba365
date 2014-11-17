@@ -120,13 +120,13 @@ int print_skills_by_type(struct char_data *ch, char *buf, int maxsz, int sktype)
 //      if (t & SKTYPE_LANG) {
 //	nlen = snprintf(buf + len, maxsz - len, "%-30s  (%s)\r\n",
 //                        spell_info[i].name, GET_SKILL_RANKS(ch, i) ? "known" : "unknown");
-      if (t & SKTYPE_SKILL) {
+/*      if (t & SKTYPE_SKILL) {
         
    	      nlen = snprintf(buf + len, maxsz - len, "@G%-20s  %d%s@n\r\n",
                         spell_info[i].name, GET_SKILL(ch, i), buf2);
         
       }
-      else
+      else */
 	nlen = snprintf(buf + len, maxsz - len, "%-20s  unknown type\r\n",
                         spell_info[i].name);
       if (len + nlen >= maxsz || nlen < 0)
