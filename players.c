@@ -893,7 +893,7 @@ static void load_skills(FILE *fl, struct char_data *ch) {
         get_line(fl, line);
         sscanf(line, "%d %d", &num, &num2);
         if (num != 0)
-            GET_SKILL(ch, num) = num2;
+            SET_SKILL(ch, num, num2);
     } while (num != 0);
 }
 
