@@ -66,7 +66,7 @@ void assign_mobiles(void)
   assign_kings_castle();
 
   ASSIGNMOB(3095, cryogenicist);
-
+/*
   ASSIGNMOB(120, guild);
   ASSIGNMOB(121, guild);
   ASSIGNMOB(122, guild);
@@ -106,7 +106,7 @@ void assign_mobiles(void)
   ASSIGNMOB(31611, guild);
   ASSIGNMOB(31639, guild);
   ASSIGNMOB(31641, guild);
-
+*/
   ASSIGNMOB(3105, mayor);
 
   ASSIGNMOB(110, postmaster);
