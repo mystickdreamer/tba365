@@ -259,6 +259,12 @@ extern const char *nrm, *grn, *cyn, *yel;
 #define MEDIT_CONFIRM_SAVESTRING    7
 #define MEDIT_STATS_MENU            8
 
+/*. Submodes of GEDIT connectedness     . */
+#define GEDIT_MAIN_MENU                 0
+#define GEDIT_CONFIRM_SAVESTRING        1
+#define GEDIT_NO_CASH                   2
+#define GEDIT_NO_SKILL                  3
+
 /* Numerical responses. */
 #define MEDIT_NUMERICAL_RESPONSE	10
 #define MEDIT_SEX			11
@@ -291,10 +297,18 @@ extern const char *nrm, *grn, *cyn, *yel;
 #define MEDIT_BREATH                    38
 #define MEDIT_SPELL                     39
 #define MEDIT_PER                       40
-#define GEDIT_SELECT_SKILLS             41
-#define GEDIT_SELECT_SPELLS             42
-#define GEDIT_SELECT_WPS                43
-#define GEDIT_SELECT_LANGS              44
+
+#define GEDIT_NUMERICAL_RESPONSE        41
+#define GEDIT_CHARGE                    42
+#define GEDIT_OPEN                      43
+#define GEDIT_CLOSE                    44
+#define GEDIT_TRAINER                   45
+#define GEDIT_NO_TRAIN                  46
+#define GEDIT_MINLVL                    47
+#define GEDIT_SELECT_SPELLS             48
+#define GEDIT_SELECT_SKILLS             49
+#define GEDIT_SELECT_WPS                50
+#define GEDIT_SELECT_LANGS              51
 
 /* Submodes of SEDIT connectedness. */
 #define SEDIT_MAIN_MENU              	0
@@ -435,6 +449,17 @@ void sedit_save_internally(struct descriptor_data *d);
 void sedit_parse(struct descriptor_data *d, char *arg);
 ACMD(do_oasis_sedit);
 
+void gedit_setup_new(struct descriptor_data *d);
+void gedit_setup_existing(struct descriptor_data *d, int rgm_num);
+void gedit_parse(struct descriptor_data *d, char *arg);
+void gedit_disp_menu(struct descriptor_data *d);
+void gedit_no_train_menu(struct descriptor_data *d);
+void gedit_save_internally(struct descriptor_data *d);
+void gedit_save_to_disk(int num);
+void copy_guild(struct guild_data *tgm, struct guild_data *fgm);
+void free_guild_strings(struct guild_data *guild);
+void free_guild(struct guild_data *guild);
+
 /* public functions from zedit.c */
 void zedit_parse(struct descriptor_data *d, char *arg);
 ACMD(do_oasis_zedit);
@@ -467,6 +492,17 @@ ACMD(do_tedit);
 /* public functions from qedit.c */
 ACMD(do_oasis_qedit);
 
+#define CONTEXT_GEDIT_MAIN_MENU             	125
+#define CONTEXT_GEDIT_CONFIRM_SAVESTRING        126
+#define CONTEXT_GEDIT_NO_CASH                   127
+#define CONTEXT_GEDIT_NO_SKILL                  128
+#define CONTEXT_GEDIT_NUMERICAL_RESPONSE        129
+#define CONTEXT_GEDIT_CHARGE                    130
+#define CONTEXT_GEDIT_OPEN                      131
+#define CONTEXT_GEDIT_CLOSE                     132
+#define CONTEXT_GEDIT_TRAINER                   133
+#define CONTEXT_GEDIT_NO_TRAIN                  134
+#define CONTEXT_GEDIT_MINLVL                    135
 #define CONTEXT_GEDIT_SELECT_SPELLS             136
 #define CONTEXT_GEDIT_SELECT_SKILLS             137
 #define CONTEXT_GEDIT_SELECT_WPS                138
