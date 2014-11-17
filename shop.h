@@ -12,6 +12,9 @@
 #ifndef _SHOP_H_
 #define _SHOP_H_
 
+
+#define SW_ARRAY_MAX	4
+
 /* Public function prototypes */
 SPECIAL(shop_keeper);
 void boot_the_shops(FILE *shop_f, char *filename, int rec_count);
