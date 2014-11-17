@@ -192,7 +192,7 @@ void show_skills(struct char_data *ch)
   send_to_char(ch, "Format is <skill name> <base skill value> [<modified skill value>]\r\n\r\n");
 
 }
-
+/*
 void display_levelup_skills(struct char_data *ch, int langs)
 {
 
@@ -251,7 +251,7 @@ spell_info[spell_sort_info[i]].name, GET_SKILL(ch,
   send_to_char(ch, "\r\nWhat skill would you like to raise? (-1 to end)");
 
 }
-
+*/
 ACMD(do_artisan) {
 
   char arg[200];
