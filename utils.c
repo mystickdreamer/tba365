@@ -440,7 +440,7 @@ int get_skill_value(struct char_data *ch, int skillnum) {
 //      value += HAS_FEAT(ch, FEAT_PROFICIENT_CRAFTER);
       break;
     case SKILL_MINING:
-    case SKILL_HUNTING:
+    case SKILL_SKINNING:
     case SKILL_FORESTING:
     case SKILL_FARMING:
 //      value += HAS_FEAT(ch, FEAT_PROFICIENT_HARVESTER);
@@ -461,15 +461,15 @@ int get_skill_value(struct char_data *ch, int skillnum) {
 //      if (HAS_FEAT(ch, FEAT_HONORBOUND))
 //        value += 2;
       break;
-    case SKILL_DIPLOMACY:
+//    case SKILL_DIPLOMACY:
 //      if (IS_HALF_ELF(ch))
 //        value += 2;
-      break;
-    case SKILL_GATHER_INFORMATION:
+//      break;
+//    case SKILL_GATHER_INFORMATION:
 //      if (IS_HALF_ELF(ch))
 //        value += 2;
 //      value += GET_CLASS_RANKS(ch, CLASS_BARD);
-      break;
+ //     break;
   }
 
 /*  if (IS_OVER_LOAD(ch))
