@@ -324,64 +324,6 @@ ACMD(do_skillset)
     return;
   }
 
-  if (!(vict = get_char_vis(ch, name, NULL, FIND_CHAR_WORLD))) {
-    send_to_char(ch, "%s", CONFIG_NOPERSON);
-    return;
-  }
-  skip_spaces(&argument);
-
-   for (qend = 0, i = 0; i <= SKILL_TABLE_SIZE; i++) {
-      if (spell_info[i].name == unused_spellname)	/* This is valid. */
-	continue;
-      send_to_char(ch, "%18s", spell_info[i].name);
-      if (qend++ % 4 == 3)
-	send_to_char(ch, "\r\n");
-    }
-    if (i >= sizeof(help))
-      strcpy(help + sizeof(help) - strlen("** OVERFLOW **") - 1, "** OVERFLOW **"); /* strcpy: OK */
-    page_string(ch->desc, help, TRUE);
-    return;
-  }
-
-  if (*argument != '\'') {
-    send_to_char(ch, "Skill must be enclosed in: ''\r\n");
-    return;
-  }
-  /* Locate the last quote and lowercase the magic words (if any) */
-
-  for (qend = 1; argument[qend] && argument[qend] != '\''; qend++)
-    argument[qend] = LOWER(argument[qend]);
-
-  if (argument[qend] != '\'') {
-    send_to_char(ch, "Skill must be enclosed in: ''\r\n");
-    return;
-  }
-  strcpy(help, (argument + 1));	/* strcpy: OK (MAX_INPUT_LENGTH <= MAX_STRING_LENGTH) */
-  help[qend - 1] = '\0';
-  if ((skill = find_skill_num(help, SKTYPE_SKILL)) <= 0) {
-    send_to_char(ch, "Unrecognized skill.\r\n");
-    return;
-  }
-  argument += qend + 1;		/* skip to next parameter */
-  argument = one_argument(argument, buf);
-
-  if (!*buf) {
-    send_to_char(ch, "Learned value expected.\r\n");
-    return;
-  }
-  value = atoi(buf);
-  if (value < 0) {
-    send_to_char(ch, "Minimum value for learned is 0.\r\n");
-    return;
-  }
-
-  /*
-   * find_skill_num() guarantees a valid spell_info[] index, or -1, and we
-   * checked for the -1 above so we are safe here.
-   */
-  SET_SKILL(vict, skill, value);
-  mudlog(BRF, ADMLVL_IMMORT, TRUE, "skillset: %s changed %s's '%s' to %d.", GET_NAME(ch), GET_NAME(vict), spell_info[skill].name, value);
-  send_to_char(ch, "You change %s's %s to %d.\r\n", GET_NAME(vict), spell_info[skill].name, value);
 }
 
 /* By Michael Buselli. Traverse down the string until the begining of the next
