@@ -64,7 +64,7 @@ void add_var(struct trig_var_data **var_list, const char *name, const char *valu
 }
 
 /* perhaps not the best place for this, but I didn't want a new file */
-char *skill_percent(struct char_data *ch, char *skill) 
+char *skill_percent(struct char_data *ch, char *skill, int return_type) 
 {
   static char retval[16];
   int skillnum;
