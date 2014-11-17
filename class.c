@@ -1722,7 +1722,7 @@ void init_skill_classes(void) {
 
 
 
-
+}
     /* This is the exp given to implementors -- it must always be greater than the
      * exp required for immortality, plus at least 20,000 or so. */
 #define EXP_MAX  10000000
