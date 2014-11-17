@@ -333,6 +333,7 @@ int cast_spell(struct char_data *ch, struct char_data *tch,
 void spell_level(int spell, int chclass, int level);
 void init_spell_levels(void);
 const char *skill_name(int num);
+void skill_class(int skill, int chclass, int learntype);
 
 /* From magic.c */
 int mag_savingthrow(struct char_data *ch, int type, int modifier);
