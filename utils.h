@@ -388,7 +388,7 @@ do                                                              \
 
 #define GET_ARTISAN_EXP(ch) (ch->player_specials->artisan_experience)
 
-#define GET_ARTISAN_TYPE(ch)	(ch->artisan_type)
+#define GET_ARTISAN_TYPE(ch)	(ch->player.artisan_type)
 #define GET_ARTISAN_LEVEL(ch)	(GET_CLASS_RANKS(ch, CLASS_ARTISAN))
 
 
