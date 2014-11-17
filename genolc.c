@@ -29,6 +29,9 @@
 #include "modify.h"      /* for smash_tilde */
 #include "quest.h"
 
+extern struct guild_data *guild_index;
+extern int top_guild;
+int save_guilds(zone_rnum zone_num);
 
 /* Adjustment for top_guild change between bpl15 and bpl16. */
 #if _CIRCLEMUD < CIRCLEMUD_VERSION(3,0,16)
