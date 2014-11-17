@@ -293,7 +293,7 @@ ACMD(do_artisan) {
                 GET_ARTISAN_TYPE(ch) = ARTISAN_TYPE_TINKER;
                 return;
             }
-            else if (!strcmp(arg, "armorsmith")) {
+            else if (!strcmp(arg, "armorsmith")) {  
                 send_to_char(ch, "You have chosen the artisan profession of 'armorsmith' giving you access to the skills that allow you to make armor.\r\n");
                 GET_ARTISAN_TYPE(ch) = ARTISAN_TYPE_ARMORSMITH;
                 return;
