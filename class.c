@@ -1643,7 +1643,7 @@ void init_skill_classes(void) {
     // This initializes all skills
     for (i = 0; i < NUM_CLASSES; i++) {
         for (j = 0; j < SKILL_TABLE_SIZE; j++)
-            skill_class(j, i, SKLEARN_CROSSCLASS);
+            skill_class(j, i, SKLEARN_CLASS);
     }
 
     // These skills belong to all classes unless changed elsewhere below
