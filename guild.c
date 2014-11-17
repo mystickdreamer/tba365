@@ -149,7 +149,7 @@ void show_skills(struct char_data *ch)
     if (count % 2 == 1 )
       send_to_char(ch, "\r\n");   
     send_to_char(ch, "\r\n");
-
+/*
     send_to_char(ch, "@WCross-Class Skills:@n\r\n\r\n");
 
     for (i = 0; i < SKILL_TABLE_SIZE + 1; i++) {
@@ -165,11 +165,11 @@ void show_skills(struct char_data *ch)
         send_to_char(ch, "\r\n");
       count++;
     }
-
+*/
     if (count % 2 == 1 )
       send_to_char(ch, "\r\n");   
     send_to_char(ch, "\r\n");
-
+/*
     send_to_char(ch, "@WLanguages:@n (@Wbold white@n if known)\r\n\r\n");
 
     for (i = 0; i < SKILL_TABLE_SIZE + 1; i++) {
@@ -184,7 +184,7 @@ void show_skills(struct char_data *ch)
         send_to_char(ch, "\r\n");
       count++;
     }
-
+*/
     if (count % 2 == 1 )
       send_to_char(ch, "\r\n");
     send_to_char(ch, "\r\n");
