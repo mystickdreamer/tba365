@@ -433,7 +433,7 @@ void gedit_disp_menu(struct descriptor_data *d)
 
 			  OLC_NUM(d),
 			  (G_TRAINER(guild) == -1) ? -1 : mob_index[G_TRAINER(guild)].vnum,
-			  (G_TRAINER(guild) == -1) ? "none" : mob_proto[G_TRAINER(guild)].short_descr,
+			  (G_TRAINER(guild) == -1) ? "none" : mob_proto[G_TRAINER(guild)].short_desciption,
 			  G_NO_SKILL(guild),
 			  G_NO_GOLD(guild),
 			  G_OPEN(guild),
