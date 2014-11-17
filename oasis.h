@@ -132,6 +132,8 @@ extern const char *nrm, *grn, *cyn, *yel;
 #define OLC_QUEST(d)   (OLC(d)->quest)    /**< Quest structure      */
 #define OLC_MSG_LIST(d) (OLC(d)->msg)      /**< Message structure    */
 
+#define OLC_GUILD(d)    (OLC(d)->guild)     	/* Guild structure      */
+
 #define OLC_ACTION(d)  (OLC(d)->action)   /**< Action structure     */
 #define OLC_HELP(d)    (OLC(d)->help)     /**< Hedit structure      */
 #define OLC_PREFS(d)   (OLC(d)->prefs)    /**< Preferences structure */
