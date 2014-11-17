@@ -1085,23 +1085,23 @@ void discrete_load(FILE *fl, int mode, char *filename) {
                 log("SYSERR: Format error after %s #%d", modes[mode], last);
                 exit(1);
             }
-                switch (mode) {
-                    case DB_BOOT_WLD:
-                        parse_room(fl, nr);
-                        break;
-                    case DB_BOOT_MOB:
-                        parse_mobile(fl, nr);
-                        break;
-                    case DB_BOOT_TRG:
-                        parse_trigger(fl, nr);
-                        break;
-                    case DB_BOOT_OBJ:
-                        strlcpy(line, parse_object(fl, nr), sizeof (line));
-                        break;
-                    case DB_BOOT_QST:
-                        parse_quest(fl, nr);
-                        break;
-                }
+            switch (mode) {
+                case DB_BOOT_WLD:
+                    parse_room(fl, nr);
+                    break;
+                case DB_BOOT_MOB:
+                    parse_mobile(fl, nr);
+                    break;
+                case DB_BOOT_TRG:
+                    parse_trigger(fl, nr);
+                    break;
+                case DB_BOOT_OBJ:
+                    strlcpy(line, parse_object(fl, nr), sizeof (line));
+                    break;
+                case DB_BOOT_QST:
+                    parse_quest(fl, nr);
+                    break;
+            }
         } else {
             log("SYSERR: Format error in %s file %s near %s #%d", modes[mode],
                     filename, modes[mode], nr);
@@ -1583,6 +1583,7 @@ static void interpret_espec(const char *keyword, const char *value, int i, int n
         RANGE(3, 25);
         mob_proto[i].real_abils.cha = num_arg;
     }
+
     CASE("Per") {
         RANGE(3, 25);
         mob_proto[i].real_abils.per = num_arg;
@@ -1936,14 +1937,18 @@ char *parse_object(FILE *obj_f, int nr) {
         if (GET_OBJ_WEIGHT(obj_proto + i) < GET_OBJ_VAL(obj_proto + i, 1) && CAN_WEAR(obj_proto + i, ITEM_WEAR_TAKE))
             GET_OBJ_WEIGHT(obj_proto + i) = GET_OBJ_VAL(obj_proto + i, 1) + 5;
     }
-    
-      /*if ((GET_OBJ_TYPE(obj_proto + i) == ITEM_PORTAL || \
-       GET_OBJ_TYPE(obj_proto + i) == ITEM_HATCH) && \*/
-      if (!GET_OBJ_VAL(obj_proto + i, VAL_DOOR_DCLOCK) || \
-        !GET_OBJ_VAL(obj_proto + i, VAL_DOOR_DCHIDE))) {
-    GET_OBJ_VAL(obj_proto + i, VAL_DOOR_DCLOCK) = 20;
-    GET_OBJ_VAL(obj_proto + i, VAL_DOOR_DCHIDE) = 20;
 
+    /*if ((GET_OBJ_TYPE(obj_proto + i) == ITEM_PORTAL || \
+     GET_OBJ_TYPE(obj_proto + i) == ITEM_HATCH) && \*/
+    if (!GET_OBJ_VAL(obj_proto + i, VAL_DOOR_DCLOCK) || \
+        !GET_OBJ_VAL(obj_proto + i, VAL_DOOR_DCHIDE)) {
+        GET_OBJ_VAL(obj_proto + i, VAL_DOOR_DCLOCK) = 20;
+        GET_OBJ_VAL(obj_proto + i, VAL_DOOR_DCHIDE) = 20;
+        if (bitsavetodisk) {
+            add_to_save_list(zone_table[real_zone_by_thing(nr)].number, 1);
+            converting = true;
+        }
+    }
     /* extra descriptions and affect fields */
     for (j = 0; j < MAX_OBJ_AFFECT; j++) {
         obj_proto[i].affected[j].location = APPLY_NONE;
@@ -3680,7 +3685,6 @@ static int check_bitvector_names(bitvector_t bits, size_t namecount, const char 
 
 /* External variables from config.c */
 extern int level_cap;
-
 
 static void load_default_config(void) {
     /* This function is called only once, at boot-time. We assume config_info is
