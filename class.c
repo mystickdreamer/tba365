@@ -1670,12 +1670,12 @@ void init_skill_classes(void) {
         skill_class(SKILL_FIRST_AID, i, SKLEARN_CLASS);
         skill_class(SKILL_SENSE_MOTIVE, i, SKLEARN_CLASS);
         skill_class(SKILL_SPELLCRAFT, i, SKLEARN_CLASS);
-        skill_class(SKILL_DECIPHER_SCRIPT, i, SKLEARN_CLASS);
         skill_class(SKILL_STEAL, i, SKLEARN_CLASS);
         skill_class(SKILL_SEARCH, i, SKLEARN_CLASS);
         skill_class(SKILL_DODGE, i, SKLEARN_CLASS);
         skill_class(SKILL_PARRY, i, SKLEARN_CLASS);
-        
+        skill_class(SKILL_APPRAISE, i, SKLEARN_CLASS);
+        skill_class(SKILL_DISABLE_DEVICE, i, SKLEARN_CLASS);
     }
 
     /* NECROMANCER */
