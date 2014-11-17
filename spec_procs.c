@@ -142,8 +142,8 @@ int print_skills_by_type(struct char_data *ch, char *buf, int maxsz, int sktype)
 void list_skills(struct char_data *ch)
 {
     
-    show_skills(ch);
-    return;
+ //   show_skills(ch);
+ //   return;
     
   const char *overflow = "\r\n**OVERFLOW**\r\n";
   int i, sortpos, ret;
