@@ -110,45 +110,40 @@
 #define SKILL_SNEAK                 138 /* Reserved Skill[] DO NOT CHANGE */
 #define SKILL_STEAL                 139 /* Reserved Skill[] DO NOT CHANGE */
 #define SKILL_TRACK		              140 /* Reserved Skill[] DO NOT CHANGE */
-#define SKILL_PERCEPTION            141 
-
-#define SKILL_FORESTING         818
-#define SKILL_MINING            819
-#define SKILL_FARMING           830
-#define SKILL_BLACKSMITHING     829
-#define SKILL_TAILORING         822
-#define SKILL_TANNING           823
-#define SKILL_GOLDSMITHING      824
-#define SKILL_WOODWORKING       825
-#define SKILL_COOKING           826
-#define SKILL_SKINNING          827
-#define SKILL_HERBALISM         828
+#define SKILL_FORESTING         141
+#define SKILL_MINING            142
+#define SKILL_FARMING           143
+#define SKILL_BLACKSMITHING     144
+#define SKILL_TAILORING         145
+#define SKILL_TANNING           146
+#define SKILL_GOLDSMITHING      147
+#define SKILL_WOODWORKING       148
+#define SKILL_COOKING           149
+#define SKILL_SKINNING          150
+#define SKILL_HERBALISM         151
 
 //#define SKILL_BALANCE           800
 //#define SKILL_USE_ROPE          800
-#define SKILL_APPRAISE		810
-#define SKILL_USE_MAGIC_DEVICE  816
+#define SKILL_APPRAISE		152
+#define SKILL_USE_MAGIC_DEVICE  153
 //#define SKILL_FORGERY           807
-#define SKILL_SPELLCRAFT        816
-#define SKILL_HIDE              813
-#define SKILL_SNEAK             813
-#define SKILL_PERCEPTION        809
-#define SKILL_SEARCH            809
-#define SKILL_LORE              807
-#define SKILL_OPEN_LOCK         815
-#define SKILL_HANDLE_ANIMAL     812
+#define SKILL_SPELLCRAFT        154
+#define SKILL_PERCEPTION        155
+#define SKILL_SEARCH            156
+#define SKILL_LORE              157
+#define SKILL_OPEN_LOCK         158
+#define SKILL_HANDLE_ANIMAL     159
 //#define SKILL_SENSE_MOTIVE      802
 //#define SKILL_BLUFF             802
-#define SKILL_STEAL   802
 //#define SKILL_INTIMIDATE        810
 //#define SKILL_DIPLOMACY         810
-#define SKILL_FIRST_AID              814
+#define SKILL_FIRST_AID              160
 //#define SKILL_DISGUISE          802
-#define SKILL_TUMBLE		800
-#define SKILL_DISABLE_DEVICE    808
-#define SKILL_DECIPHER_SCRIPT   807
+#define SKILL_TUMBLE		161
+#define SKILL_DISABLE_DEVICE    162
+#define SKILL_DECIPHER_SCRIPT   163
 //#define SKILL_ESCAPE_ARTIST     800
-#define SKILL_PERFORM           810
+#define SKILL_PERFORM           164
 //#define SKILL_COMBAT_TACTICS    806
 //#define SKILL_CONCENTRATION     816
 //#define SKILL_ACROBATICS      	800
@@ -163,9 +158,9 @@
 //#define SKILL_PERSUASION        810
 //#define SKILL_RIDE 	   	812
 //#define SKILL_SURVIVAL     	813
-#define SKILL_CRAFTING_THEORY   817
-#define SKILL_TINKERING         820
-#define SKILL_HARVESTING        822
+#define SKILL_CRAFTING_THEORY   165
+#define SKILL_TINKERING         166
+#define SKILL_HARVESTING        177
 
 
 /* New skills may be added here up to MAX_SKILLS (200) */
