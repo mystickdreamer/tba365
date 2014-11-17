@@ -336,10 +336,10 @@ ACMD(do_skillset)
     i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SKILL);
     i += snprintf(help + i, sizeof(help) - i, "\r\nSpells:\r\n");
     i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SPELL);
-    if (CONFIG_ENABLE_LANGUAGES) {
+/*    if (CONFIG_ENABLE_LANGUAGES) {
       i += snprintf(help + i, sizeof(help) - i, "\r\nLanguages:\r\n");
       i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SKILL | SKTYPE_LANG);
-    }
+    }*/
     if (i >= sizeof(help))
       strcpy(help + sizeof(help) - strlen("** OVERFLOW **") - 1, "** OVERFLOW **"); /* strcpy: OK */
     page_string(ch->desc, help, TRUE);
