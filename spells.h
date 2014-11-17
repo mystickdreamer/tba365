@@ -165,6 +165,13 @@
 #define SKILL_PARRY             170
 
 
+#define SKTYPE_NONE   0
+#define SKTYPE_SPELL    (1 << 0)
+#define SKTYPE_SKILL    (1 << 1)
+#define SKTYPE_LANG   (1 << 2)
+#define SKTYPE_WEAPON   (1 << 3)
+#define SKTYPE_ART    (1 << 4)
+
 /* New skills may be added here up to MAX_SKILLS (200) */
 
 #define SKLEARN_CANT    0 /* This class can't learn this skill */
