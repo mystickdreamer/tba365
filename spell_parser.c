@@ -541,7 +541,7 @@ ACMD(do_cast) {
     skip_spaces(&s);
 
     /* spellnum = search_block(s, spells, 0); */
-    spellnum = find_skill_num(s);
+    spellnum = find_skill_num(s, SKTYPE_SPELL);
 
     if ((spellnum < 1) || (spellnum > MAX_SPELLS) || !*s) {
         send_to_char(ch, "Cast what?!?\r\n");
