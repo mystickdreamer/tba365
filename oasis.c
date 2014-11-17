@@ -145,6 +145,20 @@ void cleanup_olc(struct descriptor_data *d, byte cleanup_type)
     }
   }
 
+      /*. Check for a guild . */
+    if (OLC_GUILD(d)) {
+     switch (cleanup_type) {
+      case CLEANUP_ALL:
+       free_guild(OLC_GUILD(d));
+       break;
+      case CLEANUP_STRUCTS:
+       free(OLC_GUILD(d));
+        break;
+       default:
+        break;
+      }
+    }
+  
   /*. Check for aedit stuff -- M. Scott */
   if (OLC_ACTION(d))  {
     switch(cleanup_type)  {
