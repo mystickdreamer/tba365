@@ -264,6 +264,7 @@ struct spell_info_type {
     const char *wear_off_msg; /* Input size not limited. Originates from string constants. */
     byte can_learn_skill[NUM_CLASSES];
     int skilltype;       /* Is it a spell, skill, art, feat, or what? used as bitvector */
+    int flags;
 };
 
 /* Possible Targets:
