@@ -352,7 +352,7 @@ ACMD(do_skillset)
   }
   strcpy(helpbuf, (argument + 1));	/* strcpy: OK (MAX_INPUT_LENGTH <= MAX_STRING_LENGTH) */
   helpbuf[qend - 1] = '\0';
-  if ((skill = find_skill_num(helpbuf)) <= 0) {
+  if ((skill = find_skill_num(helpbuf, 0)) <= 0) {
     send_to_char(ch, "Unrecognized skill.\r\n");
     return;
   }
