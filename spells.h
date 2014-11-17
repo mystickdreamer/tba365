@@ -164,6 +164,8 @@
 #define SKILL_DODGE             169
 #define SKILL_PARRY             170
 
+#define SKILL_LOW_SKILL SKILL_BACKSTAB
+#define SKILL_HIGH_SKILL SKILL_PARRY
 
 #define SKTYPE_NONE   0
 #define SKTYPE_SPELL    (1 << 0)
