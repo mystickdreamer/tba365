@@ -265,6 +265,7 @@ struct spell_info_type {
     byte can_learn_skill[NUM_CLASSES];
     int skilltype;       /* Is it a spell, skill, art, feat, or what? used as bitvector */
     int flags;
+    int artisan_type;
 };
 
 /* Possible Targets:
