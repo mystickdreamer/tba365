@@ -663,6 +663,8 @@ int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int dclock, in
 #define DOOR_KEY(ch, obj, door)	((obj) ? (GET_OBJ_VAL(obj, 2)) : \
     (EXIT(ch, door)->key))
 
+
+#define DOOR_DCLOCK(ch, obj, door)	((obj) ? (GET_OBJ_VAL(obj, VAL_DOOR_DCLOCK)) : EXIT(ch, door)->dclock)
 ACMD(do_gen_door)
 {
   int door = -1;

@@ -1936,6 +1936,13 @@ char *parse_object(FILE *obj_f, int nr) {
         if (GET_OBJ_WEIGHT(obj_proto + i) < GET_OBJ_VAL(obj_proto + i, 1) && CAN_WEAR(obj_proto + i, ITEM_WEAR_TAKE))
             GET_OBJ_WEIGHT(obj_proto + i) = GET_OBJ_VAL(obj_proto + i, 1) + 5;
     }
+    
+      /*if ((GET_OBJ_TYPE(obj_proto + i) == ITEM_PORTAL || \
+       GET_OBJ_TYPE(obj_proto + i) == ITEM_HATCH) && \*/
+      if (!GET_OBJ_VAL(obj_proto + i, VAL_DOOR_DCLOCK) || \
+        !GET_OBJ_VAL(obj_proto + i, VAL_DOOR_DCHIDE))) {
+    GET_OBJ_VAL(obj_proto + i, VAL_DOOR_DCLOCK) = 20;
+    GET_OBJ_VAL(obj_proto + i, VAL_DOOR_DCHIDE) = 20;
 
     /* extra descriptions and affect fields */
     for (j = 0; j < MAX_OBJ_AFFECT; j++) {

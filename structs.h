@@ -864,6 +864,11 @@ struct room_data {
     struct list_data * events;
 };
 
+
+#define VAL_DOOR_DCLOCK               0
+#define VAL_DOOR_DCHIDE               1
+
+
 /* char-related structures */
 
 /** Memory structure used by NPCs to remember specific PCs. */
