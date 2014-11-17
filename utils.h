@@ -386,6 +386,12 @@ do                                                              \
 
 #define MAX_SKILL_LVL  1000
 
+#define GET_ARTISAN_EXP(ch) (ch->player_specials->artisan_experience)
+
+#define GET_ARTISAN_TYPE(ch)	(ch->artisan_type)
+#define GET_ARTISAN_LEVEL(ch)	(GET_CLASS_RANKS(ch, CLASS_ARTISAN))
+
+
 /** References the routine element for a spell. Currently unused. */
 #define SPELL_ROUTINES(spl)	(spell_info[spl].routines)
 
