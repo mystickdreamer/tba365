@@ -29,6 +29,14 @@
 #include "modify.h"      /* for smash_tilde */
 #include "quest.h"
 
+
+/* Adjustment for top_guild change between bpl15 and bpl16. */
+#if _CIRCLEMUD < CIRCLEMUD_VERSION(3,0,16)
+int top_guild_offset = 1;
+#else
+int top_guild_offset = 0;
+#endif
+
 /* Global variables defined here, used elsewhere */
 /* List of zones to be saved. */
 struct save_list_data *save_list;
