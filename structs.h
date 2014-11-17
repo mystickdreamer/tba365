@@ -556,7 +556,16 @@
 //#define LVL_GRGOD   33  /**< Level of Greater Gods */
 //#define LVL_GOD     32  /**< Level of Gods */
 //#define LVL_IMMORT	31  /**< Level of Immortals */
-
+#define ARTISAN_TYPE_UNDEFINED  0
+#define ARTISAN_TYPE_SMITH      1
+#define ARTISAN_TYPE_COOK     2
+#define ARTISAN_TYPE_WOODSMAN   3
+#define ARTISAN_TYPE_ARMORAMITH  4
+#define ARTISAN_TYPE_WEAPONSMITH 5
+#define ARTISAN_TYPE_TINKER  6
+#define ARTISAN_TYPE_JEWELER   7
+#define ARTISAN_TYPE_TAILOR     8
+#define ARTISAN_TYPE_ALL        9
 /*
  * ADMLVL_IMPL should always be the HIGHEST possible admin level, and
  * ADMLVL_IMMORT should always be the LOWEST immortal level.
