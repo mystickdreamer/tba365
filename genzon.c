@@ -138,6 +138,19 @@ zone_rnum create_new_zone(zone_vnum vzone_num, room_vnum bottom, room_vnum top, 
   fprintf(fp, "$~\n");
   fclose(fp);
 
+  
+   /*
+   * Create Gld file .
+   */
+  snprintf(buf, sizeof(buf), "%s/%i.gld", GLD_PREFIX, vzone_num);
+  if (!(fp = fopen(buf, "w"))) {
+    mudlog(BRF, ADMLVL_IMPL, TRUE, "SYSERR: OLC: Can't write new guild file");
+    *error = "Could not write guild file.\r\n";
+    return NOWHERE;
+  }
+  fprintf(fp, "$~\n");
+  fclose(fp);
+  
   /* Create the quests file */
   snprintf(buf, sizeof(buf), "%s/%d.qst", QST_PREFIX, vzone_num);
   if (!(fp = fopen(buf, "w"))) {
