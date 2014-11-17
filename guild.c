@@ -45,7 +45,7 @@ ACMD(do_say);
 int art_level_exp(int level);
 int level_exp(int level, int race);
 void gain_level(struct char_data *ch, int whichclass);
-void advance_level(struct char_data *ch, int whichclass);
+void advance_level(struct char_data *ch);
 int feat_is_available(struct char_data *ch, int featnum, int iarg, char *sarg);
 int find_feat_num(char *name);
 int get_skill_mod(struct char_data *ch, int skillnum);
