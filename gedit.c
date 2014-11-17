@@ -28,7 +28,7 @@
 #include "interpreter.h"
 #include "gengld.h"
 
-SVNHEADER("$Id: gedit.c 55 2009-03-20 17:58:56Z pladow $");
+//SVNHEADER("$Id: gedit.c 55 2009-03-20 17:58:56Z pladow $");
 
 
 /*-------------------------------------------------------------------*/
