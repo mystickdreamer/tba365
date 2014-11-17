@@ -842,6 +842,8 @@ struct room_direction_data {
     sh_int /*bitvector_t*/ exit_info; /**< Door, and what type? */
     obj_vnum key; /**< Key's vnum (-1 for no key) */
     room_rnum to_room; /**< Where direction leads, or NOWHERE if not defined */
+    ubyte dclock; /* DC to pick the lock      */
+    ubyte dchide; /* DC to find hidden      */
 };
 
 /** The Room Structure. */
@@ -927,8 +929,8 @@ struct char_player_data {
     struct time_data time; /**< PC AGE in days */
     ubyte weight; /**< PC / NPC weight */
     ubyte height; /**< PC / NPC height */
-    byte race;                    /* PC/NPC Race*/
-    
+    byte race; /* PC/NPC Race*/
+
 
 };
 
@@ -1102,7 +1104,7 @@ struct char_data {
     long pref; /**< unique session id */
 
     struct list_data * events;
-    
+
     byte skills[SKILL_TABLE_SIZE + 1];
 };
 
@@ -1331,7 +1333,7 @@ struct game_data {
     int level_can_shout; /**< Level player must be to shout.   */
     int holler_move_cost; /**< Cost to holler in move points.    */
     int tunnel_size; /**< Number of people allowed in a tunnel.*/
-    int max_exp_gain; /**< Maximum experience gainable per kill.*/  
+    int max_exp_gain; /**< Maximum experience gainable per kill.*/
     int max_exp_loss; /**< Maximum experience losable per death.*/
     int max_npc_corpse_time; /**< Num tics before NPC corpses decompose*/
     int max_pc_corpse_time; /**< Num tics before PC corpse decomposes.*/
