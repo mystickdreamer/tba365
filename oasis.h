@@ -291,6 +291,7 @@ extern const char *nrm, *grn, *cyn, *yel;
 #define MEDIT_BREATH                    38
 #define MEDIT_SPELL                     39
 #define MEDIT_PER                       40
+#define GEDIT_SELECT_SKILLS             41
 
 /* Submodes of SEDIT connectedness. */
 #define SEDIT_MAIN_MENU              	0
@@ -462,6 +463,8 @@ ACMD(do_tedit);
 
 /* public functions from qedit.c */
 ACMD(do_oasis_qedit);
+
+#define CONTEXT_GEDIT_SELECT_SKILLS             137
 
 /* public functions from msgedit.c */
 ACMD(do_msgedit);
