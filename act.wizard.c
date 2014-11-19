@@ -140,6 +140,59 @@ ACMD(do_send) {
         send_to_char(ch, "You send '%s' to %s.\r\n", buf, GET_NAME(vict));
 }
 
+
+
+void reset_artisan_experience(struct char_data *vict) {
+  int i = 0;
+  long exp_reimb = 0;
+
+  for (i = SKILL_LOW_SKILL; i <= SKILL_HIGH_SKILL; i++) {
+    if (spell_info[i].artisan_type > 0) {
+      if (GET_SKILL_RANKS(vict, i) > 0) {
+        exp_reimb = 0;
+        while (GET_SKILL_RANKS(vict, i) > 2) {
+          GET_ARTISAN_EXP(vict) += art_level_exp(GET_SKILL(vict, i));
+          exp_reimb += art_level_exp(GET_SKILL(vict, i));
+          GET_SKILL_RANKS(vict, i)--;
+        }
+        if (exp_reimb > 0)
+          send_to_char(vict, "You have been reimbursed %ld artisan experience for the %s skill.\r\n", exp_reimb, spell_info[i].name);
+      }
+    }
+  }
+  GET_ARTISAN_TYPE(vict) = 0;
+}
+
+ACMD(do_resetartisan)
+{
+
+  char arg[200];
+
+  one_argument(argument, arg);
+
+  if (!*arg) {
+    send_to_char(ch, "Whom do you wish to reset artisan experience for?\r\n");
+    return;
+  }
+
+  struct char_data *vict;
+
+  if (!(vict = get_char_vis(ch, arg, NULL, FIND_CHAR_WORLD))) {
+    send_to_char(ch, "%s", CONFIG_NOPERSON);
+    return;
+  }
+
+  if (IS_NPC(vict)) {
+    send_to_char(ch, "That person is an npc.\r\n");
+    return;
+  }
+
+  reset_artisan_experience(vict);
+
+  send_to_char(ch, "%s has had their artisan experience reset.\r\n", GET_NAME(vict));
+
+}
+
 /* take a string, and return an rnum.. used for goto, at, etc.  -je 4/6/93 */
 room_rnum find_target_room(struct char_data *ch, char *rawroomstr) {
     room_rnum location = NOWHERE;
