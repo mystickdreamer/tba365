@@ -25,6 +25,8 @@
 #include "constants.h"
 #include "race.h"
 
+//external globals
+extern int spell_sort_info[SKILL_TABLE_SIZE + 1];
 
 //external functions
 int get_skill_value(struct char_data *ch, int skillnum);
