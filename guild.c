@@ -465,7 +465,7 @@ int is_guild_ok_char(struct char_data * keeper, struct char_data * ch, int guild
 
     if (IS_NPC(ch))
         return (FALSE);
-
+/*
     if ((IS_WIZARD(ch) && NOTRAIN_WIZARD(guild_nr)) ||
             (IS_CLERIC(ch) && NOTRAIN_CLERIC(guild_nr)) ||
             (IS_ROGUE(ch) && NOTRAIN_ROGUE(guild_nr)) ||
@@ -487,18 +487,13 @@ int is_guild_ok_char(struct char_data * keeper, struct char_data * ch, int guild
         do_tell(keeper, buf, cmd_tell, 0);
         return (FALSE);
     }
-
+*/
     if ((IS_HUMAN(ch) && NOTRAIN_HUMAN(guild_nr)) ||
             (IS_ELF(ch) && NOTRAIN_ELF(guild_nr)) ||
             (IS_GNOME(ch) && NOTRAIN_GNOME(guild_nr)) ||
             (IS_DWARF(ch) && NOTRAIN_DWARF(guild_nr)) ||
             (IS_HALF_ELF(ch) && NOTRAIN_HALF_ELF(guild_nr)) ||
-#if defined(CAMPAIGN_FORGOTTEN_REALMS)
             (IS_HALFLING(ch) && NOTRAIN_HALFLING(guild_nr)) ||
-#endif
-#if defined(CAMPAIGN_DRAGONLANCE)
-            (IS_KENDER(ch) && NOTRAIN_HALFLING(guild_nr)) ||
-#endif
             (IS_DROW_ELF(ch) && NOTRAIN_DROW_ELF(guild_nr)) ||
             (IS_ANIMAL(ch) && NOTRAIN_ANIMAL(guild_nr)) ||
             (IS_CONSTRUCT(ch) && NOTRAIN_CONSTRUCT(guild_nr)) ||
