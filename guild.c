@@ -1397,13 +1397,13 @@ int do_handle_learn(struct char_data *keeper, int guild_nr, struct char_data *ch
 
     return 1;
 }
-*/
+
 ACMD(do_gain) {
 
     handle_gain(NULL, 0, ch, argument);
 
 }
-
+*/
 ACMD(do_practice_skills) {
 
     handle_practice(NULL, 0, ch, argument);
