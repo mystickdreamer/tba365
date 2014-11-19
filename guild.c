@@ -1419,7 +1419,7 @@ SPECIAL(guild) {
         void (*func)(struct char_data *, int, struct char_data *, char *);
     } guild_cmd_tab[] = {
         { "practice", handle_practice},
-        { "gain", handle_gain},
+//        { "gain", handle_gain},
 //        { "train", handle_train},
         { "learn", handle_learn},
         { NULL, NULL}
