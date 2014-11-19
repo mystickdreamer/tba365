@@ -909,7 +909,7 @@ void handle_gain(struct char_data *keeper, int guild_nr, struct char_data *ch, c
         send_to_char(ch, "You must use the levelup comnmand to gain levels now, except with the artisan class.\r\n");
         return;
     }*/
-    class_ok = class_ok_general(ch, whichclass);
+/*    class_ok = class_ok_general(ch, whichclass);
     if (!class_ok) {
         send_to_char(ch, "You cannot progress in that class.\r\n");
         return;
@@ -928,6 +928,7 @@ void handle_gain(struct char_data *keeper, int guild_nr, struct char_data *ch, c
     } else if (class_ok == -5) {
         send_to_char(ch, "You are only allowed a maximum of 3 classes total.\r\n");
         return;
+        */
     } /*else if (GET_PRACTICES(ch, GET_CLASS(ch)) > 0 && GET_ADMLEVEL(ch) < 1 && whichclass != GET_CLASS(ch)) {
         send_to_char(ch, "You have to spend your skill points before you can gain another level.\r\n");
         return;
