@@ -1738,3 +1738,26 @@ char * convert_from_tabs(char * string)
   parse_tab(buf);
   return(buf);
 }
+
+double get_artisan_exp(struct char_data *ch)
+{
+  double exp = 0;
+  int i = 0, j = 0;
+
+
+  for (i = 0; i < SKILL_TABLE_SIZE + 1; i++) {
+    if ((spell_info[spell_sort_info[i]].skilltype == SKTYPE_SKILL && spell_sort_info[i] >= SKILL_LOW_SKILL && spell_sort_info[i] <=
+        SKILL_HIGH_SKILL) && IS_SET(spell_info[spell_sort_info[i]].flags, SKFLAG_CRAFT) && GET_SKILL(ch, spell_sort_info[i]) > 0) {
+      for (j = 1; j <= MAX(0, GET_SKILL(ch, spell_sort_info[i])); j++) 
+        exp += art_level_exp(j);
+    }
+  }
+
+  for (i = 2; i <= GET_CLASS_RANKS(ch, CLASS_ARTISAN); i++)
+    exp += art_level_exp(j);
+
+  exp += GET_ARTISAN_EXP(ch);
+
+  return exp;
+}
+
