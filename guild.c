@@ -880,21 +880,16 @@ void handle_gain(struct char_data *keeper, int guild_nr, struct char_data *ch, c
         level = 0;
 
     skip_spaces(&argument);
-    if (CONFIG_ALLOW_MULTICLASS) {
+/*    if (CONFIG_ALLOW_MULTICLASS) {
         if (!*argument) {
             send_to_char(ch, "You must specify a class you want to train.  Type gain classes for a list\r\n");
             return;
-        }
+        }*/
         if (is_abbrev(argument, "classes")) {
-            send_to_char(ch, "%-25s %-10s\r\n------------------------- ----------\r\n", "Class Name", "Prestige?");
+            send_to_char(ch, "%-25s\r\n------------------------- ----------\r\n", "Class Name");
             for (i = 0; i < NUM_CLASSES; i++) {
-                if (CONFIG_CAMPAIGN == CAMPAIGN_FORGOTTEN_REALMS) {
-                    if (class_in_game_fr[i])
-                        send_to_char(ch, "%-25s %-10s\r\n", class_names_fr[i], prestige_classes_fr[i] ? "Yes" : "No");
-                } else {
-                    if (class_in_game_dl_aol[i])
-                        send_to_char(ch, "%-25s %-10s\r\n", class_names_dl_aol[i], prestige_classes_dl_aol[i] ? "Yes" : "No");
-                }
+                        send_to_char(ch, "%-25s\r\n", pc_class_types[i]);
+                 
             }
             return;
         }
