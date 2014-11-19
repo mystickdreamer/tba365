@@ -417,10 +417,11 @@ int save_shops(zone_rnum zone_num)
 	      S_BITVECTOR(shop),
 	      S_KEEPER(shop) == NOBODY ? -1 : mob_index[S_KEEPER(shop)].vnum,
 	      //S_NOTRADE(shop)
-	      );
-        for (j = 0; j < SW_ARRAY_MAX; j++)
+              for (j = 0; j < SW_ARRAY_MAX; j++)
         fprintf(shop_file, "%s%d", j ? " " : "", S_NOTRADE(shop)[j]);
-      fprintf(shop_file, "\n");
+      fprintf(shop_file, "\n")
+	      );
+        ;
       //  fputs(convert_from_tabs(buf), shop_file);
 
       /* Save the rooms. */
