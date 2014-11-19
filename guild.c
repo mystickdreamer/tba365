@@ -894,7 +894,7 @@ void handle_gain(struct char_data *keeper, int guild_nr, struct char_data *ch, c
             return;
         }
         whichclass = GET_CLASS(ch);
- 
+/* 
     if (whichclass == CLASS_ARTISAN) {
         if (GET_CLASS_RANKS(ch, CLASS_ARTISAN) > 0 && GET_ARTISAN_EXP(ch) < art_level_exp(GET_CLASS_RANKS(ch, CLASS_ARTISAN) + 1)) {
             send_to_char(ch, "You do not have enough artisan experience to gain another level in artisan.\r\n");
@@ -908,7 +908,7 @@ void handle_gain(struct char_data *keeper, int guild_nr, struct char_data *ch, c
     } else {
         send_to_char(ch, "You must use the levelup comnmand to gain levels now, except with the artisan class.\r\n");
         return;
-    }
+    }*/
     class_ok = class_ok_general(ch, whichclass);
     if (!class_ok) {
         send_to_char(ch, "You cannot progress in that class.\r\n");
