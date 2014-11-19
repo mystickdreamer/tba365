@@ -346,7 +346,7 @@ static void sedit_no_trade_menu(struct descriptor_data *d)
     write_to_output(d, "%s%2d%s) %-20.20s   %s", grn, i + 1, nrm, trade_letters[i],
 		!(++count % 2) ? "\r\n" : "");
   }
-  sprintbit(S_NOTRADE(OLC_SHOP(d)), trade_letters, bits, sizeof(bits));
+  sprintbit(S_NOTRADE(OLC_SHOP(d)), trade_letters, sizeof(bits), bits);
   write_to_output(d, "\r\nCurrently won't trade with: %s%s%s\r\n"
 	  "Enter choice : ", cyn, bits, nrm);
   OLC_MODE(d) = SEDIT_NOTRADE;
