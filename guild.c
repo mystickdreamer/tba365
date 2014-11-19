@@ -771,7 +771,7 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
         }
         send_to_char(ch, "You practice for a while...\r\n");
         GET_ARTISAN_EXP(ch) = GET_ARTISAN_EXP(ch) - (art_level_exp(GET_SKILL(ch, skill_num) + 1));
-        SET_SKILL(ch, skill_num, GET_SKILL_BASE(ch, skill_num) + 1);
+        SET_SKILL(ch, skill_num, GET_SKILL_RANKS(ch, skill_num) + 1);
         return;
     }
 
@@ -793,9 +793,9 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
             case SKLEARN_CANT:
                 send_to_char(ch, "You cannot learn that.\r\n");
                 return;
-            case SKLEARN_CROSSCLASS:
-                highest = highest_skill_value(GET_LEVEL(ch), SKLEARN_CROSSCLASS);
-                break;
+           // case SKLEARN_CROSSCLASS:
+           //     highest = highest_skill_value(GET_LEVEL(ch), SKLEARN_CROSSCLASS);
+           //     break;
             case SKLEARN_CLASS:
                 highest = highest_skill_value(GET_LEVEL(ch), learntype);
                 break;
@@ -804,8 +804,8 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
                 send_to_char(ch, "You can't learn that.\r\n");
                 return;
         }
-        if (spell_info[skill_num].can_learn_skill[GET_CLASS(ch)] == SKLEARN_CLASS ||
-                HAS_FEAT(ch, FEAT_ABLE_LEARNER))
+        if (spell_info[skill_num].can_learn_skill[GET_CLASS(ch)] == SKLEARN_CLASS)// ||
+                //HAS_FEAT(ch, FEAT_ABLE_LEARNER))
             pointcost = 1;
         else
             pointcost = 2;
