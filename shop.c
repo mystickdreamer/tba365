@@ -128,7 +128,7 @@ static int is_ok_char(struct char_data *keeper, struct char_data *ch, int shop_n
     snprintf(buf, sizeof(buf), "%s %s", GET_NAME(ch), MSG_NO_SELL_ALIGN);
     do_tell(keeper, buf, cmd_tell, 0);
     return (FALSE);
-  }
+  } 
   if (IS_NPC(ch))
     return (TRUE);
 
