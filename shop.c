@@ -1294,7 +1294,7 @@ char *customer_string(int shop_nr, int detailed)
         len += nlen;
       }
     } else {
-      buf[len++] = (IS_SET_AR(flag, SHOP_TRADE_WITH(shop_nr)) ? '_' : *trade_letters[sindex]);
+      buf[len++] = (IS_SET_AR(SHOP_TRADE_WITH(shop_nr), flag) ? '_' : *trade_letters[sindex]);
       buf[len] = '\0';
 
       if (len >= sizeof(buf))
