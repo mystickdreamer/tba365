@@ -27,7 +27,7 @@
    void name(struct char_data *ch, char *argument, int cmd, int subcmd)
 
 /* external declarations and prototypes */
-
+extern const char *pc_class_types[];
 /** direct all log() references to basic_mud_log() function. */
 #define log			basic_mud_log
 

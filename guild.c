@@ -893,13 +893,8 @@ void handle_gain(struct char_data *keeper, int guild_nr, struct char_data *ch, c
             }
             return;
         }
-        if ((whichclass = search_block(argument, (CONFIG_CAMPAIGN == CAMPAIGN_FORGOTTEN_REALMS ? class_names_fr : class_names_dl_aol), FALSE)) < 0) {
-            send_to_char(ch, "That is not a class.\r\n");
-            return;
-        }
-    } else {
         whichclass = GET_CLASS(ch);
-    }
+ 
     if (whichclass == CLASS_ARTISAN) {
         if (GET_CLASS_RANKS(ch, CLASS_ARTISAN) > 0 && GET_ARTISAN_EXP(ch) < art_level_exp(GET_CLASS_RANKS(ch, CLASS_ARTISAN) + 1)) {
             send_to_char(ch, "You do not have enough artisan experience to gain another level in artisan.\r\n");
