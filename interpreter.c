@@ -63,6 +63,7 @@ struct command_info *complete_cmd_info;
 
 //external functions
 void reset_artisan_experience(struct char_data *vict);
+void do_handle_learn(struct char_data *keeper, int guild_nr, struct char_data *ch, char *argument, int manual);
 
 
 /* This is the Master Command List. You can put new commands in, take commands
