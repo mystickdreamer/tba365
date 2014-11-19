@@ -871,20 +871,20 @@ void handle_train(struct char_data *keeper, int guild_nr, struct char_data *ch, 
     return;
 }
 */
-void handle_gain(struct char_data *keeper, int guild_nr, struct char_data *ch, char *argument) {
+/*void handle_gain(struct char_data *keeper, int guild_nr, struct char_data *ch, char *argument) {
     int whichclass;
     int level = GET_LEVEL(ch);
-    int i = 0, class_ok;
+    int i = 0;//, class_ok;
 
     if (GET_CLASS_LEVEL(ch) == 0)
         level = 0;
 
     skip_spaces(&argument);
-/*    if (CONFIG_ALLOW_MULTICLASS) {
+    if (CONFIG_ALLOW_MULTICLASS) {
         if (!*argument) {
             send_to_char(ch, "You must specify a class you want to train.  Type gain classes for a list\r\n");
             return;
-        }*/
+        }
         if (is_abbrev(argument, "classes")) {
             send_to_char(ch, "%-25s\r\n------------------------- ----------\r\n", "Class Name");
             for (i = 0; i < NUM_CLASSES; i++) {
@@ -894,7 +894,7 @@ void handle_gain(struct char_data *keeper, int guild_nr, struct char_data *ch, c
             return;
         }
         whichclass = GET_CLASS(ch);
-/* 
+
     if (whichclass == CLASS_ARTISAN) {
         if (GET_CLASS_RANKS(ch, CLASS_ARTISAN) > 0 && GET_ARTISAN_EXP(ch) < art_level_exp(GET_CLASS_RANKS(ch, CLASS_ARTISAN) + 1)) {
             send_to_char(ch, "You do not have enough artisan experience to gain another level in artisan.\r\n");
@@ -933,14 +933,14 @@ void handle_gain(struct char_data *keeper, int guild_nr, struct char_data *ch, c
         send_to_char(ch, "You have to spend your skill points before you can gain another level.\r\n");
         return;
     }*/
-    if (level == 0 || (level < CONFIG_LEVEL_CAP && GET_EXP(ch) >= level_exp(GET_CLASS_LEVEL(ch) + 1, GET_REAL_RACE(ch)))) {
-        gain_level(ch, whichclass);
-        GET_LEVEL_STAGE(ch) = 0;
-    } else {
-        send_to_char(ch, "You are not yet ready for further advancement.\r\n");
-    }
-    return;
-}
+//    if (level == 0 || (level < CONFIG_LEVEL_CAP && GET_EXP(ch) >= level_exp(GET_CLASS_LEVEL(ch) + 1, GET_REAL_RACE(ch)))) {
+//        gain_level(ch, whichclass);
+//        GET_LEVEL_STAGE(ch) = 0;
+//    } else {
+//        send_to_char(ch, "You are not yet ready for further advancement.\r\n");
+//    }
+//    return;
+//}
 
 #define FEAT_TYPE_NORMAL		1
 #define FEAT_TYPE_NORMAL_CLASS		2
