@@ -26,6 +26,7 @@
 #include "spells.h"
 #include "screen.h"
 #include "gengld.h"
+#include "act.h"
 //#include "feats.h"
 
 
