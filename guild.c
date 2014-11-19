@@ -809,7 +809,7 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
             pointcost = 1;
         else
             pointcost = 2;
-        /*if (GET_PRACTICES(ch, GET_CLASS(ch)) >= pointcost) { */
+        /*if (GET_PRACTICES(ch, GET_CLASS(ch)) >= pointcost) {*/ 
             if (GET_SKILL_RANKS(ch, skill_num) >= highest) {
                 send_to_char(ch, "You cannot increase that skill again until you progress further.\r\n");
                 return;
@@ -818,11 +818,10 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
                 SET_SKILL(ch, skill_num, GET_SKILL_RANKS(ch, skill_num) + 1);
             //    GET_PRACTICES(ch, GET_CLASS(ch)) -= pointcost;
             }
-        //} else {
-            else {
-            send_to_char(ch, "You need %d skill point%s to increase your skill.\r\n",
-                    pointcost, (pointcost == 1) ? "" : "s");
-        }
+       // } else {
+        //    send_to_char(ch, "You need %d skill point%s to increase your skill.\r\n",
+        //            pointcost, (pointcost == 1) ? "" : "s");
+        //}
     } else {
         send_to_char(ch, "You can't learn that.\r\n");
     }
