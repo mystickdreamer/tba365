@@ -1372,6 +1372,8 @@ struct game_data {
     char *OK; /**< When player receives 'Okay.' text.    */
     char *NOPERSON; /**< 'No one by that name here.'   */
     char *NOEFFECT; /**< 'Nothing seems to happen.'            */
+    
+      sbyte enable_languages;   /* Enable spoken languages              */
 };
 
 /** The rent and crashsave options. */
