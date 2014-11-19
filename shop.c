@@ -75,7 +75,6 @@ static struct obj_data *get_slide_obj_vis(struct char_data *ch, char *name, stru
 static char *customer_string(int shop_nr, int detailed);
 static void list_all_shops(struct char_data *ch);
 static void list_detailed_shop(struct char_data *ch, int shop_nr);
-//static 
 int is_ok_char(struct char_data *keeper, struct char_data *ch, int shop_nr);
 static int is_open(struct char_data *keeper, int shop_nr, int msg);
 static int is_ok(struct char_data *keeper, struct char_data *ch, int shop_nr);
