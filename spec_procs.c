@@ -95,7 +95,7 @@ const char *prac_types[] = {
 #define MINGAIN(ch) (prac_params[MIN_PER_PRAC][(int)GET_CLASS(ch)])
 #define MAXGAIN(ch) (prac_params[MAX_PER_PRAC][(int)GET_CLASS(ch)])
 #define SPLSKL(ch) (prac_types[prac_params[PRAC_TYPE][(int)GET_CLASS(ch)]])
-
+/*
 void list_skills(struct char_data *ch)
 {
   const char *overflow = "\r\n**OVERFLOW**\r\n";
@@ -117,10 +117,10 @@ void list_skills(struct char_data *ch)
     }
   }
   if (len >= sizeof(buf2))
-    strcpy(buf2 + sizeof(buf2) - strlen(overflow) - 1, overflow); /* strcpy: OK */
-
+    strcpy(buf2 + sizeof(buf2) - strlen(overflow) - 1, overflow); *//* strcpy: OK */
+/*
   page_string(ch->desc, buf2, TRUE);
-}
+}*/
 /*
 SPECIAL(guild)
 {
