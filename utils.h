@@ -635,6 +635,10 @@ do                                                              \
 /** The type of quest ch is currently participating in. */
 #define GET_QUEST_TYPE(ch)      (real_quest(GET_QUEST((ch))) != NOTHING ? aquest_table[real_quest(GET_QUEST((ch)))].type : AQ_UNDEFINED )
 
+#define GET_CRAFTING_TYPE(ch)   (ch->player_specials->crafting_type)
+#define GET_CRAFTING_TICKS(ch)  (ch->player_specials->crafting_ticks)
+#define GET_CRAFTING_OBJ(ch) (ch->player_specials->crafting_object)
+#define GET_CRAFTING_REPEAT(ch) (ch->crafting_repeat)
 
 #define CONFIG_ENABLE_LANGUAGES	config_info.play.enable_languages
 /** The current skill level of ch for skill i. */
