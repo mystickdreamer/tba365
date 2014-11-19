@@ -604,7 +604,7 @@ void what_does_guild_know(int guild_nr, struct char_data * ch) {
     int i;
     int count = 0;
 
-    send_to_char(ch, "\r\n@WSkill Points: @Y%d@n\r\n\r\n", GET_PRACTICES(ch, GET_CLASS(ch)));
+ //   send_to_char(ch, "\r\n@WSkill Points: @Y%d@n\r\n\r\n", GET_PRACTICES(ch, GET_CLASS(ch)));
 
     send_to_char(ch, "\r\n@WClass Skills:@n\r\n\r\n");
 
@@ -624,7 +624,7 @@ void what_does_guild_know(int guild_nr, struct char_data * ch) {
     if (count % 2 == 1)
         send_to_char(ch, "\r\n");
     send_to_char(ch, "\r\n");
-
+/*
     send_to_char(ch, "@WCross-Class Skills:@n\r\n\r\n");
 
     for (i = 0, count = 0; i < SKILL_TABLE_SIZE + 1; i++) {
@@ -642,7 +642,7 @@ void what_does_guild_know(int guild_nr, struct char_data * ch) {
     if (count % 2 == 1)
         send_to_char(ch, "\r\n");
     send_to_char(ch, "\r\n");
-
+*/
     send_to_char(ch, "@WLanguages:@n (@Wbold white@n if known)\r\n\r\n");
 
     for (i = 0, count = 0; i < SKILL_TABLE_SIZE + 1; i++) {
