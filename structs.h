@@ -605,6 +605,9 @@
 #define NUM_ADMFLAGS            19
 
 
+#define CONFIG_ENABLE_LANGUAGES	config_info.play.enable_languages
+
+
 /* Level of the 'freeze' command */
 #define ADMLVL_FREEZE ADMLVL_GRGOD
 
