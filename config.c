@@ -267,6 +267,13 @@ int nameserver_is_slow = NO;
 /* Will changes save automaticaly in OLC? */
 int auto_save_olc = YES;
 
+
+/*
+ * Do you want to enable different spoken languages? Set to YES and
+ * you will have different races speaking in different languages.
+ */
+int enable_languages = YES;
+
 /* if you wish to enable Aedit, set this to YES. This will make the mud look
  * for a file called socials.new, which is in a different format than the
  * stock socials file. */
