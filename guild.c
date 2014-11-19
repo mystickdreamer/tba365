@@ -490,26 +490,26 @@ int is_guild_ok_char(struct char_data * keeper, struct char_data * ch, int guild
 */
     if ((IS_HUMAN(ch) && NOTRAIN_HUMAN(guild_nr)) ||
             (IS_ELF(ch) && NOTRAIN_ELF(guild_nr)) ||
-            (IS_GNOME(ch) && NOTRAIN_GNOME(guild_nr)) ||
-            (IS_DWARF(ch) && NOTRAIN_DWARF(guild_nr)) ||
-            (IS_HALF_ELF(ch) && NOTRAIN_HALF_ELF(guild_nr)) ||
-            (IS_HALFLING(ch) && NOTRAIN_HALFLING(guild_nr)) ||
-            (IS_DROW_ELF(ch) && NOTRAIN_DROW_ELF(guild_nr)) ||
-            (IS_ANIMAL(ch) && NOTRAIN_ANIMAL(guild_nr)) ||
-            (IS_CONSTRUCT(ch) && NOTRAIN_CONSTRUCT(guild_nr)) ||
-            (IS_DEMON(ch) && NOTRAIN_DEMON(guild_nr)) ||
-            (IS_DRAGON(ch) && NOTRAIN_DRAGON(guild_nr)) ||
-            (IS_FISH(ch) && NOTRAIN_FISH(guild_nr)) ||
-            (IS_GIANT(ch) && NOTRAIN_GIANT(guild_nr)) ||
-            (IS_GOBLIN(ch) && NOTRAIN_GOBLIN(guild_nr)) ||
-            (IS_INSECT(ch) && NOTRAIN_INSECT(guild_nr)) ||
-            (IS_ORC(ch) && NOTRAIN_ORC(guild_nr)) ||
-            (IS_SNAKE(ch) && NOTRAIN_SNAKE(guild_nr)) ||
-            (IS_TROLL(ch) && NOTRAIN_TROLL(guild_nr)) ||
-            (IS_HALF_ORC(ch) && NOTRAIN_HALF_ORC(guild_nr)) ||
-            (IS_MINOTAUR(ch) && NOTRAIN_MINOTAUR(guild_nr)) ||
-            (IS_KOBOLD(ch) && NOTRAIN_KOBOLD(guild_nr)) ||
-            (IS_LIZARDFOLK(ch) && NOTRAIN_LIZARDFOLK(guild_nr))
+//            (IS_GNOME(ch) && NOTRAIN_GNOME(guild_nr)) ||
+            (IS_DWARF(ch) && NOTRAIN_DWARF(guild_nr))// ||
+//            (IS_HALF_ELF(ch) && NOTRAIN_HALF_ELF(guild_nr)) ||
+//            (IS_HALFLING(ch) && NOTRAIN_HALFLING(guild_nr)) ||
+//            (IS_DROW_ELF(ch) && NOTRAIN_DROW_ELF(guild_nr)) ||
+//            (IS_ANIMAL(ch) && NOTRAIN_ANIMAL(guild_nr)) ||
+//            (IS_CONSTRUCT(ch) && NOTRAIN_CONSTRUCT(guild_nr)) ||
+//            (IS_DEMON(ch) && NOTRAIN_DEMON(guild_nr)) ||
+//            (IS_DRAGON(ch) && NOTRAIN_DRAGON(guild_nr)) ||
+//            (IS_FISH(ch) && NOTRAIN_FISH(guild_nr)) ||
+//            (IS_GIANT(ch) && NOTRAIN_GIANT(guild_nr)) ||
+//            (IS_GOBLIN(ch) && NOTRAIN_GOBLIN(guild_nr)) ||
+//            (IS_INSECT(ch) && NOTRAIN_INSECT(guild_nr)) ||
+//            (IS_ORC(ch) && NOTRAIN_ORC(guild_nr)) ||
+//            (IS_SNAKE(ch) && NOTRAIN_SNAKE(guild_nr)) ||
+//            (IS_TROLL(ch) && NOTRAIN_TROLL(guild_nr)) ||
+//            (IS_HALF_ORC(ch) && NOTRAIN_HALF_ORC(guild_nr)) ||
+//            (IS_MINOTAUR(ch) && NOTRAIN_MINOTAUR(guild_nr)) ||
+//            (IS_KOBOLD(ch) && NOTRAIN_KOBOLD(guild_nr)) ||
+//            (IS_LIZARDFOLK(ch) && NOTRAIN_LIZARDFOLK(guild_nr))
             ) {
         snprintf(buf, sizeof (buf), "%s %s",
                 GET_NAME(ch), MSG_TRAINER_DISLIKE_RACE);
