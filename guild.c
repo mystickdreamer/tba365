@@ -750,10 +750,10 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
         if (spell_info[skill_num].artisan_type != GET_ARTISAN_TYPE(ch) && spell_info[skill_num].artisan_type != ARTISAN_TYPE_ALL) {
             send_to_char(ch, "You cannot practice that skill as it is outside of your area of expertise.\r\n");
             if (GET_SKILL_RANKS(ch, skill_num) > 0) {
-                while (GET_SKILL_BASE(ch, skill_num) > 2) {
+                while (GET_SKILL_RANKS(ch, skill_num) > 2) {
                     GET_ARTISAN_EXP(ch) += art_level_exp(GET_SKILL(ch, skill_num));
                     exp_reimb += art_level_exp(GET_SKILL(ch, skill_num));
-                    GET_SKILL_BASE(ch, skill_num)--;
+                    GET_SKILL_RANKS(ch, skill_num)--;
                 }
                 if (exp_reimb > 0)
                     send_to_char(ch, "You have been reimbursed %ld artisan experience.\r\n", exp_reimb);
