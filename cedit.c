@@ -631,6 +631,7 @@ static void cedit_disp_game_play_options(struct descriptor_data *d) {
             "%s6%s) Default minimap size    : %s%d\r\n"
             "%s7%s) Scripts on PC's         : %s%s\r\n"
             "%s8%s) Unattainable Level      : %s%d\r\n"
+            "%s9%s) Allow Spoken Languages  : %s%s\r\n"
             "%sQ%s) Exit To The Main Menu\r\n"
             "Enter your choice : ",
             grn, nrm, cyn, CHECK_VAR(OLC_CONFIG(d)->play.pk_allowed),
@@ -661,6 +662,7 @@ static void cedit_disp_game_play_options(struct descriptor_data *d) {
             grn, nrm, cyn, OLC_CONFIG(d)->play.minimap_size,
             grn, nrm, cyn, CHECK_VAR(OLC_CONFIG(d)->play.script_players),
             grn, nrm, cyn, OLC_CONFIG(d)->play.level_cap,
+            grn, nrm, cyn, CHECK_VAR(OLC_CONFIG(d)->play.enable_languages),
 
             grn, nrm
             );
@@ -1004,6 +1006,10 @@ void cedit_parse(struct descriptor_data *d, char *arg) {
                     write_to_output(d, "Enter the number a character cannot level to : ");
                     OLC_MODE(d) = CEDIT_LEVEL_CAP;
                     return;
+
+                case '9':
+                    TOGGLE_VAR(OLC_CONFIG(d)->play.enable_languages);
+                    break;
 
                 case 'q':
                 case 'Q':
