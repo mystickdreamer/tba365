@@ -391,6 +391,10 @@ do                                                              \
 #define GET_ARTISAN_TYPE(ch)	(ch->player.artisan_type)
 #define GET_ARTISAN_LEVEL(ch)	(GET_CLASS_RANKS(ch, CLASS_ARTISAN))
 
+#define GET_CLASS_RANKS(ch, whichclass) (IS_NPC(ch) ? ((GET_CLASS(ch) == whichclass) ? GET_LEVEL(ch) : 0 ) : \
+                                         GET_CLASS_NONEPIC(ch, whichclass) + \
+                                         GET_CLASS_EPIC(ch, whichclass))
+
 
 /** References the routine element for a spell. Currently unused. */
 #define SPELL_ROUTINES(spl)	(spell_info[spl].routines)
