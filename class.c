@@ -41,6 +41,7 @@ const char *pc_class_types[] = {
     "Cleric",
     "Thief",
     "Warrior",
+    "Artisan",
     "\n"
 };
 
