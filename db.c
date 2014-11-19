@@ -3690,6 +3690,9 @@ static int check_bitvector_names(bitvector_t bits, size_t namecount, const char 
 extern int level_cap;
 extern int enable_languages;
 
+// External Functions
+extern int sorted_skill_list[SKILL_HIGH_SKILL - SKILL_LOW_SKILL + 1];
+
 static void load_default_config(void) {
     /* This function is called only once, at boot-time. We assume config_info is
      * empty. -Welcor */
