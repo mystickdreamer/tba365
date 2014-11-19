@@ -3688,6 +3688,7 @@ static int check_bitvector_names(bitvector_t bits, size_t namecount, const char 
 
 /* External variables from config.c */
 extern int level_cap;
+extern int enable_languages;
 
 static void load_default_config(void) {
     /* This function is called only once, at boot-time. We assume config_info is
