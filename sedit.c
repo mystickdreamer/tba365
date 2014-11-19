@@ -378,7 +378,7 @@ static void sedit_disp_menu(struct descriptor_data *d)
   get_char_colors(d->character);
 
   clear_screen(d);
-  sprintbit(S_NOTRADE(shop), trade_letters, buf1, sizeof(buf1));
+  sprintbitarray(S_NOTRADE(shop), trade_letters, buf1, sizeof(buf1));
   sprintbit(S_BITVECTOR(shop), shop_bits, buf2, sizeof(buf2));
   write_to_output(d,
 	  "-- Shop Number : [%s%d%s]\r\n"
