@@ -63,7 +63,7 @@ int spell_sort_info[SKILL_TABLE_SIZE + 1];
 int top_guild = -1;
 char *guild_customer_string(int guild_nr, int detailed);
 void sort_skills(void);
-//int sorted_skill_list[SKILL_HIGH_SKILL - SKILL_LOW_SKILL + 1];
+int sorted_skill_list[SKILL_HIGH_SKILL - SKILL_LOW_SKILL + 1];
 //int sorted_language_list[SKILL_LANG_HIGH - SKILL_LANG_LOW + 1];
 
 ACMD(do_show_sorted_lists) {
