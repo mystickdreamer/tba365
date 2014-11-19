@@ -54,6 +54,7 @@ static bool perform_new_char_dupe_check(struct descriptor_data *d);
 static int sort_commands_helper(const void *a, const void *b);
 
 ACMD(do_artisan);
+ACMD(do_resetartisan);
 
 /* globals defined here, used here and elsewhere */
 int *cmd_sort_info = NULL;
