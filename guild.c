@@ -373,17 +373,12 @@ int print_skills_by_type(struct char_data *ch, char *buf, int maxsz, int sktype)
         if (known) {
             if (t & SKTYPE_LANG) {
                 nlen = snprintf(buf + len, maxsz - len, "%-30s  (%s)\r\n",
-                        spell_info[i].name, GET_SKILL_BASE(ch, i) ? "known" : "unknown");
+                        spell_info[i].name, GET_SKILL_RANKS(ch, i) ? "known" : "unknown");
             } else if (t & SKTYPE_SKILL) {
 
-                snprintf(buf2, sizeof (buf2), " (base %d + bonus %d)", GET_SKILL_BASE(ch, i),
-                        (GET_SKILL_BONUS(ch, i) + get_skill_mod(ch, i)));
-                if (spell_info[i].can_learn_skill[GET_CLASS(ch)] == SKLEARN_CROSSCLASS) {
-                    nlen = snprintf(buf + len, maxsz - len, "@W%-20s  %d%s@n\r\n",
-                            spell_info[i].name, GET_SKILL(ch, i) + GET_SKILL_BONUS(ch, i) + get_skill_mod(ch, i), buf2);
-                } else
+                snprintf(buf2, sizeof (buf2), " (rank %d)", GET_SKILL_RANKS(ch, i));
                     nlen = snprintf(buf + len, maxsz - len, "@G%-20s  %d%s@n\r\n",
-                        spell_info[i].name, GET_SKILL(ch, i) + GET_SKILL_BONUS(ch, i) + get_skill_mod(ch, i), buf2);
+                        spell_info[i].name, GET_SKILL(ch, i) + GET_SKILL_RANKS(ch, i), buf2);
 
             } else
                 nlen = snprintf(buf + len, maxsz - len, "%-20s  unknown type\r\n",
