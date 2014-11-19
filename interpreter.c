@@ -42,6 +42,7 @@
 #include "race.h"
 #include "spells.h"
 #include "guild.h"
+#include "shop.h"
 
 /* local (file scope) functions */
 static int perform_dupe_check(struct descriptor_data *d);
