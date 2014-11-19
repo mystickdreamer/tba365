@@ -1279,13 +1279,13 @@ void assign_the_shopkeepers(void)
 
 char *customer_string(int shop_nr, int detailed)
 {
-  int sindex = 0, flag = 1, nlen;
+  int sindex = 0, flag = 0, nlen;
   size_t len = 0;
   static char buf[256];
 
   while (*trade_letters[sindex] != '\n' && len + 1 < sizeof(buf)) {
     if (detailed) {
-      if (!IS_SET(flag, SHOP_TRADE_WITH(shop_nr))) {
+      if (!IS_SET(SHOP_TRADE_WITH(shop_nr), flag)) {
 	nlen = snprintf(buf + len, sizeof(buf) - len, ", %s", trade_letters[sindex]);
 
         if (len + nlen >= sizeof(buf) || nlen < 0)
