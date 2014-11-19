@@ -742,14 +742,14 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
     skill_num = find_skill_num(argument, SKTYPE_SKILL);
 
     if (!IS_SET(spell_info[skill_num].flags, SKFLAG_CRAFT)) {
-        if (GET_PRACTICES(ch, GET_CLASS(ch)) <= 0) {
+       /* if (GET_PRACTICES(ch, GET_CLASS(ch)) <= 0)*/ {
             send_to_char(ch, "You do not seem to be able to practice now.\r\n");
             return;
         }
     } else {
         if (spell_info[skill_num].artisan_type != GET_ARTISAN_TYPE(ch) && spell_info[skill_num].artisan_type != ARTISAN_TYPE_ALL) {
             send_to_char(ch, "You cannot practice that skill as it is outside of your area of expertise.\r\n");
-            if (GET_SKILL_BASE(ch, skill_num) > 0) {
+            if (GET_SKILL_RANKS(ch, skill_num) > 0) {
                 while (GET_SKILL_BASE(ch, skill_num) > 2) {
                     GET_ARTISAN_EXP(ch) += art_level_exp(GET_SKILL(ch, skill_num));
                     exp_reimb += art_level_exp(GET_SKILL(ch, skill_num));
@@ -778,8 +778,8 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
 
     /****  Does the GM know the skill the player wants to learn?  ****/
 
-    if (skill_num == SKILL_LANG_THIEVES_CANT && !IS_ROGUE(ch)) {
-        send_to_char(ch, "You need at least 1 rank in the rogue class to learn thieves cant.\r\n");
+    if (skill_num == SKILL_LANG_THIEVES_CANT && !IS_THIEF(ch)) {
+        send_to_char(ch, "You need at least 1 rank in the thief class to learn thieves cant.\r\n");
         return;
     }
 
