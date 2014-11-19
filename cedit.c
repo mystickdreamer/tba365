@@ -99,6 +99,7 @@ static void cedit_setup(struct descriptor_data *d) {
     OLC_CONFIG(d)->play.map_size = CONFIG_MAP_SIZE;
     OLC_CONFIG(d)->play.minimap_size = CONFIG_MINIMAP_SIZE;
     OLC_CONFIG(d)->play.script_players = CONFIG_SCRIPT_PLAYERS;
+    OLC_CONFIG(d)->play.enable_languages = CONFIG_ENABLE_LANGUAGES;
 
     /* Crash Saves */
     OLC_CONFIG(d)->csd.free_rent = CONFIG_FREE_RENT;
@@ -202,6 +203,7 @@ static void cedit_save_internally(struct descriptor_data *d) {
     CONFIG_MAP_SIZE = OLC_CONFIG(d)->play.map_size;
     CONFIG_MINIMAP_SIZE = OLC_CONFIG(d)->play.minimap_size;
     CONFIG_SCRIPT_PLAYERS = OLC_CONFIG(d)->play.script_players;
+    CONFIG_ENABLE_LANGUAGES = OLC_CONFIG(d)->play.enable_languages;
 
     /* Crash Saves */
     CONFIG_FREE_RENT = OLC_CONFIG(d)->csd.free_rent;
@@ -375,6 +377,8 @@ int save_config(IDXTYPE nowhere) {
             "default_minimap_size = %d\n\n", CONFIG_MINIMAP_SIZE);
     fprintf(fl, "* Do you want scripts to be attachable to players?\n"
             "script_players = %d\n\n", CONFIG_SCRIPT_PLAYERS);
+    fprintf(fl, "* Should spoken languages be used?\n"
+            "enable_languages = %d\n\n", CONFIG_ENABLE_LANGUAGES);
 
 
     strcpy(buf, CONFIG_OK);
