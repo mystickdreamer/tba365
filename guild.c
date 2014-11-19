@@ -1422,7 +1422,7 @@ SPECIAL(guild) {
         { "practice", handle_practice},
 //        { "gain", handle_gain},
 //        { "train", handle_train},
-        { "learn", handle_learn},
+//        { "learn", handle_learn},
         { NULL, NULL}
     };
 
