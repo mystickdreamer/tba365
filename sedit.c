@@ -755,7 +755,7 @@ void sedit_parse(struct descriptor_data *d, char *arg)
     break;
   case SEDIT_NOTRADE:
     if ((i = LIMIT(atoi(arg), 0, NUM_TRADERS)) > 0) {
-      TOGGLE_BIT(S_NOTRADE(OLC_SHOP(d)), 1 << (i - 1));
+      TOGGLE_BIT_AR(S_NOTRADE(OLC_SHOP(d)), 1 << (i - 1));
       sedit_no_trade_menu(d);
       return;
     }
