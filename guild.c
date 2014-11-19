@@ -1700,7 +1700,7 @@ void list_guilds(struct char_data *ch, zone_rnum rnum, guild_vnum vmin, guild_vn
                     (GM_TRAINER(i) == -1) ?
                     -1 : mob_index[GM_TRAINER(i)].vnum,
                     (GM_TRAINER(i) == -1) ?
-                    "" : mob_proto[GM_TRAINER(i)].short_descr);
+                    "" : mob_proto[GM_TRAINER(i)].player.short_descr);
 
             send_to_char(ch, "\r\n");
         }
