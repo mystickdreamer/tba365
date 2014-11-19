@@ -1056,6 +1056,7 @@ struct player_special_data {
     char *host; /**< Resolved hostname, or ip, for player. */
     int buildwalk_sector; /**< Default sector type for buildwalk */
     double artisan_experience;
+    byte crafting_type;
 };
 
 /** Special data used by NPCs, not PCs */
