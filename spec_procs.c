@@ -46,16 +46,16 @@ static int compare_spells(const void *x, const void *y)
   return strcmp(spell_info[a].name, spell_info[b].name);
 }
 
-void sort_spells(void)
-{
-  int a;
+//void sort_spells(void)
+//{
+//  int a;
 
   /* initialize array, avoiding reserved. */
-  for (a = 1; a <= MAX_SKILLS; a++)
-    spell_sort_info[a] = a;
+//  for (a = 1; a <= MAX_SKILLS; a++)
+//    spell_sort_info[a] = a;
 
-  qsort(&spell_sort_info[1], MAX_SKILLS, sizeof(int), compare_spells);
-}
+//  qsort(&spell_sort_info[1], MAX_SKILLS, sizeof(int), compare_spells);
+//}
 /*
 static const char *how_good(int percent)
 {
