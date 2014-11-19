@@ -1406,7 +1406,7 @@ static void list_detailed_shop(struct char_data *ch, int shop_nr)
     char buf1[128];
     int linelen;
 
-    if (!IS_SET(flag, SHOP_TRADE_WITH(shop_nr))){
+    if (!IS_SET_AR(flag, SHOP_TRADE_WITH(shop_nr))){
       if (sindex) {
         send_to_char(ch, ", ");
         column += 2;
