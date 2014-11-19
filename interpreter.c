@@ -41,7 +41,6 @@
 #include "mud_event.h"
 #include "race.h"
 #include "spells.h"
-#include "shops.h"
 #include "guild.h"
 
 /* local (file scope) functions */
