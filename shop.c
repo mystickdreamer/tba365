@@ -72,7 +72,7 @@ static void shopping_buy(char *arg, struct char_data *ch, struct char_data *keep
 static struct obj_data *get_purchase_obj(struct char_data *ch, char *arg, struct char_data *keeper, int shop_nr, int msg);
 static struct obj_data *get_hash_obj_vis(struct char_data *ch, char *name, struct obj_data *list);
 static struct obj_data *get_slide_obj_vis(struct char_data *ch, char *name, struct obj_data *list);
-static char *customer_string(int shop_nr, int detailed);
+char *customer_string(int shop_nr, int detailed);
 static void list_all_shops(struct char_data *ch);
 static void list_detailed_shop(struct char_data *ch, int shop_nr);
 int is_ok_char(struct char_data *keeper, struct char_data *ch, int shop_nr);
@@ -1277,7 +1277,7 @@ void assign_the_shopkeepers(void)
   }
 }
 
-static char *customer_string(int shop_nr, int detailed)
+char *customer_string(int shop_nr, int detailed)
 {
   int sindex = 0, flag = 1, nlen;
   size_t len = 0;
