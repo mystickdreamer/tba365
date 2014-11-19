@@ -28,6 +28,9 @@
 #include "modify.h"
 
 
+//External Functions
+int art_level_exp(int level);
+
 /* locally defined functions of local (file) scope */
 static int compare_spells(const void *x, const void *y);
 //static const char *how_good(int percent);
