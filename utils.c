@@ -30,6 +30,12 @@ extern int spell_sort_info[SKILL_TABLE_SIZE + 1];
 
 //external functions
 int get_skill_value(struct char_data *ch, int skillnum);
+int art_level_exp(int level);
+
+
+int art_level_exp(int level) {
+  return (level * 200) + ((level > 0) ? art_level_exp(level - 1) : 0);
+}
 
 /** Aportable random number function.
  * @param from The lower bounds of the random number.
