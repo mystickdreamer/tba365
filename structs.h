@@ -29,6 +29,9 @@
  * TRUE/FALSE aren't defined yet. */
 #define USE_AUTOEQ	1
 
+
+#define SW_ARRAY_MAX	4
+
 /* preamble */
 /** As of bpl20, it should be safe to use unsigned data types for the various
  * virtual and real number data types.  There really isn't a reason to use
