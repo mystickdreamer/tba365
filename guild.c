@@ -929,7 +929,7 @@ void handle_train(struct char_data *keeper, int guild_nr, struct char_data *ch, 
         send_to_char(ch, "You are only allowed a maximum of 3 classes total.\r\n");
         return;
         */
-    } /*else if (GET_PRACTICES(ch, GET_CLASS(ch)) > 0 && GET_ADMLEVEL(ch) < 1 && whichclass != GET_CLASS(ch)) {
+/*    } else if (GET_PRACTICES(ch, GET_CLASS(ch)) > 0 && GET_ADMLEVEL(ch) < 1 && whichclass != GET_CLASS(ch)) {
         send_to_char(ch, "You have to spend your skill points before you can gain another level.\r\n");
         return;
     }*/
@@ -951,7 +951,7 @@ void handle_learn(struct char_data *keeper, int guild_nr, struct char_data *ch, 
     int x = 0;
     x = do_handle_learn(keeper, guild_nr, ch, argument, TRUE);
 }
-
+/*
 int do_handle_learn(struct char_data *keeper, int guild_nr, struct char_data *ch, char *argument, int manual) {
     struct damreduct_type *dptr, *reduct, *temp;
     int feat_num, subval, sftype, subfeat, q = 0;
@@ -1397,7 +1397,7 @@ int do_handle_learn(struct char_data *keeper, int guild_nr, struct char_data *ch
 
     return 1;
 }
-
+*/
 ACMD(do_gain) {
 
     handle_gain(NULL, 0, ch, argument);
