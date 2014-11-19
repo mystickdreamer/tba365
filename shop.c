@@ -95,7 +95,7 @@ static void read_line(FILE *shop_f, const char *string, void *data);
 
 /* Local file scope only variables */
 int cmd_say;
-static int cmd_tell;
+int cmd_tell;
 static int cmd_emote;
 static int cmd_slap;
 static int cmd_puke;
