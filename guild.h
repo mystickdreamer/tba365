@@ -13,7 +13,7 @@ struct guild_data {
   char *not_enough_gold;         /* message when the student doesn't have enough gold */
   int minlvl;                    /* Minumum level guildmaster will train */
   int gm;                        /* GM's vnum */
-  int with_who;//[SW_ARRAY_MAX];    /* whom we dislike */
+  int with_who[SW_ARRAY_MAX];    /* whom we dislike */
   int open, close;               /*when we will train */
   SPECIAL(*func);                /* secondary spec_proc for the GM */
 };
