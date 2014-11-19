@@ -928,10 +928,10 @@ void handle_gain(struct char_data *keeper, int guild_nr, struct char_data *ch, c
     } else if (class_ok == -5) {
         send_to_char(ch, "You are only allowed a maximum of 3 classes total.\r\n");
         return;
-    } else if (GET_PRACTICES(ch, GET_CLASS(ch)) > 0 && GET_ADMLEVEL(ch) < 1 && whichclass != GET_CLASS(ch)) {
+    } /*else if (GET_PRACTICES(ch, GET_CLASS(ch)) > 0 && GET_ADMLEVEL(ch) < 1 && whichclass != GET_CLASS(ch)) {
         send_to_char(ch, "You have to spend your skill points before you can gain another level.\r\n");
         return;
-    }
+    }*/
     if (level == 0 || (level < CONFIG_LEVEL_CAP && GET_EXP(ch) >= level_exp(GET_CLASS_LEVEL(ch) + 1, GET_REAL_RACE(ch)))) {
         gain_level(ch, whichclass);
         GET_LEVEL_STAGE(ch) = 0;
