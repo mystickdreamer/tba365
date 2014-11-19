@@ -140,6 +140,7 @@ int decrease_bank(struct char_data *ch, int amt);
 
 /* in class.c */
 void advance_level(struct char_data *ch);
+int	highest_skill_value(int level, int type);
 
 void char_from_furniture(struct char_data *ch);
 /** What ch is currently sitting on. */
