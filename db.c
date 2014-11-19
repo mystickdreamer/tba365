@@ -3722,6 +3722,7 @@ static void load_default_config(void) {
     CONFIG_MINIMAP_SIZE = default_minimap_size;
     CONFIG_SCRIPT_PLAYERS = script_players;
     CONFIG_DEBUG_MODE = debug_mode;
+    CONFIG_ENABLE_LANGUAGES = enable_languages;
 
     /* Rent / crashsave options. */
     CONFIG_FREE_RENT = free_rent;
@@ -3852,6 +3853,11 @@ void load_config(void) {
                     CONFIG_MAP_SIZE = num;
                 else if (!str_cmp(tag, "default_minimap_size"))
                     CONFIG_MINIMAP_SIZE = num;
+                break;
+
+            case 'e':
+                if (!str_cmp(tag, "enable_languages"))
+                    CONFIG_ENABLE_LANGUAGES = num;
                 break;
 
             case 'f':
