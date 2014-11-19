@@ -587,17 +587,17 @@ void sort_languages(void) {
     }
 
 }
-
+/*
 void sort_spells(void) {
     int a;
 
-    /* initialize array, avoiding reserved. */
-    for (a = 1; a < SKILL_TABLE_SIZE; a++)
+*/    /* initialize array, avoiding reserved. */
+/*    for (a = 1; a < SKILL_TABLE_SIZE; a++)
         spell_sort_info[a] = a;
 
     qsort(&spell_sort_info[1], SKILL_TABLE_SIZE, sizeof (int), compare_spells);
 }
-
+*/
 /* this and list skills should probally be combined.  perhaps in the
  * next release?  */
 void what_does_guild_know(int guild_nr, struct char_data * ch) {
