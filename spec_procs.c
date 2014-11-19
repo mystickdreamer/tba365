@@ -94,7 +94,7 @@ static const char *how_good(int percent)
 
   return " (superb)";
 }
-*/
+
 /*
 const char *prac_types[] = {
   "spell",
