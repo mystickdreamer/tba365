@@ -634,6 +634,8 @@ do                                                              \
 /** The type of quest ch is currently participating in. */
 #define GET_QUEST_TYPE(ch)      (real_quest(GET_QUEST((ch))) != NOTHING ? aquest_table[real_quest(GET_QUEST((ch)))].type : AQ_UNDEFINED )
 
+
+#define CONFIG_ENABLE_LANGUAGES	config_info.play.enable_languages
 /** The current skill level of ch for skill i. */
 //#define GET_SKILL(ch, i)	CHECK_PLAYER_SPECIAL((ch), ((ch)->player_specials->saved.skills[i]))
 /** Copy the current skill level i of ch to pct. */
