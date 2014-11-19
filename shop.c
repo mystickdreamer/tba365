@@ -111,7 +111,7 @@ static const char *operator_str[] = {
 } ;
 
 
-static int is_ok_char(struct char_data *keeper, struct char_data *ch, int shop_nr)
+int is_ok_char(struct char_data *keeper, struct char_data *ch, int shop_nr)
 {
   char buf[MAX_INPUT_LENGTH];
 
