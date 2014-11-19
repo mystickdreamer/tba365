@@ -52,6 +52,9 @@ int	write_to_descriptor(socket_t desc, const char *txt);
 size_t	write_to_output(struct descriptor_data *d, const char *txt, ...) __attribute__ ((format (printf, 2, 3)));
 size_t	vwrite_to_output(struct descriptor_data *d, const char *format, va_list args);
 
+#define PAGE_LENGTH	22
+#define PAGE_WIDTH	80
+
 typedef RETSIGTYPE sigfunc(int);
 
 void echo_off(struct descriptor_data *d);
