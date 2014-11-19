@@ -40,6 +40,9 @@
 #include "ibt.h"
 #include "mud_event.h"
 #include "race.h"
+#include "spells.h"
+#include "shops.h"
+#include "guild.h"
 
 /* local (file scope) functions */
 static int perform_dupe_check(struct descriptor_data *d);
