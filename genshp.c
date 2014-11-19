@@ -26,6 +26,7 @@ static void free_shop_type_list(struct shop_buy_data **list);
 
 void copy_shop(struct shop_data *tshop, struct shop_data *fshop, int free_old_strings)
 {
+    int i;
   /* Copy basic information over. */
   S_NUM(tshop) = S_NUM(fshop);
   S_KEEPER(tshop) = S_KEEPER(fshop);
@@ -36,7 +37,9 @@ void copy_shop(struct shop_data *tshop, struct shop_data *fshop, int free_old_st
   S_BANK(tshop) = S_BANK(fshop);
   S_BROKE_TEMPER(tshop) = S_BROKE_TEMPER(fshop);
   S_BITVECTOR(tshop) = S_BITVECTOR(fshop);
-  S_NOTRADE(tshop) = S_NOTRADE(fshop);
+  for (i = 0; i < SW_ARRAY_MAX; i++)
+    S_NOTRADE(tshop)[i] = S_NOTRADE(fshop)[i];
+  //S_NOTRADE(tshop) = S_NOTRADE(fshop);
   S_SORT(tshop) = S_SORT(fshop);
   S_BUYPROFIT(tshop) = S_BUYPROFIT(fshop);
   S_SELLPROFIT(tshop) = S_SELLPROFIT(fshop);
