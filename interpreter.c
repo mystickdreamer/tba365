@@ -1211,6 +1211,7 @@ static bool perform_new_char_dupe_check(struct descriptor_data *d) {
 int enter_player_game(struct descriptor_data *d) {
     int load_result;
     room_vnum load_room;
+    struct char_data *ch;
 
     reset_char(d->character);
 
