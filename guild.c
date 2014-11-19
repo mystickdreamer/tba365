@@ -809,14 +809,14 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
             pointcost = 1;
         else
             pointcost = 2;
-        if (GET_PRACTICES(ch, GET_CLASS(ch)) >= pointcost) {
-            if (GET_SKILL_BASE(ch, skill_num) >= highest) {
+        /*if (GET_PRACTICES(ch, GET_CLASS(ch)) >= pointcost)*/ {
+            if (GET_SKILL_RANKS(ch, skill_num) >= highest) {
                 send_to_char(ch, "You cannot increase that skill again until you progress further.\r\n");
                 return;
             } else {
                 send_to_char(ch, "You practice for a while...\r\n");
                 SET_SKILL(ch, skill_num, GET_SKILL_BASE(ch, skill_num) + 1);
-                GET_PRACTICES(ch, GET_CLASS(ch)) -= pointcost;
+            //    GET_PRACTICES(ch, GET_CLASS(ch)) -= pointcost;
             }
         } else {
             send_to_char(ch, "You need %d skill point%s to increase your skill.\r\n",
@@ -826,7 +826,7 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
         send_to_char(ch, "You can't learn that.\r\n");
     }
 }
-
+/*
 void handle_train(struct char_data *keeper, int guild_nr, struct char_data *ch, char *argument) {
     skip_spaces(&argument);
     if (!argument || !*argument)
@@ -842,8 +842,8 @@ void handle_train(struct char_data *keeper, int guild_nr, struct char_data *ch, 
     } else if (!strncasecmp("constitution", argument, strlen(argument))) {
         send_to_char(ch, CONFIG_OK);
         ch->real_abils.con += 1;
-        /* Give them retroactive hit points for constitution */
-        if (!(ch->real_abils.con % 2))
+ */       /* Give them retroactive hit points for constitution */
+ /*       if (!(ch->real_abils.con % 2))
             GET_MAX_HIT(ch) += GET_LEVEL(ch);
         GET_TRAINS(ch) -= 1;
     } else if (!strncasecmp("dexterity", argument, strlen(argument))) {
@@ -853,8 +853,8 @@ void handle_train(struct char_data *keeper, int guild_nr, struct char_data *ch, 
     } else if (!strncasecmp("intelligence", argument, strlen(argument))) {
         send_to_char(ch, CONFIG_OK);
         ch->real_abils.intel += 1;
-        /* Give extra skill practice, but only for this level */
-        if (!(ch->real_abils.intel % 2))
+*/        /* Give extra skill practice, but only for this level */
+/*        if (!(ch->real_abils.intel % 2))
             GET_PRACTICES(ch, GET_CLASS(ch)) += 1;
         GET_TRAINS(ch) -= 1;
     } else if (!strncasecmp("wisdom", argument, strlen(argument))) {
@@ -870,7 +870,7 @@ void handle_train(struct char_data *keeper, int guild_nr, struct char_data *ch, 
     affect_total(ch);
     return;
 }
-
+*/
 void handle_gain(struct char_data *keeper, int guild_nr, struct char_data *ch, char *argument) {
     int whichclass;
     int level = GET_LEVEL(ch);
@@ -1429,7 +1429,7 @@ SPECIAL(guild) {
     } guild_cmd_tab[] = {
         { "practice", handle_practice},
         { "gain", handle_gain},
-        { "train", handle_train},
+//        { "train", handle_train},
         { "learn", handle_learn},
         { NULL, NULL}
     };
