@@ -41,7 +41,8 @@ static int spell_sort_info[MAX_SKILLS + 1];
 
 
 
-static int compare_spells(const void *x, const void *y)
+//static 
+int compare_spells(const void *x, const void *y)
 {
   int	a = *(const int *)x,
 	b = *(const int *)y;

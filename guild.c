@@ -103,14 +103,14 @@ const char *prac_types[] = {
     "spell",
     "skill"
 };
-
+/*
 int compare_spells(const void *x, const void *y) {
     int a = *(const int *) x,
             b = *(const int *) y;
 
     return strcmp(spell_info[a].name, spell_info[b].name);
 }
-
+*/
 int compare_skills(const void *x, const void *y) {
     int a = *(const int *) x,
             b = *(const int *) y;
