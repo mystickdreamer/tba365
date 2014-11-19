@@ -94,7 +94,7 @@ static int end_read_list(struct shop_buy_data *list, int len, int error);
 static void read_line(FILE *shop_f, const char *string, void *data);
 
 /* Local file scope only variables */
-static int cmd_say;
+int cmd_say;
 static int cmd_tell;
 static int cmd_emote;
 static int cmd_slap;
