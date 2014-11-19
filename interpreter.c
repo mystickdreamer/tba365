@@ -943,7 +943,7 @@ void half_chop(char *string, char *arg1, char *arg2) {
     temp = any_one_arg(string, arg1);
     skip_spaces(&temp);
     if (arg2 != temp)
-    strcpy(arg2, temp); /* strcpy: OK (documentation) */
+        strcpy(arg2, temp); /* strcpy: OK (documentation) */
 }
 
 /* Used in specprocs, mostly.  (Exactly) matches "command" to cmd number */
@@ -1217,6 +1217,10 @@ int enter_player_game(struct descriptor_data *d) {
 
     reset_char(d->character);
 
+    if (!GET_ARTISAN_TYPE(ch)) {
+        reset_artisan_experience(ch);
+    }
+
     if (PLR_FLAGGED(d->character, PLR_INVSTART))
         GET_INVIS_LEV(d->character) = GET_LEVEL(d->character);
 
@@ -1236,10 +1240,8 @@ int enter_player_game(struct descriptor_data *d) {
     if (PLR_FLAGGED(d->character, PLR_FROZEN))
         load_room = r_frozen_start_room;
 
-    if (!GET_ARTISAN_TYPE(ch)) {
-    reset_artisan_experience(ch);
-  }
-    
+
+
     /* copyover */
     GET_ID(d->character) = GET_IDNUM(d->character);
     /* find_char helper */
