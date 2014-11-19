@@ -19,6 +19,7 @@
 #include "handler.h"
 #include "db.h"
 #include "interpreter.h"
+#include "utils.h"
 #include "shop.h"
 #include "genshp.h"
 #include "constants.h"
