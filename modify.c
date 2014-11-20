@@ -381,7 +381,7 @@ ACMD(do_skillset)
   argument = one_argument(argument, buf);
 
   if (!*buf) {
-    send_to_char(ch, "Learned value expected. %-20s\r\n", spell_info[vict].name);
+    send_to_char(ch, "Learned value expected. %s\r\n", spell_info[skill].name);
     return;
   }
   value = atoi(buf);
