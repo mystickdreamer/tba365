@@ -24,6 +24,9 @@
 
 #define SINFO spell_info[spellnum]
 
+/* local globals */
+struct spell_info_type spell_info[SKILL_TABLE_SIZE];
+
 /* Global Variables definitions, used elsewhere */
 struct spell_info_type spell_info[TOP_SPELL_DEFINE + 1];
 char cast_arg2[MAX_INPUT_LENGTH];
@@ -163,7 +166,7 @@ static void say_spell(struct char_data *ch, int spellnum, struct char_data *tch,
  * a valid spell/skill number.  A typical for() loop would not need to use
  * this because you can guarantee > 0 and <= TOP_SPELL_DEFINE. */
 const char *skill_name(int num) {
-    if (num > 0 && num <= TOP_SPELL_DEFINE)
+    if (num > 0 && num < SKILL_TABLE_SIZE)
         return (spell_info[num].name);
     else if (num == -1)
         return ("UNUSED");
@@ -209,7 +212,8 @@ int call_magic(struct char_data *caster, struct char_data *cvict,
         struct obj_data *ovict, int spellnum, int level, int casttype) {
     int savetype;
 
-    if (spellnum < 1 || spellnum > TOP_SPELL_DEFINE)
+    if (spellnum < 1 || spellnum > SKILL_TABLE_SIZE)
+        send_to_char(caster, "Spell number of out range.  Spell Failed.  Contact a staff member.\r\n");
         return (0);
 
     if (!cast_wtrigger(caster, cvict, ovict, spellnum))
@@ -461,11 +465,13 @@ void mag_objectmagic(struct char_data *ch, struct obj_data *obj,
  * have the target char/obj and spell number.  It checks all restrictions,
  * prints the words, etc. Entry point for NPC casts.  Recommended entry point
  * for spells cast by NPCs via specprocs. */
-int cast_spell(struct char_data *ch, struct char_data *tch,
-        struct obj_data *tobj, int spellnum) {
-    if (spellnum < 0 || spellnum > TOP_SPELL_DEFINE) {
-        log("SYSERR: cast_spell trying to call spellnum %d/%d.", spellnum,
-                TOP_SPELL_DEFINE);
+int cast_spell(struct char_data *ch, struct char_data *tch, struct obj_data *tobj, int spellnum, const char arg) {
+    
+    int lvl = GET_LEVEL(ch);
+    
+    if (spellnum < 0 || spellnum > SKILL_TABLE_SIZE) {
+        log("SYSERR: cast_spell trying to call spellnum %d/%d.", spellnum, SKILL_TABLE_SIZE);
+        send_to_char(ch, "SYSERR: cast_spell trying to call out of range spellnum %d/%d.", spellnum, SKILL_TABLE_SIZE);
         return (0);
     }
 
@@ -505,10 +511,19 @@ int cast_spell(struct char_data *ch, struct char_data *tch,
         send_to_char(ch, "You can't cast this spell if you're not in a group!\r\n");
         return (0);
     }
+    
+    if (IS_SET(SINFO.skilltype, SKTYPE_SPELL)) {
+    lvl = GET_SPELLCASTER_LEVEL(ch);
+  }
+    
+    
     send_to_char(ch, "%s", CONFIG_OK);
+    if (IS_SET(SINFO.skilltype, SKTYPE_SPELL)) {
     say_spell(ch, spellnum, tch, tobj);
-
-    return (call_magic(ch, tch, tobj, spellnum, GET_LEVEL(ch), CAST_SPELL));
+    }
+    
+    
+    return (call_magic(ch, tch, tobj, spellnum, lvl, CAST_SPELL, arg));
 }
 
 /* do_cast is the entry point for PC-casted spells.  It parses the arguments,
