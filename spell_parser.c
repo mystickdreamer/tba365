@@ -717,6 +717,11 @@ void skill_class(int skill, int chclass, int learntype) {
         spell_info[skill].can_learn_skill[chclass] = learntype;
 }
 
+int skill_type(int snum)
+{
+  return spell_info[snum].skilltype;
+}
+
 int skill_type(int snum) {
     return spell_info[snum].skilltype;
 }
