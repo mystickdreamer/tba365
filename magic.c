@@ -68,7 +68,7 @@ void affect_update(void)
       else if (af->duration == -1)	/* No action */
 	;
       else {
-	if ((af->spell > 0) && (af->spell <= MAX_SPELLS))
+	if ((af->spell > 0) && (af->spell < SKILL_TABLE_SIZE))
 	  if (!af->next || (af->next->spell != af->spell) ||
 	      (af->next->duration > 0))
 	    if (spell_info[af->spell].wear_off_msg)
