@@ -28,7 +28,6 @@
 struct spell_info_type spell_info[SKILL_TABLE_SIZE];
 
 /* Global Variables definitions, used elsewhere */
-struct spell_info_type spell_info[TOP_SPELL_DEFINE + 1];
 char cast_arg2[MAX_INPUT_LENGTH];
 const char *unused_spellname = "!UNUSED!"; /* So we can get &unused_spellname */
 
