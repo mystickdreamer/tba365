@@ -308,7 +308,7 @@ ACMD(do_skillset)
   char name[MAX_INPUT_LENGTH];
   char buf[MAX_INPUT_LENGTH], help[MAX_STRING_LENGTH];
   int skill, value, i, qend;
-  int t;
+  int t, nlen;
   char buf2[READ_SIZE];
   size_t len = 0;
   int maxsz;
