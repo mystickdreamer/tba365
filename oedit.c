@@ -953,7 +953,7 @@ void oedit_parse(struct descriptor_data *d, char *arg) {
                     if (number == 0 || number == -1)
                         GET_OBJ_VAL(OLC_OBJ(d), 1) = -1;
                     else
-                        GET_OBJ_VAL(OLC_OBJ(d), 1) = LIMIT(number, 1, NUM_SPELLS);
+                        GET_OBJ_VAL(OLC_OBJ(d), 1) = LIMIT(number, 1, TOP_SPELL);
 
                     oedit_disp_val3_menu(d);
                     break;

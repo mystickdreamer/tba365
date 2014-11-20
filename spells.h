@@ -97,6 +97,7 @@
 #define NUM_SPELLS                   54
 
 /* Insert new spells here, up to MAX_SPELLS */
+#define TOP_SPELL           391
 #define MAX_SPELLS		    130
 
 /* PLAYER SKILLS - Numbered from MAX_SPELLS+1 to MAX_SKILLS */
