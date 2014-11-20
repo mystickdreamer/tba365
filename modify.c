@@ -380,16 +380,16 @@ ACMD(do_skillset)
   argument += qend + 1;		/* skip to next parameter */
   argument = one_argument(argument, buf);
 
-  if (!*buf) {
-    send_to_char(ch, "Learned value expected. %s: %d\r\n", spell_info[skill].name, value);
-    return;
-  }
+ 
   value = atoi(buf);
   if (value < 0) {
     send_to_char(ch, "Minimum value for learned is 0.\r\n");
     return;
   }
-
+ if (!*buf) {
+    send_to_char(ch, "Learned value expected. %s: %d\r\n", spell_info[skill].name, value);
+    return;
+  }
   /*
    * find_skill_num() guarantees a valid spell_info[] index, or -1, and we
    * checked for the -1 above so we are safe here.
