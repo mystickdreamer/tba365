@@ -310,6 +310,8 @@ ACMD(do_skillset)
   int skill, value, i, qend;
   int t;
   char buf2[READ_SIZE];
+  size_t len = 0;
+  int maxsz;
 
   argument = one_argument(argument, name);
 
