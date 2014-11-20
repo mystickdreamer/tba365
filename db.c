@@ -3409,7 +3409,7 @@ void init_char(struct char_data *ch) {
     else
         log("SYSERR: init_char: Character '%s' not found in player table.", GET_NAME(ch));
 
-    for (i = 1; i <= MAX_SKILLS; i++) {
+    for (i = 1; i <= SKILL_TABLE_SIZE; i++) {
         if (GET_ADMLEVEL(ch) < ADMLVL_IMPL)
             SET_SKILL(ch, i, 0);
         else
@@ -3637,9 +3637,10 @@ static int check_object_spell_number(struct obj_data *obj, int val) {
      * which is actually a skill. */
     if (GET_OBJ_VAL(obj, val) < 0)
         error = TRUE;
-    if (GET_OBJ_VAL(obj, val) > TOP_SPELL_DEFINE)
+    if (GET_OBJ_VAL(obj, val) > SKILL_TABLE_SIZE)
         error = TRUE;
-    if (GET_OBJ_VAL(obj, val) > MAX_SPELLS && GET_OBJ_VAL(obj, val) <= MAX_SKILLS)
+   // if (GET_OBJ_VAL(obj, val) > MAX_SPELLS && GET_OBJ_VAL(obj, val) <= MAX_SKILLS)
+    if (skill_type(GET_OBJ_VAL(obj, val)) != SKTYPE_SPELL)
         error = TRUE;
     if (error)
         log("SYSERR: Object #%d (%s) has out of range spell #%d.",
