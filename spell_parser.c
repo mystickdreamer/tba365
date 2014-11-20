@@ -514,10 +514,10 @@ int cast_spell(struct char_data *ch, struct char_data *tch, struct obj_data *tob
         return (0);
     }
 
-    if (IS_SET(SINFO.skilltype, SKTYPE_SPELL)) {
+ /*   if (IS_SET(SINFO.skilltype, SKTYPE_SPELL)) {
         lvl = GET_SPELLCASTER_LEVEL(ch);
     }
-
+*/
 
     send_to_char(ch, "%s", CONFIG_OK);
     if (IS_SET(SINFO.skilltype, SKTYPE_SPELL)) {
