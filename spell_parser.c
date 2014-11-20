@@ -466,7 +466,7 @@ void mag_objectmagic(struct char_data *ch, struct obj_data *obj,
  * have the target char/obj and spell number.  It checks all restrictions,
  * prints the words, etc. Entry point for NPC casts.  Recommended entry point
  * for spells cast by NPCs via specprocs. */
-int cast_spell(struct char_data *ch, struct char_data *tch, struct obj_data *tobj, int spellnum, const char arg) {
+int cast_spell(struct char_data *ch, struct char_data *tch, struct obj_data *tobj, int spellnum) {
 
     int lvl = GET_LEVEL(ch);
 
@@ -524,7 +524,7 @@ int cast_spell(struct char_data *ch, struct char_data *tch, struct obj_data *tob
     }
 
 
-    return (call_magic(ch, tch, tobj, spellnum, lvl, CAST_SPELL, arg));
+    return (call_magic(ch, tch, tobj, spellnum, lvl, CAST_SPELL));
 }
 
 /* do_cast is the entry point for PC-casted spells.  It parses the arguments,
