@@ -1056,7 +1056,7 @@ void oedit_parse(struct descriptor_data *d, char *arg)
     case ITEM_WAND:
     case ITEM_STAFF:
       min_val = 1;
-      max_val = NUM_SPELLS;
+      max_val = SKILL_TABLE_SIZE -1;
       break;
     case ITEM_WEAPON:
       min_val = 0;
