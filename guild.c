@@ -256,7 +256,7 @@ ACMD(do_artisan) {
         if (!*arg) {
             send_to_char(ch, "You must select an artisan type from the following list:\r\n"
                     "smith (blacksmithing & mining)\r\n"
-                    "cook (cooking & farming)\r\n"
+                    "cooking (cooking & farming)\r\n"
                     "woodsman (tanning, woodworking & foresting)\r\n"
                     "jeweler (goldsmithing & jewelry making)\r\n"
                     "tailor (tailoring & cloth making)\r\n"
@@ -271,8 +271,8 @@ ACMD(do_artisan) {
                 send_to_char(ch, "You have chosen the artisan profession of 'smith' giving you access to the blacksmithing, goldsmithing and mining skills.\r\n");
                 GET_ARTISAN_TYPE(ch) = ARTISAN_TYPE_SMITH;
                 return;
-            } else if (!strcmp(arg, "cook")) {
-                send_to_char(ch, "You have chosen the artisan profession of 'farmer' giving you access to the cooking and farming skills.\r\n");
+            } else if (!strcmp(arg, "cooking")) {
+                send_to_char(ch, "You have chosen the artisan profession of 'cooking' giving you access to the cooking and farming skills.\r\n");
                 GET_ARTISAN_TYPE(ch) = ARTISAN_TYPE_COOK;
                 return;
             } else if (!strcmp(arg, "woodsman")) {
@@ -307,7 +307,7 @@ ACMD(do_artisan) {
             else {
                 send_to_char(ch, "You must select an artisan type from the following list:\r\n"
                         "smith (blacksmithing & mining)\r\n"
-                        "cook (cooking & farming)\r\n"
+                        "cooking (cooking & farming)\r\n"
                         "woodsman (tanning, woodworking & foresting)\r\n"
                         "jeweler (goldsmithing & jewelry making)\r\n"
                         "tailor (tailoring & cloth making)\r\n"
