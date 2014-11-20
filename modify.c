@@ -342,9 +342,9 @@ ACMD(do_skillset)
     //i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SKILL);
     
     if (t & SKTYPE_SKILL) {
-
-                snprintf(buf2, sizeof (buf2), " (rank %d)", GET_SKILL_RANKS(ch, i));
-                    nlen = snprintf(buf + len, maxsz - len, "@G%-20s  %d%s@n\r\n", spell_info[i].name, GET_SKILL(ch, i) + GET_SKILL_RANKS(ch, i), buf2);
+        send_to_char(ch, "%-20s : %d", spell_info[i].name, GET_SKILL(vict, i));
+                //snprintf(buf2, sizeof (buf2), " (rank %d)", GET_SKILL_RANKS(ch, i));
+                //    nlen = snprintf(buf + len, maxsz - len, "@G%-20s  %d%s@n\r\n", spell_info[i].name, GET_SKILL(ch, i) + GET_SKILL_RANKS(ch, i), buf2);
     }
     i += snprintf(help + i, sizeof(help) - i, "\r\nSpells:\r\n");
     i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SPELL);
