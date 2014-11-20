@@ -179,10 +179,10 @@ int find_skill_num(char *name, int sktype) {
     char *temp, *temp2;
     char first[256], first2[256], tempbuf[256];
 
-  for (skindex = 1; skindex < SKILL_TABLE_SIZE; skindex++) {
-    if (is_abbrev(name, spell_info[skindex].name) && (spell_info[skindex].skilltype & sktype)) {
-      return (skindex);
-    }
+    for (skindex = 1; skindex < SKILL_TABLE_SIZE; skindex++) {
+        if (is_abbrev(name, spell_info[skindex].name) && (spell_info[skindex].skilltype & sktype)) {
+            return (skindex);
+        }
         ok = TRUE;
         strlcpy(tempbuf, spell_info[skindex].name, sizeof (tempbuf)); /* strlcpy: OK */
         temp = any_one_arg(tempbuf, first);
@@ -195,9 +195,9 @@ int find_skill_num(char *name, int sktype) {
         }
 
 
-    if (ok && !*first2 && (spell_info[skindex].skilltype & sktype)) {
-      return (skindex);
-    }
+        if (ok && !*first2 && (spell_info[skindex].skilltype & sktype)) {
+            return (skindex);
+        }
     }
 
     return (-1);
@@ -214,7 +214,7 @@ int call_magic(struct char_data *caster, struct char_data *cvict,
 
     if (spellnum < 1 || spellnum > SKILL_TABLE_SIZE)
         send_to_char(caster, "Spell number of out range.  Spell Failed.  Contact a staff member.\r\n");
-        return (0);
+    return (0);
 
     if (!cast_wtrigger(caster, cvict, ovict, spellnum))
         return 0;
@@ -447,6 +447,8 @@ void mag_objectmagic(struct char_data *ch, struct obj_data *obj,
 
             WAIT_STATE(ch, PULSE_VIOLENCE);
             for (i = 1; i <= 3; i++)
+                //                if (GET_OBJ_VAL(obj, i) < 1 || GET_OBJ_VAL(obj, i) > SKILL_TABLE_SIZE)
+                //        continue;
                 if (call_magic(ch, ch, NULL, GET_OBJ_VAL(obj, i),
                         GET_OBJ_VAL(obj, 0), CAST_POTION) <= 0)
                     break;
@@ -466,9 +468,9 @@ void mag_objectmagic(struct char_data *ch, struct obj_data *obj,
  * prints the words, etc. Entry point for NPC casts.  Recommended entry point
  * for spells cast by NPCs via specprocs. */
 int cast_spell(struct char_data *ch, struct char_data *tch, struct obj_data *tobj, int spellnum, const char arg) {
-    
+
     int lvl = GET_LEVEL(ch);
-    
+
     if (spellnum < 0 || spellnum > SKILL_TABLE_SIZE) {
         log("SYSERR: cast_spell trying to call spellnum %d/%d.", spellnum, SKILL_TABLE_SIZE);
         send_to_char(ch, "SYSERR: cast_spell trying to call out of range spellnum %d/%d.", spellnum, SKILL_TABLE_SIZE);
@@ -511,18 +513,18 @@ int cast_spell(struct char_data *ch, struct char_data *tch, struct obj_data *tob
         send_to_char(ch, "You can't cast this spell if you're not in a group!\r\n");
         return (0);
     }
-    
+
     if (IS_SET(SINFO.skilltype, SKTYPE_SPELL)) {
-    lvl = GET_SPELLCASTER_LEVEL(ch);
-  }
-    
-    
+        lvl = GET_SPELLCASTER_LEVEL(ch);
+    }
+
+
     send_to_char(ch, "%s", CONFIG_OK);
     if (IS_SET(SINFO.skilltype, SKTYPE_SPELL)) {
-    say_spell(ch, spellnum, tch, tobj);
+        say_spell(ch, spellnum, tch, tobj);
     }
-    
-    
+
+
     return (call_magic(ch, tch, tobj, spellnum, lvl, CAST_SPELL, arg));
 }
 
@@ -558,7 +560,7 @@ ACMD(do_cast) {
     /* spellnum = search_block(s, spells, 0); */
     spellnum = find_skill_num(s, SKTYPE_SPELL);
 
-    if ((spellnum < 1) || (spellnum > MAX_SPELLS) || !*s) {
+    if ((spellnum < 1) || (spellnum >= SKILL_TABLE_SIZE) || !(SINFO.skilltype & SKTYPE_SPELL)) {
         send_to_char(ch, "Cast what?!?\r\n");
         return;
     }
@@ -671,8 +673,8 @@ ACMD(do_cast) {
 void spell_level(int spell, int chclass, int level) {
     int bad = 0;
 
-    if (spell < 0 || spell > TOP_SPELL_DEFINE) {
-        log("SYSERR: attempting assign to illegal spellnum %d/%d", spell, TOP_SPELL_DEFINE);
+    if (spell < 0 || spell > SKILL_TABLE_SIZE) {
+        log("SYSERR: attempting assign to illegal spellnum %d/%d", spell, SKILL_TABLE_SIZE);
         return;
     }
 
@@ -692,40 +694,36 @@ void spell_level(int spell, int chclass, int level) {
         spell_info[spell].min_level[chclass] = level;
 }
 
+void skill_class(int skill, int chclass, int learntype) {
+    int bad = 0;
 
-void skill_class(int skill, int chclass, int learntype)
-{
-  int bad = 0;
+    if (skill < 0 || skill > SKILL_TABLE_SIZE) {
+        log("SYSERR: attempting assign to illegal skillnum %d/%d", skill, SKILL_TABLE_SIZE);
+        return;
+    }
 
-  if (skill < 0 || skill > SKILL_TABLE_SIZE) {
-    log("SYSERR: attempting assign to illegal skillnum %d/%d", skill, SKILL_TABLE_SIZE);
-    return;
-  }
-
-  if (chclass < 0 || chclass >= NUM_CLASSES) {
-    log("SYSERR: assigning '%s' to illegal class %d/%d.", skill_name(skill),
+    if (chclass < 0 || chclass >= NUM_CLASSES) {
+        log("SYSERR: assigning '%s' to illegal class %d/%d.", skill_name(skill),
                 chclass, NUM_CLASSES - 1);
-    bad = 1;
-  }
+        bad = 1;
+    }
 
-  if (learntype < 0 || learntype > SKLEARN_CLASS) {
-    log("SYSERR: assigning skill '%s' illegal learn type %d for class %d.", skill_name(skill),
+    if (learntype < 0 || learntype > SKLEARN_CLASS) {
+        log("SYSERR: assigning skill '%s' illegal learn type %d for class %d.", skill_name(skill),
                 learntype, chclass);
-    bad = 1;
-  }
+        bad = 1;
+    }
 
-  if (!bad)
-    spell_info[skill].can_learn_skill[chclass] = learntype;
+    if (!bad)
+        spell_info[skill].can_learn_skill[chclass] = learntype;
 }
 
-int skill_type(int snum)
-{
-  return spell_info[snum].skilltype;
+int skill_type(int snum) {
+    return spell_info[snum].skilltype;
 }
 
-void set_skill_type(int snum, int sktype)
-{
-  spell_info[snum].skilltype = sktype;
+void set_skill_type(int snum, int sktype) {
+    spell_info[snum].skilltype = sktype;
 }
 
 /* Assign the spells on boot up */
@@ -791,7 +789,7 @@ void mag_assign_spells(void) {
     int i;
 
     /* Do not change the loop below. */
-    for (i = 0; i <= TOP_SPELL_DEFINE; i++)
+    for (i = 0; i <= SKILL_TABLE_SIZE; i++)
         unused_spell(i);
     /* Do not change the loop above. */
 
@@ -1030,5 +1028,57 @@ void mag_assign_spells(void) {
     skillo(SKILL_TRACK, "track");
     skillo(SKILL_WHIRLWIND, "whirlwind");
     skillo(SKILL_PERCEPTION, "perception");
+    skillo(SKILL_FORESTING, "foresting");
+    skillo(SKILL_MINING, "mining");
+    skillo(SKILL_COOKING, "cooking");
+    skillo(SKILL_BLACKSMITHING, "blacksmithing");
+skillo(SKILL_TAILORING, "tailoring");       
+skillo(SKILL_TANNING, "tanning");         
+skillo(SKILL_GOLDSMITHING, "goldsmithing");    
+skillo(SKILL_WOODWORKING, "woodworking");       
+skillo(SKILL_COOKING, "cooking");         
+skillo(SKILL_SKINNING, "skinning");          
+skillo(SKILL_HERBALISM, "herbalism");         
+    //#define SKILL_BALANCE           
+    //#define SKILL_USE_ROPE          
+skillo(SKILL_APPRAISE, "appraise");		
+skillo(SKILL_USE_MAGIC_DEVICE, "use magic device");  
+    //#define SKILL_FORGERY         
+skillo(SKILL_SPELLCRAFT, "spellcraft");        
+skillo(SKILL_PERCEPTION, "perception");        
+skillo(SKILL_SEARCH, "search");          
+skillo(SKILL_LORE, "lore");             
+skillo(SKILL_OPEN_LOCK, "open lock");         
+skillo(SKILL_HANDLE_ANIMAL, "handle animal");   
+    //#define SKILL_BLUFF           
+    //#define SKILL_INTIMIDATE       
+    //#define SKILL_DIPLOMACY        
+skillo(SKILL_FIRST_AID, "first aid");             
+    //#define SKILL_DISGUISE         
+skillo(SKILL_TUMBLE, "tumble");		
+skillo(SKILL_DISABLE_DEVICE, "disable device");    
+skillo(SKILL_DECIPHER_SCRIPT, "decipher script");   
+    //#define SKILL_ESCAPE_ARTIST     800
+skillo(SKILL_PERFORM, "perform");
+    //#define SKILL_COMBAT_TACTICS    806
+    //#define SKILL_CONCENTRATION     816
+    //#define SKILL_ACROBATICS      	800
+    //#define SKILL_ATHLETICS      	801
+    //#define SKILL_DECEPTION         802
+    //#define SKILL_ENDURANCE   	803
+    //#define SKILL_GATHER_INFORMATION 804
+    //#define SKILL_INITIATIVE     	805
+    //#define SKILL_TACTICS           806
+    //#define SKILL_KNOWLEDGE   	807
+    //#define SKILL_MECHANICS         808
+    //#define SKILL_PERSUASION        810
+    //#define SKILL_RIDE 	   	812
+    //#define SKILL_SURVIVAL     	813
+skillo(SKILL_CRAFTING_THEORY, "crafting theory");
+skillo(SKILL_TINKERING, "tinkering");
+skillo(SKILL_HARVESTING, "harvesting");
+skillo(SKILL_SENSE_MOTIVE, "sense motive");
+skillo(SKILL_DODGE, "dodge");
+skillo(SKILL_PARRY, "parry");
 }
 
