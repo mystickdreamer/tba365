@@ -722,9 +722,6 @@ int skill_type(int snum)
   return spell_info[snum].skilltype;
 }
 
-int skill_type(int snum) {
-    return spell_info[snum].skilltype;
-}
 
 void set_skill_type(int snum, int sktype) {
     spell_info[snum].skilltype = sktype;
