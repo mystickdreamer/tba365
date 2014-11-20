@@ -450,7 +450,7 @@ int get_skill_value(struct char_data *ch, int skillnum) {
     case SKILL_MINING:
     case SKILL_SKINNING:
     case SKILL_FORESTING:
-    case SKILL_FARMING:
+    case SKILL_COOKING:
 //      value += HAS_FEAT(ch, FEAT_PROFICIENT_HARVESTER);
       break;
     case SKILL_HIDE:
