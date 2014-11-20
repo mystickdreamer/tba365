@@ -1018,7 +1018,7 @@ struct char_special_data {
 
 /** Data only needed by PCs, and needs to be saved to disk. */
 struct player_special_data_saved {
-    int skills[MAX_SKILLS + 1]; /**< Character skills. */
+    
     int wimp_level; /**< Below this # of hit points, flee! */
     byte freeze_level; /**< Level of god who froze char, if any */
     sh_int invis_level; /**< level of invisibility */
@@ -1057,6 +1057,7 @@ struct player_special_data {
     int buildwalk_sector; /**< Default sector type for buildwalk */
     double artisan_experience;
     byte crafting_type;
+    int skills[MAX_SKILLS + 1]; /**< Character skills. */
 };
 
 /** Special data used by NPCs, not PCs */
