@@ -646,7 +646,7 @@ do                                                              \
 /** Copy the current skill level i of ch to pct. */
 //#define SET_SKILL(ch, i, pct)	do { CHECK_PLAYER_SPECIAL((ch), (ch)->player_specials->saved.skills[i]) = pct; } while(0)
 
-#define GET_SKILL_RANKS(ch, i)		(ch->skills[i])
+#define GET_SKILL_RANKS(ch, i)		((ch)->player_specials->skills[i])
 #define GET_SKILL(ch, i)		(IS_NPC(ch) ? (spell_info[i].can_learn_skill[GET_CLASS(ch)] == SKLEARN_CLASS ? \
 					GET_LEVEL(ch) : 0) : ((ch)->skills[i]))
 #define SET_SKILL(ch, i, val)		do { (ch)->skills[i] = val; } while(0)
