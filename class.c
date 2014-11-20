@@ -1660,7 +1660,7 @@ void init_skill_classes(void) {
         skill_class(SKILL_TAILORING, i, SKLEARN_CLASS);
         skill_class(SKILL_SKINNING, i, SKLEARN_CLASS);
         skill_class(SKILL_MINING, i, SKLEARN_CLASS);
-        skill_class(SKILL_FARMING, i, SKLEARN_CLASS);
+        skill_class(SKILL_COOKING, i, SKLEARN_CLASS);
         skill_class(SKILL_TANNING, i, SKLEARN_CLASS);
         skill_class(SKILL_WOODWORKING, i, SKLEARN_CLASS);
         skill_class(SKILL_FORESTING, i, SKLEARN_CLASS);
