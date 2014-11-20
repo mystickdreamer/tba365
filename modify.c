@@ -308,6 +308,8 @@ ACMD(do_skillset)
   char name[MAX_INPUT_LENGTH];
   char buf[MAX_INPUT_LENGTH], help[MAX_STRING_LENGTH];
   int skill, value, i, qend;
+  int t;
+  char buf2[READ_SIZE];
 
   argument = one_argument(argument, name);
 
@@ -335,7 +337,12 @@ ACMD(do_skillset)
   /* If there is no chars in argument */
   if (!*argument) {
     i = snprintf(help, sizeof(help) - i, "\r\nSkills:\r\n");
-    i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SKILL);
+    //i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SKILL);
+    if (t & SKTYPE_SKILL) {
+
+                snprintf(buf2, sizeof (buf2), " (rank %d)", GET_SKILL_RANKS(ch, i));
+                    nlen = snprintf(buf + len, maxsz - len, "@G%-20s  %d%s@n\r\n",
+                        spell_info[i].name, GET_SKILL(ch, i) + GET_SKILL_RANKS(ch, i), buf2);
     i += snprintf(help + i, sizeof(help) - i, "\r\nSpells:\r\n");
     i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SPELL);
     if (CONFIG_ENABLE_LANGUAGES) {
