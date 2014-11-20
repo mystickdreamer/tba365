@@ -112,15 +112,14 @@
 #define SKILL_TRACK		              140 /* Reserved Skill[] DO NOT CHANGE */
 #define SKILL_FORESTING         141
 #define SKILL_MINING            142
-#define SKILL_FARMING           143
+#define SKILL_COOKING           143
 #define SKILL_BLACKSMITHING     144
 #define SKILL_TAILORING         145
 #define SKILL_TANNING           146
 #define SKILL_GOLDSMITHING      147
 #define SKILL_WOODWORKING       148
-#define SKILL_COOKING           149
-#define SKILL_SKINNING          150
-#define SKILL_HERBALISM         151
+#define SKILL_SKINNING          149
+#define SKILL_HERBALISM         150
 
 //#define SKILL_BALANCE           800
 //#define SKILL_USE_ROPE          800
