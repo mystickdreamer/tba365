@@ -1426,7 +1426,7 @@ void do_start(struct char_data *ch) {
     switch (GET_CLASS(ch)) {
 
         case CLASS_MAGIC_USER:
-            SET_SKILL(ch, SK_PERCEPTION, 10, 1000);
+            SET_SKILL(ch, SK_Perception, 10, 1000);
             break;
 
         case CLASS_CLERIC:
