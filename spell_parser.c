@@ -1027,58 +1027,6 @@ void mag_assign_spells(void) {
     skillo(SKILL_STEAL, "steal");
     skillo(SKILL_TRACK, "track");
     skillo(SKILL_WHIRLWIND, "whirlwind");
-    skillo(SKILL_PERCEPTION, "perception");
-    skillo(SKILL_FORESTING, "foresting");
-    skillo(SKILL_MINING, "mining");
-    skillo(SKILL_COOKING, "cooking");
-    skillo(SKILL_BLACKSMITHING, "blacksmithing");
-    skillo(SKILL_TAILORING, "tailoring");
-    skillo(SKILL_TANNING, "tanning");
-    skillo(SKILL_GOLDSMITHING, "goldsmithing");
-    skillo(SKILL_WOODWORKING, "woodworking");
-    skillo(SKILL_COOKING, "cooking");
-    skillo(SKILL_SKINNING, "skinning");
-    skillo(SKILL_HERBALISM, "herbalism");
-    //#define SKILL_BALANCE           
-    //#define SKILL_USE_ROPE          
-    skillo(SKILL_APPRAISE, "appraise");
-    skillo(SKILL_USE_MAGIC_DEVICE, "use magic device");
-    //#define SKILL_FORGERY         
-    skillo(SKILL_SPELLCRAFT, "spellcraft");
-    skillo(SKILL_PERCEPTION, "perception");
-    skillo(SKILL_SEARCH, "search");
-    skillo(SKILL_LORE, "lore");
-    skillo(SKILL_OPEN_LOCK, "open lock");
-    skillo(SKILL_HANDLE_ANIMAL, "handle animal");
-    //#define SKILL_BLUFF           
-    //#define SKILL_INTIMIDATE       
-    //#define SKILL_DIPLOMACY        
-    skillo(SKILL_FIRST_AID, "first aid");
-    //#define SKILL_DISGUISE         
-    skillo(SKILL_TUMBLE, "tumble");
-    skillo(SKILL_DISABLE_DEVICE, "disable device");
-    skillo(SKILL_DECIPHER_SCRIPT, "decipher script");
-    //#define SKILL_ESCAPE_ARTIST     800
-    skillo(SKILL_PERFORM, "perform");
-    //#define SKILL_COMBAT_TACTICS    806
-    //#define SKILL_CONCENTRATION     816
-    //#define SKILL_ACROBATICS      	800
-    //#define SKILL_ATHLETICS      	801
-    //#define SKILL_DECEPTION         802
-    //#define SKILL_ENDURANCE   	803
-    //#define SKILL_GATHER_INFORMATION 804
-    //#define SKILL_INITIATIVE     	805
-    //#define SKILL_TACTICS           806
-    //#define SKILL_KNOWLEDGE   	807
-    //#define SKILL_MECHANICS         808
-    //#define SKILL_PERSUASION        810
-    //#define SKILL_RIDE 	   	812
-    //#define SKILL_SURVIVAL     	813
-    skillo(SKILL_CRAFTING_THEORY, "crafting theory");
-    skillo(SKILL_TINKERING, "tinkering");
-    skillo(SKILL_HARVESTING, "harvesting");
-    skillo(SKILL_SENSE_MOTIVE, "sense motive");
-    skillo(SKILL_DODGE, "dodge");
-    skillo(SKILL_PARRY, "parry");
+    skillo(SK_PERCEPTION, "perception");
 }
 
