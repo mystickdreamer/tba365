@@ -1566,7 +1566,7 @@ ACMD(do_advance) {
         SET_BIT_AR(PRF_FLAGS(victim), PRF_HOLYLIGHT);
         SET_BIT_AR(PRF_FLAGS(victim), PRF_SHOWVNUMS);
         SET_BIT_AR(PRF_FLAGS(victim), PRF_AUTOEXIT);
-        for (i = 1; i <= MAX_SKILLS; i++)
+        for (i = 1; i <= SK_ARRAY_MAX; i++)
             SET_SKILL(victim, i, 100);
         GET_OLC_ZONE(victim) = NOWHERE;
         GET_COND(victim, HUNGER) = -1;
@@ -1613,7 +1613,7 @@ ACMD(do_restore) {
 
         if (!IS_NPC(vict) && GET_ADMLEVEL(ch) >= ADMLVL_GRGOD) {
             if (GET_ADMLEVEL(vict) >= ADMLVL_IMMORT)
-                for (i = 1; i <= MAX_SKILLS; i++)
+                for (i = 1; i <= SK_ARRAY_MAX; i++)
                     SET_SKILL(vict, i, 100);
 
             if (GET_ADMLEVEL(vict) >= ADMLVL_GRGOD) {
