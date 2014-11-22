@@ -504,8 +504,8 @@ int load_char(const char *name, struct char_data *ch) {
 
     /* initialization for imms */
     if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT) {
-        for (i = 1; i <= SK_ARRAY_MAX; i++)
-            SET_SKILL(ch, i, 100);
+ //       for (i = 1; i <= SK_ARRAY_MAX; i++)
+ //           SET_SKILL(ch, skill, i, 5000);
         GET_COND(ch, HUNGER) = -1;
         GET_COND(ch, THIRST) = -1;
         GET_COND(ch, DRUNK) = -1;
@@ -899,12 +899,12 @@ static void load_affects(FILE *fl, struct char_data *ch) {
 }
 
 static void load_skills(FILE *fl, struct char_data *ch) {
-    int num = 0, num2 = 0;
+    int num = 0, num2 = 0, num3 = 0;
     char line[MAX_INPUT_LENGTH + 1];
 
     do {
         get_line(fl, line);
-        sscanf(line, "%d %d", &num, &num2);
+        sscanf(line, "%d %d %d", &num, &num2, &num3);
         if (num != 0)
             SET_SKILL(ch, num, num2);
     } while (num != 0);

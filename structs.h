@@ -1063,7 +1063,6 @@ struct player_special_data {
     int buildwalk_sector; /**< Default sector type for buildwalk */
     double artisan_experience;
     byte crafting_type;
-    int skills[MAX_SKILLS + 1]; /**< Character skills. */
 };
 
 /** Special data used by NPCs, not PCs */
