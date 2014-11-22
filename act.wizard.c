@@ -1490,7 +1490,7 @@ ACMD(do_purge) {
 ACMD(do_advance) {
     struct char_data *victim;
     char name[MAX_INPUT_LENGTH], level[MAX_INPUT_LENGTH];
-    int newlevel, oldlevel, i;
+    int newlevel, oldlevel;//, i;
 
     two_arguments(argument, name, level);
 
@@ -1582,7 +1582,7 @@ ACMD(do_restore) {
     char buf[MAX_INPUT_LENGTH];
     struct char_data *vict;
     struct descriptor_data *j;
-    int i;
+    //int i;
 
     one_argument(argument, buf);
     if (!*buf)
