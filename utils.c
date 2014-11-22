@@ -461,7 +461,7 @@ int get_skill_value(struct char_data *ch, int skillnum) {
 //        value += 2;
 //      value += GET_CLASS_RANKS(ch, CLASS_BARD);
       break;
-    case SKILL_PERCEPTION:
+    case SK_PERCEPTION:
 //      if (IS_HALF_ELF(ch))
 //        value += 1;
       break;
