@@ -546,6 +546,7 @@
 #define EF_ARRAY_MAX    4  /**< # Bytes in Bit vector - Obj Extra Flags */
 #define ZN_ARRAY_MAX    4  /**< # Bytes in Bit vector - Zone Flags */
 #define AD_ARRAY_MAX    4   /* Admin Flags */
+#define SK_ARRAY_MAX    63 /* Skill array */
 
 /* other #defined constants */
 /* **DO**NOT** blindly change the number of levels in your MUD merely by
@@ -559,6 +560,11 @@
 //#define LVL_GRGOD   33  /**< Level of Greater Gods */
 //#define LVL_GOD     32  /**< Level of Gods */
 //#define LVL_IMMORT	31  /**< Level of Immortals */
+
+/*Above being left here for archiving purposes*/
+
+
+
 #define ARTISAN_TYPE_UNDEFINED  0
 #define ARTISAN_TYPE_SMITH      1
 #define ARTISAN_TYPE_COOK     2
@@ -949,6 +955,7 @@ struct char_player_data {
     ubyte weight; /**< PC / NPC weight */
     ubyte height; /**< PC / NPC height */
     byte race; /* PC/NPC Race*/
+    int skills[SK_ARRAY_MAX][2];
 
 
 };
@@ -1018,7 +1025,6 @@ struct char_special_data {
 
 /** Data only needed by PCs, and needs to be saved to disk. */
 struct player_special_data_saved {
-    
     int wimp_level; /**< Below this # of hit points, flee! */
     byte freeze_level; /**< Level of god who froze char, if any */
     sh_int invis_level; /**< level of invisibility */
@@ -1377,8 +1383,8 @@ struct game_data {
     char *OK; /**< When player receives 'Okay.' text.    */
     char *NOPERSON; /**< 'No one by that name here.'   */
     char *NOEFFECT; /**< 'Nothing seems to happen.'            */
-    
-      sbyte enable_languages;   /* Enable spoken languages              */
+
+    sbyte enable_languages; /* Enable spoken languages              */
 };
 
 /** The rent and crashsave options. */

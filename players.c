@@ -250,7 +250,7 @@ int load_char(const char *name, struct char_data *ch) {
 
         /* Character initializations. Necessary to keep some things straight. */
         ch->affected = NULL;
-        for (i = 1; i <= SKILL_TABLE_SIZE; i++) {
+        for (i = 1; i <= SK_ARRAY_MAX; i++) {
             SET_SKILL(ch, i, 0);
         }
         GET_CRAFTING_TYPE(ch) = PFDEF_CRAFTING_TYPE;
@@ -317,6 +317,10 @@ int load_char(const char *name, struct char_data *ch) {
             PRF_FLAGS(ch)[i] = PFDEF_PREFFLAGS;
         for (i = 0; i < AD_ARRAY_MAX; i++)
             ADM_FLAGS(ch)[i] = 0;
+        for (i = 0, i < SK_ARRAY_MAX; i++)
+            GET_SKILL_RANK(ch)[i] = 0;
+        for (i = 0, i < SK_ARRAY_MAX; i++)
+            GET_SKILL_XP(ch)[i] = 0;
 
         while (get_line(fl, line)) {
             tag_argument(line, tag);
@@ -339,8 +343,8 @@ int load_char(const char *name, struct char_data *ch) {
                             PLR_FLAGS(ch)[3] = asciiflag_conv(f4);
                         } else
                             PLR_FLAGS(ch)[0] = asciiflag_conv(line);
-                    } else if (!strcmp(tag, "ArXp")) GET_ARTISAN_EXP(ch) = atof(line);
-                    else if (!strcmp(tag, "ArTy")) GET_ARTISAN_TYPE(ch) = atoi(line);
+                    }//else if (!strcmp(tag, "ArXp")) GET_ARTISAN_EXP(ch) = atof(line);
+                        //else if (!strcmp(tag, "ArTy")) GET_ARTISAN_TYPE(ch) = atoi(line);
                     else if (!strcmp(tag, "Aff ")) {
                         if (sscanf(line, "%s %s %s %s", f1, f2, f3, f4) == 4) {
                             AFF_FLAGS(ch)[0] = asciiflag_conv(f1);
@@ -500,7 +504,7 @@ int load_char(const char *name, struct char_data *ch) {
 
     /* initialization for imms */
     if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT) {
-        for (i = 1; i <= SKILL_TABLE_SIZE; i++)
+        for (i = 1; i <= SK_ARRAY_MAX; i++)
             SET_SKILL(ch, i, 100);
         GET_COND(ch, HUNGER) = -1;
         GET_COND(ch, THIRST) = -1;
@@ -679,8 +683,8 @@ void save_char(struct char_data * ch) {
     if (GET_GOLD(ch) != PFDEF_GOLD) fprintf(fl, "Gold: %d\n", GET_GOLD(ch));
     if (GET_BANK_GOLD(ch) != PFDEF_BANK) fprintf(fl, "Bank: %d\n", GET_BANK_GOLD(ch));
     if (GET_EXP(ch) != PFDEF_EXP) fprintf(fl, "Exp : %d\n", GET_EXP(ch));
-    if (GET_ARTISAN_EXP(ch) > 0) fprintf(fl, "ArXp: %12.0f\n", GET_ARTISAN_EXP(ch));
-    if (GET_ARTISAN_TYPE(ch) > 0) fprintf(fl, "ArTy: %d\n", GET_ARTISAN_TYPE(ch));
+    //if (GET_ARTISAN_EXP(ch) > 0) fprintf(fl, "ArXp: %12.0f\n", GET_ARTISAN_EXP(ch));
+    //if (GET_ARTISAN_TYPE(ch) > 0) fprintf(fl, "ArTy: %d\n", GET_ARTISAN_TYPE(ch));
     if (GET_HITROLL(ch) != PFDEF_HITROLL) fprintf(fl, "Hrol: %d\n", GET_HITROLL(ch));
     if (GET_DAMROLL(ch) != PFDEF_DAMROLL) fprintf(fl, "Drol: %d\n", GET_DAMROLL(ch));
     if (GET_OLC_ZONE(ch) != PFDEF_OLC) fprintf(fl, "Olc : %d\n", GET_OLC_ZONE(ch));
@@ -704,9 +708,9 @@ void save_char(struct char_data * ch) {
     /* Save skills */
     if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT) {
         fprintf(fl, "Skil:\n");
-        for (i = 1; i <= SKILL_TABLE_SIZE; i++) {
-            if (GET_SKILL_RANKS(ch, i))
-                fprintf(fl, "%d %d\n", i, GET_SKILL_RANKS(ch, i));
+        for (i = 1; i <= SK_ARRAY_MAX; i++) {
+            if (GET_SKILL_RANK(ch, i))
+                fprintf(fl, "%d %d\n", GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
         }
         fprintf(fl, "0 0\n");
     }

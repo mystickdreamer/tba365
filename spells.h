@@ -111,58 +111,83 @@
 #define SKILL_SNEAK                 138 /* Reserved Skill[] DO NOT CHANGE */
 #define SKILL_STEAL                 139 /* Reserved Skill[] DO NOT CHANGE */
 #define SKILL_TRACK		              140 /* Reserved Skill[] DO NOT CHANGE */
-#define SKILL_FORESTING         141
-#define SKILL_MINING            142
-#define SKILL_COOKING           143
-#define SKILL_BLACKSMITHING     144
-#define SKILL_TAILORING         145
-#define SKILL_TANNING           146
-#define SKILL_GOLDSMITHING      147
-#define SKILL_WOODWORKING       148
-#define SKILL_SKINNING          149
-#define SKILL_HERBALISM         150
 
-//#define SKILL_BALANCE           800
-//#define SKILL_USE_ROPE          800
-#define SKILL_APPRAISE		152
-#define SKILL_USE_MAGIC_DEVICE  153
-//#define SKILL_FORGERY           807
-#define SKILL_SPELLCRAFT        154
-#define SKILL_PERCEPTION        155
-#define SKILL_SEARCH            156
-#define SKILL_LORE              157
-#define SKILL_OPEN_LOCK         158
-#define SKILL_HANDLE_ANIMAL     159
-//#define SKILL_BLUFF             802
-//#define SKILL_INTIMIDATE        810
-//#define SKILL_DIPLOMACY         810
-#define SKILL_FIRST_AID              160
-//#define SKILL_DISGUISE          802
-#define SKILL_TUMBLE		161
-#define SKILL_DISABLE_DEVICE    162
-#define SKILL_DECIPHER_SCRIPT   163
-//#define SKILL_ESCAPE_ARTIST     800
-#define SKILL_PERFORM           164
-//#define SKILL_COMBAT_TACTICS    806
-//#define SKILL_CONCENTRATION     816
-//#define SKILL_ACROBATICS      	800
-//#define SKILL_ATHLETICS      	801
-//#define SKILL_DECEPTION         802
-//#define SKILL_ENDURANCE   	803
-//#define SKILL_GATHER_INFORMATION 804
-//#define SKILL_INITIATIVE     	805
-//#define SKILL_TACTICS           806
-//#define SKILL_KNOWLEDGE   	807
-//#define SKILL_MECHANICS         808
-//#define SKILL_PERSUASION        810
-//#define SKILL_RIDE 	   	812
-//#define SKILL_SURVIVAL     	813
-#define SKILL_CRAFTING_THEORY   165
-#define SKILL_TINKERING         166
-#define SKILL_HARVESTING        167
-#define SKILL_SENSE_MOTIVE      168
-#define SKILL_DODGE             169
-#define SKILL_PARRY             170
+
+
+
+//Weapon Skills:
+#define SK_UNDEFINED 0
+#define SK_PARRY    1
+#define SK_Small_Edged 2
+#define SK_Medium_Edged 3
+#define SK_Heavy_Edged 4
+#define SK_Small_blunt 5
+#define SK_Medium_Blunt 6 
+#define SK_Heavy_Blunt 7
+#define SK_Staff 8
+#define SK_Sling 9
+#define SK_Short_Bow 10
+#define SK_Long_Bow 11
+#define SK_Light_Crossbow 12
+#define SK_Heavy_Crossbow 13
+#define SK_Polearm 14
+#define SK_Light_thrown 15
+#define SK_Heavy_thrown 16
+#define SK_Backstabbing 17
+//Survival:
+#define SK_Evasion 18
+#define SK_Climbing 19
+#define SK_Swimming 20
+#define SK_Perception 21
+#define SK_Tracking 22
+#define SK_Hiding 23
+#define SK_Sneaking 24
+#define SK_Lockpicking 25
+#define SK_Disarming 26
+#define SK_Stealing 27
+#define SK_First_Aid 28
+//Lore:
+#define SK_Scholarship 29
+#define SK_Music 30
+//Instrumental Lore: (Bards)
+#define SK_Percussion 31
+#define SK_Stringed 32
+#define SK_Wind 33
+#define SK_Vocal 34
+#define SK_Appraise 35
+#define SK_Handle_Animal 36
+#define SK_Astrology 37
+//Magic:
+#define SK_Primary 38
+#define SK_Harness 39
+#define SK_Mana_Perception 40
+#define SK_Use_Magic_Device 41
+#define SK_Targeted 42
+//Armor:
+#define SK_Shield 43
+#define SK_Leather 44
+#define SK_Chain 45
+#define SK_Plate 46
+//Crafting:
+#define SK_Mining 47
+#define SK_Foraging 48
+#define SK_Skinning 49
+#define SK_Herbalism 50
+#define SK_Forestry 51
+#define SK_Cooking 52
+#define SK_Blacksmithing 53
+#define SK_Tailoring 54
+#define SK_Tanning 55
+#define SK_Goldsmithing 56
+#define SK_Woodworking 57
+#define SK_Tinkering 58
+#define SK_Forging  59//(weaponsmithing and armorsmithing)
+#define SK_Alchemy 60
+#define SK_Enchanting 61
+#define SK_Runecrafting 62
+
+#define NUM_SKILLS 63
+
 
 #define SKILL_LOW_SKILL SKILL_BACKSTAB
 #define SKILL_HIGH_SKILL SKILL_PARRY
@@ -275,7 +300,7 @@ struct spell_info_type {
     const char *name; /* Input size not limited. Originates from string constants. */
     const char *wear_off_msg; /* Input size not limited. Originates from string constants. */
     byte can_learn_skill[NUM_CLASSES];
-    int skilltype;       /* Is it a spell, skill, art, feat, or what? used as bitvector */
+    int skilltype; /* Is it a spell, skill, art, feat, or what? used as bitvector */
     int flags;
     int artisan_type;
 };
