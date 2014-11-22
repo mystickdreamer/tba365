@@ -655,7 +655,7 @@ do                                                              \
 #define GET_SKILL(ch, i)		(IS_NPC(ch) ? (spell_info[i].can_learn_skill[GET_CLASS(ch)] == SKLEARN_CLASS ? \
 					GET_LEVEL(ch) : 0) : ((ch)->skills[i]))
 //#define SET_SKILL(ch, i, val)		do { (ch)->skills[i] = val; } while(0)
-#define SET_SKILL(ch, i, val)       do { (ch_->player.skills[i] = val, } while (0))
+#define SET_SKILL(ch, i, val)       do { (ch)->player.skills[i] = val, } while (0))
 /** The player's default sector type when buildwalking */
 #define GET_BUILDWALK_SECTOR(ch) CHECK_PLAYER_SPECIAL((ch), ((ch)->player_specials->buildwalk_sector))
 
