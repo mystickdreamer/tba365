@@ -141,7 +141,7 @@ ACMD(do_send) {
 }
 
 
-
+/*
 void reset_artisan_experience(struct char_data *vict) {
   int i = 0;
   long exp_reimb = 0;
@@ -192,7 +192,7 @@ ACMD(do_resetartisan)
   send_to_char(ch, "%s has had their artisan experience reset.\r\n", GET_NAME(vict));
 
 }
-
+*/
 /* take a string, and return an rnum.. used for goto, at, etc.  -je 4/6/93 */
 room_rnum find_target_room(struct char_data *ch, char *rawroomstr) {
     room_rnum location = NOWHERE;
