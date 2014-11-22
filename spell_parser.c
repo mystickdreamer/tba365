@@ -1029,6 +1029,6 @@ void mag_assign_spells(void) {
     skillo(SKILL_WHIRLWIND, "whirlwind");
     skillo(SK_PERCEPTION, "perception");
     skillo(SKILL_PERCEPTION, "perception");
-    set_skill_type(SK_PERCEPTION, SKTYPE_SKILL);
+    set_skill_type(SKILL_PERCEPTION, SKTYPE_SKILL);
 }
 
