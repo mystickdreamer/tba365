@@ -1434,12 +1434,12 @@ void do_start(struct char_data *ch) {
 
         case CLASS_THIEF:
             SET_SKILL(ch, SK_SNEAKING, 10, 1000);
-            SET_SKILL(ch, SKILL_HIDE, 5);
-            SET_SKILL(ch, SKILL_STEAL, 15);
-            SET_SKILL(ch, SKILL_BACKSTAB, 10);
-            SET_SKILL(ch, SKILL_PICK_LOCK, 10);
-            SET_SKILL(ch, SKILL_TRACK, 10);
-            SET_SKILL(ch, SKILL_PERCEPTION, 10);
+            SET_SKILL(ch, SK_HIDE, 5, 200);
+            SET_SKILL(ch, SK_STEALING, 10, 500);
+            SET_SKILL(ch, SK_BACKSTAB, 10, 1000);
+            SET_SKILL(ch, SK_LOCKPICKING, 10, 1000);
+            SET_SKILL(ch, SK_TRACKING, 10, 1000);
+            SET_SKILL(ch, SK_PERCEPTION, 10, 1000);
             break;
 
         case CLASS_WARRIOR:
