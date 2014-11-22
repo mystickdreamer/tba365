@@ -1433,7 +1433,7 @@ void do_start(struct char_data *ch) {
             break;
 
         case CLASS_THIEF:
-            SET_SKILL(ch, SK_SNEAK, 10, 1000);
+            SET_SKILL(ch, SK_SNEAKING, 10, 1000);
             SET_SKILL(ch, SKILL_HIDE, 5);
             SET_SKILL(ch, SKILL_STEAL, 15);
             SET_SKILL(ch, SKILL_BACKSTAB, 10);
