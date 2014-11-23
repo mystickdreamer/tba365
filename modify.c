@@ -307,7 +307,7 @@ ACMD(do_skillset)
   struct char_data *vict;
   char name[MAX_INPUT_LENGTH];
   char buf[MAX_INPUT_LENGTH], help[MAX_STRING_LENGTH];
-  int skill, value, i, qend;
+  int skill, value, i, qend, value2;
 
   argument = one_argument(argument, name);
 
@@ -384,7 +384,7 @@ ACMD(do_skillset)
    * find_skill_num() guarantees a valid spell_info[] index, or -1, and we
    * checked for the -1 above so we are safe here.
    */
-  SET_SKILL(vict, skill, value);
+  SET_SKILL(vict, skill, value, value2);
   mudlog(BRF, ADMLVL_IMMORT, TRUE, "skillset: %s changed %s's '%s' to %d.", GET_NAME(ch), GET_NAME(vict), spell_info[skill].name, value);
   send_to_char(ch, "You change %s's %s to %d.\r\n", GET_NAME(vict), spell_info[skill].name, value);
 }
