@@ -728,7 +728,7 @@ void what_does_guild_know(int guild_nr, struct char_data * ch) {
       page_string(ch->desc, buf2, TRUE);
      */
 }
-
+/*
 void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *ch, char *argument) {
     int skill_num, learntype, pointcost, highest, i;
     long exp_reimb = 0;
@@ -743,8 +743,8 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
     skill_num = find_skill_num(argument, SKTYPE_SKILL);
 
     if (!IS_SET(spell_info[skill_num].flags, SKFLAG_CRAFT)) {
-       /* if (GET_PRACTICES(ch, GET_CLASS(ch)) <= 0)*/ {
-            send_to_char(ch, "You do not seem to be able to practice now.\r\n");
+*/       /* if (GET_PRACTICES(ch, GET_CLASS(ch)) <= 0)*/ {
+/*            send_to_char(ch, "You do not seem to be able to practice now.\r\n");
             return;
         }
     } else {
@@ -776,16 +776,16 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
         return;
     }
 
-
+*/
     /****  Does the GM know the skill the player wants to learn?  ****/
-
+/*
     if (skill_num == SKILL_LANG_THIEVES_CANT && !IS_THIEF(ch)) {
         send_to_char(ch, "You need at least 1 rank in the thief class to learn thieves cant.\r\n");
         return;
     }
-
+*/
     /**** Can the player learn the skill if the GM knows it?  ****/
-    if (IS_SET(spell_info[skill_num].skilltype, SKTYPE_SKILL)) {
+/*    if (IS_SET(spell_info[skill_num].skilltype, SKTYPE_SKILL)) {
         for (learntype = 0, i = 0; i < NUM_CLASSES; i++)
             //      if (spell_info[skill_num].can_learn_skill[i] > learntype)
             if (GET_CLASS(ch) == i)
@@ -810,8 +810,8 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
             pointcost = 1;
         else
             pointcost = 2;
-        /*if (GET_PRACTICES(ch, GET_CLASS(ch)) >= pointcost) {*/ 
-            if (GET_SKILL_RANKS(ch, skill_num) >= highest) {
+*/        /*if (GET_PRACTICES(ch, GET_CLASS(ch)) >= pointcost) {*/ 
+/*            if (GET_SKILL_RANKS(ch, skill_num) >= highest) {
                 send_to_char(ch, "You cannot increase that skill again until you progress further.\r\n");
                 return;
             } else {
@@ -826,7 +826,7 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
     } else {
         send_to_char(ch, "You can't learn that.\r\n");
     }
-}
+}*/
 /*
 void handle_train(struct char_data *keeper, int guild_nr, struct char_data *ch, char *argument) {
     skip_spaces(&argument);
