@@ -990,14 +990,15 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                         snprintf(str, slen, "%s", skill_percent(c, subfield, 0));
                     else if (!str_cmp(field, "skillset")) {
                         if (!IS_NPC(c) && subfield && *subfield) {
-                            char skillname[MAX_INPUT_LENGTH], *amount;
+                            char skillname[MAX_INPUT_LENGTH], *amount, *amount2;
                             amount = one_word(subfield, skillname);
                             skip_spaces(&amount);
                             if (amount && *amount && is_number(amount)) {
                                 int skillnum = find_skill_num(skillname, SKTYPE_SKILL);
                                 if (skillnum > 0) {
-                                    int new_value = MAX(0, MIN(100, atoi(amount)));
-                                    SET_SKILL(c, skillnum, new_value);
+                                    int new_value = MAX(0, MIN(1000, atoi(amount)));
+                                    int new_value2 = MAX(0, MIN(10000, atoi(amount2)));
+                                    SET_SKILL(c, skillnum, new_value, new_value2);
                                 }
                             }
                         }
