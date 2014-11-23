@@ -246,7 +246,7 @@ spell_info[spell_sort_info[i]].name, GET_SKILL(ch,
 
 }
  */
-ACMD(do_artisan) {
+/*ACMD(do_artisan) {
 
     char arg[200];
 
@@ -351,7 +351,7 @@ ACMD(do_artisan) {
         free(argument);
 
 }
-
+*/
 int print_skills_by_type(struct char_data *ch, char *buf, int maxsz, int sktype) {
     size_t len = 0;
     int i, t, known, nlen;
@@ -1406,11 +1406,11 @@ ACMD(do_gain) {
 
 }
 */
-ACMD(do_practice_skills) {
+//ACMD(do_practice_skills) {
 
-    handle_practice(NULL, 0, ch, argument);
+//    handle_practice(NULL, 0, ch, argument);
 
-}
+//}
 
 SPECIAL(guild) {
     //  char arg[MAX_INPUT_LENGTH];
