@@ -18,6 +18,7 @@
 #include "structs.h"
 #include "utils.h"
 #include "interpreter.h"	/* alias_data */
+#include "spells.h"
 
 /** Current tbaMUD version.
  * @todo defined with _TBAMUD so we don't have multiple constants to change.
