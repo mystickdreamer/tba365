@@ -767,6 +767,23 @@ ACMD(do_examine) {
     }
 }
 
+ACMD(do_skills) {
+    int i;
+    int count = 0;
+    
+    send_to_char(ch, "Skills:");
+        for (i = 0; i < SK_ARRAY_MAX + 1; i++) {
+        if (spell_sort_info[i] >= SKILL_LOW_SKILL && spell_sort_info[i] <= SKILL_HIGH_SKILL) {
+            send_to_char(ch, "%-30s: %2d [%2d] ", spell_info[spell_sort_info[i]].name, GET_SKILL_RANK(ch),
+                    GET_SKILL_XP(ch));
+        } else
+            continue;
+        if (count % 2 == 1)
+            send_to_char(ch, "\r\n");
+        count++;
+    }
+}
+
 ACMD(do_gold) {
     if (GET_GOLD(ch) == 0)
         send_to_char(ch, "You're broke!\r\n");
