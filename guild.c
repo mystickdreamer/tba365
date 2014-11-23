@@ -743,8 +743,9 @@ void handle_practice(struct char_data *keeper, int guild_nr, struct char_data *c
     skill_num = find_skill_num(argument, SKTYPE_SKILL);
 
     if (!IS_SET(spell_info[skill_num].flags, SKFLAG_CRAFT)) {
-*/       /* if (GET_PRACTICES(ch, GET_CLASS(ch)) <= 0)*/ {
-/*            send_to_char(ch, "You do not seem to be able to practice now.\r\n");
+*/       /* if (GET_PRACTICES(ch, GET_CLASS(ch)) <= 0)*/ 
+/*{
+            send_to_char(ch, "You do not seem to be able to practice now.\r\n");
             return;
         }
     } else {
