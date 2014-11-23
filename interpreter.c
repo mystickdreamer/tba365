@@ -1217,9 +1217,9 @@ int enter_player_game(struct descriptor_data *d) {
 
     reset_char(d->character);
 
-    if (!GET_ARTISAN_TYPE(ch)) {
-        reset_artisan_experience(ch);
-    }
+//    if (!GET_ARTISAN_TYPE(ch)) {
+//        reset_artisan_experience(ch);
+//    }
 
     if (PLR_FLAGGED(d->character, PLR_INVSTART))
         GET_INVIS_LEV(d->character) = GET_LEVEL(d->character);
