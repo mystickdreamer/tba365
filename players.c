@@ -276,8 +276,8 @@ int load_char(const char *name, struct char_data *ch) {
         GET_GOLD(ch) = PFDEF_GOLD;
         GET_BANK_GOLD(ch) = PFDEF_BANK;
         GET_EXP(ch) = PFDEF_EXP;
-        GET_ARTISAN_EXP(ch) = 0;
-        GET_ARTISAN_TYPE(ch) = 0;
+//        GET_ARTISAN_EXP(ch) = 0;
+//        GET_ARTISAN_TYPE(ch) = 0;
         GET_HITROLL(ch) = PFDEF_HITROLL;
         GET_DAMROLL(ch) = PFDEF_DAMROLL;
         GET_AC(ch) = PFDEF_AC;
