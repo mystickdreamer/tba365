@@ -319,7 +319,7 @@ int load_char(const char *name, struct char_data *ch) {
             ADM_FLAGS(ch)[i] = 0;
         for (i = 0; i < SK_ARRAY_MAX; i++)
             GET_SKILL_RANK(ch)[i] = 0;
-        for (i = 0, i < SK_ARRAY_MAX; i++)
+        for (i = 0; i < SK_ARRAY_MAX; i++)
             GET_SKILL_XP(ch)[i] = 0;
 
         while (get_line(fl, line)) {
@@ -906,7 +906,7 @@ static void load_skills(FILE *fl, struct char_data *ch) {
         get_line(fl, line);
         sscanf(line, "%d %d %d", &num, &num2, &num3);
         if (num != 0)
-            SET_SKILL(ch, num, num2);
+            SET_SKILL(ch, num, num2, num3);
     } while (num != 0);
 }
 
