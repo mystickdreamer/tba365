@@ -3409,11 +3409,11 @@ void init_char(struct char_data *ch) {
     else
         log("SYSERR: init_char: Character '%s' not found in player table.", GET_NAME(ch));
 
-    for (i = 1; i <= SKILL_TABLE_SIZE; i++) {
+    for (i = 1; i <= SK_ARRAY_MAX; i++) {
         if (GET_ADMLEVEL(ch) < ADMLVL_IMPL)
-            SET_SKILL(ch, i, 0);
+            SET_SKILL(ch, i, 0, 0);
         else
-            SET_SKILL(ch, i, 100);
+            SET_SKILL(ch, i, 100, 0);
     }
 
     for (i = 0; i < AF_ARRAY_MAX; i++)
