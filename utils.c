@@ -440,35 +440,35 @@ int get_skill_value(struct char_data *ch, int skillnum) {
 //    value += 10;
 
   switch (skillnum) {
-    case SKILL_BLACKSMITHING:
-    case SKILL_GOLDSMITHING:
-    case SKILL_TANNING:
-    case SKILL_TAILORING:
-    case SKILL_WOODWORKING:
+    case SK_BLACKSMITHING:
+    case SK_GOLDSMITHING:
+    case SK_TANNING:
+    case SK_TAILORING:
+    case SK_WOODWORKING:
 //      value += HAS_FEAT(ch, FEAT_PROFICIENT_CRAFTER);
       break;
-    case SKILL_MINING:
-    case SKILL_SKINNING:
-    case SKILL_FORESTING:
-    case SKILL_COOKING:
+    case SK_MINING:
+    case SK_SKINNING:
+    case SK_FORESTRY:
+    case SK_COOKING:
 //      value += HAS_FEAT(ch, FEAT_PROFICIENT_HARVESTER);
       break;
-    case SKILL_HIDE:
+    case SK_HIDING:
 //      value += (SIZE_MEDIUM - get_size(ch)) * 4;
       break;
-    case SKILL_LORE:
+//    case SKILL_LORE:
 //      if (HAS_FEAT(ch, FEAT_NATURE_SENSE))
 //        value += 2;
 //      value += GET_CLASS_RANKS(ch, CLASS_BARD);
-      break;
+ //     break;
     case SK_PERCEPTION:
 //      if (IS_HALF_ELF(ch))
 //        value += 1;
       break;
-    case SKILL_SENSE_MOTIVE:
+//    case SKILL_SENSE_MOTIVE:
 //      if (HAS_FEAT(ch, FEAT_HONORBOUND))
 //        value += 2;
-      break;
+//      break;
 //    case SKILL_DIPLOMACY:
 //      if (IS_HALF_ELF(ch))
 //        value += 2;
@@ -1746,7 +1746,7 @@ char * convert_from_tabs(char * string)
   parse_tab(buf);
   return(buf);
 }
-
+/*
 double get_artisan_exp(struct char_data *ch)
 {
   double exp = 0;
@@ -1768,4 +1768,4 @@ double get_artisan_exp(struct char_data *ch)
 
   return exp;
 }
-
+*/
