@@ -773,11 +773,11 @@ ACMD(do_skills) {
     
     send_to_char(ch, "Skills:");
         for (i = 0; i < SK_ARRAY_MAX + 1; i++) {
-        if (spell_sort_info[i] >= SKILL_LOW_SKILL && spell_sort_info[i] <= SKILL_HIGH_SKILL) {
-            send_to_char(ch, "%-30s: %2d [%2d] ", spell_info[spell_sort_info[i]].name, GET_SKILL_RANK(ch, i),
+       // if (spell_sort_info[i] >= SKILL_LOW_SKILL && spell_sort_info[i] <= SKILL_HIGH_SKILL) {
+            send_to_char(ch, "%-30s: %2d [%2d] ", spell_info[i].name, GET_SKILL_RANK(ch, i),
                     GET_SKILL_XP(ch, i));
-        } else
-            continue;
+        //} else
+        //    continue;
         if (count % 2 == 1)
             send_to_char(ch, "\r\n");
         count++;
