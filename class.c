@@ -1434,7 +1434,7 @@ void do_start(struct char_data *ch) {
 
         case CLASS_THIEF:
             SET_SKILL(ch, SK_SNEAKING, 10, 1000);
-            SET_SKILL(ch, SK_HIDE, 5, 200);
+            SET_SKILL(ch, SK_HIDING, 5, 200);
             SET_SKILL(ch, SK_STEALING, 10, 500);
             SET_SKILL(ch, SK_BACKSTAB, 10, 1000);
             SET_SKILL(ch, SK_LOCKPICKING, 10, 1000);
@@ -1584,7 +1584,7 @@ void init_spell_levels(void) {
     spell_level(SPELL_FLY, CLASS_MAGIC_USER, 22);
     spell_level(SPELL_ENCHANT_WEAPON, CLASS_MAGIC_USER, 26);
     spell_level(SPELL_CLONE, CLASS_MAGIC_USER, 30);
-    spell_level(SKILL_PERCEPTION, CLASS_MAGIC_USER, 1);
+    spell_level(SK_PERCEPTION, CLASS_MAGIC_USER, 1);
 
     /* CLERICS */
     spell_level(SPELL_CURE_LIGHT, CLASS_CLERIC, 1);
@@ -1618,7 +1618,7 @@ void init_spell_levels(void) {
     spell_level(SPELL_HARM, CLASS_CLERIC, 19);
     spell_level(SPELL_GROUP_HEAL, CLASS_CLERIC, 22);
     spell_level(SPELL_REMOVE_CURSE, CLASS_CLERIC, 26);
-    spell_level(SKILL_PERCEPTION, CLASS_CLERIC, 1);
+    spell_level(SK_PERCEPTION, CLASS_CLERIC, 1);
 
     /* THIEVES */
     spell_level(SKILL_SNEAK, CLASS_THIEF, 1);
@@ -1627,7 +1627,7 @@ void init_spell_levels(void) {
     spell_level(SKILL_STEAL, CLASS_THIEF, 4);
     spell_level(SKILL_HIDE, CLASS_THIEF, 5);
     spell_level(SKILL_TRACK, CLASS_THIEF, 6);
-    spell_level(SKILL_PERCEPTION, CLASS_THIEF, 1);
+    spell_level(SK_PERCEPTION, CLASS_THIEF, 1);
 
     /* WARRIORS */
     spell_level(SKILL_KICK, CLASS_WARRIOR, 1);
@@ -1635,7 +1635,7 @@ void init_spell_levels(void) {
     spell_level(SKILL_TRACK, CLASS_WARRIOR, 9);
     spell_level(SKILL_BASH, CLASS_WARRIOR, 12);
     spell_level(SKILL_WHIRLWIND, CLASS_WARRIOR, 16);
-    spell_level(SKILL_PERCEPTION, CLASS_WARRIOR, 1);
+    spell_level(SK_PERCEPTION, CLASS_WARRIOR, 1);
 }
 
 void init_skill_classes(void) {
@@ -1649,40 +1649,39 @@ void init_skill_classes(void) {
 
     // These skills belong to all classes unless changed elsewhere below
     for (i = 0; i < NUM_CLASSES; i++) {
-        skill_class(SKILL_BLACKSMITHING, i, SKLEARN_CLASS);
-        skill_class(SKILL_HANDLE_ANIMAL, i, SKLEARN_CLASS);
-        skill_class(SKILL_DECIPHER_SCRIPT, i, SKLEARN_CANT);
+        skill_class(SK_BLACKSMITHING, i, SKLEARN_CLASS);
+        skill_class(SK_HANDLE_ANIMAL, i, SKLEARN_CLASS);
+        //skill_class(SK_DECIPHER_SCRIPT, i, SKLEARN_CANT);
         //   skill_class(SKILL_COMBAT_TACTICS, i, SKLEARN_CLASS);
-        skill_class(SKILL_GOLDSMITHING, i, SKLEARN_CLASS);
-        skill_class(SKILL_HERBALISM, i, SKLEARN_CLASS);
-        skill_class(SKILL_CRAFTING_THEORY, i, SKLEARN_CLASS);
-        skill_class(SKILL_COOKING, i, SKLEARN_CLASS);
-        skill_class(SKILL_TAILORING, i, SKLEARN_CLASS);
-        skill_class(SKILL_SKINNING, i, SKLEARN_CLASS);
-        skill_class(SKILL_MINING, i, SKLEARN_CLASS);
-        skill_class(SKILL_COOKING, i, SKLEARN_CLASS);
-        skill_class(SKILL_TANNING, i, SKLEARN_CLASS);
-        skill_class(SKILL_WOODWORKING, i, SKLEARN_CLASS);
-        skill_class(SKILL_FORESTING, i, SKLEARN_CLASS);
-        skill_class(SKILL_LORE, i, SKLEARN_CLASS);
-        skill_class(SKILL_PERCEPTION, i, SKLEARN_CLASS);
-        skill_class(SKILL_HIDE, i, SKLEARN_CLASS);
-        skill_class(SKILL_SNEAK, i, SKLEARN_CLASS);
-        skill_class(SKILL_FIRST_AID, i, SKLEARN_CLASS);
-        skill_class(SKILL_SENSE_MOTIVE, i, SKLEARN_CLASS);
-        skill_class(SKILL_SPELLCRAFT, i, SKLEARN_CLASS);
-        skill_class(SKILL_STEAL, i, SKLEARN_CLASS);
-        skill_class(SKILL_SEARCH, i, SKLEARN_CLASS);
-        skill_class(SKILL_DODGE, i, SKLEARN_CLASS);
-        skill_class(SKILL_PARRY, i, SKLEARN_CLASS);
-        skill_class(SKILL_APPRAISE, i, SKLEARN_CLASS);
-        skill_class(SKILL_DISABLE_DEVICE, i, SKLEARN_CLASS);
+        skill_class(SK_GOLDSMITHING, i, SKLEARN_CLASS);
+        skill_class(SK_HERBALISM, i, SKLEARN_CLASS);
+        //skill_class(SK_CRAFTING_THEORY, i, SKLEARN_CLASS);
+        skill_class(SK_COOKING, i, SKLEARN_CLASS);
+        skill_class(SK_TAILORING, i, SKLEARN_CLASS);
+        skill_class(SK_SKINNING, i, SKLEARN_CLASS);
+        skill_class(SK_MINING, i, SKLEARN_CLASS);
+        skill_class(SK_TANNING, i, SKLEARN_CLASS);
+        skill_class(SK_WOODWORKING, i, SKLEARN_CLASS);
+        skill_class(SK_FORESTRY, i, SKLEARN_CLASS);
+        //skill_class(SKILL_LORE, i, SKLEARN_CLASS);
+        skill_class(SK_PERCEPTION, i, SKLEARN_CLASS);
+        skill_class(SK_HIDING, i, SKLEARN_CLASS);
+        skill_class(SK_SNEAKING, i, SKLEARN_CLASS);
+        skill_class(SK_FIRST_AID, i, SKLEARN_CLASS);
+        //skill_class(SK_SENSE_MOTIVE, i, SKLEARN_CLASS);
+        //skill_class(SKILL_SPELLCRAFT, i, SKLEARN_CLASS);
+        skill_class(SK_STEALING, i, SKLEARN_CLASS);
+        //skill_class(SKILL_SEARCH, i, SKLEARN_CLASS);
+        skill_class(SK_EVASION, i, SKLEARN_CLASS);
+        skill_class(SK_PARRY, i, SKLEARN_CLASS);
+        skill_class(SK_APPRAISE, i, SKLEARN_CLASS);
+        skill_class(SK_DISARMING, i, SKLEARN_CLASS);
     }
 
     /* NECROMANCER */
 
     /* ARTISANS */
-    skill_class(SKILL_CRAFTING_THEORY, CLASS_ARTISAN, SKLEARN_CLASS);
+    //skill_class(SKILL_CRAFTING_THEORY, CLASS_ARTISAN, SKLEARN_CLASS);
 
     /* MAGES */
 
@@ -1691,8 +1690,8 @@ void init_skill_classes(void) {
     /* CLERICS */
 
     /* THIEVES */
-    skill_class(SKILL_USE_MAGIC_DEVICE, CLASS_THIEF, SKLEARN_CLASS);
-    skill_class(SKILL_TUMBLE, CLASS_THIEF, SKLEARN_CLASS);
+    //skill_class(SKILL_USE_MAGIC_DEVICE, CLASS_THIEF, SKLEARN_CLASS);
+    //skill_class(SKILL_TUMBLE, CLASS_THIEF, SKLEARN_CLASS);
 
     /* FIGHTERS */
     
