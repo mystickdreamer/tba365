@@ -97,7 +97,7 @@ ACMD(do_inventory);
 ACMD(do_levels);
 ACMD(do_scan);
 ACMD(do_score);
-ACMD(do_skill);
+ACMD(do_skills);
 ACMD(do_time);
 ACMD(do_toggle);
 ACMD(do_users);
