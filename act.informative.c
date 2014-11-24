@@ -773,16 +773,17 @@ ACMD(do_skills) {
     
     send_to_char(ch, "Skills:\r\n");
     for (i = 0; i < NUM_SKILLS; i++) {
-                send_to_char(ch, "%s%-40.40s%s", QYEL, skill_names[i], QNRM);
-        }
+               // send_to_char(ch, "%s%-40.40s%s", QYEL, skill_names[i], QNRM);
+        
         for (i = 0; i < SK_ARRAY_MAX + 1; i++) {
-            send_to_char(ch, "%-30s: %2d [%2d] ", GET_SKILL(ch, i), GET_SKILL_RANK(ch, i),
+            send_to_char(ch, "%-30s: %2d [%2d] ", skill_names(ch, i), GET_SKILL_RANK(ch, i),
                     GET_SKILL_XP(ch, i));
 
         if (count % 2 == 1)
             send_to_char(ch, "\r\n");
         count++;
     }
+                }
 }
 
 ACMD(do_gold) {
