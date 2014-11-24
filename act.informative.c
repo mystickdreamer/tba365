@@ -770,21 +770,19 @@ ACMD(do_examine) {
 ACMD(do_skills) {
     int i, j;
     int count = 0;
-    
+
     send_to_char(ch, "Skills:\r\n");
-    for (j = 0; j < NUM_SKILLS; j++) {
-               // send_to_char(ch, "%s%-40.40s%s", QYEL, skill_names[i], QNRM);
-        
+ //   for (j = 0; j < NUM_SKILLS; j++) {
         for (i = 0; i < SK_ARRAY_MAX + 1; i++) {
-            send_to_char(ch, "%-30s: %2d [%2d] ", skill_names(ch, j), GET_SKILL_RANK(ch, i),
+            send_to_char(ch, "%-30s: %2d [%2d] ", GET_SKILL(ch), i), GET_SKILL_RANK(ch, i),
                     GET_SKILL_XP(ch, i));
 
-        if (count % 2 == 1)
-            send_to_char(ch, "\r\n");
-        count++;
+            if (count % 2 == 1)
+                send_to_char(ch, "\r\n");
+            count++;
+        }
     }
-                }
-}
+//}
 
 ACMD(do_gold) {
     if (GET_GOLD(ch) == 0)
@@ -2390,7 +2388,7 @@ ACMD(do_whois) {
 
     sprinttype(victim->player.chclass, pc_class_types, buf, sizeof (buf));
     send_to_char(ch, "Class: %s\r\n", buf);
-    send_to_char(ch, "Race : %s\r\n", pc_race_types[(int)GET_RACE(victim)]);
+    send_to_char(ch, "Race : %s\r\n", pc_race_types[(int) GET_RACE(victim)]);
 
     send_to_char(ch, "Level: %d\r\n", GET_LEVEL(victim));
 
