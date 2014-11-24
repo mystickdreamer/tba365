@@ -768,7 +768,7 @@ ACMD(do_examine) {
 }
 
 ACMD(do_skills) {
-    int i, j;
+    int i;
     int count = 0;
 
     send_to_char(ch, "Skills:\r\n");
