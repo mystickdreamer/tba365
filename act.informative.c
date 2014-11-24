@@ -773,7 +773,7 @@ ACMD(do_skills) {
     
     send_to_char(ch, "Skills:\r\n");
     for (i = 0; i < NUM_SKILLS; i++) {
-                send_to_char(ch, "%s%-40.40s%s%s", QYEL, skill_names[i], (!(++j % 2)) ? "\r\n" : "", QNRM);
+                send_to_char(ch, "%s%-40.40s%s", QYEL, skill_names[i], QNRM);
         }
         for (i = 0; i < SK_ARRAY_MAX + 1; i++) {
             send_to_char(ch, "%-30s: %2d [%2d] ", GET_SKILL(ch, i), GET_SKILL_RANK(ch, i),
