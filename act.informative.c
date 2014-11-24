@@ -770,7 +770,7 @@ ACMD(do_examine) {
 ACMD(do_skills) {
     int i;
     int count = 0;
-    char skill[MAX_INPUT_LENGTH];
+    struct char_data skill;
 
     send_to_char(ch, "Skills:\r\n");
  //   for (j = 0; j < NUM_SKILLS; j++) {
