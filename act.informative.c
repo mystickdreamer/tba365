@@ -771,7 +771,7 @@ ACMD(do_skills) {
     int i;
     int count = 0;
     
-    send_to_char(ch, "Skills:");
+    send_to_char(ch, "Skills:\r\n");
         for (i = 0; i < SK_ARRAY_MAX + 1; i++) {
        // if (spell_sort_info[i] >= SKILL_LOW_SKILL && spell_sort_info[i] <= SKILL_HIGH_SKILL) {
             send_to_char(ch, "%-30s: %2d [%2d] ", spell_info[i].name, GET_SKILL_RANK(ch, i),
