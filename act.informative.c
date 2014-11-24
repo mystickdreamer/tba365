@@ -768,7 +768,7 @@ ACMD(do_examine) {
 }
 
 ACMD(do_skills) {
-    int i;
+    int i, j;
     int count = 0;
    
     
