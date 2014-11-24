@@ -60,6 +60,5 @@ extern size_t extra_bits_count;
 extern size_t wear_bits_count;
 extern const char *admin_level_names[ADMLVL_IMPL+2];
 extern const char *admin_flags[NUM_ADMFLAGS+1];
-extern const char *skill_names[NUM_SKILLS+1];
 
 #endif /* _CONSTANTS_H_ */
