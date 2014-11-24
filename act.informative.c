@@ -770,13 +770,14 @@ ACMD(do_examine) {
 ACMD(do_skills) {
     int i, j;
     int count = 0;
+    struct char_data skill;
    
     
     send_to_char(ch, "Skills:\r\n");
     for (j = 0; j < NUM_SKILLS; j++) {
         for (i = 0; i < SK_ARRAY_MAX + 1; i++) {
        // if (spell_sort_info[i] >= SKILL_LOW_SKILL && spell_sort_info[i] <= SKILL_HIGH_SKILL) {
-            send_to_char(ch, "%-30s: %2d [%2d] ", GET_SKILL(ch, j), GET_SKILL_RANK(ch, i),
+            send_to_char(ch, "%-30s: %2d [%2d] ", GET_SKILL(ch, skill), GET_SKILL_RANK(ch, i),
                     GET_SKILL_XP(ch, i));
         //} else
         //    continue;
