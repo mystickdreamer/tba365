@@ -652,7 +652,7 @@ do                                                              \
 #define SET_SKILL(ch, skill, i, val)           (ch)->player.skills[skill][i] = val
 #define GET_SKILL(ch, skill)        (ch)->player.skills[skill][i]
 //#define GET_SKILL_RANKS(ch, i)		((ch)->player_specials->skills[i])
-#define GET_SKILL(ch, i)		(IS_NPC(ch) ? (spell_info[i].can_learn_skill[GET_CLASS(ch)] == SKLEARN_CLASS ? \
+//#define GET_SKILL(ch, i)		(IS_NPC(ch) ? (spell_info[i].can_learn_skill[GET_CLASS(ch)] == SKLEARN_CLASS ? \
 					GET_LEVEL(ch) : 0) : ((ch)->skills[i]))
 //#define SET_SKILL(ch, i, val)		do { (ch)->skills[i] = val; } while(0)
 
