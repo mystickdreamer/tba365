@@ -772,12 +772,13 @@ ACMD(do_skills) {
     int count = 0;
     
     send_to_char(ch, "Skills:\r\n");
+    for (i = 0; i < NUM_SKILLS; i++) {
+                send_to_char(ch, "%s%-40.40s%s%s", QYEL, skill_names[i], (!(++j % 2)) ? "\r\n" : "", QNRM);
+        }
         for (i = 0; i < SK_ARRAY_MAX + 1; i++) {
-       // if (spell_sort_info[i] >= SKILL_LOW_SKILL && spell_sort_info[i] <= SKILL_HIGH_SKILL) {
             send_to_char(ch, "%-30s: %2d [%2d] ", GET_SKILL(ch, i), GET_SKILL_RANK(ch, i),
                     GET_SKILL_XP(ch, i));
-        //} else
-        //    continue;
+
         if (count % 2 == 1)
             send_to_char(ch, "\r\n");
         count++;
