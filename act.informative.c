@@ -768,7 +768,7 @@ ACMD(do_examine) {
 }
 
 ACMD(do_skills) {
-    int i;
+    int i, t;
     int count = 0;
     char arg[MAX_INPUT_LENGTH];
     
@@ -792,8 +792,10 @@ ACMD(do_skills) {
     if (is_abbrev(arg, "weapons")) {
         send_to_char(ch, "Weapon Skills:\r\n");
         for (i = 0; i < NUM_SKILLS; i++) {
-            if (set_skill_type != SKTYPE_WEAPON)
-                continue;
+            t = spell_info[i].skilltype;
+
+        if (t != sktype)
+            continue;
             for (i = 0; i < SK_ARRAY_MAX; i++) {
                 send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(ch, i),
                         GET_SKILL_XP(ch, i));
