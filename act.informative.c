@@ -798,7 +798,7 @@ ACMD(do_skills) {
     }
     
     if (is_abbrev(arg, "weapon")) {
-        
+        send_to_char(ch, "These are weapons\r\n");
     }
     else if (is_abbrev(arg, "survival")) {
         
