@@ -773,18 +773,18 @@ ACMD(do_skills) {
 
 
  
-        send_to_char(ch, "%sSkill Names:%s:\r\n", KRED, QNRM);
-        for (i = 0; i < NUM_SKILLS; i++) {
-                send_to_char(ch, "%s%-40.40s%s%s", QYEL, skill_names[i], (!(++j % 2)) ? "\r\n" : "", QNRM);
-        }
-        send_to_char(ch, "\r\n");
+//        send_to_char(ch, "%sSkill Names:%s:\r\n", KRED, QNRM);
+//        for (i = 0; i < NUM_SKILLS; i++) {
+//                send_to_char(ch, "%s%-40.40s%s%s", QYEL, skill_names[i], (!(++j % 2)) ? "\r\n" : "", QNRM);
+//        }
+//        send_to_char(ch, "\r\n");
     
     
     
     send_to_char(ch, "Skills:\r\n");
     for (j = 0; j < NUM_SKILLS; j++) {
         for (i = 0; i < SK_ARRAY_MAX + 1; i++) {
-            send_to_char(ch, "%-30s: %2d [%2d] ", GET_SKILL(ch, j), GET_SKILL_RANK(ch, i),
+            send_to_char(ch, "%s%-40.40s: %s %2d [%2d] ",QYEL, skill_names[j], QNRM, GET_SKILL_RANK(ch, i),
                     GET_SKILL_XP(ch, i));
 
             if (count % 2 == 1)
