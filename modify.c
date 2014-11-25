@@ -363,7 +363,7 @@ ACMD(do_skillset)
   }
   strcpy(help, (argument + 1));	/* strcpy: OK (MAX_INPUT_LENGTH <= MAX_STRING_LENGTH) */
   help[qend - 1] = '\0';
-  if ((skill = find_skill_num(help, SKTYPE_WEAPON)) <= 0) {
+  if ((skill = find_skill_num(help, SKTYPE_WEAPON) || (help, SKTYPE_ARMOR)) <= 0) {
     send_to_char(ch, "Unrecognized skill.\r\n");
     return;
   }
