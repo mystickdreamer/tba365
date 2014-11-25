@@ -75,9 +75,9 @@ char *skill_percent(struct char_data *ch, char *skill, int return_type)
   if (return_type == 0)
     snprintf(retval, sizeof(retval), "%d", get_skill_value(ch, skillnum));
   else if (return_type == 1)
-    snprintf(retval, sizeof(retval), "%d", skill_roll(ch, skillnum));
+ //   snprintf(retval, sizeof(retval), "%d", skill_roll(ch, skillnum));
   else // return_type == 2
-    snprintf(retval, sizeof(retval), "%d", GET_SKILL(ch, skillnum));
+    snprintf(retval, sizeof(retval), "%d", GET_SKILL(ch, skill));
   return retval;
 }
 
