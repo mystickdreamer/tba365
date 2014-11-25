@@ -1029,7 +1029,7 @@ void mag_assign_spells(void) {
     skillo(SKILL_WHIRLWIND, "whirlwind");
     //Weapon Skills:
     skillo(SK_PARRY, "parry");
-    set_skill_type(SKILL_PARRY, SKTYPE_WEAPON);
+    set_skill_type(SK_PARRY, SKTYPE_WEAPON);
     skillo(SK_SMALL_EDGED, "small edged");
     set_skill_type(SK_SMALL_EDGED, SKTYPE_WEAPON);
     skillo(SK_MEDIUM_EDGED, "medium edged");
