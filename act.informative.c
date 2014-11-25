@@ -771,6 +771,8 @@ ACMD(do_skills) {
     int i;
     int count = 0;
     char arg[MAX_INPUT_LENGTH];
+    
+    argument = one_argument(argument, arg);
 
 
 
@@ -794,6 +796,26 @@ ACMD(do_skills) {
             }
         }
     }
+    
+    if (is_abbrev(arg, "weapon")) {
+        
+    }
+    else if (is_abbrev(arg, "survival")) {
+        
+    }
+    else if (is_abbrev(arg, "lore")) {
+        
+    }
+    else if (is_abbrev(arg, "magic")) {
+        
+    }
+    else if (is_abbrev(arg, "armor")) {
+        
+    }
+    else if (is_abbrev(arg, "crafting")) {
+        
+    }
+    
 }
 
 ACMD(do_gold) {
