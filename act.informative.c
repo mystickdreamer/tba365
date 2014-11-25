@@ -807,9 +807,9 @@ ACMD(do_skills) {
     else if (is_abbrev(arg, "crafting")) {
         
     }
-    else {
-        send_to_char(ch, "%s SOMETHING WENT WRONG, TELL AN IMM.%s\r\n", KRED, QNRM);
-    }
+    //else {
+    //    send_to_char(ch, "%s SOMETHING WENT WRONG, TELL AN IMM.%s\r\n", KRED, QNRM);
+    //}
        
 }
 
