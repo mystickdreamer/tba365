@@ -773,30 +773,29 @@ ACMD(do_skills) {
     char arg[MAX_INPUT_LENGTH];
 
 
- 
-//        send_to_char(ch, "%sSkill Names:%s:\r\n", KRED, QNRM);
-//        for (i = 0; i < NUM_SKILLS; i++) {
-//                send_to_char(ch, "%s%-40.40s%s%s", QYEL, skill_names[i], (!(++j % 2)) ? "\r\n" : "", QNRM);
-//        }
-//        send_to_char(ch, "\r\n");
-    
-    
-    if (!*arg) {
-    send_to_char(ch, "Skills:\r\n");
-    for (i = 0; i < NUM_SKILLS; i++) {
-        for (i = 0; i < SK_ARRAY_MAX; i++) {
-            send_to_char(ch, "%s%-20s: %s %2d [%2d] ",QYEL, skill_names[i], QNRM, GET_SKILL_RANK(ch, i),
-                    GET_SKILL_XP(ch, i));
 
-            if (count % 2 == 1)
-                send_to_char(ch, "\r\n");
-            count++;
+    //        send_to_char(ch, "%sSkill Names:%s:\r\n", KRED, QNRM);
+    //        for (i = 0; i < NUM_SKILLS; i++) {
+    //                send_to_char(ch, "%s%-40.40s%s%s", QYEL, skill_names[i], (!(++j % 2)) ? "\r\n" : "", QNRM);
+    //        }
+    //        send_to_char(ch, "\r\n");
+
+
+    if (!*arg) {
+        send_to_char(ch, "Skills:\r\n");
+        for (i = 0; i < NUM_SKILLS; i++) {
+            for (i = 0; i < SK_ARRAY_MAX; i++) {
+                send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(ch, i),
+                        GET_SKILL_XP(ch, i));
+
+                if (count % 2 == 1)
+                    send_to_char(ch, "\r\n");
+                count++;
+            }
         }
     }
 }
 
-    
-    
 ACMD(do_gold) {
     if (GET_GOLD(ch) == 0)
         send_to_char(ch, "You're broke!\r\n");
