@@ -69,7 +69,7 @@ char *skill_percent(struct char_data *ch, char *skill, int return_type)
   static char retval[16];
   int skillnum;
 
-  skillnum = find_skill_num(skill, SKTYPE_SKILL);
+  skillnum = find_skill_num(skill, SKTYPE_WEAPON || SKTYPE_SURVIVAL || SKTYPE_LORE || SKTYPE_MAGIC || SKTYPE_ARMOR || SKTYPE_CRAFTING);
   if (skillnum<=0) return("unknown skill");
 
   if (return_type == 0)
