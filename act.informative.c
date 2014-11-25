@@ -770,6 +770,7 @@ ACMD(do_examine) {
 ACMD(do_skills) {
     int i;
     int count = 0;
+    char arg[MAX_INPUT_LENGTH];
 
 
  
@@ -780,7 +781,7 @@ ACMD(do_skills) {
 //        send_to_char(ch, "\r\n");
     
     
-    
+    if (!*arg) {
     send_to_char(ch, "Skills:\r\n");
     for (i = 0; i < NUM_SKILLS; i++) {
         for (i = 0; i < SK_ARRAY_MAX; i++) {
@@ -794,6 +795,8 @@ ACMD(do_skills) {
     }
 }
 
+    
+    
 ACMD(do_gold) {
     if (GET_GOLD(ch) == 0)
         send_to_char(ch, "You're broke!\r\n");
