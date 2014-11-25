@@ -213,6 +213,7 @@
 #define SKTYPE_MAGIC    (1 << 5)
 #define SKTYPE_ARMOR    (1 << 6)
 #define SKTYPE_CRAFTING (1 << 7)
+#define SKTYPE_SKILL    (1 << 8)
 
 #define SKFLAG_CRAFT    (1 << 9)
 
