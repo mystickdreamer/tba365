@@ -775,14 +775,6 @@ ACMD(do_skills) {
     argument = one_argument(argument, arg);
 
 
-
-    //        send_to_char(ch, "%sSkill Names:%s:\r\n", KRED, QNRM);
-    //        for (i = 0; i < NUM_SKILLS; i++) {
-    //                send_to_char(ch, "%s%-40.40s%s%s", QYEL, skill_names[i], (!(++j % 2)) ? "\r\n" : "", QNRM);
-    //        }
-    //        send_to_char(ch, "\r\n");
-
-
     if (!*arg) {
         send_to_char(ch, "Skills:\r\n");
         for (i = 0; i < NUM_SKILLS; i++) {
@@ -815,7 +807,10 @@ ACMD(do_skills) {
     else if (is_abbrev(arg, "crafting")) {
         
     }
-    
+    else {
+        send_to_char(arg, "%s SOMETHING WENT WRONG, TELL AN IMM.%s\r\n", KRED, QNRM)
+    }
+       
 }
 
 ACMD(do_gold) {
