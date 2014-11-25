@@ -795,7 +795,7 @@ ACMD(do_skills) {
         for (i = 0; i < NUM_SKILLS; i++) {
            
 
-            if ((skill != find_skill_num(help, SKTYPE_WEAPON)) <= 0) {
+            if ((skill != find_skill_num(help, SKTYPE_WEAPON)) <= 0) 
                 continue;
 
             if (t & SKTYPE_WEAPON) {
