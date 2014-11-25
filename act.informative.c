@@ -798,7 +798,7 @@ ACMD(do_skills) {
             if ((i != find_skill_num(help, SKTYPE_WEAPON)) <= 0) 
                 continue;
 
-            if (t & SKTYPE_WEAPON) {
+            
                 for (i = 0; i < SK_ARRAY_MAX; i++) {
                     t = spell_info[i].skilltype;
 
