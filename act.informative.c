@@ -793,9 +793,9 @@ ACMD(do_skills) {
     if (is_abbrev(arg, "weapons")) {
         send_to_char(ch, "Weapon Skills:\r\n");
         for (i = 0; i < NUM_SKILLS; i++) {
-            t = spell_info[i].skilltype;
+           
 
-            if (t != sktype)
+            if ((skill != find_skill_num(help, SKTYPE_WEAPON)) <= 0) {
                 continue;
 
             if (t & SKTYPE_WEAPON) {
