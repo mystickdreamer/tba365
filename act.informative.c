@@ -808,7 +808,7 @@ ACMD(do_skills) {
         
     }
     else {
-        send_to_char(arg, "%s SOMETHING WENT WRONG, TELL AN IMM.%s\r\n", KRED, QNRM)
+        send_to_char(arg, "%s SOMETHING WENT WRONG, TELL AN IMM.%s\r\n", KRED, QNRM);
     }
        
 }
