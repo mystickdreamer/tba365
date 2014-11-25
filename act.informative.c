@@ -772,7 +772,7 @@ ACMD(do_skills) {
     int count = 0;
     char arg[MAX_INPUT_LENGTH];
     int sktype;
-    
+
     argument = one_argument(argument, arg);
 
 
@@ -789,52 +789,48 @@ ACMD(do_skills) {
             }
         }
     }
-    
+
     if (is_abbrev(arg, "weapons")) {
         send_to_char(ch, "Weapon Skills:\r\n");
         for (i = 0; i < NUM_SKILLS; i++) {
             t = spell_info[i].skilltype;
 
-        if (t != sktype)
-            continue;
-            
-            if (t & SKTYPE_WEAPON) {
-            for (i = 0; i < SK_ARRAY_MAX; i++) {
-                t = spell_info[i].skilltype;
+            if (t != sktype)
+                continue;
 
-        if (t != sktype)
-            continue;
-            
             if (t & SKTYPE_WEAPON) {
-                send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(ch, i),
-                        GET_SKILL_XP(ch, i));
+                for (i = 0; i < SK_ARRAY_MAX; i++) {
+                    t = spell_info[i].skilltype;
 
-                if (count % 2 == 1)
-                    send_to_char(ch, "\r\n");
-                count++;
-            }
+                    if (t != sktype)
+                        continue;
+
+                    if (t & SKTYPE_WEAPON) {
+                        send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(ch, i),
+                                GET_SKILL_XP(ch, i));
+
+                        if (count % 2 == 1)
+                            send_to_char(ch, "\r\n");
+                        count++;
+                    }
+                }
             }
         }
-    }
-    else if (is_abbrev(arg, "survival")) {
-        
-    }
-    else if (is_abbrev(arg, "lore")) {
-        
-    }
-    else if (is_abbrev(arg, "magic")) {
-        
-    }
-    else if (is_abbrev(arg, "armor")) {
-        
-    }
-    else if (is_abbrev(arg, "crafting")) {
-        
+    } else if (is_abbrev(arg, "survival")) {
+
+    } else if (is_abbrev(arg, "lore")) {
+
+    } else if (is_abbrev(arg, "magic")) {
+
+    } else if (is_abbrev(arg, "armor")) {
+
+    } else if (is_abbrev(arg, "crafting")) {
+
     }
     //else {
     //    send_to_char(ch, "%s SOMETHING WENT WRONG, TELL AN IMM.%s\r\n", KRED, QNRM);
     //}
-       
+
 }
 
 ACMD(do_gold) {
