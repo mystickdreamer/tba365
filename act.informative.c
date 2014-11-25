@@ -798,7 +798,7 @@ ACMD(do_skills) {
         if (t != sktype)
             continue;
             
-            if ((t & SKTYPE_WEAPON) {
+            if (t & SKTYPE_WEAPON) {
             for (i = 0; i < SK_ARRAY_MAX; i++) {
                 send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(ch, i),
                         GET_SKILL_XP(ch, i));
