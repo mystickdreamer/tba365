@@ -793,9 +793,9 @@ ACMD(do_skills) {
     if (is_abbrev(arg, "weapons")) {
         send_to_char(ch, "Weapon Skills:\r\n");
         for (i = 0; i < NUM_SKILLS; i++) {
-            if IS_SET(spell_info[i].skilltype, SKTYPE_WEAPON)
+            if (IS_SET(spell_info[i].skilltype, SKTYPE_WEAPON))
             for (i = 0; i < SK_ARRAY_MAX; i++) {
-                if IS_SET(spell_info[i].skilltype, SKTYPE_WEAPON)
+                if (IS_SET(spell_info[i].skilltype, SKTYPE_WEAPON))
                 send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(ch, i),
                         GET_SKILL_XP(ch, i));
 
