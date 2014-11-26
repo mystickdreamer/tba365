@@ -771,7 +771,7 @@ ACMD(do_skills) {
     int i, t;
     int count = 0;
     char arg[MAX_INPUT_LENGTH];
-    int sktype;
+    //int sktype;
 
     argument = one_argument(argument, arg);
 
