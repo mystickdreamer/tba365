@@ -116,80 +116,80 @@
 
 
 //Weapon Skills:
-//#define SK_UNDEFINED 0
-#define SK_PARRY    0
-#define SK_SMALL_EDGED 1
-#define SK_MEDIUM_EDGED 2
-#define SK_HEAVY_EDGED 3
-#define SK_SMALL_BLUNT 4
-#define SK_MEDIUM_BLUNT 5 
-#define SK_HEAVY_BLUNT 6
-#define SK_STAFF 7
-#define SK_SLING 8
-#define SK_SHORT_BOW 9
-#define SK_LONG_BOW 10
-#define SK_LIGHT_CROSSBOW 11
-#define SK_HEAVY_CROSSBOW 12
-#define SK_POLEARM 13
-#define SK_LIGHT_THROWN 14
-#define SK_HEAVY_THROWN 15
-#define SK_BACKSTAB 16
+#define SK_UNDEFINED 0
+#define SK_PARRY    1
+#define SK_SMALL_EDGED 2
+#define SK_MEDIUM_EDGED 3
+#define SK_HEAVY_EDGED 4
+#define SK_SMALL_BLUNT 5
+#define SK_MEDIUM_BLUNT 6 
+#define SK_HEAVY_BLUNT 7
+#define SK_STAFF 8
+#define SK_SLING 9
+#define SK_SHORT_BOW 10
+#define SK_LONG_BOW 11
+#define SK_LIGHT_CROSSBOW 12
+#define SK_HEAVY_CROSSBOW 13
+#define SK_POLEARM 14
+#define SK_LIGHT_THROWN 15
+#define SK_HEAVY_THROWN 16
+#define SK_BACKSTAB 17
 //Survival:
-#define SK_EVASION 17
-#define SK_CLIMBING 18
-#define SK_SWIMMING 19
-#define SK_PERCEPTION 20
-#define SK_TRACKING 21
-#define SK_HIDING 22
-#define SK_SNEAKING 23
-#define SK_LOCKPICKING 24
-#define SK_DISARMING 25
-#define SK_STEALING 26
-#define SK_FIRST_AID 27
+#define SK_EVASION 18
+#define SK_CLIMBING 19
+#define SK_SWIMMING 20
+#define SK_PERCEPTION 21
+#define SK_TRACKING 22
+#define SK_HIDING 23
+#define SK_SNEAKING 24
+#define SK_LOCKPICKING 25
+#define SK_DISARMING 26
+#define SK_STEALING 27
+#define SK_FIRST_AID 28
 //Lore:
-#define SK_SCHOLARSHIP 28
-#define SK_MUSIC 29
+#define SK_SCHOLARSHIP 29
+#define SK_MUSIC 30
 //Instrumental Lore: (Bards)
-#define SK_PERCUSSION 30
-#define SK_STRINGED 31
-#define SK_WIND 32
-#define SK_VOCAL 33
-#define SK_APPRAISE 34
-#define SK_HANDLE_ANIMAL 35
-#define SK_ASTROLOGY 36
+#define SK_PERCUSSION 31
+#define SK_STRINGED 32
+#define SK_WIND 33
+#define SK_VOCAL 34
+#define SK_APPRAISE 35
+#define SK_HANDLE_ANIMAL 36
+#define SK_ASTROLOGY 37
 //Magic:
-#define SK_PRIMARY 37
-#define SK_HARNESS 38
-#define SK_MANA_PERCEIVE 39
-#define SK_MAGIC_DEVICES 40
-#define SK_TARGETED 41
+#define SK_PRIMARY 38
+#define SK_HARNESS 39
+#define SK_MANA_PERCEIVE 40
+#define SK_MAGIC_DEVICES 41
+#define SK_TARGETED 42
 //Armor:
-#define SK_SHIELD 42
-#define SK_LEATHER 43
-#define SK_CHAIN 44
-#define SK_PLATE 45
+#define SK_SHIELD 43
+#define SK_LEATHER 44
+#define SK_CHAIN 45
+#define SK_PLATE 46
 //Crafting:
-#define SK_MINING 46
-#define SK_FORAGING 47
-#define SK_SKINNING 48
-#define SK_HERBALISM 49
-#define SK_FORESTRY 50
-#define SK_COOKING 51
-#define SK_BLACKSMITHING 52
-#define SK_TAILORING 53
-#define SK_TANNING 54
-#define SK_GOLDSMITHING 55
-#define SK_WOODWORKING 56
-#define SK_TINKERING 57
-#define SK_FORGING  58//(weaponsmithing and armorsmithing)
-#define SK_ALCHEMY 59
-#define SK_ENCHANTING 60
-#define SK_RUNECRAFTING 61
+#define SK_MINING 47
+#define SK_FORAGING 48
+#define SK_SKINNING 49
+#define SK_HERBALISM 50
+#define SK_FORESTRY 51
+#define SK_COOKING 52
+#define SK_BLACKSMITHING 53
+#define SK_TAILORING 54
+#define SK_TANNING 55
+#define SK_GOLDSMITHING 56
+#define SK_WOODWORKING 57
+#define SK_TINKERING 58
+#define SK_FORGING  59//(weaponsmithing and armorsmithing)
+#define SK_ALCHEMY 60
+#define SK_ENCHANTING 61
+#define SK_RUNECRAFTING 62
 
-#define NUM_SKILLS 62
+#define NUM_SKILLS 63
 
 
-#define SKILL_LOW_SKILL SK_PARRY
+#define SKILL_LOW_SKILL SK_UNDEFINED
 #define SKILL_HIGH_SKILL SK_RUNECRAFTING
 
 #define SKILL_LANG_COMMON       601

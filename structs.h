@@ -613,7 +613,7 @@
 
 #define NUM_ADMFLAGS            19
 
-#define NUM_SKILLS              62
+#define NUM_SKILLS              63
 #define CONFIG_ENABLE_LANGUAGES	config_info.play.enable_languages
 
 
