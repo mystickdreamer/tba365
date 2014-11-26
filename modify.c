@@ -27,6 +27,7 @@
 #include "quest.h"
 #include "ibt.h"
 #include "guild.h"
+#include "screen.h"
 
 /* local (file scope) function prototpyes  */
 static char *next_page(char *str, struct char_data *ch);
@@ -340,7 +341,8 @@ ACMD(do_skillset)
             if IS_SET(spell_info[i].skilltype, SKTYPE_WEAPON) {
                 for (i = 0; i < SK_ARRAY_MAX; i++) {
                     if IS_SET(spell_info[i].skilltype, SKTYPE_WEAPON) {
-                        send_to_char(ch, "%s%-20s%s", QYEL, skill_names[i], QNRM);
+                        send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(ch, i),
+                                GET_SKILL_XP(ch, i));
 
                         if (count % 2 == 1)
                             send_to_char(ch, "\r\n");
