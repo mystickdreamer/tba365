@@ -892,7 +892,7 @@ ACMD(do_skills) {
     } else if (is_abbrev(arg, "crafting")) {
 
                 send_to_char(ch, "%sCrafting Skills%s:\r\n", KRED, QNRM);
-        for (i = 0; i < NUM_SKILLS+1; i++) {
+        for (i = 0; i < NUM_SKILLS; i++) {
             if IS_SET(spell_info[i].skilltype, SKTYPE_CRAFTING) {
                 for (i = 0; i < SK_ARRAY_MAX; i++) {
                     if IS_SET(spell_info[i].skilltype, SKTYPE_CRAFTING) {
