@@ -383,6 +383,7 @@ ACMD(do_skillset) {
                 }
 
             }
+            send_to_char(ch, "\r\n");
         }
         send_to_char(ch, "%sMagic Skills%s:\r\n", KRED, QNRM);
         for (i = 0; i < NUM_SKILLS; i++) {
