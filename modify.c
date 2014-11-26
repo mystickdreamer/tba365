@@ -310,7 +310,7 @@ ACMD(do_skillset)
   struct char_data *vict;
   char name[MAX_INPUT_LENGTH];
   char buf[MAX_INPUT_LENGTH], help[MAX_STRING_LENGTH];
-  int skill, value, i, qend, value2;
+  int skill, value, i, qend, value2, count = 0;
 
   argument = one_argument(argument, name);
 
@@ -346,7 +346,9 @@ ACMD(do_skillset)
                         send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(ch, i),
                                 GET_SKILL_XP(ch, i));
 
-
+                        if (count % 2 == 1)
+                            send_to_char(ch, "\r\n");
+                        count++;
                     }
 
                 }
