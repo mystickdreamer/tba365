@@ -1007,8 +1007,8 @@ const char *admin_flags[NUM_ADMFLAGS + 1] = {
     "\n"
 };
 
-const char *skill_names[NUM_SKILLS + 1] = {
-    "Undefined",
+const char *skill_names[NUM_SKILLS] = {
+    //"Undefined",
     "Parry",
     "Small Edged",
     "Medium Edged",
