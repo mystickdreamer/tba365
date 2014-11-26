@@ -335,7 +335,22 @@ ACMD(do_skillset)
   /* If there is no chars in argument */
   if (!*argument) {
     i = snprintf(help, sizeof(help) - i, "\r\nSkills:\r\n");
-    i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SKILL);
+    send_to_char(ch, "%sWeapon Skills%s:\r\n", KRED, QNRM);
+    for (i = 0; i < NUM_SKILLS; i++) {
+            if IS_SET(spell_info[i].skilltype, SKTYPE_WEAPON) {
+                for (i = 0; i < SK_ARRAY_MAX; i++) {
+                    if IS_SET(spell_info[i].skilltype, SKTYPE_WEAPON) {
+                        send_to_char(ch, "%s%-20s%s", QYEL, skill_names[i], QNRM);
+
+                        if (count % 2 == 1)
+                            send_to_char(ch, "\r\n");
+                        count++;
+                    }
+
+                }
+
+            }
+        }
     i += snprintf(help + i, sizeof(help) - i, "\r\nSpells:\r\n");
     i += print_skills_by_type(vict, help + i, sizeof(help) - i, SKTYPE_SPELL);
     if (CONFIG_ENABLE_LANGUAGES) {
