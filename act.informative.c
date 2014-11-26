@@ -778,8 +778,8 @@ ACMD(do_skills) {
 
     if (!*arg) {
         send_to_char(ch, "%sSkills%s:\r\n", KRED, QNRM);
-        for (i = 0; i < NUM_SKILLS+1; i++) {
-            for (i = 0; i < SK_ARRAY_MAX+1; i++) {
+        for (i = 0; i < NUM_SKILLS; i++) {
+            for (i = 0; i < SK_ARRAY_MAX; i++) {
                 send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(ch, i),
                         GET_SKILL_XP(ch, i));
 
