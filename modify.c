@@ -355,6 +355,7 @@ ACMD(do_skillset)
 
             }
         }
+    send_to_char(ch, "");
     send_to_char(ch, "%sSurvival Skills%s:\r\n", KRED, QNRM);
         for (i = 0; i < NUM_SKILLS; i++) {
             if IS_SET(spell_info[i].skilltype, SKTYPE_SURVIVAL) {
