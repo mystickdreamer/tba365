@@ -28,6 +28,7 @@
 #include "ibt.h"
 #include "guild.h"
 #include "screen.h"
+#include "structs.h"
 
 /* local (file scope) function prototpyes  */
 static char *next_page(char *str, struct char_data *ch);
