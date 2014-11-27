@@ -909,7 +909,7 @@ static void load_affects(FILE *fl, struct char_data *ch) {
     } while (num != 0);
 }
  */
-static void load_skills(FILE *fl, struct char_data *ch) {
+/*static void load_skills(FILE *fl, struct char_data *ch) {
     if (sscanf(line, "%s %s %s %s", f1, f2, f3, f4) == 4) {
         PLR_FLAGS(ch)[0] = asciiflag_conv(f1);
         PLR_FLAGS(ch)[1] = asciiflag_conv(f2);
@@ -919,7 +919,7 @@ static void load_skills(FILE *fl, struct char_data *ch) {
         PLR_FLAGS(ch)[0] = asciiflag_conv(line);
 
 }
-
+*/
 void load_quests(FILE *fl, struct char_data *ch) {
     int num = NOTHING;
     char line[MAX_INPUT_LENGTH + 1];
