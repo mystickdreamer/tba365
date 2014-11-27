@@ -995,11 +995,6 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                             skip_spaces(&amount);
                             if (amount && *amount && is_number(amount)) {
                                 int skillnum = find_skill_num(skillname, SKTYPE_WEAPON);
-                                int skillnum = find_skill_num(skillname, SKTYPE_ARMOR);
-                                int skillnum = find_skill_num(skillname, SKTYPE_SURVIVAL);
-                                int skillnum = find_skill_num(skillname, SKTYPE_LORE);
-                                int skillnum = find_skill_num(skillname, SKTYPE_MAGIC);
-                                int skillnum = find_skill_num(skillname, SKTYPE_CRAFTING);
                                 if (skillnum > 0) {
                                     int new_value = MAX(0, MIN(1000, atoi(amount)));
                                     SET_SKILL(c, skillnum, new_value);
