@@ -276,8 +276,8 @@ int load_char(const char *name, struct char_data *ch) {
         GET_GOLD(ch) = PFDEF_GOLD;
         GET_BANK_GOLD(ch) = PFDEF_BANK;
         GET_EXP(ch) = PFDEF_EXP;
-//        GET_ARTISAN_EXP(ch) = 0;
-//        GET_ARTISAN_TYPE(ch) = 0;
+        //        GET_ARTISAN_EXP(ch) = 0;
+        //        GET_ARTISAN_TYPE(ch) = 0;
         GET_HITROLL(ch) = PFDEF_HITROLL;
         GET_DAMROLL(ch) = PFDEF_DAMROLL;
         GET_AC(ch) = PFDEF_AC;
@@ -317,11 +317,11 @@ int load_char(const char *name, struct char_data *ch) {
             PRF_FLAGS(ch)[i] = PFDEF_PREFFLAGS;
         for (i = 0; i < AD_ARRAY_MAX; i++)
             ADM_FLAGS(ch)[i] = 0;
-/*        for (i = 0; i < SK_ARRAY_MAX; i++)
-            GET_SKILL_RANK(ch)[i] = 0;
-        for (i = 0; i < SK_ARRAY_MAX; i++)
-            GET_SKILL_XP(ch)[i] = 0;
-*/
+        /*        for (i = 0; i < SK_ARRAY_MAX; i++)
+                    GET_SKILL_RANK(ch)[i] = 0;
+                for (i = 0; i < SK_ARRAY_MAX; i++)
+                    GET_SKILL_XP(ch)[i] = 0;
+         */
         while (get_line(fl, line)) {
             tag_argument(line, tag);
 
@@ -462,7 +462,7 @@ int load_char(const char *name, struct char_data *ch) {
                 case 'S':
                     if (!strcmp(tag, "Sex ")) GET_SEX(ch) = atoi(line);
                     else if (!strcmp(tag, "ScrW")) GET_SCREEN_WIDTH(ch) = atoi(line);
-                    else if (!strcmp(tag, "Skil: %d %d")) GET_SKILL_RANK(ch, i) = atoi(line), GET_SKILL_XP(ch, i) = atoi(line);//load_skills(fl, ch);
+                    else if (!strcmp(tag, "Skil"))load_skills(fl, ch);
                     else if (!strcmp(tag, "Str ")) load_HMVS(ch, line, LOAD_STRENGTH);
                     break;
 
@@ -504,8 +504,8 @@ int load_char(const char *name, struct char_data *ch) {
 
     /* initialization for imms */
     if (GET_ADMLEVEL(ch) >= ADMLVL_IMMORT) {
- //       for (i = 1; i <= SK_ARRAY_MAX; i++)
- //           SET_SKILL(ch, skill, i, 5000);
+        //       for (i = 1; i <= SK_ARRAY_MAX; i++)
+        //           SET_SKILL(ch, skill, i, 5000);
         GET_COND(ch, HUNGER) = -1;
         GET_COND(ch, THIRST) = -1;
         GET_COND(ch, DRUNK) = -1;
@@ -712,7 +712,6 @@ void save_char(struct char_data * ch) {
             if (GET_SKILL_RANK(ch, i))
                 fprintf(fl, "Skil: %d %d\n", GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
         }
-        fprintf(fl, "0 0\n");
     }
 
     /* Save affects */
@@ -898,7 +897,7 @@ static void load_affects(FILE *fl, struct char_data *ch) {
     } while (num != 0);
 }
 
-static void load_skills(FILE *fl, struct char_data *ch) {
+/*static void load_skills(FILE *fl, struct char_data *ch) {
     int num = 0, num2 = 0, num3 = 0;
     char line[MAX_INPUT_LENGTH + 1];
 
@@ -908,6 +907,17 @@ static void load_skills(FILE *fl, struct char_data *ch) {
         if (num != 0)
             SET_SKILL(ch, num, num2, num3);
     } while (num != 0);
+}
+ */
+static void load_skills(FILE *fl, struct char_data *ch) {
+    if (sscanf(line, "%s %s %s %s", f1, f2, f3, f4) == 4) {
+        PLR_FLAGS(ch)[0] = asciiflag_conv(f1);
+        PLR_FLAGS(ch)[1] = asciiflag_conv(f2);
+        PLR_FLAGS(ch)[2] = asciiflag_conv(f3);
+        PLR_FLAGS(ch)[3] = asciiflag_conv(f4);
+    } else
+        PLR_FLAGS(ch)[0] = asciiflag_conv(line);
+
 }
 
 void load_quests(FILE *fl, struct char_data *ch) {
