@@ -317,11 +317,11 @@ int load_char(const char *name, struct char_data *ch) {
             PRF_FLAGS(ch)[i] = PFDEF_PREFFLAGS;
         for (i = 0; i < AD_ARRAY_MAX; i++)
             ADM_FLAGS(ch)[i] = 0;
-/*        for (i = 0; i < SK_ARRAY_MAX; i++)
+        for (i = 0; i < SK_ARRAY_MAX; i++)
             GET_SKILL_RANK(ch)[i] = 0;
         for (i = 0; i < SK_ARRAY_MAX; i++)
             GET_SKILL_XP(ch)[i] = 0;
-*/
+
         while (get_line(fl, line)) {
             tag_argument(line, tag);
 
@@ -462,7 +462,7 @@ int load_char(const char *name, struct char_data *ch) {
                 case 'S':
                     if (!strcmp(tag, "Sex ")) GET_SEX(ch) = atoi(line);
                     else if (!strcmp(tag, "ScrW")) GET_SCREEN_WIDTH(ch) = atoi(line);
-                    else if (!strcmp(tag, "Skil")) load_skills(fl, ch);
+                    else if (!strcmp(tag, "Skil: %d %d")) GET_SKILL_RANK(ch) = atoi(line), GET_SKILL_XP(ch) = atoi(line);//load_skills(fl, ch);
                     else if (!strcmp(tag, "Str ")) load_HMVS(ch, line, LOAD_STRENGTH);
                     break;
 
