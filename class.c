@@ -1426,20 +1426,20 @@ void do_start(struct char_data *ch) {
     switch (GET_CLASS(ch)) {
 
         case CLASS_MAGIC_USER:
-            SET_SKILL(ch, SK_PERCEPTION, 10, 1000);
+            SET_SKILL(ch, SK_PERCEPTION, 10);
             break;
 
         case CLASS_CLERIC:
             break;
 
         case CLASS_THIEF:
-            SET_SKILL(ch, SK_SNEAKING, 10, 1000);
-            SET_SKILL(ch, SK_HIDING, 5, 200);
-            SET_SKILL(ch, SK_STEALING, 10, 500);
-            SET_SKILL(ch, SK_BACKSTAB, 10, 1000);
-            SET_SKILL(ch, SK_LOCKPICKING, 10, 1000);
-            SET_SKILL(ch, SK_TRACKING, 10, 1000);
-            SET_SKILL(ch, SK_PERCEPTION, 10, 1000);
+            SET_SKILL(ch, SK_SNEAKING, 10);
+            SET_SKILL(ch, SK_HIDING, 5);
+            SET_SKILL(ch, SK_STEALING, 10);
+            SET_SKILL(ch, SK_BACKSTAB, 10);
+            SET_SKILL(ch, SK_LOCKPICKING, 10);
+            SET_SKILL(ch, SK_TRACKING, 10);
+            SET_SKILL(ch, SK_PERCEPTION, 10);
             break;
 
         case CLASS_WARRIOR:
