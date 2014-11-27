@@ -492,7 +492,7 @@ ACMD(do_skillset) {
      * find_skill_num() guarantees a valid spell_info[] index, or -1, and we
      * checked for the -1 above so we are safe here.
      */
-    SET_SKILL(vict, skill, value, value2);
+    SET_SKILL(vict, skill, value);
     mudlog(BRF, ADMLVL_IMMORT, TRUE, "skillset: %s changed %s's '%s' to %d.", GET_NAME(ch), GET_NAME(vict), spell_info[skill].name, value);
     send_to_char(ch, "You change %s's %s to %d.\r\n", GET_NAME(vict), spell_info[skill].name, value);
 }
