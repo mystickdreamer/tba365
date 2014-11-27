@@ -777,17 +777,6 @@ ACMD(do_skills) {
 
 
     if (!*arg) {
-/*        send_to_char(ch, "%sSkills%s:\r\n", KRED, QNRM);
-        for (i = 1; i < NUM_SKILLS; i++) {
-            for (i = 1; i < SK_ARRAY_MAX; i++) {
-                send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(ch, i),
-                        GET_SKILL_XP(ch, i));
-
-                if (count % 2 == 1)
-                    send_to_char(ch, "\r\n");
-                count++;
-            }
-        }*/
         send_to_char(ch, "%sWeapon Skills%s:\r\n", KRED, QNRM);
         for (i = 0; i < NUM_SKILLS; i++) {
             if IS_SET(spell_info[i].skilltype, SKTYPE_WEAPON) {
@@ -1014,10 +1003,6 @@ ACMD(do_skills) {
         }
         
     }
-    //else {
-    //    send_to_char(ch, "%s SOMETHING WENT WRONG, TELL AN IMM.%s\r\n", KRED, QNRM);
-    //}
-
 }
 
 ACMD(do_gold) {
