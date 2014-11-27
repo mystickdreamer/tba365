@@ -777,7 +777,7 @@ ACMD(do_skills) {
 
 
     if (!*arg) {
-        send_to_char(ch, "%sSkills%s:\r\n", KRED, QNRM);
+/*        send_to_char(ch, "%sSkills%s:\r\n", KRED, QNRM);
         for (i = 1; i < NUM_SKILLS; i++) {
             for (i = 1; i < SK_ARRAY_MAX; i++) {
                 send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(ch, i),
@@ -786,6 +786,110 @@ ACMD(do_skills) {
                 if (count % 2 == 1)
                     send_to_char(ch, "\r\n");
                 count++;
+            }
+        }*/
+        send_to_char(ch, "%sWeapon Skills%s:\r\n", KRED, QNRM);
+        for (i = 0; i < NUM_SKILLS; i++) {
+            if IS_SET(spell_info[i].skilltype, SKTYPE_WEAPON) {
+                for (i = 0; i < SK_ARRAY_MAX; i++) {
+                    if IS_SET(spell_info[i].skilltype, SKTYPE_WEAPON) {
+                        send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(vict, i),
+                                GET_SKILL_XP(vict, i));
+
+                        if (count % 2 == 1)
+                            send_to_char(ch, "\r\n");
+                        count++;
+                    }
+
+                }
+
+            }
+        }
+        send_to_char(ch, "\r\n");
+        send_to_char(ch, "%sSurvival Skills%s:\r\n", KRED, QNRM);
+        for (i = 0; i < NUM_SKILLS; i++) {
+            if IS_SET(spell_info[i].skilltype, SKTYPE_SURVIVAL) {
+                for (i = 0; i < SK_ARRAY_MAX; i++) {
+                    if IS_SET(spell_info[i].skilltype, SKTYPE_SURVIVAL) {
+                        send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(vict, i),
+                                GET_SKILL_XP(vict, i));
+
+                        if (count % 2 == 1)
+                            send_to_char(ch, "\r\n");
+                        count++;
+                    }
+
+                }
+
+            }
+        }
+        send_to_char(ch, "%sLore Skills%s:\r\n", KRED, QNRM);
+        for (i = 0; i < NUM_SKILLS; i++) {
+            if IS_SET(spell_info[i].skilltype, SKTYPE_LORE) {
+                for (i = 0; i < SK_ARRAY_MAX; i++) {
+                    if IS_SET(spell_info[i].skilltype, SKTYPE_LORE) {
+                        send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(vict, i),
+                                GET_SKILL_XP(vict, i));
+
+                        if (count % 2 == 1)
+                            send_to_char(ch, "\r\n");
+                        count++;
+                    }
+
+                }
+
+            }
+        }
+        send_to_char(ch, "\r\n");
+        send_to_char(ch, "%sMagic Skills%s:\r\n", KRED, QNRM);
+        for (i = 0; i < NUM_SKILLS; i++) {
+            if IS_SET(spell_info[i].skilltype, SKTYPE_MAGIC) {
+                for (i = 0; i < SK_ARRAY_MAX; i++) {
+                    if IS_SET(spell_info[i].skilltype, SKTYPE_MAGIC) {
+                        send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(vict, i),
+                                GET_SKILL_XP(vict, i));
+
+                        if (count % 2 == 1)
+                            send_to_char(ch, "\r\n");
+                        count++;
+                    }
+
+                }
+
+            }
+        }
+        send_to_char(ch, "%sArmor Skills%s:\r\n", KRED, QNRM);
+        for (i = 0; i < NUM_SKILLS; i++) {
+            if IS_SET(spell_info[i].skilltype, SKTYPE_ARMOR) {
+                for (i = 0; i < SK_ARRAY_MAX; i++) {
+                    if IS_SET(spell_info[i].skilltype, SKTYPE_ARMOR) {
+                        send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(vict, i),
+                                GET_SKILL_XP(vict, i));
+
+                        if (count % 2 == 1)
+                            send_to_char(ch, "\r\n");
+                        count++;
+                    }
+
+                }
+
+            }
+        }
+        send_to_char(ch, "%sCrafting Skills%s:\r\n", KRED, QNRM);
+        for (i = 0; i < NUM_SKILLS; i++) {
+            if IS_SET(spell_info[i].skilltype, SKTYPE_CRAFTING) {
+                for (i = 0; i < SK_ARRAY_MAX; i++) {
+                    if IS_SET(spell_info[i].skilltype, SKTYPE_CRAFTING) {
+                        send_to_char(ch, "%s%-20s: %s %2d [%2d] ", QYEL, skill_names[i], QNRM, GET_SKILL_RANK(vict, i),
+                                GET_SKILL_XP(vict, i));
+
+                        if (count % 2 == 1)
+                            send_to_char(ch, "\r\n");
+                        count++;
+                    }
+
+                }
+
             }
         }
     }
