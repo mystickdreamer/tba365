@@ -49,7 +49,7 @@ long top_idnum = 0;
 
 /* local functions */
 static void load_affects(FILE *fl, struct char_data *ch);
-static void load_skills(FILE *fl, struct char_data *ch);
+static void load_skills(struct char_data *ch, const char *line, int mode);//(FILE *fl, struct char_data *ch);
 static void load_quests(FILE *fl, struct char_data *ch);
 static void load_HMVS(struct char_data *ch, const char *line, int mode);
 static void write_aliases_ascii(FILE *file, struct char_data *ch);
