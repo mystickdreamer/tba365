@@ -905,7 +905,7 @@ static void load_skills (struct char_data *ch, const char *line, int mode) {//(F
     sscanf(line, " %d %d", &num, &num2);
     
     switch (mode) {
-        case LOAD_SKILL
+        case LOAD_SKILL:
         GET_SKILL_RANK(ch, i) = num;
         GET_SKILL_XP(ch, i) = num2;
         break;
