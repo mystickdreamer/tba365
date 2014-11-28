@@ -649,8 +649,8 @@ do                                                              \
 
 #define GET_SKILL_RANK(ch, skill)       ((ch)->player.skills[skill][0])
 #define GET_SKILL_XP(ch, skill)         ((ch)->player.skills[skill][1])
-//#define SET_SKILL(ch, skill, val)           (ch)->player.skills[skill][1] = val
-#define SET_SKILL(ch, skill, pct)	do { CHECK_PLAYER_SPECIAL((ch), (ch)->player_specials->saved.skills[skill][0]) = pct; } while(0)
+#define SET_SKILL(ch, skill, val)           (ch)->player.skills[skill][0] = val
+
 #define GET_SKILL(ch, skill)            (ch)->player.skills[skill]
 //#define GET_SKILL_RANKS(ch, i)		((ch)->player_specials->skills[i])
 

@@ -1045,7 +1045,6 @@ struct player_special_data_saved {
     int quest_counter; /**< Count of targets left to get  */
     time_t lastmotd; /**< Last time player read motd */
     time_t lastnews; /**< Last time player read news */
-    int skills[SK_ARRAY_MAX][2];
 };
 
 /** Specials needed only by PCs, not NPCs.  Space for this structure is
