@@ -28,6 +28,8 @@
 #define LOAD_MOVE	2
 #define LOAD_STRENGTH	3
 
+#define LOAD_SKILL  0
+
 #define PT_PNAME(i) (player_table[(i)].name)
 #define PT_IDNUM(i) (player_table[(i)].id)
 #define PT_LEVEL(i) (player_table[(i)].level)
@@ -462,7 +464,7 @@ int load_char(const char *name, struct char_data *ch) {
                 case 'S':
                     if (!strcmp(tag, "Sex ")) GET_SEX(ch) = atoi(line);
                     else if (!strcmp(tag, "ScrW")) GET_SCREEN_WIDTH(ch) = atoi(line);
-                    else if (!strcmp(tag, "Skil"))GET_SKILL_RANK(ch, i) = atoi(line);//load_skills(fl, ch);
+                    else if (!strcmp(tag, "Skil"))load_skills(ch, line, LOAD_SKILL);//GET_SKILL_RANK(ch, i) = atoi(line);//load_skills(fl, ch);
                     else if (!strcmp(tag, "Str ")) load_HMVS(ch, line, LOAD_STRENGTH);
                     break;
 
@@ -897,18 +899,26 @@ static void load_affects(FILE *fl, struct char_data *ch) {
     } while (num != 0);
 }
 
-/*static void load_skills(FILE *fl, struct char_data *ch) {
-    int num = 0, num2 = 0, num3 = 0;
-    char line[MAX_INPUT_LENGTH + 1];
+static void load_skills (struct char_data *ch, const char *line, int mode) {//(FILE *fl, struct char_data *ch) {
+    int num = 0, num2 = 0;
 
+    sscanf(line, " %d %d", &num, &num2);
+    
+    switch (mode) {
+        case LOAD_SKILL
+        GET_SKILL_RANK(ch) = num;
+        GET_SKILL_XP(ch) = num2;
+        break;
+    }
+    /*
     do {
         get_line(fl, line);
         sscanf(line, "%d %d %d", &num, &num2, &num3);
         if (num != 0)
             SET_SKILL(ch, num, num2, num3);
-    } while (num != 0);
+    } while (num != 0); */
 }
- */
+
 /*static void load_skills(FILE *fl, struct char_data *ch) {
     if (sscanf(line, "%s %s %s %s", f1, f2, f3, f4) == 4) {
         PLR_FLAGS(ch)[0] = asciiflag_conv(f1);
