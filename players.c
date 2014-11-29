@@ -906,8 +906,9 @@ static void load_skills (struct char_data *ch, const char *line, int mode) {//(F
     
     switch (mode) {
         case LOAD_SKILL:
-        GET_SKILL_RANK(ch, i) = num;
-        GET_SKILL_XP(ch, i) = num2;
+            SET_SKILL(ch, num, num2);
+        //GET_SKILL_RANK(ch, i) = num;
+        //GET_SKILL_XP(ch, i) = num2;
         break;
     }
     /*
@@ -919,17 +920,7 @@ static void load_skills (struct char_data *ch, const char *line, int mode) {//(F
     } while (num != 0); */
 }
 
-/*static void load_skills(FILE *fl, struct char_data *ch) {
-    if (sscanf(line, "%s %s %s %s", f1, f2, f3, f4) == 4) {
-        PLR_FLAGS(ch)[0] = asciiflag_conv(f1);
-        PLR_FLAGS(ch)[1] = asciiflag_conv(f2);
-        PLR_FLAGS(ch)[2] = asciiflag_conv(f3);
-        PLR_FLAGS(ch)[3] = asciiflag_conv(f4);
-    } else
-        PLR_FLAGS(ch)[0] = asciiflag_conv(line);
 
-}
-*/
 void load_quests(FILE *fl, struct char_data *ch) {
     int num = NOTHING;
     char line[MAX_INPUT_LENGTH + 1];
