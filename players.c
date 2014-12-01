@@ -712,7 +712,7 @@ void save_char(struct char_data * ch) {
         //fprintf(fl, "Skil:\n");
         for (i = 1; i <= SK_ARRAY_MAX; i++) {
             if (GET_SKILL_RANK(ch, i))
-                fprintf(fl, "Skil: %d/%d/%d\n",GET_SKILL(ch, i) GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
+                fprintf(fl, "Skil: %d/%d/%d\n",GET_SKILL(ch, i), GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
         }
     //}
 
