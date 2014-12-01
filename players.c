@@ -319,11 +319,11 @@ int load_char(const char *name, struct char_data *ch) {
             PRF_FLAGS(ch)[i] = PFDEF_PREFFLAGS;
         for (i = 0; i < AD_ARRAY_MAX; i++)
             ADM_FLAGS(ch)[i] = 0;
+        /*        for (i = 0; i < SK_ARRAY_MAX; i++)
+                    GET_SKILL_RANK(ch)[i] = 0;
                 for (i = 0; i < SK_ARRAY_MAX; i++)
-                    GET_SKILL_RANK(ch, i) = 0;
-                for (i = 0; i < SK_ARRAY_MAX; i++)
-                    GET_SKILL_XP(ch, i) = 0;
-        
+                    GET_SKILL_XP(ch)[i] = 0;
+         */
         while (get_line(fl, line)) {
             tag_argument(line, tag);
 
