@@ -464,7 +464,7 @@ int load_char(const char *name, struct char_data *ch) {
                 case 'S':
                     if (!strcmp(tag, "Sex ")) GET_SEX(ch) = atoi(line);
                     else if (!strcmp(tag, "ScrW")) GET_SCREEN_WIDTH(ch) = atoi(line);
-                    else if (!strcmp(tag, "Skil")) GET_SKILL_RANK(ch, i) = atoi(line);//load_skills(ch, line, LOAD_SKILL);//GET_SKILL_RANK(ch, i) = atoi(line);
+                    else if (!strcmp(tag, "Skil"))load_skills(ch, line, LOAD_SKILL);//GET_SKILL_RANK(ch, i) = atoi(line);//load_skills(fl, ch);
                     else if (!strcmp(tag, "Str ")) load_HMVS(ch, line, LOAD_STRENGTH);
                     break;
 
@@ -712,8 +712,7 @@ void save_char(struct char_data * ch) {
         //fprintf(fl, "Skil:\n");
         for (i = 1; i <= SK_ARRAY_MAX; i++) {
             if (GET_SKILL_RANK(ch, i))
-            //    fprintf(fl, "Skil: %d/%d\n", GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
-                fprintf(fl, "Skil: %d\n", GET_SKILL_RANK(ch, i));
+                fprintf(fl, "Skil: %d/%d\n", GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
         }
     //}
 
