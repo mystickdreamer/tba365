@@ -706,7 +706,7 @@ void save_char(struct char_data * ch) {
         for (t = TRIGGERS(SCRIPT(ch)); t; t = t->next)
             fprintf(fl, "Trig: %d\n", GET_TRIG_VNUM(t));
     }
-    zz
+
     /* Save skills */
     //if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT) {
         //fprintf(fl, "Skil:\n");
