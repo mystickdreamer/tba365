@@ -902,7 +902,7 @@ static void load_affects(FILE *fl, struct char_data *ch) {
 static void load_skills (struct char_data *ch, const char *line, int mode) {//(FILE *fl, struct char_data *ch) {
     int num = 0, num2 = 0, i;
 
-    sscanf(line, "%d/%d", &num, &num2);
+    fprintf(line, "%d/%d", &num, &num2);
     
     switch (mode) {
         case LOAD_SKILL:
