@@ -252,8 +252,8 @@ int load_char(const char *name, struct char_data *ch) {
 
         /* Character initializations. Necessary to keep some things straight. */
         ch->affected = NULL;
-        for (i = 1; i <= SK_ARRAY_MAX; i++) {
-            SET_SKILL(ch, i, 0);
+//        for (i = 1; i <= SK_ARRAY_MAX; i++) {
+//            SET_SKILL(ch, i, 0);
         }
         GET_CRAFTING_TYPE(ch) = PFDEF_CRAFTING_TYPE;
         GET_CLASS(ch) = CLASS_ARTISAN;
@@ -903,6 +903,7 @@ static void load_skills (struct char_data *ch, const char *line, int mode) {//(F
     int num = 0, num2 = 0, i;
 
     sscanf(line, "%d/%d", &num, &num2);
+    sscanf(line, "%d/%d", GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i))
     
     switch (mode) {
         case LOAD_SKILL:
