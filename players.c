@@ -712,7 +712,7 @@ void save_char(struct char_data * ch) {
         //fprintf(fl, "Skil:\n");
         for (i = 1; i <= SK_ARRAY_MAX; i++) {
             if (GET_SKILL_RANK(ch, i))
-                fprintf(fl, "Skil: %d/%d\n", GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
+                fprintf(fl, "Skil: %d/%d/%d\n",GET_SKILL(ch) GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
         }
     //}
 
@@ -900,9 +900,9 @@ static void load_affects(FILE *fl, struct char_data *ch) {
 }
 
 static void load_skills (struct char_data *ch, const char *line, int mode) {//(FILE *fl, struct char_data *ch) {
-    int num = 0, num2 = 0, i;
+    int num = 0, num2 = 0, num3 = 0, i;
 
-    sscanf(line, "%d/%d", &num, &num2);
+    sscanf(line, "%d/%d/%d", &num, &num2);
     
     switch (mode) {
         case LOAD_SKILL:
