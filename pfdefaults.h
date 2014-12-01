@@ -63,8 +63,6 @@
 #define PFDEF_LASTMOTD          0 
 #define PFDEF_LASTNEWS          0 
 #define PFDEF_CRAFTING_TYPE     -1
-#define PFDEF_SKILL              0
-#define PFDEF_SKILL_XP          0
 
 
 #define PFDEF_RACE              0
