@@ -309,6 +309,8 @@ int load_char(const char *name, struct char_data *ch) {
         GET_NUM_QUESTS(ch) = PFDEF_COMPQUESTS;
         GET_LAST_MOTD(ch) = PFDEF_LASTMOTD;
         GET_LAST_NEWS(ch) = PFDEF_LASTNEWS;
+        GET_SKILL(ch, i) = PFDEF_SKILL;
+        GET_SKILL_XP(ch, i) = PFDEF_SKILL_XP;
         GET_RACE(ch) = PFDEF_RACE;
 
         for (i = 0; i < AF_ARRAY_MAX; i++)
@@ -711,7 +713,7 @@ void save_char(struct char_data * ch) {
     //if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT) {
         //fprintf(fl, "Skil:\n");
         for (i = 1; i <= SK_ARRAY_MAX; i++) {
-            if (GET_SKILL_RANK(ch, i))
+            if (GET_SKILL_RANK(ch, i) != PFDEF_SKILL || GET_SKILL_XP(ch, i) != PFDEF_SKILL_XP)
                 fprintf(fl, "Skil: %d/%d\n", GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
         }
     //}
