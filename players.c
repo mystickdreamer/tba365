@@ -906,7 +906,7 @@ static void load_skills(struct char_data *ch, const char *line, int mode) {//(FI
 
     switch (mode) {
         case LOAD_SKILL:
-            GET_SKILL(ch, i) = num;
+//            GET_SKILL(ch, i) = num;
             GET_SKILL_RANK(ch, i) = num2;
             GET_SKILL_XP(ch, i) = num3;
             break;
