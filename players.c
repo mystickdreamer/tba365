@@ -901,7 +901,7 @@ static void load_affects(FILE *fl, struct char_data *ch) {
 
 static void load_skills(struct char_data *ch, const char *line, int mode) {//(FILE *fl, struct char_data *ch) {
     int num = 0, num2 = 0, num3 = 0;
-    
+    int i;
     sscanf(line, "%d %d %d", &num, &num2, &num3);
 
     switch (mode) {
