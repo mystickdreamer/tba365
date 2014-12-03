@@ -332,7 +332,6 @@ ACMD(do_skillset) {
     /* If there is no chars in argument */
     if (!*argument) {
         send_to_char(ch, "%s's Skills:\r\n", GET_NAME(vict));
-        send_to_char(ch, "");
         //i = snprintf(help, sizeof(help) - i, "\r\nSkills:\r\n");
         send_to_char(ch, "%sWeapon Skills%s:\r\n", KRED, QNRM);
         for (i = 0; i < NUM_SKILLS; i++) {
