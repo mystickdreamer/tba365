@@ -309,11 +309,13 @@ ACMD(do_skillset) {
     argument = one_argument(argument, name);
 
     if (!*name) { /* no arguments. print an informative text */
+        
         send_to_char(ch, "Syntax: skillset <name> '<skill>' <value>\r\n"
                 "Skill being one of the following:\r\n");
         for (qend = 0, i = 0; i < SKILL_TABLE_SIZE; i++) {
             if (spell_info[i].name == unused_spellname) /* This is valid. */
                 continue;
+            send_to_char(ch, "%d", spell_info[i].skillnum);
             send_to_char(ch, "%18s", spell_info[i].name);
             if (qend++ % 4 == 3)
                 send_to_char(ch, "\r\n");
