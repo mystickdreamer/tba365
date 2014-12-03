@@ -910,7 +910,7 @@ static void load_skills(struct char_data *ch, const char *line, int mode) {//(FI
         if (GET_SKILL_RANK(ch, i))
 //            fprintf(fl, "Skil: %d %d/%d\n", GET_SKILL(ch, i), GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
     
-            GET_SKILL(ch, i) = num;
+            num = GET_SKILL(ch, i);
                 }
             GET_SKILL_RANK(ch, num) = num2;
             GET_SKILL_XP(ch, num) = num3;
