@@ -907,7 +907,7 @@ static void load_skills(struct char_data *ch, const char *line, int mode) {//(FI
     switch (mode) {
         case LOAD_SKILL:
                 for (i = 1; i <= SK_ARRAY_MAX; i++) {
-        if (GET_SKILL_RANK(ch, i))
+//        if (GET_SKILL_RANK(ch, i))
 //            fprintf(fl, "Skil: %d %d/%d\n", GET_SKILL(ch, i), GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
     
             num = GET_SKILL(ch, i);
