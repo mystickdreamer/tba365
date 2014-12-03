@@ -903,7 +903,7 @@ static void load_skills(struct char_data *ch, const char *line){//, int mode) {/
 //    int num = 0, num2 = 0, num3 = 0;
     int i;
     for (i = 1; i <= SK_ARRAY_MAX; i++) {
-    sscanf(line, "%d %d/%d", GET_SKILL(ch, i), GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
+    fprintf(line, "%d %d/%d", GET_SKILL(ch, i), GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
     }
 //    switch (mode) {
 //        case LOAD_SKILL:
