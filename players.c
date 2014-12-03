@@ -906,7 +906,7 @@ static void load_skills(struct char_data *ch, const char *line, int mode) {//(FI
 
     switch (mode) {
         case LOAD_SKILL:
-            (ch)->player.skills[skillnum] = num;
+            num = GET_SKILL(ch, skillnum);
             GET_SKILL_RANK(ch, num) = num2;
             GET_SKILL_XP(ch, num) = num3;
             break;
