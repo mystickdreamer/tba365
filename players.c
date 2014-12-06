@@ -900,16 +900,17 @@ static void load_affects(FILE *fl, struct char_data *ch) {
 }
 
 static void load_skills(FILE *fl, struct char_data *ch) {
-  int num = 0, num2 = 0, num3 = 0;
+  int num = 0, num2 = 0, num3 = 0, num4 = 0;
   char line[MAX_INPUT_LENGTH + 1];
  
   do {
     get_line(fl, line);
-    sscanf(line, "%d %d/%d", &num, &num2, &num3);
+    sscanf(line, "%d %d/%d", &num2, &num3, &num4);
     if (num != 0) {
       //GET_SKILL(ch, num) = num2;
-      GET_SKILL_RANK(ch, num) = num2;
-      GET_SKILL_XP(ch, num) = num3;
+        num = num2;
+      GET_SKILL_RANK(ch, num) = num3;
+      GET_SKILL_XP(ch, num) = num4;
     }
   } while (num != 0);
 }
