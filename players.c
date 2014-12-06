@@ -464,7 +464,7 @@ int load_char(const char *name, struct char_data *ch) {
                 case 'S':
                     if (!strcmp(tag, "Sex ")) GET_SEX(ch) = atoi(line);
                     else if (!strcmp(tag, "ScrW")) GET_SCREEN_WIDTH(ch) = atoi(line);
-                    else if (!strcmp(tag, "Skil"))load_skills(ch, line, LOAD_SKILL); //GET_SKILL_RANK(ch, i) = atoi(line);//load_skills(fl, ch);
+                    else if (!strcmp(tag, "Skil"))load_skills(ch, line); //GET_SKILL_RANK(ch, i) = atoi(line);//load_skills(fl, ch);
                     else if (!strcmp(tag, "Str ")) load_HMVS(ch, line, LOAD_STRENGTH);
                     break;
 
@@ -899,25 +899,19 @@ static void load_affects(FILE *fl, struct char_data *ch) {
     } while (num != 0);
 }
 
-static void load_skills(struct char_data *ch, const char *line, int mode) {//(FILE *fl, struct char_data *ch) {
-    int num = 0, num2 = 0, num3 = 0;
-    int i;
-    sscanf(line, "%d %d/%d", &num, &num2, &num3);
-
-    switch (mode) {
-        case LOAD_SKILL:
-//            GET_SKILL(ch, i) = num;
-            GET_SKILL_RANK(ch, num) = num2;
-            GET_SKILL_XP(ch, num) = num3;
-            break;
+static void load_skills(FILE *fl, struct char_data *ch) {
+  int num = 0, num2 = 0;
+  char line[MAX_INPUT_LENGTH + 1];
+ 
+  do {
+    get_line(fl, line);
+    sscanf(line, "%d %d %d %d", &num, &num2, &num3, &num4);
+    if (num != 0) {
+      GET_SKILL(ch, num) = num2;
+      GET_SKILL_RANK(ch, num) = num3;
+      GET_SKILL_XP(ch, num) = num4;
     }
-    /*
-    do {
-        get_line(fl, line);
-        sscanf(line, "%d %d %d", &num, &num2, &num3);
-        if (num != 0)
-            SET_SKILL(ch, num, num2, num3);
-    } while (num != 0); */
+  } while (num != 0);
 }
 
 void load_quests(FILE *fl, struct char_data *ch) {
