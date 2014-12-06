@@ -28,7 +28,7 @@
 #define LOAD_MOVE	2
 #define LOAD_STRENGTH	3
 
-#define LOAD_SKILL  0
+
 
 #define PT_PNAME(i) (player_table[(i)].name)
 #define PT_IDNUM(i) (player_table[(i)].id)
@@ -464,7 +464,7 @@ int load_char(const char *name, struct char_data *ch) {
                 case 'S':
                     if (!strcmp(tag, "Sex ")) GET_SEX(ch) = atoi(line);
                     else if (!strcmp(tag, "ScrW")) GET_SCREEN_WIDTH(ch) = atoi(line);
-                    else if (!strcmp(tag, "Skil"))load_skills(ch, line); //GET_SKILL_RANK(ch, i) = atoi(line);//load_skills(fl, ch);
+                    else if (!strcmp(tag, "Skil"))load_skills(fl, ch); //GET_SKILL_RANK(ch, i) = atoi(line);//load_skills(fl, ch);
                     else if (!strcmp(tag, "Str ")) load_HMVS(ch, line, LOAD_STRENGTH);
                     break;
 
