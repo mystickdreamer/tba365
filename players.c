@@ -907,7 +907,8 @@ static void load_skills(FILE *fl, struct char_data *ch) {
     get_line(fl, line);
     sscanf(line, "%d %d/%d", &num2, &num3, &num4);
     if (num != 0) {
-      GET_SKILL(ch, num) = num2;
+        memcpy(&num2, GET_SKILL(ch, num));
+//      GET_SKILL(ch, num) = num2;
       GET_SKILL_RANK(ch, num) = num3;
       GET_SKILL_XP(ch, num) = num4;
     }
