@@ -901,16 +901,14 @@ static void load_affects(FILE *fl, struct char_data *ch) {
 
 static void load_skills(FILE *fl, struct char_data *ch) {
   int num = 0, num2 = 0;
-  int num3, num4, i;
+  int num3, num4;
   char line[MAX_INPUT_LENGTH + 1];
  
   do {
     get_line(fl, line);
     sscanf(line, "%d %d %d/%d", &num, &num2, &num3, &num4);
     if (num != 0) {
-        for (i = 1; i <= SK_ARRAY_MAX; i++) {
-      GET_SKILL(ch, i) = num2;
-        }
+      GET_SKILL(ch, num) = num2;
       GET_SKILL_RANK(ch, num) = num3;
       GET_SKILL_XP(ch, num) = num4;
     }
