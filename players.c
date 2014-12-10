@@ -900,7 +900,7 @@ static void load_affects(FILE *fl, struct char_data *ch) {
 }
 
 static void load_skills(FILE *fl, struct char_data *ch) {
-    int num = 0/*, num2 = 0*/;
+    int num = 0, num2 = 0;
     int num3, num4;
     char line[MAX_INPUT_LENGTH + 1];
 
