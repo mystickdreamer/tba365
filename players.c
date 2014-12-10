@@ -319,11 +319,11 @@ int load_char(const char *name, struct char_data *ch) {
             PRF_FLAGS(ch)[i] = PFDEF_PREFFLAGS;
         for (i = 0; i < AD_ARRAY_MAX; i++)
             ADM_FLAGS(ch)[i] = 0;
-                for (i = 0; i < SK_ARRAY_MAX; i++)
+        /*        for (i = 0; i < SK_ARRAY_MAX; i++)
                     GET_SKILL_RANK(ch)[i] = 0;
                 for (i = 0; i < SK_ARRAY_MAX; i++)
                     GET_SKILL_XP(ch)[i] = 0;
-         
+         */
         while (get_line(fl, line)) {
             tag_argument(line, tag);
 
@@ -464,7 +464,7 @@ int load_char(const char *name, struct char_data *ch) {
                 case 'S':
                     if (!strcmp(tag, "Sex ")) GET_SEX(ch) = atoi(line);
                     else if (!strcmp(tag, "ScrW")) GET_SCREEN_WIDTH(ch) = atoi(line);
-                    else if (!strcmp(tag, "Skil"))load_skills(fl, ch); //GET_SKILL_RANK(ch, i) = atoi(line);//load_skills(fl, ch);
+                    else if (!strcmp(tag, "Skil")) load_skills(fl, ch); 
                     else if (!strcmp(tag, "Str ")) load_HMVS(ch, line, LOAD_STRENGTH);
                     break;
 
@@ -712,7 +712,7 @@ void save_char(struct char_data * ch) {
     //fprintf(fl, "Skil:\n");
     for (i = 1; i <= SK_ARRAY_MAX; i++) {
         if (GET_SKILL_RANK(ch, i))
-            fprintf(fl, "Skil: %d %d/%d\n", i/*, GET_SKILL(ch, i)*/, GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
+            fprintf(fl, "Skil: %d %d %d/%d\n", i, GET_SKILL(ch, i), GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
     }
     //}
 
@@ -906,7 +906,7 @@ static void load_skills(FILE *fl, struct char_data *ch) {
  
   do {
     get_line(fl, line);
-    sscanf(line, "%d %d/%d", &num/*, &num2*/, &num3, &num4);
+    sscanf(line, "%d %d %d/%d", &num, &num2, &num3, &num4);
     if (num != 0) {
 //      GET_SKILL(ch, num) = num2;
       GET_SKILL_RANK(ch, num) = num3;
