@@ -252,9 +252,9 @@ int load_char(const char *name, struct char_data *ch) {
 
         /* Character initializations. Necessary to keep some things straight. */
         ch->affected = NULL;
-        for (i = 1; i <= SK_ARRAY_MAX; i++) {
-            SET_SKILL(ch, i, 0);
-        }
+//        for (i = 1; i <= SK_ARRAY_MAX; i++) {
+//            SET_SKILL(ch, i, 0);
+//        }
         GET_CRAFTING_TYPE(ch) = PFDEF_CRAFTING_TYPE;
         GET_CLASS(ch) = CLASS_ARTISAN;
         GET_SEX(ch) = PFDEF_SEX;
