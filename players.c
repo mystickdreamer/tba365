@@ -254,6 +254,7 @@ int load_char(const char *name, struct char_data *ch) {
         ch->affected = NULL;
         for (i = 1; i <= SK_ARRAY_MAX; i++) {
             SET_SKILL(ch, i, 0);
+            SET_SKILL_XP(ch, i, 0);
         }
         GET_CRAFTING_TYPE(ch) = PFDEF_CRAFTING_TYPE;
         GET_CLASS(ch) = CLASS_ARTISAN;
@@ -709,10 +710,10 @@ void save_char(struct char_data * ch) {
 
     /* Save skills */
     //if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT) {
-    //fprintf(fl, "Skil:\n");
+    fprintf(fl, "Skil:\n");
     for (i = 1; i <= SK_ARRAY_MAX; i++) {
         if (GET_SKILL_RANK(ch, i))
-            fprintf(fl, "Skil: %d %d/%d\n", i, GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
+            fprintf(fl, "%d %d/%d\n", i, GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
     }
     //}
 
