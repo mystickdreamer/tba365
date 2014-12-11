@@ -319,11 +319,11 @@ int load_char(const char *name, struct char_data *ch) {
             PRF_FLAGS(ch)[i] = PFDEF_PREFFLAGS;
         for (i = 0; i < AD_ARRAY_MAX; i++)
             ADM_FLAGS(ch)[i] = 0;
-/*        for (i = 0; i < SK_ARRAY_MAX; i++)
-            SET_SKILL(ch, i, 0);
-        for (i = 0; i < SK_ARRAY_MAX; i++)
-            SET_SKILL_XP(ch, i, 0);
-*/
+        /*        for (i = 0; i < SK_ARRAY_MAX; i++)
+                    SET_SKILL(ch, i, 0);
+                for (i = 0; i < SK_ARRAY_MAX; i++)
+                    SET_SKILL_XP(ch, i, 0);
+         */
         while (get_line(fl, line)) {
             tag_argument(line, tag);
 
@@ -908,7 +908,8 @@ static void load_skills(FILE *fl, struct char_data *ch) {
         get_line(fl, line);
         sscanf(line, "%d %d %d/%d", &num, &num2, &num3, &num4);
         if (num != 0) {
-                  GET_SKILL(ch, num) = num2;
+            memcpy(&num2, GET_SKILL(ch, num) sizeof (int))
+//            GET_SKILL(ch, num) = num2;
             GET_SKILL_RANK(ch, num) = num3;
             GET_SKILL_XP(ch, num) = num4;
         }
