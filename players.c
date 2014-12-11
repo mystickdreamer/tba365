@@ -710,10 +710,11 @@ void save_char(struct char_data * ch) {
 
     /* Save skills */
     //if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT) {
-    fprintf(fl, "Skil:\n");
-    for (i = 1; i <= SK_ARRAY_MAX; i++) {
-        if (GET_SKILL_RANK(ch, i))
+    if (GET_SKILL_RANK(ch, i)) {
+        fprintf(fl, "Skil:\n");
+        for (i = 1; i <= SK_ARRAY_MAX; i++) {
             fprintf(fl, "%d %d/%d\n", i, GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
+        }
     }
     //}
 
