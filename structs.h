@@ -955,7 +955,9 @@ struct char_player_data {
     ubyte weight; /**< PC / NPC weight */
     ubyte height; /**< PC / NPC height */
     byte race; /* PC/NPC Race*/
-    int skills[SK_ARRAY_MAX][2];
+    //int skills[SK_ARRAY_MAX][2];
+    int skill[SK_ARRAY_MAX];
+    int skill_xp[SK_ARRAY_MAX];
 
 
 };

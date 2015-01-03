@@ -465,8 +465,10 @@ int load_char(const char *name, struct char_data *ch) {
                     if (!strcmp(tag, "Sex ")) GET_SEX(ch) = atoi(line);
                     else if (!strcmp(tag, "ScrW")) GET_SCREEN_WIDTH(ch) = atoi(line);
                     else if (!strcmp(tag, "Skil")) load_skills(fl, ch);
+                    else if (!strcmp(tag, "SkilXP")) load_skills_xp(fl, ch);
                     else if (!strcmp(tag, "Str ")) load_HMVS(ch, line, LOAD_STRENGTH);
-                    break;
+                    break;cmp(tag, "ScrW")) GET_SCREEN_WIDTH(ch) = atoi(line);
+                    else if (!strcmp(tag, "Skil")) lo
 
                 case 'T':
                     if (!strcmp(tag, "Thir")) GET_COND(ch, THIRST) = atoi(line);
@@ -710,9 +712,19 @@ void save_char(struct char_data * ch) {
     /* Save skills */
     //if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT) {
     //fprintf(fl, "Skil:\n");
+    /*    for (i = 1; i <= SK_ARRAY_MAX; i++) {
+            if (GET_SKILL_RANK(ch, i))
+                fprintf(fl, "Skil: %d %d/%d\n", i, GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
+        }*/
+    fprintf(fl, "Skil:\n");
     for (i = 1; i <= SK_ARRAY_MAX; i++) {
         if (GET_SKILL_RANK(ch, i))
-            fprintf(fl, "Skil: %d %d/%d\n", i, GET_SKILL_RANK(ch, i), GET_SKILL_XP(ch, i));
+            fprintf(fl, "%d %d\n",i, GET_SKILL_RANK(ch, i));
+    }
+        fprintf(fl, "SkilXP:\n");
+    for (i = 1; i <= SK_ARRAY_MAX; i++) {
+        if (GET_SKILL_XP(ch, i))
+            fprintf(fl, "%d %d\n",i, GET_SKILL_XP(ch, i));
     }
     //}
 
@@ -899,7 +911,7 @@ static void load_affects(FILE *fl, struct char_data *ch) {
     } while (num != 0);
 }
 
-static void load_skills(FILE *fl, struct char_data *ch) {
+/*static void load_skills(FILE *fl, struct char_data *ch) {
     int num = 0, num2;
     int num3;
     char line[MAX_INPUT_LENGTH + 1];
@@ -912,8 +924,32 @@ static void load_skills(FILE *fl, struct char_data *ch) {
             GET_SKILL_XP(ch, num) = num3;
         }
     } while (num != 0);
+}*/
+static void load_skills(FILE *fl, struct char_data *ch) {
+    int num = 0, num2;
+    char line[MAX_INPUT_LENGTH + 1];
+
+    do {
+        get_line(fl, line);
+        sscanf(line, "%d %d", &num, &num2);
+        if (num != 0) {
+            GET_SKILL_RANK(ch, num) = num2;
+        }
+    } while (num != 0);
 }
 
+static void load_skills_xp(FILE *fl, struct char_data *ch) {
+    int num = 0, num2;
+    char line[MAX_INPUT_LENGTH + 1];
+
+    do {
+        get_line(fl, line);
+        sscanf(line, "%d %d", &num, &num2);
+        if (num != 0) {
+            GET_SKILL_XP(ch, num) = num2;
+        }
+    } while (num != 0);
+}
 void load_quests(FILE *fl, struct char_data *ch) {
     int num = NOTHING;
     char line[MAX_INPUT_LENGTH + 1];

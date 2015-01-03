@@ -647,14 +647,15 @@ do                                                              \
 //#define SET_SKILL(ch, i, pct)	do { CHECK_PLAYER_SPECIAL((ch), (ch)->player_specials->saved.skills[i]) = pct; } while(0)
 
 
-#define GET_SKILL_RANK(ch, skill)       ((ch)->player.skills[skill][0])
-#define GET_SKILL_XP(ch, skill)         ((ch)->player.skills[skill][1])
-#define SET_SKILL(ch, skill, val)           (ch)->player.skills[skill][0] = val
-#define SET_SKILL_XP(ch, skill, val)           (ch)->player.skills[skill][1] = val
+/*#define GET_SKILL_RANK(ch, skill)       ((ch)->player.skills[skill][0])
+#define GET_SKILL_XP(ch, skill)         ((ch)->player.skills[skill][1]) */
+#define SET_SKILL(ch, skill, val)           (ch)->player.skills[skill]/*[0]*/ = val
+#define SET_SKILL_XP(ch, skill, val)           (ch)->player.skills[skill]/*[1]*/ = val
 
 #define GET_SKILL(ch, skill)            (ch)->player.skills[skill]
 //#define GET_SKILL_RANKS(ch, i)		((ch)->player_specials->skills[i])
-
+#define GET_SKILL_RANK(ch, i)       ((ch)->player.skills[i])
+#define GET_SKILL_XP(ch, i)         ((ch)->player.skills[i])
 
 /** The player's default sector type when buildwalking */
 #define GET_BUILDWALK_SECTOR(ch) CHECK_PLAYER_SPECIAL((ch), ((ch)->player_specials->buildwalk_sector))
