@@ -3358,6 +3358,7 @@ void clear_object(struct obj_data *obj) {
  * never again for that character). */
 void init_char(struct char_data *ch) {
     int i;
+    int skill;
 
     /* create a player_special structure */
     if (ch->player_specials == NULL)
@@ -3413,7 +3414,7 @@ void init_char(struct char_data *ch) {
         if (GET_ADMLEVEL(ch) < ADMLVL_IMPL)
             SET_SKILL(ch, skill, 0);
         else
-            SET_SKILL(ch, i, 100);
+            SET_SKILL(ch, skill, 100);
     }
 
     for (i = 0; i < AF_ARRAY_MAX; i++)
