@@ -145,7 +145,7 @@ ACMD(do_track)
   int dir;
 
   /* The character must have the track skill. */
-  if (IS_NPC(ch) || !GET_SKILL_RANK(ch, SK_TRACKING)) {
+  if (IS_NPC(ch) || !GET_SKILL(ch, SKILL_TRACK)) {
     send_to_char(ch, "You have no idea how.\r\n");
     return;
   }
@@ -166,7 +166,7 @@ ACMD(do_track)
   }
 
   /* 101 is a complete failure, no matter what the proficiency. */
-  if (rand_number(0, 101) >= GET_SKILL_RANK(ch, SK_TRACKING)) {
+  if (rand_number(0, 101) >= GET_SKILL(ch, SKILL_TRACK)) {
     int tries = 10;
     /* Find a random direction. :) */
     do {

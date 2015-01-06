@@ -69,24 +69,15 @@ char *skill_percent(struct char_data *ch, char *skill, int return_type)
   static char retval[16];
   int skillnum;
 
-//  skillnum = find_skill_num(skill, SKTYPE_SKILL);
-//  if (skillnum<=0) return("unknown skill");
-    if ((skillnum = find_skill_num(help, SKTYPE_WEAPON)) <= 0) 
-    if ((skillnum = find_skill_num(help, SKTYPE_LORE)) <= 0)
-    if ((skillnum = find_skill_num(help, SKTYPE_SURVIVAL)) <= 0)
-    if ((skillnum = find_skill_num(help, SKTYPE_MAGIC)) <= 0)
-    if ((skillnum = find_skill_num(help, SKTYPE_ARMOR)) <= 0)
-    if ((skillnum = find_skill_num(help, SKTYPE_CRAFTING)) <= 0){
-//        send_to_char(ch, "Unrecognized skill.\r\n");
-        return("Unknown skill");
-    }
-  
+  skillnum = find_skill_num(skill, SKTYPE_SKILL);
+  if (skillnum<=0) return("unknown skill");
+
   if (return_type == 0)
     snprintf(retval, sizeof(retval), "%d", get_skill_value(ch, skillnum));
   else if (return_type == 1)
     snprintf(retval, sizeof(retval), "%d", skill_roll(ch, skillnum));
   else // return_type == 2
-    snprintf(retval, sizeof(retval), "%d", GET_SKILL_RANK(ch, skillnum));
+    snprintf(retval, sizeof(retval), "%d", GET_SKILL(ch, skillnum));
   return retval;
 }
 
@@ -263,7 +254,7 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
     obj_data *obj, *o = NULL;
     struct room_data *room, *r = NULL;
     char *name;
-    int num, count, i, j, doors, skill;
+    int num, count, i, j, doors;
 
     char *send_cmd[] = {"msend ", "osend ", "wsend "};
     char *echo_cmd[] = {"mecho ", "oecho ", "wecho "};
@@ -1003,10 +994,10 @@ void find_replacement(void *go, struct script_data *sc, trig_data *trig,
                             amount = one_word(subfield, skillname);
                             skip_spaces(&amount);
                             if (amount && *amount && is_number(amount)) {
-                                int skillnum = find_skill_num(skill, SKTYPE_WEAPON);
+                                int skillnum = find_skill_num(skillname, SKTYPE_WEAPON);
                                 if (skillnum > 0) {
                                     int new_value = MAX(0, MIN(1000, atoi(amount)));
-                                    SET_SKILL(c, skill, new_value);
+                                    SET_SKILL(c, skillnum, new_value);
                                 }
                             }
                         }
