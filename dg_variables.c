@@ -69,15 +69,24 @@ char *skill_percent(struct char_data *ch, char *skill, int return_type)
   static char retval[16];
   int skillnum;
 
-  skillnum = find_skill_num(skill, SKTYPE_SKILL);
-  if (skillnum<=0) return("unknown skill");
-
+//  skillnum = find_skill_num(skill, SKTYPE_SKILL);
+//  if (skillnum<=0) return("unknown skill");
+    if ((skillnum = find_skill_num(help, SKTYPE_WEAPON)) <= 0) 
+    if ((skillnum = find_skill_num(help, SKTYPE_LORE)) <= 0)
+    if ((skillnum = find_skill_num(help, SKTYPE_SURVIVAL)) <= 0)
+    if ((skillnum = find_skill_num(help, SKTYPE_MAGIC)) <= 0)
+    if ((skillnum = find_skill_num(help, SKTYPE_ARMOR)) <= 0)
+    if ((skillnum = find_skill_num(help, SKTYPE_CRAFTING)) <= 0){
+        send_to_char(ch, "Unrecognized skill.\r\n");
+        return;
+    }
+  
   if (return_type == 0)
     snprintf(retval, sizeof(retval), "%d", get_skill_value(ch, skillnum));
   else if (return_type == 1)
     snprintf(retval, sizeof(retval), "%d", skill_roll(ch, skillnum));
   else // return_type == 2
-    snprintf(retval, sizeof(retval), "%d", GET_SKILL(ch, skillnum));
+    snprintf(retval, sizeof(retval), "%d", GET_SKILL_RANK(ch, skillnum));
   return retval;
 }
 
