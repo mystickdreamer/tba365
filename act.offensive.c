@@ -165,7 +165,7 @@ ACMD(do_backstab)
   }
 
   percent = rand_number(1, 101);	/* 101% is a complete failure */
-  prob = GET_SKILL(ch, SKILL_BACKSTAB);
+  prob = GET_SKILL_RANK(ch, SKILL_BACKSTAB);
 
   if (AWAKE(vict) && (percent > prob))
     damage(ch, vict, 0, SKILL_BACKSTAB);
@@ -273,7 +273,7 @@ ACMD(do_bash)
 
   one_argument(argument, arg);
 
-  if (IS_NPC(ch) || !GET_SKILL(ch, SKILL_BASH)) {
+  if (IS_NPC(ch) || !GET_SKILL_RANK(ch, SKILL_BASH)) {
     send_to_char(ch, "You have no idea how.\r\n");
     return;
   }
@@ -303,7 +303,7 @@ ACMD(do_bash)
   }
 
   percent = rand_number(1, 101);	/* 101% is a complete failure */
-  prob = GET_SKILL(ch, SKILL_BASH);
+  prob = GET_SKILL_RANK(ch, SKILL_BASH);
 
   if (MOB_FLAGGED(vict, MOB_NOBASH))
     percent = 101;
@@ -333,7 +333,7 @@ ACMD(do_rescue)
   struct char_data *vict, *tmp_ch;
   int percent, prob;
 
-  if (IS_NPC(ch) || !GET_SKILL(ch, SKILL_RESCUE)) {
+  if (IS_NPC(ch) || !GET_SKILL_RANK(ch, SKILL_RESCUE)) {
     send_to_char(ch, "You have no idea how to do that.\r\n");
     return;
   }
@@ -368,7 +368,7 @@ ACMD(do_rescue)
     return;
   }
   percent = rand_number(1, 101);	/* 101% is a complete failure */
-  prob = GET_SKILL(ch, SKILL_RESCUE);
+  prob = GET_SKILL_RANK(ch, SKILL_RESCUE);
 
   if (percent > prob) {
     send_to_char(ch, "You fail the rescue!\r\n");
@@ -441,16 +441,16 @@ EVENTFUNC(event_whirlwind)
   /* The "return" of the event function is the time until the event is called
    * again. If we return 0, then the event is freed and removed from the list, but
    * any other numerical response will be the delay until the next call */
-  if (GET_SKILL(ch, SKILL_WHIRLWIND) < rand_number(1, 101)) {
+/*  if (GET_SKILL_RANK(ch, SKILL_WHIRLWIND) < rand_number(1, 101)) {
     send_to_char(ch, "You stop spinning.\r\n");
     return 0;
-  } else
+  } else*/
     return 1.5 * PASSES_PER_SEC;
 }
 
 /* The "Whirlwind" skill is designed to provide a basic understanding of the
  * mud event and list systems. */
-ACMD(do_whirlwind)
+/*ACMD(do_whirlwind)
 {
   
   if (IS_NPC(ch) || !GET_SKILL(ch, SKILL_WHIRLWIND)) {
@@ -462,28 +462,28 @@ ACMD(do_whirlwind)
     send_to_char(ch, "You must be on your feet to perform a whirlwind.\r\n");
     return;    
   }
-
+*/
   /* First thing we do is check to make sure the character is not in the middle
    * of a whirl wind attack.
    * 
    * "char_had_mud_event() will sift through the character's event list to see if
    * an event of type "eWHIRLWIND" currently exists. */
-  if (char_has_mud_event(ch, eWHIRLWIND)) {
+/*  if (char_has_mud_event(ch, eWHIRLWIND)) {
     send_to_char(ch, "You are already attempting that!\r\n");
     return;   
   }
 
   send_to_char(ch, "You begin to spin rapidly in circles.\r\n");
   act("$n begins to rapidly spin in a circle!", FALSE, ch, 0, 0, TO_ROOM);
-  
+*/  
   /* NEW_EVENT() will add a new mud event to the event list of the character.
    * This function below adds a new event of "eWHIRLWIND", to "ch", and passes "NULL" as
    * additional data. The event will be called in "3 * PASSES_PER_SEC" or 3 seconds */
-  NEW_EVENT(eWHIRLWIND, ch, NULL, 3 * PASSES_PER_SEC);
+/*  NEW_EVENT(eWHIRLWIND, ch, NULL, 3 * PASSES_PER_SEC);
   WAIT_STATE(ch, PULSE_VIOLENCE * 3);
 }
-
-ACMD(do_kick)
+*/
+/*ACMD(do_kick)
 {
   char arg[MAX_INPUT_LENGTH];
   struct char_data *vict;
@@ -508,8 +508,9 @@ ACMD(do_kick)
     send_to_char(ch, "Aren't we funny today...\r\n");
     return;
   }
+  */
   /* 101% is a complete failure */
-  percent = ((10 - (compute_armor_class(vict) / 10)) * 2) + rand_number(1, 101);
+/*  percent = ((10 - (compute_armor_class(vict) / 10)) * 2) + rand_number(1, 101);
   prob = GET_SKILL(ch, SKILL_KICK);
 
   if (percent > prob) {
@@ -518,4 +519,4 @@ ACMD(do_kick)
     damage(ch, vict, GET_LEVEL(ch) / 2, SKILL_KICK);
 
   WAIT_STATE(ch, PULSE_VIOLENCE * 3);
-}
+}*/
