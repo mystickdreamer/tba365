@@ -652,6 +652,7 @@ do                                                              \
 /*#define SET_SKILL(ch, skill, val)           (ch)->player.skills[skill][0] = val
 #define SET_SKILL_XP(ch, skill, val)           (ch)->player.skills[skill][1] = val
 */
+#define GET_SKILL(ch, skill)            (ch)->player.skill[skill]
 #define SET_SKILL(ch, skill, val)           (ch)->player.skill[skill] = val
 #define SET_SKILL_XP(ch, skill, val)           (ch)->player.skill_xp[skill] = val
 //#define GET_SKILL(ch, skill)            (ch)->player.skills[skill]
