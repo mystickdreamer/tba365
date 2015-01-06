@@ -77,8 +77,8 @@ char *skill_percent(struct char_data *ch, char *skill, int return_type)
     if ((skillnum = find_skill_num(help, SKTYPE_MAGIC)) <= 0)
     if ((skillnum = find_skill_num(help, SKTYPE_ARMOR)) <= 0)
     if ((skillnum = find_skill_num(help, SKTYPE_CRAFTING)) <= 0){
-        send_to_char(ch, "Unrecognized skill.\r\n");
-        return;
+//        send_to_char(ch, "Unrecognized skill.\r\n");
+        return("Unknown skill");
     }
   
   if (return_type == 0)
