@@ -3411,7 +3411,7 @@ void init_char(struct char_data *ch) {
 
     for (i = 1; i <= SK_ARRAY_MAX; i++) {
         if (GET_ADMLEVEL(ch) < ADMLVL_IMPL)
-            SET_SKILL(i, 0);
+            SET_SKILL(ch, i, 0);
         else
             SET_SKILL(ch, i, 100);
     }
