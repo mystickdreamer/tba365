@@ -128,7 +128,7 @@ ACMD(do_backstab)
   struct char_data *vict;
   int percent, prob;
 
-  if (IS_NPC(ch) || !GET_SKILL(ch, SKILL_BACKSTAB)) {
+  if (IS_NPC(ch) || !GET_SKILL(ch, SK_BACKSTAB)) {
     send_to_char(ch, "You have no idea how to do that.\r\n");
     return;
   }
